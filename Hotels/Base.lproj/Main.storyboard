@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="BYZ-38-t0r" customClass="MapViewController" customModule="Hotels" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +15,79 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acB-b3-FbC" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oo9-aB-Ur7">
+                                <rect key="frame" x="16" y="32" width="341" height="234"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AutocompleteTableViewCell" id="HSH-Eh-8z0" customClass="AutocompleteTableViewCell" customModule="Hotels" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="341" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HSH-Eh-8z0" id="XE3-y9-zFW">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sq-op-vRH">
+                                                    <rect key="frame" x="8" y="13" width="325" height="21"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="locationTitle" destination="4sq-op-vRH" id="VYq-bU-bHM"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="autocompleteResults" destination="oo9-aB-Ur7" id="wkL-mD-ohK"/>
+                        <outlet property="mapContainer" destination="acB-b3-FbC" id="vfO-MX-Y3z"/>
+                        <outlet property="searchDisplayController" destination="mCd-13-VxY" id="41O-Qw-whv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="cQL-9p-OId">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="fAw-y6-bh7"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="iRd-Qi-cg6"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="Lit-5g-qUb"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="bqu-W0-Bmo"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="7ic-SF-5Ua">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="RRx-cG-uev"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="UwK-gG-uML"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="HBq-lU-FTp"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="8V3-Og-iSC"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="g8g-1V-q3d">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="TvR-2g-DlY"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="OVx-nG-gcy"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="yb5-2O-2RN"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="iit-it-E8t"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="mCd-13-VxY">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="hl6-h7-a8b"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="N3p-ZV-p7E"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="924-Tj-9Ah"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="6fM-sA-dzi"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
+            <point key="canvasLocation" x="0.0" y="303"/>
         </scene>
     </scenes>
 </document>
