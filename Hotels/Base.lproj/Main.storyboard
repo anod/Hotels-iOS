@@ -20,8 +20,12 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X9g-WG-4mQ">
+                                <rect key="frame" x="10" y="24" width="246" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oo9-aB-Ur7">
-                                <rect key="frame" x="16" y="32" width="341" height="234"/>
+                                <rect key="frame" x="16" y="64" width="341" height="234"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AutocompleteTableViewCell" id="HSH-Eh-8z0" customClass="AutocompleteTableViewCell" customModule="Hotels" customModuleProvider="target">
@@ -48,9 +52,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="autocompleteContainer" destination="X9g-WG-4mQ" id="HvA-w4-Eih"/>
                         <outlet property="autocompleteResults" destination="oo9-aB-Ur7" id="wkL-mD-ohK"/>
                         <outlet property="mapContainer" destination="acB-b3-FbC" id="vfO-MX-Y3z"/>
-                        <outlet property="searchDisplayController" destination="mCd-13-VxY" id="41O-Qw-whv"/>
+                        <outlet property="searchDisplayController" destination="Ukd-AI-4jc" id="G9j-BH-Z0Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -84,6 +89,14 @@
                         <outlet property="searchContentsController" destination="BYZ-38-t0r" id="N3p-ZV-p7E"/>
                         <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="924-Tj-9Ah"/>
                         <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="6fM-sA-dzi"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="Ukd-AI-4jc">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="TYg-jH-ozD"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="Tnj-jK-Zzf"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="fTw-iS-sUp"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="Vse-V5-4hU"/>
                     </connections>
                 </searchDisplayController>
             </objects>

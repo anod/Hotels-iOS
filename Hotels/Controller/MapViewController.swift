@@ -14,7 +14,8 @@ class MapViewController: UIViewController, EtbApiDelegate, UISearchResultsUpdati
     @IBOutlet weak var mapContainer: GMSMapView!
     var resultSearchController: UISearchController!
     @IBOutlet weak var autocompleteResults: UITableView!
-
+    @IBOutlet weak var autocompleteContainer: UIView!
+    
     var data = [GMSAutocompletePrediction]()
     
     var placesClient: GMSPlacesClient?
@@ -37,6 +38,7 @@ class MapViewController: UIViewController, EtbApiDelegate, UISearchResultsUpdati
         marker.map = mapView
 
 
+        self.autocompleteResults.hidden = true
         // Configure countryTable
         self.autocompleteResults.delegate = self
         self.autocompleteResults.dataSource = self
@@ -47,9 +49,10 @@ class MapViewController: UIViewController, EtbApiDelegate, UISearchResultsUpdati
             controller.dimsBackgroundDuringPresentation = false
 
             controller.searchBar.searchBarStyle = .Minimal
+            
+            self.autocompleteContainer.backgroundColor = UIColor.clearColor()
+            self.autocompleteContainer.addSubview(controller.searchBar);
             controller.searchBar.sizeToFit()
-
-            self.autocompleteResults.tableHeaderView =  controller.searchBar;
 
             return controller
         })()
@@ -86,6 +89,7 @@ class MapViewController: UIViewController, EtbApiDelegate, UISearchResultsUpdati
 
         if count(searchText) > 0 {
             println("Searching for '\(searchText)'")
+            self.autocompleteResults.hidden = false
             placesClient?.autocompleteQuery(searchText, bounds: bounds, filter: filter, callback: {
                 (results, error) -> Void in
                 if error != nil {
@@ -107,6 +111,8 @@ class MapViewController: UIViewController, EtbApiDelegate, UISearchResultsUpdati
         } else {
             self.data = [GMSAutocompletePrediction]()
             self.autocompleteResults.reloadData()
+            self.autocompleteResults.hidden = true
+
         }
     }
 
