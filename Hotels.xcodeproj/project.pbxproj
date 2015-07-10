@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2DBA1681E36ECF2707FD8B99 /* EtbApiUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA147ABD5710A0F1528558 /* EtbApiUtils.swift */; };
+		2DBA1AD8B45FFF7403A35D2C /* AlamofireObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1CABC41A271B73740F37 /* AlamofireObjectExtension.swift */; };
 		2DBA1D4BF580B4EAB2390380 /* AutocompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1F6F1DFD8E345880738B /* AutocompleteTableViewCell.swift */; };
 		2DBA1FE9E314976D6F862AF3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1C491A45AAD7740448B7 /* MapViewController.swift */; };
+		3CD0C5AC02DA2A77318DC9BF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F763C2BA0DC68496FBB472A7 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FACEA7891B3EA14100CBAEC6 /* EtbApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA7781B3EA14100CBAEC6 /* EtbApiConfig.swift */; };
 		FACEA78A1B3EA14100CBAEC6 /* AccType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA77A1B3EA14100CBAEC6 /* AccType.swift */; };
 		FACEA78B1B3EA14100CBAEC6 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA77B1B3EA14100CBAEC6 /* Facility.swift */; };
@@ -17,7 +19,6 @@
 		FACEA78D1B3EA14100CBAEC6 /* Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA77D1B3EA14100CBAEC6 /* Stars.swift */; };
 		FACEA78E1B3EA14100CBAEC6 /* EtbApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA77F1B3EA14100CBAEC6 /* EtbApi.swift */; };
 		FACEA78F1B3EA14100CBAEC6 /* EtbApiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA7801B3EA14100CBAEC6 /* EtbApiDelegate.swift */; };
-		FACEA7901B3EA14100CBAEC6 /* EtbApiRestKitMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA7811B3EA14100CBAEC6 /* EtbApiRestKitMapping.swift */; };
 		FACEA7911B3EA14100CBAEC6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FACEA7821B3EA14100CBAEC6 /* Info.plist */; };
 		FACEA7921B3EA14100CBAEC6 /* Accomodation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA7841B3EA14100CBAEC6 /* Accomodation.swift */; };
 		FACEA7931B3EA14100CBAEC6 /* AccomodationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA7851B3EA14100CBAEC6 /* AccomodationDetails.swift */; };
@@ -46,10 +47,11 @@
 /* Begin PBXFileReference section */
 		2DBA147ABD5710A0F1528558 /* EtbApiUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtbApiUtils.swift; sourceTree = "<group>"; };
 		2DBA1C491A45AAD7740448B7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2DBA1CABC41A271B73740F37 /* AlamofireObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireObjectExtension.swift; sourceTree = "<group>"; };
 		2DBA1F6F1DFD8E345880738B /* AutocompleteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteTableViewCell.swift; sourceTree = "<group>"; };
 		62743044A394ABE91A92F75E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		7CA41828752B1FF0695A3840 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FDDEB0448538C7EFF616505 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F763C2BA0DC68496FBB472A7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA674E461B3E92DC00E93B48 /* EtbApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EtbApi.framework; path = "EtbApi/build/Debug-iphoneos/EtbApi.framework"; sourceTree = "<group>"; };
 		FACEA7781B3EA14100CBAEC6 /* EtbApiConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtbApiConfig.swift; sourceTree = "<group>"; };
 		FACEA77A1B3EA14100CBAEC6 /* AccType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccType.swift; sourceTree = "<group>"; };
@@ -59,7 +61,6 @@
 		FACEA77E1B3EA14100CBAEC6 /* EtbApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtbApi.h; sourceTree = "<group>"; };
 		FACEA77F1B3EA14100CBAEC6 /* EtbApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtbApi.swift; sourceTree = "<group>"; };
 		FACEA7801B3EA14100CBAEC6 /* EtbApiDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtbApiDelegate.swift; sourceTree = "<group>"; };
-		FACEA7811B3EA14100CBAEC6 /* EtbApiRestKitMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtbApiRestKitMapping.swift; sourceTree = "<group>"; };
 		FACEA7821B3EA14100CBAEC6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FACEA7841B3EA14100CBAEC6 /* Accomodation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accomodation.swift; sourceTree = "<group>"; };
 		FACEA7851B3EA14100CBAEC6 /* AccomodationDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccomodationDetails.swift; sourceTree = "<group>"; };
@@ -86,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FACEA7991B3F242500CBAEC6 /* libPods.a in Frameworks */,
+				3CD0C5AC02DA2A77318DC9BF /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,12 +124,20 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		2DBA1864E950D21B0E4AE776 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				2DBA1CABC41A271B73740F37 /* AlamofireObjectExtension.swift */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
 		4BD4C06844F585C13A65D247 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				FACEA7981B3F242500CBAEC6 /* libPods.a */,
 				FA674E461B3E92DC00E93B48 /* EtbApi.framework */,
-				7CA41828752B1FF0695A3840 /* libPods.a */,
+				F763C2BA0DC68496FBB472A7 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -149,10 +159,10 @@
 				FACEA77E1B3EA14100CBAEC6 /* EtbApi.h */,
 				FACEA77F1B3EA14100CBAEC6 /* EtbApi.swift */,
 				FACEA7801B3EA14100CBAEC6 /* EtbApiDelegate.swift */,
-				FACEA7811B3EA14100CBAEC6 /* EtbApiRestKitMapping.swift */,
 				FACEA7821B3EA14100CBAEC6 /* Info.plist */,
 				FACEA7831B3EA14100CBAEC6 /* Model */,
 				2DBA147ABD5710A0F1528558 /* EtbApiUtils.swift */,
+				2DBA1864E950D21B0E4AE776 /* Alamofire */,
 			);
 			path = EtbApi;
 			sourceTree = "<group>";
@@ -255,6 +265,7 @@
 				FAF27FC31B2A095100397CBD /* Frameworks */,
 				FAF27FC41B2A095100397CBD /* Resources */,
 				8E3398BEF4D77211EC9F1001 /* Copy Pods Resources */,
+				3723F7BFC76B2A4F437B39FB /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -342,6 +353,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3723F7BFC76B2A4F437B39FB /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7D4D79686AE2A7D359680514 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -388,7 +414,6 @@
 				FACEA78E1B3EA14100CBAEC6 /* EtbApi.swift in Sources */,
 				FACEA7951B3EA14100CBAEC6 /* Meta.swift in Sources */,
 				FAF27FCC1B2A095100397CBD /* AppDelegate.swift in Sources */,
-				FACEA7901B3EA14100CBAEC6 /* EtbApiRestKitMapping.swift in Sources */,
 				FACEA7931B3EA14100CBAEC6 /* AccomodationDetails.swift in Sources */,
 				FACEA78A1B3EA14100CBAEC6 /* AccType.swift in Sources */,
 				FACEA7961B3EA14100CBAEC6 /* SearchRequest.swift in Sources */,
@@ -397,6 +422,7 @@
 				2DBA1681E36ECF2707FD8B99 /* EtbApiUtils.swift in Sources */,
 				2DBA1FE9E314976D6F862AF3 /* MapViewController.swift in Sources */,
 				2DBA1D4BF580B4EAB2390380 /* AutocompleteTableViewCell.swift in Sources */,
+				2DBA1AD8B45FFF7403A35D2C /* AlamofireObjectExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

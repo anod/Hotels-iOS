@@ -19,4 +19,33 @@ class EtbApiUtils {
         return newString
     }
 
+    class func formatDate(date:NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.stringFromDate(date)
+    }
+    
+    class func unwrapAccommodationResult(result:AnyObject) -> AccomodationsResults?{
+        
+        let results: NSArray = result.array
+        
+        if (results.count > 0){
+            let searchingAccommodations = results[0] as! AccomodationsResults
+            return searchingAccommodations
+        }
+        
+        return nil
+    }
+    
+    class func unwrapAccomodationDetailsObj(result:AnyObject) -> AccommodationDetails!{
+        
+        let results: NSArray = result.array
+        
+        if (results.count > 0){
+            let accommodationDetails = results[0] as! AccommodationDetails
+            return accommodationDetails
+        }
+        
+        return nil
+    }
 }

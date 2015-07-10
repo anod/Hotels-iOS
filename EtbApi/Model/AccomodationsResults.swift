@@ -5,9 +5,18 @@
 
 import Foundation
 
-class AccomodationsResults :NSObject{
+@objc
+class AccomodationsResults : ResponseObjectSerializable {
 
     var meta:Meta?
     var accommodations = [Accommodation]()
 
+    required init?(response: NSHTTPURLResponse, representation: AnyObject) {
+        if let metaJSON: AnyObject = representation.valueForKeyPath("meta") {
+            self.meta = Meta(response: response, representation: metaJSON)
+        }
+        if let accommodationsJSON: AnyObject = representation.valueForKeyPath("accommodations") {
+            self.accommodations = Accommodation.collection(response: response, representation: accommodationsJSON)
+        }
+    }
 }

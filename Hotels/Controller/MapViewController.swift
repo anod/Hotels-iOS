@@ -17,31 +17,29 @@ class MapViewController: UIViewController, EtbApiDelegate, UISearchResultsUpdati
     @IBOutlet weak var autocompleteContainer: UIView!
     
     var data = [GMSAutocompletePrediction]()
-    
+    var request: SearchRequest!
     var placesClient: GMSPlacesClient?
+    var api: EtbApi!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         placesClient = GMSPlacesClient()
-        
-        var camera = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.20, zoom: 6)
-        var mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
-        mapView.myLocationEnabled = true
-        self.mapContainer = mapView;
-        
-        var marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(-33.86, 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
 
+        request = SearchRequest()
+        request.lat = -33.86
+        request.lon = 151.20
+        request.type = "spr"
+        
+        var camera = GMSCameraPosition.cameraWithLatitude(request.lat, longitude: request.lon, zoom: 12)
+        mapContainer.camera = camera;
+        mapContainer.myLocationEnabled = true
 
-        self.autocompleteResults.hidden = true
-        // Configure countryTable
-        self.autocompleteResults.delegate = self
-        self.autocompleteResults.dataSource = self
+       
+        autocompleteResults.hidden = true
+        autocompleteResults.delegate = self
+        autocompleteResults.dataSource = self
         
         self.resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
@@ -60,16 +58,25 @@ class MapViewController: UIViewController, EtbApiDelegate, UISearchResultsUpdati
 
 
         let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida")
-        let api = EtbApi(config: apiConfig)
+        api = EtbApi(config: apiConfig)
         api.delegate = self
-
-        let request = SearchRequest()
-
+    }
+    
+   
+    override func viewDidAppear(animated: Bool) {
         api.search(request,offset: 0,limit: 15)
-
     }
 
-    func searchSuccessResult(result:AnyObject) {
+    func searchSuccessResult(result:AccomodationsResults) {
+        
+        
+        for accomodation in result.accommodations {
+            var marker = GMSMarker()
+            marker.position = CLLocationCoordinate2DMake(accomodation.location.lat, accomodation.location.lon)
+            marker.title = accomodation.name
+            marker.snippet = accomodation.summary.address
+            marker.map = self.mapContainer
+        }
 
     }
 
@@ -86,7 +93,8 @@ class MapViewController: UIViewController, EtbApiDelegate, UISearchResultsUpdati
         filter.type = GMSPlacesAutocompleteTypeFilter.Geocode
         
         let searchText = searchController.searchBar.text
-
+        
+        
         if count(searchText) > 0 {
             println("Searching for '\(searchText)'")
             self.autocompleteResults.hidden = false
@@ -133,6 +141,31 @@ class MapViewController: UIViewController, EtbApiDelegate, UISearchResultsUpdati
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         self.autocompleteResults.deselectRowAtIndexPath(indexPath, animated: true)
+        self.autocompleteResults.hidden = true
+        let prediction = self.data[indexPath.row];
+        placesClient?.lookUpPlaceID(prediction.placeID, callback: {
+            (place, error) -> Void in
+            if error != nil {
+                println("Placelookup error \(error) for prediction '\(prediction.attributedFullText)'")
+                return
+            }
+            if let place = place {
+               self.showPlaceOnMap(place)
+            }
+        })
+    }
+    
+    func showPlaceOnMap(place: GMSPlace)
+    {
+        let coord = place.coordinate;
+        
+        var camera = GMSCameraPosition.cameraWithLatitude(coord.latitude, longitude: coord.longitude, zoom: 12)
+        mapContainer.camera = camera;
+        
+        request.lat = coord.latitude
+        request.lon = coord.longitude
+        
+        api.search(request,offset: 0,limit: 15)
     }
 
 }

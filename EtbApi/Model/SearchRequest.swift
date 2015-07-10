@@ -8,46 +8,50 @@ import Foundation
 class SearchRequest {
 
     static let sharedInstance = SearchRequest()
-
     struct SortBy {
         var printableDescription = ""
         var orderByForRequest = ""
         var orderForRequest = ""
     }
-
-    var lat: String = "0"
-    var lot: String = "0"
-    var checkInDate = ""
-    var checkOutDate = ""
+    
+    var type: String = "spr"
+    var lat: Double =  0
+    var lon: Double = 0
+    var checkInDate = NSDate()
+    var checkOutDate = NSDate(timeIntervalSinceNow: 86400)
     var capacity = [String]()
     var searchingSort = SortBy()
     var minRate:String = "0" //min price
     var maxRate:String = "" //max price
-
+    
     var stars = ""
     var rating = ""
     var accTypes = ""
     var mainFacilities = ""
-
+    
     private var tempstars = Set<Int>()
     private var temprating = Set<Int>()
     private var tempaccTypes = Set<Int>()
     private var tempmainFacilities = Set<Int>()
-
+    
     init(){
         self.searchingSort = SortBy(printableDescription:"", orderByForRequest:"", orderForRequest:"")
-
+        
     }
-
+    
     func prepareLocationForRequest() -> String{
-        var locationStr = lat + "," + lot + ";" + "10"
+        
+        let latitude = String(format:"%f", lat)
+        let longitude = String(format:"%f", lon)
+        
+        var locationStr =   latitude + "," + longitude + ";" + "10"
         return locationStr;
-
+        
     }
-
+    
     func prepareCapacityForRequest() -> String{
         var newCapacity = ""
-
+        
         if !capacity.isEmpty{
             for (var index = 0; index < capacity.count ; index++){
                 newCapacity = index == 0 ? newCapacity + capacity[index] : newCapacity + "," + capacity[index]
@@ -56,11 +60,11 @@ class SearchRequest {
         else{
             newCapacity = "2"
         }
-
+        
         return newCapacity
     }
-
-
+    
+    
     func setStars(selectedNumber: Int){
         if tempstars.contains(selectedNumber){
             tempstars.remove(selectedNumber)
@@ -68,9 +72,12 @@ class SearchRequest {
         else{
             tempstars.insert(selectedNumber)
         }
+        stars = ""
         stars = EtbApiUtils.splitIntWithComma(tempstars)
+        print("stars:\(stars)")
+        
     }
-
+    
     func setRating(selectedNumber: Int){
         if temprating.contains(selectedNumber){
             temprating.remove(selectedNumber)
@@ -78,36 +85,39 @@ class SearchRequest {
         else{
             temprating.insert(selectedNumber)
         }
+        rating = ""
         rating = EtbApiUtils.splitIntWithComma(temprating)
     }
-
-
+    
+    
     func setAccTypes(selectedNumbers: Set<Int>){
         tempaccTypes = selectedNumbers
+        accTypes = ""
         accTypes = EtbApiUtils.splitIntWithComma(selectedNumbers)
     }
-
+    
     func setFacilities(selectedNumbers: Set<Int>){
         tempmainFacilities = selectedNumbers
+        mainFacilities = ""
         mainFacilities = EtbApiUtils.splitIntWithComma(selectedNumbers)
     }
-
+    
     func getStars() -> Set<Int>{
         return tempstars
     }
-
+    
     func getRating() -> Set<Int>{
         return temprating
     }
-
+    
     func getAccTypes() -> Set<Int>{
         return tempaccTypes
     }
-
+    
     func getMainFacilities() -> Set<Int>{
         return tempmainFacilities
     }
-
+    
     func destroy() {
         self.searchingSort = SortBy(printableDescription:"", orderByForRequest:"", orderForRequest:"")
         self.minRate = "0"
