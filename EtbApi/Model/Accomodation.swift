@@ -30,7 +30,7 @@ final class Accommodation: ResponseObjectSerializable, ResponseCollectionSeriali
         self.summary.address = representation.valueForKeyPath("summary.address") as? String
     }
 
-    static func collection(#response: NSHTTPURLResponse, representation: AnyObject) -> [Accommodation] {
+    static func collection(response: NSHTTPURLResponse, representation: AnyObject) -> [Accommodation] {
         var accomodations: [Accommodation] = []
 
         if let representation = representation as? [[String: AnyObject]] {

@@ -44,7 +44,7 @@ class SearchRequest {
         let latitude = String(format:"%f", lat)
         let longitude = String(format:"%f", lon)
         
-        var locationStr =   latitude + "," + longitude + ";" + "10"
+        let locationStr =   latitude + "," + longitude + ";" + "10"
         return locationStr;
         
     }
@@ -74,7 +74,7 @@ class SearchRequest {
         }
         stars = ""
         stars = EtbApiUtils.splitIntWithComma(tempstars)
-        print("stars:\(stars)")
+        print("stars:\(stars)", appendNewline: false)
         
     }
     

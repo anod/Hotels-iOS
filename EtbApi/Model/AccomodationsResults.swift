@@ -16,7 +16,7 @@ class AccomodationsResults : ResponseObjectSerializable {
             self.meta = Meta(response: response, representation: metaJSON)
         }
         if let accommodationsJSON: AnyObject = representation.valueForKeyPath("accommodations") {
-            self.accommodations = Accommodation.collection(response: response, representation: accommodationsJSON)
+            self.accommodations = Accommodation.collection(response, representation: accommodationsJSON)
         }
     }
 }

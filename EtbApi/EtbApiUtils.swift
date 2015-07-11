@@ -11,7 +11,7 @@ class EtbApiUtils {
         var newString = ""
         var  index = 0
         if !sets.isEmpty{
-            for set in enumerate(sets){
+            for set in sets.enumerate(){
                 newString = set.index == 0 ? newString + String(set.element) : newString + "," + String(set.element)
 
             }

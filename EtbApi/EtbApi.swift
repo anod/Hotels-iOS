@@ -8,7 +8,7 @@ import Alamofire
 
 class EtbApi {
 
-    var delegate: EtbApiDelegate? = nil
+    var delegate: EtbApiDelegate! = nil
     var config: EtbApiConfig
 
     init(config: EtbApiConfig) {
@@ -40,31 +40,18 @@ class EtbApi {
                 "mainFacilities": request.mainFacilities
         ]
 
-        Alamofire.request(.GET, self.config.serverBase + "/accommodations/results", parameters: query)
-            .responseObject { (_, _, results: AccomodationsResults?, _) in
+        Alamofire.request(.GET, URLString: self.config.serverBase + "/accommodations/results", parameters: query)
+            .responseObject { (request, response, results: AccomodationsResults?, error) in
+                    print(response)
                     if let delegate = self.delegate {
-                           delegate.searchSuccessResult!(results)
+                        if let error = error {
+                            delegate.searchErrorResult!(error)
+                            return;
+                        }
+                        // TODO: handle errors in response
+                        delegate.searchSuccessResult!(results!)
                     }
             }
-//
-//        RKObjectManager.sharedManager().getObjectsAtPath("/accommodations/results", parameters: query,
-//
-//                success: {
-//                    operation, mappingResult in
-//                    if let delegate = self.delegate {
-//
-//                        delegate.searchSuccessResult!(EtbApiUtils.unwrapAccommodationResult(mappingResult))
-//                    }
-//                },
-//
-//                failure: {
-//                    operation, error in
-//                    if let delegate = self.delegate {
-//                        delegate.searchErrorResult!(error)
-//                    }
-//                    NSLog("\(error!.localizedDescription)")
-//                }
-//        )
     }
 
 

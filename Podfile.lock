@@ -4,15 +4,21 @@ PODS:
   - HCSStarRatingView (1.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 1.2)
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `swift-2.0`)
   - GoogleMaps
   - HCSStarRatingView (from `https://github.com/hugocampossousa/HCSStarRatingView.git`)
 
 EXTERNAL SOURCES:
+  Alamofire:
+    :branch: swift-2.0
+    :git: https://github.com/Alamofire/Alamofire.git
   HCSStarRatingView:
     :git: https://github.com/hugocampossousa/HCSStarRatingView.git
 
 CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: fd71afb3a0af2042b9f05a6b9f29317ad4903703
+    :git: https://github.com/Alamofire/Alamofire.git
   HCSStarRatingView:
     :commit: 52fcff0ec04ba7d1f8c8219c2f24c8ec71258b93
     :git: https://github.com/hugocampossousa/HCSStarRatingView.git
