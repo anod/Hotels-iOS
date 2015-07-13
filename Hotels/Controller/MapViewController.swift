@@ -28,7 +28,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         request.lon = 151.20
         request.type = "spr"
         
-        let camera = GMSCameraPosition.cameraWithLatitude(request.lat, longitude: request.lon, zoom: 12)
+        let camera = GMSCameraPosition.cameraWithLatitude(request.lat, longitude: request.lon, zoom: 13)
         mapContainer.camera = camera;
         mapContainer.myLocationEnabled = true
         mapContainer.delegate = self
@@ -71,7 +71,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     {
         let coord = place.coordinate;
         
-        let camera = GMSCameraPosition.cameraWithLatitude(coord.latitude, longitude: coord.longitude, zoom: 12)
+        let camera = GMSCameraPosition.cameraWithLatitude(coord.latitude, longitude: coord.longitude, zoom: 13)
         mapContainer.camera = camera;
         
         request.lat = coord.latitude
@@ -86,9 +86,9 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         
         let accomodation = marker.userData as! Accommodation
         
-        let frame = CGRectMake(16, 300, 200, 200)
+        let frame = CGRectMake(16, 300, 320, 320)
         
-        let accomodationView = HotelDetailsView.initWith(frame, accomodation: accomodation)
+        let accomodationView = HotelDetailsView(frame: frame, accomodation: accomodation)
         self.view.addSubview(accomodationView)
         
         return true

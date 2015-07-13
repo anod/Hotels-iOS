@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import GoogleMaps
+//import Fabric
+//import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+//        Fabric.with([Crashlytics()])
 
         // Google Maps anodsplace.info
         GMSServices.provideAPIKey("AIzaSyBDt-LdO-mNRjrldAq4-x32CZU7vhczGAc");

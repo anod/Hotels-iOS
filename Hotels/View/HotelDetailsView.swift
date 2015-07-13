@@ -8,21 +8,36 @@
 
 import UIKit
 
-class HotelDetailsView: UITableView {
+class HotelDetailsView: UITableView, UITableViewDelegate, UITableViewDataSource {
+    
     var accomodation: Accommodation!
-    
-    static func initWith(frame: CGRect, accomodation: Accommodation) -> HotelDetailsView {
-        let view = UIView.loadViewFromNib("HotelDetailsView", theClass: HotelDetailsView.self) as! HotelDetailsView
-        // use bounds not frame or it'll be offset
-        view.frame = frame
-        view.accomodation = accomodation
+
+    init(frame: CGRect, accomodation: Accommodation) {
+        super.init(frame: frame, style: UITableViewStyle.Plain)
         
-        return view;
+        self.accomodation = accomodation
+        self.delegate = self
+        self.dataSource = self
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let identifier = "HodelDetailsHeader"
+        var headerCell: HodelDetailsHeader! = tableView.dequeueReusableCellWithIdentifier(identifier) as? HodelDetailsHeader
+        if headerCell == nil {
+            self.registerNib(UINib(nibName: "HodelDetailsHeader", bundle: nil), forCellReuseIdentifier: identifier)
+            headerCell = tableView.dequeueReusableCellWithIdentifier(identifier) as? HodelDetailsHeader
+            headerCell.attach(self.accomodation)
+        }
+        
+        return headerCell
+    }
 
 }

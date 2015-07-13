@@ -17,7 +17,7 @@ final class Accommodation: ResponseObjectSerializable, ResponseCollectionSeriali
     var rates = [Rate]()
     var location = Location()
     var summary = Summary()
-    var fromPrice = [String: Double]?()
+    var fromPrice = [String: String]()
     var details: Details?
     var extraInformation :ExtraInformation?
     var facilities = [Facilities]()
@@ -27,7 +27,18 @@ final class Accommodation: ResponseObjectSerializable, ResponseCollectionSeriali
         self.name = representation.valueForKeyPath("name") as? String
         self.location.lat = representation.valueForKeyPath("location.lat") as! Double
         self.location.lon = representation.valueForKeyPath("location.lon") as! Double
+        self.starRating = representation.valueForKey("starRating") as! Float
+        self.images = representation.valueForKey("images") as! [String]
+        self.fromPrice = representation.valueForKey("fromPrice") as! [String: String]
+
         self.summary.address = representation.valueForKeyPath("summary.address") as? String
+        self.summary.zipcode = representation.valueForKeyPath("summary.zipcode") as? String
+        self.summary.reviewScore = representation.valueForKeyPath("summary.reviewScore") as! Float
+        self.summary.reviewCount = representation.valueForKeyPath("summary.reviewCount") as! Int
+        self.summary.city = representation.valueForKeyPath("summary.city") as? String
+        self.summary.country = representation.valueForKeyPath("summary.country") as? String
+        
+
     }
 
     static func collection(response: NSHTTPURLResponse, representation: AnyObject) -> [Accommodation] {
@@ -66,7 +77,7 @@ final class Accommodation: ResponseObjectSerializable, ResponseCollectionSeriali
         var address: String?
         var zipcode: String?
         var reviewScore: Float = 0
-        var reviewCount: String?
+        var reviewCount: Int = 0
         var accType: String?
         var erank: String?
         var city: String?
