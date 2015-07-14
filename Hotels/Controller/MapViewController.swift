@@ -18,7 +18,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     var request: SearchRequest!
     var api: EtbApi!
     var autocomplete: AutocompleteViewController!
-
+    var accomodationView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -84,11 +85,16 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
 
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         
+        if (self.accomodationView != nil) {
+            self.accomodationView.removeFromSuperview()
+            self.accomodationView = nil
+        }
+        
         let accomodation = marker.userData as! Accommodation
         
         let frame = CGRectMake(16, 300, 320, 320)
         
-        let accomodationView = HotelDetailsView(frame: frame, accomodation: accomodation)
+        self.accomodationView = HotelDetailsView(frame: frame, accomodation: accomodation)
         self.view.addSubview(accomodationView)
         
         return true

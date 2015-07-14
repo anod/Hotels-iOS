@@ -10,7 +10,7 @@ import UIKit
 import HCSStarRatingView
 import Haneke
 
-class HodelDetailsHeader: UITableViewCell {
+class HodelDetailsHeader: UITableViewCell, HotelDetailsTableCell {
     @IBOutlet weak var pinButton: UIBarButtonItem!
     @IBOutlet weak var hotelImage: UIImageView!
     @IBOutlet weak var hotelName: UILabel!
