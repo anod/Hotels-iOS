@@ -15,7 +15,7 @@
 		2DBA18375426BEE9A6B6B895 /* HodelDetailsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA1E7291666A35A4AC9336 /* HodelDetailsHeader.xib */; };
 		2DBA188A9C74172F3D8B65CD /* HotelDetailsFacilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1CB6DB93D5A68A515446 /* HotelDetailsFacilities.swift */; };
 		2DBA188AF67AE151D513B79F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA12E6B7A8DD9085D9376B /* UIView.swift */; };
-		2DBA1950AEF7D42BD24E799C /* HotelDetailsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA12F767CCD6991BC5A8DA /* HotelDetailsTableCell.swift */; };
+		2DBA1950AEF7D42BD24E799C /* HotelDetailsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA12F767CCD6991BC5A8DA /* HotelDetailsViewProtocol.swift */; };
 		2DBA19DA1E6AE6A3817A17CF /* HotelDetailsFacilities.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA1E3E0DF81184FE5E1FA0 /* HotelDetailsFacilities.xib */; };
 		2DBA1AD8B45FFF7403A35D2C /* AlamofireObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1CABC41A271B73740F37 /* AlamofireObjectExtension.swift */; };
 		2DBA1CCDDD7BFD44F4E065A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1F5E29CDA67F63459234 /* AppDelegate.swift */; };
@@ -23,6 +23,8 @@
 		2DBA1FE9E314976D6F862AF3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1C491A45AAD7740448B7 /* MapViewController.swift */; };
 		3CD0C5AC02DA2A77318DC9BF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F763C2BA0DC68496FBB472A7 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FA5B08A41B54D44800494B31 /* hotel_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5B08A31B54D44800494B31 /* hotel_placeholder.png */; };
+		FA9775CD1B56CFB400CB4252 /* HotelDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9775CC1B56CFB400CB4252 /* HotelDetailsView.xib */; };
+		FABB02F71B58EB3400E59AFE /* HotelDetailsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB02F61B58EB3400E59AFE /* HotelDetailsCollectionView.swift */; };
 		FACEA7891B3EA14100CBAEC6 /* EtbApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA7781B3EA14100CBAEC6 /* EtbApiConfig.swift */; };
 		FACEA78A1B3EA14100CBAEC6 /* AccType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA77A1B3EA14100CBAEC6 /* AccType.swift */; };
 		FACEA78B1B3EA14100CBAEC6 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA77B1B3EA14100CBAEC6 /* Facility.swift */; };
@@ -56,7 +58,7 @@
 /* Begin PBXFileReference section */
 		2DBA11077F1D17F1209AFF45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2DBA12E6B7A8DD9085D9376B /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		2DBA12F767CCD6991BC5A8DA /* HotelDetailsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsTableCell.swift; sourceTree = "<group>"; };
+		2DBA12F767CCD6991BC5A8DA /* HotelDetailsViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsViewProtocol.swift; sourceTree = "<group>"; };
 		2DBA147ABD5710A0F1528558 /* EtbApiUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtbApiUtils.swift; sourceTree = "<group>"; };
 		2DBA17E8D4B13C669AE6DC64 /* HotelDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsView.swift; sourceTree = "<group>"; };
 		2DBA1ACFDCFB088A4580892F /* AutocompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,8 @@
 		F763C2BA0DC68496FBB472A7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5B08A31B54D44800494B31 /* hotel_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotel_placeholder.png; sourceTree = "<group>"; };
 		FA674E461B3E92DC00E93B48 /* EtbApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EtbApi.framework; path = "EtbApi/build/Debug-iphoneos/EtbApi.framework"; sourceTree = "<group>"; };
+		FA9775CC1B56CFB400CB4252 /* HotelDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HotelDetailsView.xib; sourceTree = "<group>"; };
+		FABB02F61B58EB3400E59AFE /* HotelDetailsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsCollectionView.swift; sourceTree = "<group>"; };
 		FACEA7781B3EA14100CBAEC6 /* EtbApiConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtbApiConfig.swift; sourceTree = "<group>"; };
 		FACEA77A1B3EA14100CBAEC6 /* AccType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccType.swift; sourceTree = "<group>"; };
 		FACEA77B1B3EA14100CBAEC6 /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 			children = (
 				FA5B08AC1B54EE2D00494B31 /* HotelDetails */,
 				2DBA1F6F1DFD8E345880738B /* AutocompleteTableViewCell.swift */,
+				FABB02F61B58EB3400E59AFE /* HotelDetailsCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -208,11 +213,12 @@
 			isa = PBXGroup;
 			children = (
 				2DBA1E3E0DF81184FE5E1FA0 /* HotelDetailsFacilities.xib */,
-				2DBA12F767CCD6991BC5A8DA /* HotelDetailsTableCell.swift */,
+				2DBA12F767CCD6991BC5A8DA /* HotelDetailsViewProtocol.swift */,
 				2DBA1CC67BCB390DDCC269C8 /* HodelDetailsHeader.swift */,
 				2DBA1CB6DB93D5A68A515446 /* HotelDetailsFacilities.swift */,
 				2DBA17E8D4B13C669AE6DC64 /* HotelDetailsView.swift */,
 				2DBA1E7291666A35A4AC9336 /* HodelDetailsHeader.xib */,
+				FA9775CC1B56CFB400CB4252 /* HotelDetailsView.xib */,
 			);
 			path = HotelDetails;
 			sourceTree = "<group>";
@@ -408,6 +414,7 @@
 			files = (
 				FACEA7911B3EA14100CBAEC6 /* Info.plist in Resources */,
 				FAF27FD41B2A095100397CBD /* Main.storyboard in Resources */,
+				FA9775CD1B56CFB400CB4252 /* HotelDetailsView.xib in Resources */,
 				FAF27FD91B2A095100397CBD /* LaunchScreen.xib in Resources */,
 				FA5B08A41B54D44800494B31 /* hotel_placeholder.png in Resources */,
 				2DBA140C682D79A756A63821 /* Images.xcassets in Resources */,
@@ -491,6 +498,7 @@
 				FACEA7961B3EA14100CBAEC6 /* SearchRequest.swift in Sources */,
 				FACEA7921B3EA14100CBAEC6 /* Accomodation.swift in Sources */,
 				FACEA78F1B3EA14100CBAEC6 /* EtbApiDelegate.swift in Sources */,
+				FABB02F71B58EB3400E59AFE /* HotelDetailsCollectionView.swift in Sources */,
 				2DBA1681E36ECF2707FD8B99 /* EtbApiUtils.swift in Sources */,
 				2DBA1FE9E314976D6F862AF3 /* MapViewController.swift in Sources */,
 				2DBA1D4BF580B4EAB2390380 /* AutocompleteTableViewCell.swift in Sources */,
@@ -498,7 +506,7 @@
 				2DBA155F1F8EB0F3DCD14971 /* AutocompleteViewController.swift in Sources */,
 				2DBA1CCDDD7BFD44F4E065A0 /* AppDelegate.swift in Sources */,
 				2DBA188AF67AE151D513B79F /* UIView.swift in Sources */,
-				2DBA1950AEF7D42BD24E799C /* HotelDetailsTableCell.swift in Sources */,
+				2DBA1950AEF7D42BD24E799C /* HotelDetailsViewProtocol.swift in Sources */,
 				2DBA14770617AE06F518086B /* HodelDetailsHeader.swift in Sources */,
 				2DBA188A9C74172F3D8B65CD /* HotelDetailsFacilities.swift in Sources */,
 				2DBA154DFAB763107360AC2A /* HotelDetailsView.swift in Sources */,

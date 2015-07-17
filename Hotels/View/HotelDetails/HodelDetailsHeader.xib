@@ -23,6 +23,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
                         <animations/>
                     </imageView>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfc-Gg-O5j">
+                        <rect key="frame" x="0.0" y="112" width="320" height="50"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.30206317724458204" colorSpace="calibratedWhite"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwd-Hj-PFN">
                         <rect key="frame" x="8" y="112" width="304" height="27"/>
                         <animations/>

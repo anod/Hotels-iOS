@@ -9,16 +9,19 @@
 import UIKit
 import GoogleMaps
 
-class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, GMSMapViewDelegate {
+class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, GMSMapViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var mapContainer: GMSMapView!
     @IBOutlet weak var autocompleteResults: UITableView!
     @IBOutlet weak var autocompleteContainer: UIView!
+    @IBOutlet weak var hotelDetailsCollection: HotelDetailsCollectionView!
     
     var request: SearchRequest!
     var api: EtbApi!
     var autocomplete: AutocompleteViewController!
-    var accomodationView: UIView!
+    var pinnedHotels: [Accommodation] = []
+    var currentHotel: Accommodation! = nil
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,12 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida")
         api = EtbApi(config: apiConfig)
         api.delegate = self
+        
+        self.hotelDetailsCollection.backView = mapContainer
+        self.hotelDetailsCollection.dataSource = self
+        self.hotelDetailsCollection.delegate = self
+        self.hotelDetailsCollection.registerNib(UINib(nibName: "HotelDetailsView", bundle: NSBundle(forClass: HotelDetailsView.self)), forCellWithReuseIdentifier: "HotelDetailsView")
+
     }
     
    
@@ -85,19 +94,48 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
 
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         
-        if (self.accomodationView != nil) {
-            self.accomodationView.removeFromSuperview()
-            self.accomodationView = nil
-        }
-        
         let accomodation = marker.userData as! Accommodation
+  
+        self.currentHotel = accomodation;
+        self.hotelDetailsCollection.reloadData()
         
-        let frame = CGRectMake(16, 300, 320, 320)
+//        let frame = CGRectMake(16, 300, 320, 320)
+//        
+//        self.accomodationView = HotelDetailsView.instanceFromNib()
+//        self.accomodationView.frame = frame
+//        self.accomodationView.accomodation = accomodation;
         
-        self.accomodationView = HotelDetailsView(frame: frame, accomodation: accomodation)
-        self.view.addSubview(accomodationView)
+//        self.view.addSubview(accomodationView)
         
         return true
+    }
+    
+    func mainStoryboard() -> UIStoryboard
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        return storyboard
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.pinnedHotels.count + (self.currentHotel != nil ? 1 : 0)
+    }
+    
+    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let hotelDetailsView = collectionView.dequeueReusableCellWithReuseIdentifier("HotelDetailsView", forIndexPath: indexPath) as! HotelDetailsView
+        hotelDetailsView.userInteractionEnabled = true
+        
+        if (self.pinnedHotels.count > 0 && self.pinnedHotels.count < indexPath.row) {
+            let accomodation = self.pinnedHotels[indexPath.row];
+            hotelDetailsView.attach(accomodation)
+        } else if (indexPath.row == self.pinnedHotels.count && self.currentHotel != nil) {
+            hotelDetailsView.attach(self.currentHotel)
+        }
+        return hotelDetailsView
     }
 }
 

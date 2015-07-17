@@ -61,12 +61,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bQa-ao-0ce" customClass="HotelDetailsCollectionView" customModule="Hotels" customModuleProvider="target">
+                                <rect key="frame" x="16" y="68" width="568" height="516"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.70196078429999997" blue="0.0" alpha="0.37878531346749228" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xrn-LV-D0z">
+                                    <size key="itemSize" width="260" height="320"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bQa-ao-0ce" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="1Bb-Zk-0Lj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="acB-b3-FbC" secondAttribute="bottom" id="1Nh-qG-Gem"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bQa-ao-0ce" secondAttribute="bottom" constant="16" id="2G6-iy-B4s"/>
+                            <constraint firstAttribute="trailing" secondItem="bQa-ao-0ce" secondAttribute="trailing" constant="16" id="98W-ZT-z7V"/>
                             <constraint firstAttribute="trailing" secondItem="acB-b3-FbC" secondAttribute="trailing" id="NdW-hW-SZf"/>
+                            <constraint firstItem="bQa-ao-0ce" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="lkN-Pw-5xZ"/>
                             <constraint firstItem="acB-b3-FbC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="o6X-CJ-anL"/>
                             <constraint firstItem="acB-b3-FbC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uU9-xQ-G7M"/>
                         </constraints>
@@ -74,6 +90,7 @@
                     <connections>
                         <outlet property="autocompleteContainer" destination="X9g-WG-4mQ" id="HvA-w4-Eih"/>
                         <outlet property="autocompleteResults" destination="oo9-aB-Ur7" id="wkL-mD-ohK"/>
+                        <outlet property="hotelDetailsCollection" destination="bQa-ao-0ce" id="b1X-2o-nG5"/>
                         <outlet property="mapContainer" destination="acB-b3-FbC" id="vfO-MX-Y3z"/>
                         <outlet property="searchDisplayController" destination="Ukd-AI-4jc" id="G9j-BH-Z0Z"/>
                     </connections>

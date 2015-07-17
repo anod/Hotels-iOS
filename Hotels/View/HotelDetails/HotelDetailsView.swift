@@ -8,36 +8,55 @@
 
 import UIKit
 
-class HotelDetailsView: UITableView, UITableViewDelegate, UITableViewDataSource {
+protocol HotelDetailsViewDelegate {
+    func onPinChange(pinned: Bool)
+}
+
+class HotelDetailsView: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource, HotelDetailsViewProtocol {
+    @IBOutlet weak var content: UITableView!
     
+    var delegate: HotelDetailsViewDelegate!
+    var pinned = false
     var accomodation: Accommodation!
-
-    init(frame: CGRect, accomodation: Accommodation) {
-        super.init(frame: frame, style: UITableViewStyle.Plain)
-        
-        self.accomodation = accomodation
-        self.delegate = self
-        self.dataSource = self
-        
-        self.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-
-        self.tableHeaderView = setupToolbar()
-    }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.setup()
+    }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
-    func setupToolbar() -> UIToolbar {
-        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 30))
-        let pinButton = UIBarButtonItem(image: UIImage(named: "Pin"), style: UIBarButtonItemStyle.Plain, target: self, action: "pinView:")
-        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
-        toolbar.setItems([space, pinButton], animated: false)
-        return toolbar
+    
+    func setup() {
+        self.userInteractionEnabled = true
+        
+        self.layer.cornerRadius = 10
+        self.layer.shadowOffset = CGSizeMake(0, 2)
+        self.layer.shadowRadius = 1.0
+        self.layer.shadowColor = UIColor.blackColor().CGColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).CGPath
+        
+        self.layer.masksToBounds = true
+        
+        self.content.delegate = self
+        self.content.dataSource = self
+        
+        self.content.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
+    @IBAction func toolbarAction(sender: UIBarButtonItem) {
+        print(sender)
+    }
+    
+    func attach(accomodation: Accommodation) {
+        self.accomodation = accomodation
+        self.content.reloadData()
+    }
+    
+       
     func pinView(sender: UIBarButtonItem) {
     }
 
@@ -48,7 +67,8 @@ class HotelDetailsView: UITableView, UITableViewDelegate, UITableViewDataSource 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.item == 0 {
-            return self.createTableCell(tableView, identifier: "HodelDetailsHeader")
+            let cell = self.createTableCell(tableView, identifier: "HodelDetailsHeader")
+            return cell
         }
         
         //if indexPath.item == 1 {
@@ -60,11 +80,11 @@ class HotelDetailsView: UITableView, UITableViewDelegate, UITableViewDataSource 
     func createTableCell(tableView: UITableView, identifier: String) -> UITableViewCell {
         var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(identifier)
         if cell == nil {
-            self.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
+            self.content.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
             cell = tableView.dequeueReusableCellWithIdentifier(identifier)
-            let hdCell = cell as! HotelDetailsTableCell
-            hdCell.attach(self.accomodation)
         }
+        let hdCell = cell as! HotelDetailsViewProtocol
+        hdCell.attach(self.accomodation)
         return cell
     }
 }

@@ -6,9 +6,9 @@
 //  Copyright © 2015 Alex Gavrishev. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-protocol HotelDetailsTableCell {
+protocol HotelDetailsViewProtocol {
     
     func attach(accomodation: Accommodation)
 }
