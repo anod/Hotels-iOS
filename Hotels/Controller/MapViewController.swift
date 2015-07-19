@@ -48,7 +48,6 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         self.hotelDetailsCollection.backView = mapContainer
         self.hotelDetailsCollection.dataSource = self
         self.hotelDetailsCollection.delegate = self
-        self.hotelDetailsCollection.registerNib(UINib(nibName: "HotelDetailsView", bundle: NSBundle(forClass: HotelDetailsView.self)), forCellWithReuseIdentifier: "HotelDetailsView")
 
     }
     
@@ -96,7 +95,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         
         let accomodation = marker.userData as! Accommodation
   
-        self.currentHotel = accomodation;
+        //self.currentHotel = accomodation;
+        self.pinnedHotels.append(accomodation)
         self.hotelDetailsCollection.reloadData()
         
 //        let frame = CGRectMake(16, 300, 320, 320)
@@ -126,6 +126,14 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("HotelDetailsViewController") as! HotelDetailsController
+
+        let hotelDetailsView = collectionView.dequeueReusableCellWithReuseIdentifier("HotelDetailsCell", forIndexPath: indexPath)
+        
+
+        
+        /*
         let hotelDetailsView = collectionView.dequeueReusableCellWithReuseIdentifier("HotelDetailsView", forIndexPath: indexPath) as! HotelDetailsView
         hotelDetailsView.userInteractionEnabled = true
         
@@ -135,6 +143,24 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         } else if (indexPath.row == self.pinnedHotels.count && self.currentHotel != nil) {
             hotelDetailsView.attach(self.currentHotel)
         }
+*/
+        let accomodation = self.pinnedHotels[indexPath.row];
+        addChildViewController(vc)
+        hotelDetailsView.addSubview(vc.view)
+        vc.accomodation = accomodation
+        vc.didMoveToParentViewController(self)
+
+//        let nc = storyboard.instantiateViewControllerWithIdentifier("HotelDetailsNavigationController") as! UINavigationController
+//        addChildViewController(nc)
+//        
+//        nc.view.frame = hotelDetailsView.frame;
+//        hotelDetailsView.addSubview(nc.view)
+//        
+//        let vc = nc.topViewController as! HotelDetailsController
+//        vc.accomodation = accomodation
+        
+//        nc.didMoveToParentViewController(self)
+        
         return hotelDetailsView
     }
 }

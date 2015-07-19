@@ -12,8 +12,8 @@ final class Accommodation: ResponseObjectSerializable, ResponseCollectionSeriali
     var name: String?
     var starRating: Float = 0
     var images = [String]()
-    var postpaidCurrency: String?
-    var mainFacilities = [AnyObject]?()
+    var postpaidCurrency: String!
+    var mainFacilities = [Int]()
     var rates = [Rate]()
     var location = Location()
     var summary = Summary()
@@ -30,7 +30,8 @@ final class Accommodation: ResponseObjectSerializable, ResponseCollectionSeriali
         self.starRating = representation.valueForKey("starRating") as! Float
         self.images = representation.valueForKey("images") as! [String]
         self.fromPrice = representation.valueForKey("fromPrice") as! [String: String]
-
+        self.mainFacilities = representation.valueForKey("mainFacilities") as! [Int]
+            
         self.summary.address = representation.valueForKeyPath("summary.address") as? String
         self.summary.zipcode = representation.valueForKeyPath("summary.zipcode") as? String
         self.summary.reviewScore = representation.valueForKeyPath("summary.reviewScore") as! Float
