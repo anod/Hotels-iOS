@@ -20,7 +20,7 @@ class AutocompleteViewController: NSObject, UISearchResultsUpdating, UITableView
 
     var resultSearchController: UISearchController!
     var delegate: AutocompleteDelegate!
-    var placesClient: GMSPlacesClient?
+    var placesClient: GMSPlacesClient!
 
     init(autocompleteResults: UITableView, autocompleteContainer: UIView) {
         super.init()
@@ -28,8 +28,6 @@ class AutocompleteViewController: NSObject, UISearchResultsUpdating, UITableView
         self.autocompleteContainer=autocompleteContainer;
 
         // Do any additional setup after loading the view, typically from a nib.
-
-        placesClient = GMSPlacesClient()
 
         autocompleteResults.hidden = true
         autocompleteResults.delegate = self
@@ -63,12 +61,14 @@ class AutocompleteViewController: NSObject, UISearchResultsUpdating, UITableView
         filter.type = GMSPlacesAutocompleteTypeFilter.Geocode
 
         let searchText = searchController.searchBar.text!
-
-
+        
         if searchText.characters.count > 0 {
+            if placesClient == nil {
+                placesClient = GMSPlacesClient()
+            }
             print("Searching for '\(searchText)'")
             self.autocompleteResults.hidden = false
-            placesClient?.autocompleteQuery(searchText, bounds: bounds, filter: filter, callback: {
+            placesClient.autocompleteQuery(searchText, bounds: bounds, filter: filter, callback: {
                 (results, error) -> Void in
                 if error != nil {
                     print("Autocomplete error \(error) for query '\(searchText)'")

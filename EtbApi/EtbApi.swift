@@ -37,7 +37,8 @@ class EtbApi {
                 "minRate": request.minRate,
                 "maxRate": request.maxRate,
                 "accTypes": request.accTypes,
-                "mainFacilities": request.mainFacilities
+                "mainFacilities": request.mainFacilities,
+                "currency": request.currency
         ]
 
         Alamofire.request(.GET, URLString: self.config.serverBase + "/accommodations/results", parameters: query)

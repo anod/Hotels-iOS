@@ -6,7 +6,7 @@
 import Foundation
 
 @objc
-class Meta : ResponseObjectSerializable {
+class Meta : NSObject, ResponseObjectSerializable {
 
     var statusCode:Int = 0
     var clientCurrency:String?

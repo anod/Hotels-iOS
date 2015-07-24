@@ -7,7 +7,7 @@ import Foundation
 
 
 @objc
-class AccommodationDetails : ResponseObjectSerializable {
+class AccommodationDetails : NSObject, ResponseObjectSerializable {
     var meta:Meta?
     var accommodation:Accommodation?
 

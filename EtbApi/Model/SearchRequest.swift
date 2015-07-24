@@ -21,8 +21,9 @@ class SearchRequest {
     var checkOutDate = NSDate(timeIntervalSinceNow: 86400)
     var capacity = [String]()
     var searchingSort = SortBy()
-    var minRate:String = "0" //min price
-    var maxRate:String = "" //max price
+    var minRate = "0" //min price
+    var maxRate = "" //max price
+    var currency = "EUR"
     
     var stars = ""
     var rating = ""

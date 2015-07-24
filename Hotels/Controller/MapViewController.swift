@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import MapKit
 import GoogleMaps
 
-class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, GMSMapViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsCollectionViewControllerDataSource {
 
-    @IBOutlet weak var mapContainer: GMSMapView!
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var autocompleteResults: UITableView!
     @IBOutlet weak var autocompleteContainer: UIView!
     @IBOutlet weak var hotelDetailsCollection: HotelDetailsCollectionView!
@@ -22,7 +23,10 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     var pinnedHotels: [Accommodation] = []
     var currentHotel: Accommodation! = nil
     
+    var currency = "EUR"
     
+    let cSpan:CLLocationDegrees = 0.09 // zoom 5/111
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,24 +35,31 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         request.lat = -33.86
         request.lon = 151.20
         request.type = "spr"
+        request.currency = currency
         
-        let camera = GMSCameraPosition.cameraWithLatitude(request.lat, longitude: request.lon, zoom: 13)
-        mapContainer.camera = camera;
-        mapContainer.myLocationEnabled = true
-        mapContainer.delegate = self
+        mapView.delegate = self
         
+        updateMapLocation(false)
+
         autocomplete = AutocompleteViewController(autocompleteResults: autocompleteResults, autocompleteContainer: autocompleteContainer)
         autocomplete.delegate = self
-
 
         let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida")
         api = EtbApi(config: apiConfig)
         api.delegate = self
         
-        self.hotelDetailsCollection.backView = mapContainer
+        self.hotelDetailsCollection.backView = mapView
         self.hotelDetailsCollection.dataSource = self
         self.hotelDetailsCollection.delegate = self
-
+        self.hotelDetailsCollection.controllerDataSource = self
+        self.hotelDetailsCollection.containerViewController = self
+    }
+    
+    func updateMapLocation(animated: Bool) {
+        let location = CLLocationCoordinate2D(latitude: request.lat, longitude: request.lon)
+        let span = MKCoordinateSpanMake(cSpan, cSpan)
+        let region = MKCoordinateRegion(center: location, span: span)
+        self.mapView.setRegion(region, animated: animated)
     }
     
    
@@ -58,17 +69,13 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
 
     func searchSuccessResult(result:AccomodationsResults) {
         
-        
         for accomodation in result.accommodations {
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2DMake(accomodation.location.lat, accomodation.location.lon)
-            marker.icon = GMSMarker.markerImageWithColor(UIColor.orangeColor())
-//            marker.title = accomodation.name
-//            marker.snippet = accomodation.summary.address
-            marker.map = self.mapContainer
-            marker.userData = accomodation;
+            let annotation = AccommodationMKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2DMake(accomodation.location.lat, accomodation.location.lon)
+            annotation.accommodation = accomodation
+            annotation.title = accomodation.name
+            self.mapView.addAnnotation(annotation)
         }
-
     }
 
     func searchErrorResult(error:NSError) {
@@ -80,20 +87,69 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     {
         let coord = place.coordinate;
         
-        let camera = GMSCameraPosition.cameraWithLatitude(coord.latitude, longitude: coord.longitude, zoom: 13)
-        mapContainer.camera = camera;
-        
         request.lat = coord.latitude
         request.lon = coord.longitude
         
-        self.mapContainer.clear()
+        updateMapLocation(true)
+        
+        self.mapView.removeAnnotations(self.mapView.annotations)
         
         api.search(request,offset: 0,limit: 15)
     }
-
-    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
         
-        let accomodation = marker.userData as! Accommodation
+        let reuseId = "pin"
+        let annotation = annotation as! AccommodationMKPointAnnotation
+
+        
+        if  let pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) {
+            pinView.annotation = annotation
+            pinView.canShowCallout = true
+
+            let priceLabel = pinView.subviews[0] as! ALabel
+            
+            priceLabel.text=annotation.accommodation.rates[0].payment.prepaid[currency]
+            priceLabel.sizeToFit()
+            pinView.frame = priceLabel.frame
+
+            return pinView
+        }
+        
+        
+        let pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        pinView.canShowCallout = true
+       
+        let priceLabel = ALabel(frame: CGRectMake(0,0,50,21))
+        priceLabel.font=UIFont(name: "Avenir Next Regular", size: 14)
+        priceLabel.textAlignment=NSTextAlignment.Center;
+        priceLabel.textColor=UIColor.blackColor()
+        priceLabel.userInteractionEnabled = true
+        priceLabel.backgroundColor=UIColor.whiteColor()
+        
+        priceLabel.layer.cornerRadius = 8;
+        priceLabel.layer.borderColor = UIColor.greenColor().CGColor
+        priceLabel.layer.borderWidth = 1.0;
+        priceLabel.lineBreakMode = NSLineBreakMode.ByClipping
+        
+        
+        priceLabel.text=annotation.accommodation.rates[0].payment.prepaid[currency]
+        priceLabel.sizeToFit()
+        
+        pinView.frame = priceLabel.frame
+        
+        pinView.addSubview(priceLabel)
+        
+        return pinView;
+        
+    }
+
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        let annotation = view.annotation as! AccommodationMKPointAnnotation
+        let accomodation = annotation.accommodation
   
         //self.currentHotel = accomodation;
         self.pinnedHotels.append(accomodation)
@@ -107,7 +163,6 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         
 //        self.view.addSubview(accomodationView)
         
-        return true
     }
     
     func mainStoryboard() -> UIStoryboard
@@ -121,18 +176,15 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.pinnedHotels.count + (self.currentHotel != nil ? 1 : 0)
+        return self.pinnedHotels.count
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("HotelDetailsViewController") as! HotelDetailsController
-
-        let hotelDetailsView = collectionView.dequeueReusableCellWithReuseIdentifier("HotelDetailsCell", forIndexPath: indexPath)
         
 
-        
+        let hotelDetailsCell = collectionView.dequeueReusableCellWithReuseIdentifier("HotelDetailsCell", forIndexPath: indexPath) as! HotelDetailsCell
+
         /*
         let hotelDetailsView = collectionView.dequeueReusableCellWithReuseIdentifier("HotelDetailsView", forIndexPath: indexPath) as! HotelDetailsView
         hotelDetailsView.userInteractionEnabled = true
@@ -145,23 +197,18 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         }
 */
         let accomodation = self.pinnedHotels[indexPath.row];
-        addChildViewController(vc)
-        hotelDetailsView.addSubview(vc.view)
+        let vc = hotelDetailsCell.contentViewController as! HotelDetailsController
         vc.accomodation = accomodation
-        vc.didMoveToParentViewController(self)
-
-//        let nc = storyboard.instantiateViewControllerWithIdentifier("HotelDetailsNavigationController") as! UINavigationController
-//        addChildViewController(nc)
-//        
-//        nc.view.frame = hotelDetailsView.frame;
-//        hotelDetailsView.addSubview(nc.view)
-//        
-//        let vc = nc.topViewController as! HotelDetailsController
-//        vc.accomodation = accomodation
-        
-//        nc.didMoveToParentViewController(self)
-        
-        return hotelDetailsView
+       
+        return hotelDetailsCell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        self.hotelDetailsCollection.didEndDisplayingCell(cell)
+    }
+    
+    func collectionView(view: UICollectionView, controllerForIdentifier identifier: String) -> UIViewController {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("HotelDetailsViewController") as! HotelDetailsController
     }
 }
 

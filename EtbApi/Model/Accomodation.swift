@@ -6,7 +6,7 @@
 import Foundation
 
 @objc
-final class Accommodation: ResponseObjectSerializable, ResponseCollectionSerializable {
+final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollectionSerializable {
 
     var id: String?
     var name: String?
@@ -39,7 +39,9 @@ final class Accommodation: ResponseObjectSerializable, ResponseCollectionSeriali
         self.summary.city = representation.valueForKeyPath("summary.city") as? String
         self.summary.country = representation.valueForKeyPath("summary.country") as? String
         
-
+        if let ratesJSON: AnyObject = representation.valueForKeyPath("rates") {
+            self.rates = Rate.collection(response, representation: ratesJSON)
+        }
     }
 
     static func collection(response: NSHTTPURLResponse, representation: AnyObject) -> [Accommodation] {
@@ -115,48 +117,5 @@ final class Accommodation: ResponseObjectSerializable, ResponseCollectionSeriali
         var extraField2: String?
     }
     
-    class Rate :NSObject{
-        var rateId: String?
-        var name: String?
-        var taxesAndFees = [TaxesAndFees]()
-        var payment: Payment?
-        var capacity: String?
-        //        var description: NSString?
-        var rateKey: String?
-        var tags: Tags?
-        var baseRate = [String:String]?()
-        var totalNetRate = [String:String]?()
-        var specialOffers = [SpecialOffers]()
-        
-        
-        class TaxesAndFees  {
-            var name: String?
-            var type: String?
-            var totalValue: TotalValue?
-            
-            class TotalValue {
-                var EUR : String?
-            }
-        }
-        
-        class SpecialOffers {
-            var type: String?
-            var percentage: String?
-            var nights: String?
-        }
-        
-        class Payment {
-            var prepaid = [String:String]?()
-            var postpaid = [String:String]?()
-            
-        }
-        
-        class Tags {
-            var breakfastIncluded:Bool = false
-            var earlyBird :Bool = false
-            var freeCancellation :Bool = false
-            var lastMinute :Bool = false
-            var nonRefundable :Bool = false
-        }
-    }
+
 }

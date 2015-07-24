@@ -2,7 +2,7 @@ PODS:
   - Alamofire (1.2.3)
   - GoogleMaps (1.10.1)
   - HanekeSwift (0.9.1)
-  - HCSStarRatingView (1.0)
+  - HCSStarRatingView (1.2)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `swift-2.0`)
@@ -25,16 +25,16 @@ CHECKOUT OPTIONS:
     :commit: fd71afb3a0af2042b9f05a6b9f29317ad4903703
     :git: https://github.com/Alamofire/Alamofire.git
   HanekeSwift:
-    :commit: 5631483fccfb68893f3f3c44b0fab3cba8f7cddb
+    :commit: 228e72502ab623be998d710669d80c673c7b5046
     :git: https://github.com/meteochu/HanekeSwift.git
   HCSStarRatingView:
-    :commit: 06b5b0368a08485a81372fa000bacbc1178679d9
+    :commit: 9aafd6ff3e2eaf886245b6d9b6157c039633c4cc
     :git: https://github.com/hugocampossousa/HCSStarRatingView.git
 
 SPEC CHECKSUMS:
   Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
   GoogleMaps: ebf08677f181d9c2dcdbd1721d206f02beccc9b1
   HanekeSwift: 50d37bfbc4432edc649167e538c259feccb4a2bb
-  HCSStarRatingView: 6fb5c03b4ae2b8a1cca712da20fca99898c69af1
+  HCSStarRatingView: 398beb411f6197f3445bac8eb90962c3166597cb
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.0
