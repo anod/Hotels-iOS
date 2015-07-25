@@ -18,7 +18,7 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
     var location = Location()
     var summary = Summary()
     var fromPrice = [String: String]()
-    var details: Details?
+    var details = Details()
     var extraInformation :ExtraInformation?
     var facilities = [Facilities]()
 
@@ -38,10 +38,19 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
         self.summary.reviewCount = representation.valueForKeyPath("summary.reviewCount") as! Int
         self.summary.city = representation.valueForKeyPath("summary.city") as? String
         self.summary.country = representation.valueForKeyPath("summary.country") as? String
-        
+
+        self.details.generalDescription = representation.valueForKeyPath("details.generalDescription") as? String
+        self.details.importantInfo = representation.valueForKeyPath("details.importantInfo") as? String
+        self.details.checkInFrom = representation.valueForKeyPath("details.checkInFrom") as? String
+        self.details.checkInUntil = representation.valueForKeyPath("details.checkInUntil") as? String
+        self.details.checkOutFrom = representation.valueForKeyPath("details.checkOutFrom") as? String
+        self.details.checkOutUntil = representation.valueForKeyPath("details.checkOutUntil") as? String
+
+
         if let ratesJSON: AnyObject = representation.valueForKeyPath("rates") {
             self.rates = Rate.collection(response, representation: ratesJSON)
         }
+        
     }
 
     static func collection(response: NSHTTPURLResponse, representation: AnyObject) -> [Accommodation] {

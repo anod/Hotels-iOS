@@ -32,6 +32,10 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
         self.payment.prepaid = representation.valueForKeyPath("payment.prepaid") as! [String: String]
         self.payment.postpaid = representation.valueForKeyPath("payment.postpaid") as! [String: String]
         
+        self.tags = Tags()
+        self.tags.breakfastIncluded = representation.valueForKeyPath("tags.breakfastIncluded") as! Bool
+        self.tags.freeCancellation = representation.valueForKeyPath("tags.freeCancellation") as! Bool
+        self.tags.nonRefundable = representation.valueForKeyPath("tags.nonRefundable") as! Bool
     }
     
     static func collection(response: NSHTTPURLResponse, representation: AnyObject) -> [Rate] {

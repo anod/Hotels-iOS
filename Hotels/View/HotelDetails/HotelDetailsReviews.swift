@@ -9,6 +9,8 @@
 import UIKit
 
 class HotelDetailsReviews: UITableViewCell, HotelDetailsViewProtocol  {
+    @IBOutlet weak var ratingView: FloatRatingView!
+    @IBOutlet weak var reviewsNumber: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,6 +20,16 @@ class HotelDetailsReviews: UITableViewCell, HotelDetailsViewProtocol  {
 
     func attach(accomodation: Accommodation) {
         
+        if accomodation.summary.reviewCount > 0 {
+            ratingView.hidden = false
+            ratingView.rating = accomodation.summary.reviewScore
+            reviewsNumber.text = "\(accomodation.summary.reviewCount) Reviews"
+            reviewsNumber.textColor = UIColor.blackColor()
+        } else {
+            ratingView.hidden = true
+            reviewsNumber.text = "No reviews available yet"
+            reviewsNumber.textColor = UIColor.grayColor()
+        }
     }
 
 }

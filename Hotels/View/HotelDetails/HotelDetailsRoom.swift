@@ -9,7 +9,11 @@
 import UIKit
 
 class HotelDetailsRoom: UITableViewCell, HotelDetailsViewProtocol  {
-
+    @IBOutlet weak var roomName: UILabel!
+    @IBOutlet weak var roomPrice: UILabel!
+    @IBOutlet weak var bookButton: UIButton!
+    @IBOutlet weak var policy: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

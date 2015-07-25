@@ -10,6 +10,8 @@ import UIKit
 
 class HotelDetailsDescription: UITableViewCell, HotelDetailsViewProtocol  {
 
+    @IBOutlet weak var hotelDescription: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,7 +19,7 @@ class HotelDetailsDescription: UITableViewCell, HotelDetailsViewProtocol  {
 
 
     func attach(accomodation: Accommodation) {
-        
+        hotelDescription.text = accomodation.details.generalDescription
     }
 
 }
