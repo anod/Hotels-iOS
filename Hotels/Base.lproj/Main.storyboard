@@ -287,11 +287,11 @@
                                     <outlet property="collectionView" destination="xQa-Dr-sVb" id="PgE-xC-ifR"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsReviews" rowHeight="25" id="9hd-ZY-hQJ" customClass="HotelDetailsReviews" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="211" width="260" height="25"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsReviews" rowHeight="30" id="9hd-ZY-hQJ" customClass="HotelDetailsReviews" customModule="Hotels" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="211" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9hd-ZY-hQJ" id="acP-fD-0fJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="260" height="25"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="260" height="30"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tripadvisor-logo" translatesAutoresizingMaskIntoConstraints="NO" id="mcQ-Lc-XM6">
@@ -335,19 +335,25 @@
                                 <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsRoom" rowHeight="118" id="L8G-gA-sEq" customClass="HotelDetailsRoom" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="236" width="260" height="118"/>
+                                <rect key="frame" x="0.0" y="241" width="260" height="118"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L8G-gA-sEq" id="kOi-Ik-sHP">
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="118"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNe-Sx-BKq">
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNe-Sx-BKq">
                                             <rect key="frame" x="155" y="90" width="97" height="22"/>
                                             <animations/>
+                                            <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                                             <state key="normal" title="Book Now">
-                                                <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                                    <integer key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Non refundable" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62U-KZ-k52">
                                             <rect key="frame" x="8" y="66" width="244" height="21"/>
@@ -367,7 +373,7 @@
                                             <rect key="frame" x="8" y="0.0" width="244" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="0.70196078429999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Two Persons Standard + Breakfast" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qG9-Rw-oxO">
@@ -383,7 +389,7 @@
                                 <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsDescription" rowHeight="116" id="FRz-no-ivO" customClass="HotelDetailsDescription" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="354" width="260" height="116"/>
+                                <rect key="frame" x="0.0" y="359" width="260" height="116"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FRz-no-ivO" id="Mpe-Ky-90x">
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="116"/>
@@ -393,7 +399,7 @@
                                             <rect key="frame" x="8" y="0.0" width="244" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="0.70196078429999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A garden, a terrace and a non-smoking area (generic) are just a few of the in-house facilities available for guests" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j64-gy-ScF">

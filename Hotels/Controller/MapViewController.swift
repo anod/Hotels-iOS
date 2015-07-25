@@ -125,13 +125,12 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let priceLabel = ALabel(frame: CGRectMake(0,0,50,21))
         priceLabel.font=UIFont(name: "Avenir Next Regular", size: 14)
         priceLabel.textAlignment=NSTextAlignment.Center;
-        priceLabel.textColor=UIColor.blackColor()
+        priceLabel.textColor=UIColor.whiteColor()
         priceLabel.userInteractionEnabled = true
-        priceLabel.backgroundColor=UIColor.whiteColor()
+        priceLabel.backgroundColor=UIColor.orangeColor()
         
         priceLabel.layer.cornerRadius = 8;
-        priceLabel.layer.borderColor = UIColor.greenColor().CGColor
-        priceLabel.layer.borderWidth = 1.0;
+        priceLabel.clipsToBounds = true
         priceLabel.lineBreakMode = NSLineBreakMode.ByClipping
         
         
