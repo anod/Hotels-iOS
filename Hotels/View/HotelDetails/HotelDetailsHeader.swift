@@ -10,11 +10,28 @@ import UIKit
 import HCSStarRatingView
 import Haneke
 
+protocol HotelDetailsHeaderDelegate {
+    func pinAction()
+}
+
 class HotelDetailsHeader: UITableViewCell, HotelDetailsViewProtocol {
     @IBOutlet weak var hotelImage: UIImageView!
     @IBOutlet weak var hotelName: UILabel!
     @IBOutlet weak var hotelStars: HCSStarRatingView!
+    @IBOutlet weak var pinButton: UIButton!
 
+    var delegate: HotelDetailsHeaderDelegate!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        pinButton.addTarget(self, action: Selector("pinAction:"), forControlEvents: UIControlEvents.TouchUpInside)
+        
+    }
+    
+    func pinAction(button: UIButton) {
+        delegate.pinAction()
+    }
     
     func attach(accomodation: Accommodation) {
         

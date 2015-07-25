@@ -13,16 +13,23 @@ protocol HotelDetailsViewProtocol {
     func attach(accomodation: Accommodation)
 }
 
-class HotelDetailsController: UITableViewController {
+protocol HotelDetailsControllerDelegate {
+    func unpinHotelDetailsController(controller : HotelDetailsController)
+    func pinHotelDetailsController(controller : HotelDetailsController)
+}
 
-    var delegate: HotelDetailsViewDelegate!
+class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate{
+
+    var delegate: HotelDetailsControllerDelegate!
     var pinned = false
     var accomodation: Accommodation!
     
     var heightCache = [String: CGFloat]()
+    var isPinned = false
+    var pinIndex = 0
     
     let cells = [
-        "HodelDetailsHeader",
+        "HotelDetailsHeader",
         "HotelDetailsFacilities",
         "HotelDetailsReviews",
         "HotelDetailsRoom",
@@ -46,8 +53,24 @@ class HotelDetailsController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let identifier = self.cellIdentifierForIndexPath(indexPath)
-        return self.createTableCell(tableView, identifier: identifier)
+        let cell = self.createTableCell(tableView, identifier: identifier)
+
+        if identifier == "HotelDetailsHeader" {
+            let cell = cell as! HotelDetailsHeader
+            cell.delegate = self
+            cell.pinButton.selected = self.isPinned
+        }
         
+        return cell;
+    }
+    
+    
+    func pinAction() {
+        if isPinned {
+            self.delegate.unpinHotelDetailsController(self)
+        } else {
+            self.delegate.pinHotelDetailsController(self)
+        }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

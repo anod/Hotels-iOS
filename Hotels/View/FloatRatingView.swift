@@ -23,7 +23,7 @@ import UIKit
 /**
 A simple rating view that can set whole, half or floating point ratings.
 */
-@IBDesignable
+//@IBDesignable
 public class FloatRatingView: UIView {
 
     // MARK: Float Rating View properties
@@ -122,7 +122,7 @@ public class FloatRatingView: UIView {
     /**
     Sets whether or not the rating view can be changed by panning.
     */
-    @IBInspectable public var editable: Bool = true
+    @IBInspectable public var touchEnabled: Bool = true
 
     /**
     Ratings change by 0.5. Takes priority over floatRatings property.
@@ -152,6 +152,8 @@ public class FloatRatingView: UIView {
     // MARK: Refresh hides or shows full images
 
     func refresh() {
+
+        
         for i in 0..<self.fullImageViews.count {
             let imageView = self.fullImageViews[i]
 
@@ -234,6 +236,7 @@ public class FloatRatingView: UIView {
     }
 
     func initImageViews() {
+        
         if self.emptyImageViews.count != 0 {
             return
         }
@@ -258,7 +261,7 @@ public class FloatRatingView: UIView {
 
     // Calculates new rating based on touch location in view
     func handleTouchAtLocation(touchLocation: CGPoint) {
-        if !self.editable {
+        if !self.touchEnabled {
             return
         }
 
@@ -314,5 +317,6 @@ public class FloatRatingView: UIView {
             delegate.floatRatingView(self, didUpdate: self.rating)
         }
     }
+
 
 }

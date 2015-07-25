@@ -24,7 +24,6 @@
 		FA0ABDD71B610EF200269529 /* AccomodationMKPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0ABDD61B610EF200269529 /* AccomodationMKPointAnnotation.swift */; };
 		FA5B08A41B54D44800494B31 /* hotel_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5B08A31B54D44800494B31 /* hotel_placeholder.png */; };
 		FA9D525A1B5A5D6E0013B70B /* HotelDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D52591B5A5D6E0013B70B /* HotelDetailsController.swift */; };
-		FA9D525C1B5B7F210013B70B /* HotelDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D525B1B5B7F210013B70B /* HotelDetailsView.swift */; };
 		FA9D525E1B5B7FB10013B70B /* HotelDetailsReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D525D1B5B7FB10013B70B /* HotelDetailsReviews.swift */; };
 		FAA09F2F1B615244000228D7 /* MapLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA09F2E1B615244000228D7 /* MapLabel.xib */; };
 		FAA09F311B61560E000228D7 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA09F301B61560E000228D7 /* Rate.swift */; };
@@ -82,7 +81,6 @@
 		FA5B08A31B54D44800494B31 /* hotel_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotel_placeholder.png; sourceTree = "<group>"; };
 		FA674E461B3E92DC00E93B48 /* EtbApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EtbApi.framework; path = "EtbApi/build/Debug-iphoneos/EtbApi.framework"; sourceTree = "<group>"; };
 		FA9D52591B5A5D6E0013B70B /* HotelDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsController.swift; sourceTree = "<group>"; };
-		FA9D525B1B5B7F210013B70B /* HotelDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsView.swift; sourceTree = "<group>"; };
 		FA9D525D1B5B7FB10013B70B /* HotelDetailsReviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsReviews.swift; sourceTree = "<group>"; };
 		FAA09F2E1B615244000228D7 /* MapLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapLabel.xib; sourceTree = "<group>"; };
 		FAA09F301B61560E000228D7 /* Rate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 		FA5B08AC1B54EE2D00494B31 /* HotelDetails */ = {
 			isa = PBXGroup;
 			children = (
-				FA9D525B1B5B7F210013B70B /* HotelDetailsView.swift */,
 				2DBA1CC67BCB390DDCC269C8 /* HotelDetailsHeader.swift */,
 				2DBA1CB6DB93D5A68A515446 /* HotelDetailsFacilities.swift */,
 				FA9D525D1B5B7FB10013B70B /* HotelDetailsReviews.swift */,
@@ -525,7 +522,6 @@
 				FACEA7961B3EA14100CBAEC6 /* SearchRequest.swift in Sources */,
 				FACEA7921B3EA14100CBAEC6 /* Accomodation.swift in Sources */,
 				FACEA78F1B3EA14100CBAEC6 /* EtbApiDelegate.swift in Sources */,
-				FA9D525C1B5B7F210013B70B /* HotelDetailsView.swift in Sources */,
 				FABB02F71B58EB3400E59AFE /* HotelDetailsCollectionView.swift in Sources */,
 				FA9D525E1B5B7FB10013B70B /* HotelDetailsReviews.swift in Sources */,
 				2DBA1681E36ECF2707FD8B99 /* EtbApiUtils.swift in Sources */,
@@ -678,7 +674,7 @@
 					"$(PROJECT_DIR)/EtbApi/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Hotels/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -701,7 +697,7 @@
 					"$(PROJECT_DIR)/EtbApi/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Hotels/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

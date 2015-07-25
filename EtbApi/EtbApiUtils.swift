@@ -9,7 +9,6 @@ class EtbApiUtils {
 
     class func splitIntWithComma(sets:Set<Int>)->String{
         var newString = ""
-        var  index = 0
         if !sets.isEmpty{
             for set in sets.enumerate(){
                 newString = set.index == 0 ? newString + String(set.element) : newString + "," + String(set.element)
