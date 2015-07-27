@@ -24,12 +24,12 @@ class EtbApiUtils {
         return dateFormatter.stringFromDate(date)
     }
     
-    class func unwrapAccommodationResult(result:AnyObject) -> AccomodationsResults?{
+    class func unwrapAccommodationResult(result:AnyObject) -> AccommodationsResults?{
         
         let results: NSArray = result.array
         
         if (results.count > 0){
-            let searchingAccommodations = results[0] as! AccomodationsResults
+            let searchingAccommodations = results[0] as! AccommodationsResults
             return searchingAccommodations
         }
         

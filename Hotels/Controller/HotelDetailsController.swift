@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IDMPhotoBrowser
 
 protocol HotelDetailsViewProtocol {
     
@@ -22,14 +23,13 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate{
 
     var delegate: HotelDetailsControllerDelegate!
     var pinned = false
-    var accomodation: Accommodation!
+    var accommodation: Accommodation!
     
     var heightCache = [String: CGFloat]()
     var isPinned = false
     var pinIndex = 0
     
     let cells = [
-        "HotelDetailsHeader",
         "HotelDetailsFacilities",
         "HotelDetailsReviews",
         "HotelDetailsRoom",
@@ -39,15 +39,30 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        let headerView = self.tableView.tableHeaderView as! HotelDetailsHeader;
+        headerView.attach(self.accommodation)
+        headerView.delegate = self
+        headerView.pinButton.selected = self.isPinned
+        
+        
+    }
+    
+    func headerReady(image: UIImage) {
+        print("header ready")
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if scrollView == self.tableView {
+            var rect = self.tableView.tableHeaderView!.frame;
+            rect.origin.y = min(0, self.tableView.contentOffset.y);
+            self.tableView.tableHeaderView!.frame = rect;
+        }
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return cells.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -55,15 +70,15 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate{
         let identifier = self.cellIdentifierForIndexPath(indexPath)
         let cell = self.createTableCell(tableView, identifier: identifier)
 
-        if identifier == "HotelDetailsHeader" {
-            let cell = cell as! HotelDetailsHeader
-            cell.delegate = self
-            cell.pinButton.selected = self.isPinned
-        }
+//        if identifier == "HotelDetailsHeader" {
+//            let cell = cell as! HotelDetailsHeader
+//            cell.delegate = self
+//            cell.pinButton.selected = self.isPinned
+//        }
         
         return cell;
     }
-    
+
     
     func pinAction() {
         if isPinned {
@@ -89,11 +104,25 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate{
     func createTableCell(tableView: UITableView, identifier: String) -> UITableViewCell {
         let cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(identifier)
         let hdCell = cell as! HotelDetailsViewProtocol
-        hdCell.attach(self.accomodation)
+        hdCell.attach(self.accommodation)
         return cell
     }
     
     func cellIdentifierForIndexPath(indexPath: NSIndexPath) -> String {
         return cells[indexPath.item]
     }
+    
+    func openPhotoBrowser() {
+        var urlsArray = [NSURL]()
+        for imageStrUrl in self.accommodation.images {
+            urlsArray.append(NSURL(string: imageStrUrl)!)
+        }
+        let photosWithURL = IDMPhoto.photosWithURLs(urlsArray)
+        let browser = IDMPhotoBrowser(photos: photosWithURL, animatedFromView:self.tableView.tableHeaderView)
+        browser.displayCounterLabel = true
+        browser.displayActionButton = false
+        self.presentViewController(browser, animated:true, completion: nil)
+    }
+
+
 }

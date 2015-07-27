@@ -8,7 +8,7 @@ import Foundation
 @objc
 protocol EtbApiDelegate {
 
-    optional func searchSuccessResult(result:AccomodationsResults)
+    optional func searchSuccessResult(result:AccommodationsResults)
     optional func searchErrorResult(error:NSError)
 
     optional func detailsSuccessResult(result:AccommodationDetails)

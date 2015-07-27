@@ -68,7 +68,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         api.search(request,offset: 0,limit: 15)
     }
 
-    func searchSuccessResult(result:AccomodationsResults) {
+    func searchSuccessResult(result:AccommodationsResults) {
         
         for accomodation in result.accommodations {
             let annotation = AccommodationMKPointAnnotation()
@@ -147,10 +147,10 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
 
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         let annotation = view.annotation as! AccommodationMKPointAnnotation
-        let accomodation = annotation.accommodation
+        let accommodation = annotation.accommodation
   
         self.popoverHotelDetailsController = instantiateHotelDetailsViewController();
-        self.popoverHotelDetailsController.accomodation = accomodation
+        self.popoverHotelDetailsController.accommodation = accommodation
         self.popoverHotelDetailsController.modalPresentationStyle = .Popover
         self.popoverHotelDetailsController.preferredContentSize = CGSizeMake(260,360)
         self.popoverHotelDetailsController.delegate = self
@@ -181,9 +181,9 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
 
         let hotelDetailsCell = collectionView.dequeueReusableCellWithReuseIdentifier("HotelDetailsCell", forIndexPath: indexPath) as! HotelDetailsCell
 
-        let accomodation = self.pinnedHotels[indexPath.item];
+        let accommodation = self.pinnedHotels[indexPath.item];
         let vc = hotelDetailsCell.contentViewController as! HotelDetailsController
-        vc.accomodation = accomodation
+        vc.accommodation = accommodation
         vc.isPinned = true
         vc.pinIndex = indexPath.item
         vc.delegate = self
@@ -209,7 +209,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     
     func pinHotelDetailsController(controller : HotelDetailsController) {
         self.popoverHotelDetailsController.dismissViewControllerAnimated(true, completion: nil)
-        self.pinnedHotels.append(controller.accomodation)
+        self.pinnedHotels.append(controller.accommodation)
         self.hotelDetailsCollection.reloadData()
     }
 }

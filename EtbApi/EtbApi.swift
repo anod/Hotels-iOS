@@ -41,8 +41,8 @@ class EtbApi {
                 "currency": request.currency
         ]
 
-        Alamofire.request(.GET, URLString: self.config.serverBase + "/accommodations/results", parameters: query)
-            .responseObject { (request, response, results: AccomodationsResults?, error) in
+        Alamofire.request(.GET, self.config.serverBase + "/accommodations/results", parameters: query)
+            .responseObject { (request, response, results: AccommodationsResults?, error) in
                     print(response)
                     if let delegate = self.delegate {
                         if let error = error {
@@ -57,30 +57,24 @@ class EtbApi {
 
 
     func details(accomodationId: Int) {
-//        let apiKey = self.config.apiKey
-//
-//        let responseDescriptor = RKResponseDescriptor(mapping: EtbApiRestKitMapping.prepareDetails(), method: RKRequestMethod.GET, pathPattern: nil, keyPath: nil, statusCodes: NSIndexSet(index: 200))
-//        RKObjectManager.sharedManager().addResponseDescriptor(responseDescriptor)
-//
-//        let query = [
-//                "apiKey": apiKey
-//        ]
-//        RKObjectManager.sharedManager().getObjectsAtPath("/accommodations/\(accomodationId)", parameters: query,
-//
-//                success: {
-//                    operation, mappingResult in
-//                    if let delegate = self.delegate {
-//                        delegate.detailsSuccessResult!(EtbApiUtils.unwrapAccomodationDetailsObj(mappingResult))
-//                    }
-//                },
-//
-//                failure: {
-//                    operation, error in
-//                    if let delegate = self.delegate {
-//                        delegate.detailsErrorResult!(error)
-//                    }
-//                    NSLog("\(error!.localizedDescription)")
-//                }
-//        )
+        let apiKey = self.config.apiKey
+
+        let query = [
+                "apiKey": apiKey
+        ]
+
+        Alamofire.request(.GET, self.config.serverBase + "/accommodations/\(accomodationId)", parameters: query)
+            .responseObject { (request, response, results: AccommodationDetails?, error) in
+                print(response)
+                if let delegate = self.delegate {
+                    if let error = error {
+                        delegate.detailsErrorResult!(error)
+                        return;
+                    }
+                    // TODO: handle errors in response
+                    delegate.detailsSuccessResult!(results!)
+                }
+        }
+
     }
 }

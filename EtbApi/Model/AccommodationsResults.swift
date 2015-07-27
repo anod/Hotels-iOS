@@ -5,7 +5,7 @@
 
 import Foundation
 
-class AccomodationsResults : NSObject, ResponseObjectSerializable {
+class AccommodationsResults : NSObject, ResponseObjectSerializable {
 
     var meta:Meta?
     var accommodations = [Accommodation]()

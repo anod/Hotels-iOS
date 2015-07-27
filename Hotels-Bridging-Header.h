@@ -9,4 +9,6 @@
 #ifndef Hotels_Hotels_Bridging_Header_h
 #define Hotels_Hotels_Bridging_Header_h
 
+#import "ParallaxHeaderView.h"
+
 #endif
