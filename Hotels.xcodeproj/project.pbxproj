@@ -33,6 +33,7 @@
 		FAA09F2F1B615244000228D7 /* MapLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA09F2E1B615244000228D7 /* MapLabel.xib */; };
 		FAA09F311B61560E000228D7 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA09F301B61560E000228D7 /* Rate.swift */; };
 		FAA09F331B616B74000228D7 /* ALabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA09F321B616B74000228D7 /* ALabel.swift */; };
+		FAA255AE1B67979300792F81 /* HotelDetailsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA255AD1B67979300792F81 /* HotelDetailsHeader.xib */; };
 		FABB02F71B58EB3400E59AFE /* HotelDetailsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB02F61B58EB3400E59AFE /* HotelDetailsCollectionView.swift */; };
 		FAC98EEE1B6214DE00162B69 /* HotelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC98EED1B6214DE00162B69 /* HotelDetailsCell.swift */; };
 		FACEA7891B3EA14100CBAEC6 /* EtbApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA7781B3EA14100CBAEC6 /* EtbApiConfig.swift */; };
@@ -99,6 +100,7 @@
 		FAA09F2E1B615244000228D7 /* MapLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapLabel.xib; sourceTree = "<group>"; };
 		FAA09F301B61560E000228D7 /* Rate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		FAA09F321B616B74000228D7 /* ALabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALabel.swift; sourceTree = "<group>"; };
+		FAA255AD1B67979300792F81 /* HotelDetailsHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HotelDetailsHeader.xib; sourceTree = "<group>"; };
 		FABB02F61B58EB3400E59AFE /* HotelDetailsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsCollectionView.swift; sourceTree = "<group>"; };
 		FAC98EED1B6214DE00162B69 /* HotelDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsCell.swift; sourceTree = "<group>"; };
 		FACEA7781B3EA14100CBAEC6 /* EtbApiConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtbApiConfig.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				FA9D525D1B5B7FB10013B70B /* HotelDetailsReviews.swift */,
 				2DBA1164B7BBC6477531B2ED /* HotelDetailsRoom.swift */,
 				2DBA166108BC6D93721D1358 /* HotelDetailsDescription.swift */,
+				FAA255AD1B67979300792F81 /* HotelDetailsHeader.xib */,
 			);
 			path = HotelDetails;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				FACEA7911B3EA14100CBAEC6 /* Info.plist in Resources */,
 				FAF27FD41B2A095100397CBD /* Main.storyboard in Resources */,
 				FAF27FD91B2A095100397CBD /* LaunchScreen.xib in Resources */,
+				FAA255AE1B67979300792F81 /* HotelDetailsHeader.xib in Resources */,
 				FA5B08A41B54D44800494B31 /* hotel_placeholder.png in Resources */,
 				2DBA140C682D79A756A63821 /* Images.xcassets in Resources */,
 				FAA09F2F1B615244000228D7 /* MapLabel.xib in Resources */,

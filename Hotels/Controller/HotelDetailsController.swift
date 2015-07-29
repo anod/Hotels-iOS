@@ -8,6 +8,7 @@
 
 import UIKit
 import IDMPhotoBrowser
+import Haneke
 
 protocol HotelDetailsViewProtocol {
     
@@ -30,34 +31,62 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate{
     var pinIndex = 0
     
     let cells = [
-        "HotelDetailsFacilities",
-        "HotelDetailsReviews",
-        "HotelDetailsRoom",
-        "HotelDetailsDescription"
+            "HotelDetailsFacilities",
+            "HotelDetailsReviews",
+            "HotelDetailsRoom",
+            "HotelDetailsDescription"
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let headerView = self.tableView.tableHeaderView as! HotelDetailsHeader;
+        
+        let parallaxHeader = ParallaxHeaderView.parallaxHeaderViewWithImage(UIImage(named: "hotel_placeholder.png"), forSize: CGSizeMake(260, 139)) as! ParallaxHeaderView
+        
+        let headerView = HotelDetailsHeader.loadFromNib()
         headerView.attach(self.accommodation)
         headerView.delegate = self
         headerView.pinButton.selected = self.isPinned
         
+        parallaxHeader.addSubview(headerView)
         
+        if (self.accommodation.images.count > 0) {
+            let URL = NSURL(string: self.accommodation.images[0])!
+            
+            parallaxHeader.imageView!.hnk_setImageFromURL(URL, placeholder: nil, format: nil, failure: nil, success: self.imageLoadSuccess)
+        }
+
+        let tap = UITapGestureRecognizer(target:self, action:"openPhotoBrowser")
+        tap.numberOfTapsRequired = 1;
+        tap.enabled = true;
+        tap.cancelsTouchesInView = false;
+        parallaxHeader.addGestureRecognizer(tap)
+        
+        self.tableView.tableHeaderView = parallaxHeader;
+
     }
     
-    func headerReady(image: UIImage) {
-        print("header ready")
-
+    func imageLoadSuccess(image: UIImage) -> () {
+        let parallaxHeader = self.tableView.tableHeaderView as! ParallaxHeaderView
+        let animated = true
+        let duration : NSTimeInterval = animated ? 0.1 : 0
+        
+        UIView.transitionWithView(parallaxHeader.imageView!, duration: duration, options: .TransitionCrossDissolve, animations: {
+            parallaxHeader.headerImage = image
+         }, completion: nil)
     }
-
+    
+   
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         if scrollView == self.tableView {
-            var rect = self.tableView.tableHeaderView!.frame;
-            rect.origin.y = min(0, self.tableView.contentOffset.y);
-            self.tableView.tableHeaderView!.frame = rect;
+            let header = self.tableView.tableHeaderView as! ParallaxHeaderView
+            header.layoutHeaderViewForScrollViewOffset(scrollView.contentOffset)
+            print(scrollView.contentOffset)
+            self.tableView.tableHeaderView = header
+            if scrollView.contentOffset.y < -100 {
+                openPhotoBrowser()
+            }
         }
     }
     
@@ -69,13 +98,6 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate{
         
         let identifier = self.cellIdentifierForIndexPath(indexPath)
         let cell = self.createTableCell(tableView, identifier: identifier)
-
-//        if identifier == "HotelDetailsHeader" {
-//            let cell = cell as! HotelDetailsHeader
-//            cell.delegate = self
-//            cell.pinButton.selected = self.isPinned
-//        }
-        
         return cell;
     }
 

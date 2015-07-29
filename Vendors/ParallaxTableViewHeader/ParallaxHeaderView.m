@@ -14,7 +14,6 @@
 
 @interface ParallaxHeaderView ()
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *subView;
 @property (nonatomic) IBOutlet UIImageView *bluredImageView;
 @end
