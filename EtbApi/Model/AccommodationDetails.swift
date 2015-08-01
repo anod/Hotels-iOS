@@ -8,8 +8,8 @@ import Foundation
 
 @objc
 class AccommodationDetails : NSObject, ResponseObjectSerializable {
-    var meta:Meta?
-    var accommodation:Accommodation?
+    var meta:Meta!
+    var accommodation:Accommodation!
 
     required init?(response: NSHTTPURLResponse, representation: AnyObject) {
         if let metaJSON: AnyObject = representation.valueForKeyPath("meta") {

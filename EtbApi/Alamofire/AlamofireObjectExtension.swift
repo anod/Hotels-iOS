@@ -6,7 +6,7 @@
 import Alamofire
 
 @objc public protocol ResponseObjectSerializable {
-    init?(response: NSHTTPURLResponse, representation: AnyObject)
+    init(response: NSHTTPURLResponse, representation: AnyObject)
 }
 
 @objc public protocol ResponseCollectionSerializable {
@@ -15,30 +15,34 @@ import Alamofire
 
 extension Alamofire.Request {
     
-    public func responseObject<T: ResponseObjectSerializable>(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, T?, NSError?) -> Void) -> Self {
-        let responseSerializer = GenericResponseSerializer<T> { request, response, data in
-            let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-            let (JSON, serializationError) = JSONResponseSerializer.serializeResponse(request, response, data)
-            
-            if let response = response, JSON: AnyObject = JSON {
-                return (T(response: response, representation: JSON), nil)
+    public func responseObject<T: ResponseObjectSerializable>(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<T>) -> Void) -> Self {
+            let responseSerializer = GenericResponseSerializer<T> { request, response, data in
+
+                print(response)
+
+                let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+                let JSONResult = JSONResponseSerializer.serializeResponse(request, response, data)
+
+            if JSONResult.isSuccess {
+                return Result.Success(T(response: response!, representation: JSONResult.data!))
             } else {
-                return (nil, serializationError)
+                return Result.Failure(JSONResult.data, JSONResult.error!)
             }
         }
         
         return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
     }
     
-    public func responseCollection<T: ResponseCollectionSerializable>(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, [T]?, NSError?) -> Void) -> Self {
+    public func responseCollection<T: ResponseCollectionSerializable>(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<[T]>) -> Void) -> Self {
         let responseSerializer = GenericResponseSerializer<[T]> { request, response, data in
+            print(response)
             let JSONSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-            let (JSON, serializationError) = JSONSerializer.serializeResponse(request, response, data)
+            let JSONResult = JSONSerializer.serializeResponse(request, response, data)
             
-            if let response = response, JSON: AnyObject = JSON {
-                return (T.collection(response, representation: JSON), nil)
+            if JSONResult.isSuccess {
+                return Result.Success(T.collection(response!, representation: JSONResult.data!))
             } else {
-                return (nil, serializationError)
+                return Result.Failure(JSONResult.data, JSONResult.error!)
             }
         }
         

@@ -23,7 +23,7 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
     var specialOffers = [SpecialOffers]()
     
     
-    required init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    required init(response: NSHTTPURLResponse, representation: AnyObject) {
         self.name = representation.valueForKeyPath("name") as! String
         self.rateId = String(representation.valueForKeyPath("rateId"))
         self.capacity = representation.valueForKeyPath("capacity") as! Int
@@ -43,9 +43,8 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
         
         if let representation = representation as? [[String: AnyObject]] {
             for rateRepresentation in representation {
-                if let rate = Rate(response: response, representation: rateRepresentation) {
-                    rates.append(rate)
-                }
+                let rate = Rate(response: response, representation: rateRepresentation)
+                rates.append(rate)
             }
         }
         

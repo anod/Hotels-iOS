@@ -151,6 +151,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
   
         self.popoverHotelDetailsController = instantiateHotelDetailsViewController();
         self.popoverHotelDetailsController.accommodation = accommodation
+        self.popoverHotelDetailsController.availaibilityRequest = request
         self.popoverHotelDetailsController.modalPresentationStyle = .Popover
         self.popoverHotelDetailsController.preferredContentSize = CGSizeMake(260,360)
         self.popoverHotelDetailsController.delegate = self
@@ -184,6 +185,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let accommodation = self.pinnedHotels[indexPath.item];
         let vc = hotelDetailsCell.contentViewController as! HotelDetailsController
         vc.accommodation = accommodation
+        vc.availaibilityRequest = request
         vc.isPinned = true
         vc.pinIndex = indexPath.item
         vc.delegate = self

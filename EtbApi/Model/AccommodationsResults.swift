@@ -7,12 +7,12 @@ import Foundation
 
 class AccommodationsResults : NSObject, ResponseObjectSerializable {
 
-    var meta:Meta?
+    var meta:SearchMeta?
     var accommodations = [Accommodation]()
 
-    required init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    required init(response: NSHTTPURLResponse, representation: AnyObject) {
         if let metaJSON: AnyObject = representation.valueForKeyPath("meta") {
-            self.meta = Meta(response: response, representation: metaJSON)
+            self.meta = SearchMeta(response: response, representation: metaJSON)
         }
         if let accommodationsJSON: AnyObject = representation.valueForKeyPath("accommodations") {
             self.accommodations = Accommodation.collection(response, representation: accommodationsJSON)

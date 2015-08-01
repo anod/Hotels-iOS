@@ -38,34 +38,38 @@ class EtbApi {
                 "maxRate": request.maxRate,
                 "accTypes": request.accTypes,
                 "mainFacilities": request.mainFacilities,
-                "currency": request.currency
+                "currency": request.currency,
+                "language" : request.language
         ]
 
         Alamofire.request(.GET, self.config.serverBase + "/accommodations/results", parameters: query)
-            .responseObject { (request, response, results: AccommodationsResults?, error) in
-                    print(response)
+            .responseObject { (request, response, results: Result<AccommodationsResults>) in
                     if let delegate = self.delegate {
-                        if let error = error {
-                            delegate.searchErrorResult!(error)
+                        if results.isFailure {
+                            delegate.searchErrorResult!(results.error!)
                             return;
                         }
                         // TODO: handle errors in response
-                        delegate.searchSuccessResult!(results!)
+                        delegate.searchSuccessResult!(results.value!)
                     }
             }
     }
 
 
-    func details(accomodationId: Int) {
+    func details(accomodationId: Int, request: AvailabilityRequest) {
         let apiKey = self.config.apiKey
 
         let query = [
-                "apiKey": apiKey
+            "apiKey": apiKey,
+            "checkIn": EtbApiUtils.formatDate(request.checkInDate),
+            "checkOut": EtbApiUtils.formatDate(request.checkOutDate),
+            "capacity": request.prepareCapacityForRequest(),
+            "currency": request.currency,
+            "language" : request.language
         ]
 
         Alamofire.request(.GET, self.config.serverBase + "/accommodations/\(accomodationId)", parameters: query)
             .responseObject { (request, response, results: AccommodationDetails?, error) in
-                print(response)
                 if let delegate = self.delegate {
                     if let error = error {
                         delegate.detailsErrorResult!(error)

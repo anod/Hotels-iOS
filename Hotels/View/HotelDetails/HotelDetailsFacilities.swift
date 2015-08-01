@@ -21,7 +21,7 @@ class HotelDetailsFacilities: UITableViewCell, UICollectionViewDataSource, Hotel
     }
     
     func attach(accomodation: Accommodation) {
-        let mainFacilities = accomodation.mainFacilities
+        let mainFacilities = accomodation.mainFacilities!
 
         if mainFacilities.contains(Facility.Internet.rawValue) {
             images.append("WiFi.png")

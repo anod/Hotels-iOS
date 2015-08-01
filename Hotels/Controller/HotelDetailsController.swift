@@ -20,17 +20,20 @@ protocol HotelDetailsControllerDelegate {
     func pinHotelDetailsController(controller : HotelDetailsController)
 }
 
-class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate{
+class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate, EtbApiDelegate{
 
     var delegate: HotelDetailsControllerDelegate!
     var pinned = false
     var accommodation: Accommodation!
+    var availaibilityRequest: AvailabilityRequest!
+    var api: EtbApi!
     
     var heightCache = [String: CGFloat]()
     var isPinned = false
     var pinIndex = 0
+    var cheapestRate: String!
     
-    let cells = [
+    var cells = [
             "HotelDetailsFacilities",
             "HotelDetailsReviews",
             "HotelDetailsRoom",
@@ -40,7 +43,54 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.setupHeader()
+
+        cheapestRate = self.accommodation.rates[0].rateId
         
+        let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida")
+        api = EtbApi(config: apiConfig)
+        api.delegate = self
+        api.details(self.accommodation.id, request: self.availaibilityRequest)
+    }
+    
+    func detailsSuccessResult(result:AccommodationDetails) {
+        
+        if (result.accommodation == nil || result.accommodation.rates.isEmpty) {
+            // TODO: Handle no avaialbility
+            return
+        }
+        
+        // TODO: Check for room available
+        let mainFacilities = self.accommodation.mainFacilities
+        
+        self.accommodation = result.accommodation
+        // Missing info from details response
+        self.accommodation.mainFacilities = mainFacilities
+        
+        if self.accommodation.details.hasCheckInPolicy()  {
+            self.cells.append("HotelDetailsCheckInPolicy")
+        }
+        
+        if (self.accommodation.details.importantInfo?.isEmpty == false) {
+            self.cells.append("HotelDetailsImportantInformation")
+        }
+
+        self.cells.append("HotelDetailsPetsPolicy")
+
+        self.cells.append("HotelDetailsAddress")
+
+        
+        self.tableView.reloadData()
+        
+        
+    }
+
+    func detailsErrorResult(error:NSError) {
+        // TODO: Show error message
+    }
+    
+    
+    func setupHeader() {
         let parallaxHeader = ParallaxHeaderView.parallaxHeaderViewWithImage(UIImage(named: "hotel_placeholder.png"), forSize: CGSizeMake(260, 139)) as! ParallaxHeaderView
         
         let headerView = HotelDetailsHeader.loadFromNib()
@@ -54,16 +104,15 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate{
             let URL = NSURL(string: self.accommodation.images[0])!
             
             parallaxHeader.imageView!.hnk_setImageFromURL(URL, placeholder: nil, format: nil, failure: nil, success: self.imageLoadSuccess)
+            
+            let tap = UITapGestureRecognizer(target:self, action:"openPhotoBrowser")
+            tap.numberOfTapsRequired = 1;
+            tap.enabled = true;
+            tap.cancelsTouchesInView = false;
+            parallaxHeader.addGestureRecognizer(tap)
         }
-
-        let tap = UITapGestureRecognizer(target:self, action:"openPhotoBrowser")
-        tap.numberOfTapsRequired = 1;
-        tap.enabled = true;
-        tap.cancelsTouchesInView = false;
-        parallaxHeader.addGestureRecognizer(tap)
         
         self.tableView.tableHeaderView = parallaxHeader;
-
     }
     
     func imageLoadSuccess(image: UIImage) -> () {

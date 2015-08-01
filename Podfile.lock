@@ -52,7 +52,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Alamofire:
-    :commit: 5f2c29751b35069ec1452046e24dfba506cbc603
+    :commit: 88ca2a248ee0142064e2c760ea9f15279c7489df
     :git: https://github.com/Alamofire/Alamofire.git
   HanekeSwift:
     :commit: 228e72502ab623be998d710669d80c673c7b5046

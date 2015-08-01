@@ -5,7 +5,7 @@
 
 import Foundation
 
-class SearchRequest {
+class SearchRequest: AvailabilityRequest {
 
     static let sharedInstance = SearchRequest()
     struct SortBy {
@@ -15,15 +15,11 @@ class SearchRequest {
     }
     
     var type: String = "spr"
-    var lat: Double =  0
+    var lat: Double = 0
     var lon: Double = 0
-    var checkInDate = NSDate()
-    var checkOutDate = NSDate(timeIntervalSinceNow: 86400)
-    var capacity = [String]()
     var searchingSort = SortBy()
     var minRate = "0" //min price
     var maxRate = "" //max price
-    var currency = "EUR"
     
     var stars = ""
     var rating = ""
@@ -35,7 +31,7 @@ class SearchRequest {
     private var tempaccTypes = Set<Int>()
     private var tempmainFacilities = Set<Int>()
     
-    init(){
+    override init(){
         self.searchingSort = SortBy(printableDescription:"", orderByForRequest:"", orderForRequest:"")
         
     }
@@ -48,21 +44,6 @@ class SearchRequest {
         let locationStr =   latitude + "," + longitude + ";" + "10"
         return locationStr;
         
-    }
-    
-    func prepareCapacityForRequest() -> String{
-        var newCapacity = ""
-        
-        if !capacity.isEmpty{
-            for (var index = 0; index < capacity.count ; index++){
-                newCapacity = index == 0 ? newCapacity + capacity[index] : newCapacity + "," + capacity[index]
-            }
-        }
-        else{
-            newCapacity = "2"
-        }
-        
-        return newCapacity
     }
     
     

@@ -8,12 +8,12 @@ import Foundation
 @objc
 final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollectionSerializable {
 
-    var id: String?
+    var id: Int!
     var name: String?
     var starRating: Float = 0
     var images = [String]()
     var postpaidCurrency: String!
-    var mainFacilities = [Int]()
+    var mainFacilities : [Int]?
     var rates = [Rate]()
     var location = Location()
     var summary = Summary()
@@ -24,14 +24,15 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
 
 
     required init?(response: NSHTTPURLResponse, representation: AnyObject) {
+        self.id = representation.valueForKeyPath("id") as! Int
         self.name = representation.valueForKeyPath("name") as? String
         self.location.lat = representation.valueForKeyPath("location.lat") as! Double
         self.location.lon = representation.valueForKeyPath("location.lon") as! Double
         self.starRating = representation.valueForKey("starRating") as! Float
         self.images = representation.valueForKey("images") as! [String]
         self.fromPrice = representation.valueForKey("fromPrice") as! [String: String]
-        self.mainFacilities = representation.valueForKey("mainFacilities") as! [Int]
-            
+        self.mainFacilities = representation.valueForKey("mainFacilities") as? [Int]
+        
         self.summary.address = representation.valueForKeyPath("summary.address") as? String
         self.summary.zipcode = representation.valueForKeyPath("summary.zipcode") as? String
         self.summary.reviewScore = representation.valueForKeyPath("summary.reviewScore") as! Float
@@ -86,14 +87,14 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
     }
     
     class Summary {
-        var address: String?
-        var zipcode: String?
+        var address: String!
+        var zipcode: String!
         var reviewScore: Float = 0
         var reviewCount: Int = 0
-        var accType: String?
+        var accType = -1
         var erank: String?
-        var city: String?
-        var country: String?
+        var city: String!
+        var country: String!
     }
     
     class Details {
@@ -117,7 +118,23 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
         class PetsPolicy {
             var petsAllowed = 0
             var petsAllowedOnRequest = false
-            var petsSurcharge = ""
+            var petsSurcharge = -1
+        }
+        
+        func hasCheckInPolicy() -> Bool {
+            if (checkInFrom != nil && checkInFrom!.isEmpty == false) {
+                return true
+            }
+            if (checkInUntil != nil && checkInUntil!.isEmpty == false) {
+                return true
+            }
+            if (checkOutFrom != nil && checkOutFrom!.isEmpty == false) {
+                return true
+            }
+            if (checkOutUntil != nil && checkOutUntil!.isEmpty == false) {
+                return true
+            }
+            return false
         }
     }
     
