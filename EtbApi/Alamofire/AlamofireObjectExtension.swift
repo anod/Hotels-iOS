@@ -24,7 +24,7 @@ extension Alamofire.Request {
                 let JSONResult = JSONResponseSerializer.serializeResponse(request, response, data)
 
             if JSONResult.isSuccess {
-                return Result.Success(T(response: response!, representation: JSONResult.data!))
+                return Result.Success(T(response: response!, representation: JSONResult.value!))
             } else {
                 return Result.Failure(JSONResult.data, JSONResult.error!)
             }
@@ -40,7 +40,7 @@ extension Alamofire.Request {
             let JSONResult = JSONSerializer.serializeResponse(request, response, data)
             
             if JSONResult.isSuccess {
-                return Result.Success(T.collection(response!, representation: JSONResult.data!))
+                return Result.Success(T.collection(response!, representation: JSONResult.value!))
             } else {
                 return Result.Failure(JSONResult.data, JSONResult.error!)
             }

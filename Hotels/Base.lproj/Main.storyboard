@@ -8,6 +8,36 @@
         <mutableArray key="AvenirNext.ttc">
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-UltraLight</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Regular</string>
             <string>AvenirNext-DemiBold</string>
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
@@ -23,36 +53,6 @@
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Medium</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-UltraLight</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Medium</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Medium</string>
             <string>AvenirNext-Regular</string>
         </mutableArray>
     </customFonts>
@@ -213,7 +213,7 @@
                         <viewControllerLayoutGuide type="bottom" id="QZ7-uJ-DAJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Hih-rv-0gD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-mx-sEc">
@@ -466,10 +466,11 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9P-Pk-4Y8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1483" y="322"/>
+            <point key="canvasLocation" x="1539" y="529"/>
         </scene>
         <!--Hotel Details Controller-->
         <scene sceneID="36I-vw-AAf">
@@ -609,6 +610,9 @@
                                                     <integer key="value" value="8"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <segue destination="BaB-Zo-aZf" kind="show" id="4Tk-MQ-aGq"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Non refundable" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62U-KZ-k52">
                                             <rect key="frame" x="8" y="66" width="244" height="21"/>
@@ -748,12 +752,10 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="description" destination="w4e-W1-kcs" id="VLr-N7-2cT"/>
-                                    <outlet property="hotelDescription" destination="w4e-W1-kcs" id="rnT-ZB-0Z1"/>
                                     <outlet property="hotelImportantInformation" destination="w4e-W1-kcs" id="eeG-fb-wyd"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsPetsPolicy" rowHeight="48" id="SDW-lP-way" customClass="HotelDetailsPetsPolicy" customModule="Hotels" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HotelDetailsPetsPolicy" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsPetsPolicy" rowHeight="48" id="SDW-lP-way" customClass="HotelDetailsPetsPolicy" customModule="Hotels" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="644" width="260" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SDW-lP-way" id="LBh-Tp-mb6">
@@ -779,12 +781,10 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="description" destination="Z55-wq-45c" id="Cm3-e4-pa9"/>
-                                    <outlet property="hotelDescription" destination="Z55-wq-45c" id="NeU-vF-1dL"/>
                                     <outlet property="policy" destination="Z55-wq-45c" id="kin-QT-Sza"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsAddress" rowHeight="68" id="FOI-eU-aYQ" customClass="HotelDetailsAddress" customModule="Hotels" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HotelDetailsAddress" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsAddress" rowHeight="68" id="FOI-eU-aYQ" customClass="HotelDetailsAddress" customModule="Hotels" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="692" width="260" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FOI-eU-aYQ" id="1GA-u2-pj7">
@@ -811,8 +811,6 @@
                                 <animations/>
                                 <connections>
                                     <outlet property="address" destination="UJ8-oD-p2q" id="tVt-qg-cSB"/>
-                                    <outlet property="description" destination="UJ8-oD-p2q" id="Xqc-kG-0GL"/>
-                                    <outlet property="hotelDescription" destination="UJ8-oD-p2q" id="wJi-83-Led"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

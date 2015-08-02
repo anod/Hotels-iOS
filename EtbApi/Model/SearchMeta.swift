@@ -16,7 +16,7 @@ class SearchMeta : Meta {
     var overall:String?
     var filterNrs:FilterNrs?
     
-    required init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    required init(response: NSHTTPURLResponse, representation: AnyObject) {
         super.init(response: response, representation: representation)
         self.totalNrOverall = representation.valueForKeyPath("totalNrOverall") as! Int
         self.totalNr = representation.valueForKeyPath("totalNr") as! Int

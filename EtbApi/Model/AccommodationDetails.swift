@@ -11,7 +11,7 @@ class AccommodationDetails : NSObject, ResponseObjectSerializable {
     var meta:Meta!
     var accommodation:Accommodation!
 
-    required init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    required init(response: NSHTTPURLResponse, representation: AnyObject) {
         if let metaJSON: AnyObject = representation.valueForKeyPath("meta") {
             self.meta = Meta(response: response, representation: metaJSON)
         }

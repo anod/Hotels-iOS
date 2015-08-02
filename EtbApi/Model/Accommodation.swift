@@ -23,7 +23,7 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
     var facilities = [Facilities]()
 
 
-    required init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    required init(response: NSHTTPURLResponse, representation: AnyObject) {
         self.id = representation.valueForKeyPath("id") as! Int
         self.name = representation.valueForKeyPath("name") as? String
         self.location.lat = representation.valueForKeyPath("location.lat") as! Double
@@ -59,9 +59,8 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
 
         if let representation = representation as? [[String: AnyObject]] {
             for accRepresentation in representation {
-                if let accomodation = Accommodation(response: response, representation: accRepresentation) {
-                    accomodations.append(accomodation)
-                }
+                let accomodation = Accommodation(response: response, representation: accRepresentation)
+                accomodations.append(accomodation)
             }
         }
 

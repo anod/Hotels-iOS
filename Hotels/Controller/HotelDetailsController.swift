@@ -140,6 +140,7 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate,
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(cells.count)
         return cells.count
     }
     
@@ -166,7 +167,7 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate,
         if let height = cachedHeight {
             return height
         }
-        
+        print(identifier)
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
         let height = cell!.bounds.size.height
         heightCache[identifier] = height;

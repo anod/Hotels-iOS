@@ -69,14 +69,14 @@ class EtbApi {
         ]
 
         Alamofire.request(.GET, self.config.serverBase + "/accommodations/\(accomodationId)", parameters: query)
-            .responseObject { (request, response, results: AccommodationDetails?, error) in
+            .responseObject { (request, response, results: Result<AccommodationDetails>) in
                 if let delegate = self.delegate {
-                    if let error = error {
-                        delegate.detailsErrorResult!(error)
+                    if results.isFailure {
+                        delegate.detailsErrorResult!(results.error!)
                         return;
                     }
                     // TODO: handle errors in response
-                    delegate.detailsSuccessResult!(results!)
+                    delegate.detailsSuccessResult!(results.value!)
                 }
         }
 
