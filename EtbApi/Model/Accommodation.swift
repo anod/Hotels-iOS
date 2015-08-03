@@ -105,7 +105,7 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
         var checkOutUntil:String?
         var location:String?
         var nrOfRooms = 0
-        var petsPolicy: PetsPolicy!
+        var petsPolicy = PetsPolicy()
         var postpaidCreditCards = [PostpaidCreditCard]()
         
         

@@ -41,8 +41,8 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate,
     ]
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
+        super.viewDidLoad()*
+        
         self.setupHeader()
 
         cheapestRate = self.accommodation.rates[0].rateId
@@ -51,6 +51,13 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate,
         api = EtbApi(config: apiConfig)
         api.delegate = self
         api.details(self.accommodation.id, request: self.availaibilityRequest)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let bar = self.navigationController?.navigationBar
+        bar!.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        bar!.shadowImage = UIImage()
     }
     
     func detailsSuccessResult(result:AccommodationDetails) {
@@ -82,7 +89,6 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate,
         
         self.tableView.reloadData()
         
-        
     }
 
     func detailsErrorResult(error:NSError) {
@@ -99,7 +105,9 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate,
         headerView.pinButton.selected = self.isPinned
         
         parallaxHeader.addSubview(headerView)
-        
+
+        self.tableView.tableHeaderView = parallaxHeader;
+
         if (self.accommodation.images.count > 0) {
             let URL = NSURL(string: self.accommodation.images[0])!
             
@@ -112,7 +120,6 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate,
             parallaxHeader.addGestureRecognizer(tap)
         }
         
-        self.tableView.tableHeaderView = parallaxHeader;
     }
     
     func imageLoadSuccess(image: UIImage) -> () {
@@ -131,7 +138,6 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate,
         if scrollView == self.tableView {
             let header = self.tableView.tableHeaderView as! ParallaxHeaderView
             header.layoutHeaderViewForScrollViewOffset(scrollView.contentOffset)
-            print(scrollView.contentOffset)
             self.tableView.tableHeaderView = header
             if scrollView.contentOffset.y < -100 {
                 openPhotoBrowser()
@@ -140,7 +146,6 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate,
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(cells.count)
         return cells.count
     }
     
@@ -160,6 +165,7 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate,
         }
     }
     
+   
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let identifier = self.cellIdentifierForIndexPath(indexPath)
 

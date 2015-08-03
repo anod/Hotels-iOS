@@ -149,17 +149,20 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let annotation = view.annotation as! AccommodationMKPointAnnotation
         let accommodation = annotation.accommodation
   
-        self.popoverHotelDetailsController = instantiateHotelDetailsViewController();
-        self.popoverHotelDetailsController.accommodation = accommodation
-        self.popoverHotelDetailsController.availaibilityRequest = request
-        self.popoverHotelDetailsController.modalPresentationStyle = .Popover
-        self.popoverHotelDetailsController.preferredContentSize = CGSizeMake(260,360)
-        self.popoverHotelDetailsController.delegate = self
-        let hdPopoverController = self.popoverHotelDetailsController.popoverPresentationController
+        popoverHotelDetailsController = instantiateHotelDetailsViewController();
+        popoverHotelDetailsController.accommodation = accommodation
+        popoverHotelDetailsController.availaibilityRequest = request
+        popoverHotelDetailsController.delegate = self
+        popoverHotelDetailsController.preferredContentSize = CGSizeMake(260,360)
+        
+        let navController = UINavigationController(rootViewController: popoverHotelDetailsController)
+        navController.modalPresentationStyle = .Popover
+        
+        let hdPopoverController = navController.popoverPresentationController
         hdPopoverController?.permittedArrowDirections = .Any
         hdPopoverController?.sourceView = view
         hdPopoverController?.sourceRect = view.bounds
-        presentViewController(self.popoverHotelDetailsController,animated: true, completion: nil)
+        presentViewController(navController,animated: true, completion: nil)
     }
     
     func mainStoryboard() -> UIStoryboard
