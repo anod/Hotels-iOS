@@ -9,16 +9,9 @@
 import UIKit
 import HCSStarRatingView
 
-protocol HotelDetailsHeaderDelegate {
-    func pinAction()
-}
-
 class HotelDetailsHeader: UIView, HotelDetailsViewProtocol {
     @IBOutlet weak var hotelName: UILabel!
     @IBOutlet weak var hotelStars: HCSStarRatingView!
-    @IBOutlet weak var pinButton: UIButton!
-
-    var delegate: HotelDetailsHeaderDelegate!
 
     static func loadFromNib() -> HotelDetailsHeader {
         return UIView.loadViewFromNib("HotelDetailsHeader", theClass: self) as! HotelDetailsHeader
@@ -27,13 +20,6 @@ class HotelDetailsHeader: UIView, HotelDetailsViewProtocol {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.userInteractionEnabled = true
-        pinButton.addTarget(self, action: Selector("pinAction:"), forControlEvents: UIControlEvents.TouchUpInside)
-
-    }
-    
-    func pinAction(button: UIButton) {
-        delegate.pinAction()
     }
     
     func attach(accomodation: Accommodation) {
@@ -42,8 +28,5 @@ class HotelDetailsHeader: UIView, HotelDetailsViewProtocol {
         hotelStars.value = CGFloat(accomodation.starRating)
         
     }
-    
-
-    
     
 }

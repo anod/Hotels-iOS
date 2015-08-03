@@ -20,7 +20,7 @@ protocol HotelDetailsControllerDelegate {
     func pinHotelDetailsController(controller : HotelDetailsController)
 }
 
-class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate, EtbApiDelegate{
+class HotelDetailsController: UITableViewController, EtbApiDelegate{
 
     var delegate: HotelDetailsControllerDelegate!
     var pinned = false
@@ -41,10 +41,16 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate,
     ]
     
     override func viewDidLoad() {
-        super.viewDidLoad()*
+        super.viewDidLoad()
         
         self.setupHeader()
 
+        let pinButton = UIBarButtonItem(image: UIImage(named: "Pin")!, style:UIBarButtonItemStyle.Plain, target: self, action: Selector("pinAction:"))
+        pinButton.tintColor = UIColor.whiteColor()
+        
+        self.navigationItem.rightBarButtonItem = pinButton
+
+        
         cheapestRate = self.accommodation.rates[0].rateId
         
         let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida")
@@ -101,8 +107,6 @@ class HotelDetailsController: UITableViewController, HotelDetailsHeaderDelegate,
         
         let headerView = HotelDetailsHeader.loadFromNib()
         headerView.attach(self.accommodation)
-        headerView.delegate = self
-        headerView.pinButton.selected = self.isPinned
         
         parallaxHeader.addSubview(headerView)
 
