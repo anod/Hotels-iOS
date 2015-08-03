@@ -55,7 +55,6 @@
 		FACEA7941B3EA14100CBAEC6 /* AccommodationsResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA7861B3EA14100CBAEC6 /* AccommodationsResults.swift */; };
 		FACEA7951B3EA14100CBAEC6 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA7871B3EA14100CBAEC6 /* Meta.swift */; };
 		FACEA7961B3EA14100CBAEC6 /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEA7881B3EA14100CBAEC6 /* SearchRequest.swift */; };
-		FACEA7991B3F242500CBAEC6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FACEA7981B3F242500CBAEC6 /* libPods.a */; };
 		FAF27FCF1B2A095100397CBD /* Hotels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAF27FCD1B2A095100397CBD /* Hotels.xcdatamodeld */; };
 		FAF27FD41B2A095100397CBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF27FD21B2A095100397CBD /* Main.storyboard */; };
 		FAF27FD91B2A095100397CBD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF27FD71B2A095100397CBD /* LaunchScreen.xib */; };
@@ -146,7 +145,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FACEA7991B3F242500CBAEC6 /* libPods.a in Frameworks */,
 				FA971EBA1B66AB2700885ED1 /* MapKit.framework in Frameworks */,
 				3CD0C5AC02DA2A77318DC9BF /* Pods.framework in Frameworks */,
 			);
@@ -465,7 +463,7 @@
 				TargetAttributes = {
 					FAF27FC51B2A095100397CBD = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = Q8EY23UGQ4;
+						DevelopmentTeam = T94R5ASHM8;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -747,6 +745,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/EtbApi/build/Debug-iphoneos",
@@ -760,6 +760,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "info.anodplace.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hotels-Bridging-Header.h";
 			};
 			name = Debug;
@@ -770,6 +771,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/EtbApi/build/Debug-iphoneos",
@@ -783,6 +786,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "info.anodplace.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hotels-Bridging-Header.h";
 			};
 			name = Release;

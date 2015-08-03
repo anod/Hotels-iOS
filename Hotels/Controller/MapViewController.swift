@@ -186,7 +186,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let hotelDetailsCell = collectionView.dequeueReusableCellWithReuseIdentifier("HotelDetailsCell", forIndexPath: indexPath) as! HotelDetailsCell
 
         let accommodation = self.pinnedHotels[indexPath.item];
-        let vc = hotelDetailsCell.contentViewController as! HotelDetailsController
+        let nav = hotelDetailsCell.contentViewController as! UINavigationController
+        let vc = nav.viewControllers[0] as! HotelDetailsController
         vc.accommodation = accommodation
         vc.availaibilityRequest = request
         vc.isPinned = true
@@ -200,7 +201,9 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     }
     
     func collectionView(view: UICollectionView, controllerForIdentifier identifier: String) -> UIViewController {
-        return instantiateHotelDetailsViewController()
+        let vc = instantiateHotelDetailsViewController()
+        
+        return UINavigationController(rootViewController: vc)
     }
     
     func instantiateHotelDetailsViewController() -> HotelDetailsController {

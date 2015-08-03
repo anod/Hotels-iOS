@@ -45,7 +45,7 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         
         self.setupHeader()
 
-        let pinButton = UIBarButtonItem(image: UIImage(named: "Pin")!, style:UIBarButtonItemStyle.Plain, target: self, action: Selector("pinAction:"))
+        let pinButton = UIBarButtonItem(image: UIImage(named: "Pin")!, style:UIBarButtonItemStyle.Plain, target: self, action: Selector("pinAction"))
         pinButton.tintColor = UIColor.whiteColor()
         
         self.navigationItem.rightBarButtonItem = pinButton
@@ -103,13 +103,14 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
     
     
     func setupHeader() {
-        let parallaxHeader = ParallaxHeaderView.parallaxHeaderViewWithImage(UIImage(named: "hotel_placeholder.png"), forSize: CGSizeMake(260, 139)) as! ParallaxHeaderView
+        let parallaxHeader = ParallaxHeaderView.parallaxHeaderViewWithImage(UIImage(named: "hotel_placeholder"), forSize: CGSizeMake(260, 139)) as! ParallaxHeaderView
         
         let headerView = HotelDetailsHeader.loadFromNib()
         headerView.attach(self.accommodation)
         
         parallaxHeader.addSubview(headerView)
 
+        
         self.tableView.tableHeaderView = parallaxHeader;
 
         if (self.accommodation.images.count > 0) {
