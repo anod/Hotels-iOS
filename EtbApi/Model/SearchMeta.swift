@@ -6,6 +6,8 @@
 //  Copyright © 2015 Alex Gavrishev. All rights reserved.
 //
 
+import Foundation
+
 @objc
 class SearchMeta : Meta {
     
@@ -16,6 +18,7 @@ class SearchMeta : Meta {
     var overall:String?
     var filterNrs:FilterNrs?
     
+
     required init(response: NSHTTPURLResponse, representation: AnyObject) {
         super.init(response: response, representation: representation)
         self.totalNrOverall = representation.valueForKeyPath("totalNrOverall") as! Int
