@@ -72,11 +72,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                             </mapView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X9g-WG-4mQ" userLabel="Autocompelte Placeholder">
-                                <rect key="frame" x="10" y="18" width="246" height="44"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oo9-aB-Ur7" userLabel="Autocomplete Results">
                                 <rect key="frame" x="16" y="64" width="341" height="234"/>
                                 <animations/>
@@ -107,7 +102,7 @@
                                 </prototypes>
                             </tableView>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bQa-ao-0ce" customClass="HotelDetailsCollectionView" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="16" y="68" width="568" height="516"/>
+                                <rect key="frame" x="16" y="72" width="568" height="512"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xrn-LV-D0z">
@@ -137,71 +132,46 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYY-80-g6L">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5ws-6c-l6k"/>
+                                </constraints>
+                                <items/>
+                            </toolbar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bQa-ao-0ce" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="1Bb-Zk-0Lj"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bQa-ao-0ce" secondAttribute="bottom" constant="16" id="2G6-iy-B4s"/>
-                            <constraint firstAttribute="trailing" secondItem="bQa-ao-0ce" secondAttribute="trailing" constant="16" id="98W-ZT-z7V"/>
+                            <constraint firstAttribute="trailing" secondItem="IYY-80-g6L" secondAttribute="trailing" id="EeO-m6-r7G"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bQa-ao-0ce" secondAttribute="bottom" constant="16" id="Fju-bv-YUy"/>
+                            <constraint firstAttribute="trailing" secondItem="bQa-ao-0ce" secondAttribute="trailing" constant="16" id="QOl-BA-vro"/>
+                            <constraint firstItem="IYY-80-g6L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QZb-f5-9FB"/>
                             <constraint firstAttribute="trailing" secondItem="5qU-Es-T3h" secondAttribute="trailing" id="ROU-hk-mgM"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5qU-Es-T3h" secondAttribute="bottom" id="Yy5-k5-IX9"/>
+                            <constraint firstItem="IYY-80-g6L" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="eUN-9V-QUk"/>
+                            <constraint firstItem="bQa-ao-0ce" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="fqh-dr-9Gd"/>
                             <constraint firstItem="5qU-Es-T3h" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gsX-zm-mTb"/>
-                            <constraint firstItem="bQa-ao-0ce" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="lkN-Pw-5xZ"/>
+                            <constraint firstItem="bQa-ao-0ce" firstAttribute="top" secondItem="IYY-80-g6L" secondAttribute="bottom" constant="8" id="nny-Ym-9I4"/>
                             <constraint firstItem="5qU-Es-T3h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rpo-yK-slw"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="UAq-4Y-TIy">
+                        <barButtonItem key="rightBarButtonItem" image="Filter" id="Sz2-vv-AhA">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="autocompleteContainer" destination="X9g-WG-4mQ" id="HvA-w4-Eih"/>
-                        <outlet property="autocompleteResults" destination="oo9-aB-Ur7" id="wkL-mD-ohK"/>
+                        <outlet property="autocompleteResults" destination="oo9-aB-Ur7" id="osg-nv-3Lz"/>
                         <outlet property="hotelDetailsCollection" destination="bQa-ao-0ce" id="1qR-OV-RYQ"/>
                         <outlet property="mapView" destination="5qU-Es-T3h" id="2Z2-my-l4n"/>
-                        <outlet property="searchDisplayController" destination="Ukd-AI-4jc" id="G9j-BH-Z0Z"/>
+                        <outlet property="toolbar" destination="IYY-80-g6L" id="Umx-yz-yUB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="cQL-9p-OId">
-                    <connections>
-                        <outlet property="delegate" destination="BYZ-38-t0r" id="fAw-y6-bh7"/>
-                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="iRd-Qi-cg6"/>
-                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="Lit-5g-qUb"/>
-                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="bqu-W0-Bmo"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="7ic-SF-5Ua">
-                    <connections>
-                        <outlet property="delegate" destination="BYZ-38-t0r" id="RRx-cG-uev"/>
-                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="UwK-gG-uML"/>
-                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="HBq-lU-FTp"/>
-                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="8V3-Og-iSC"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="g8g-1V-q3d">
-                    <connections>
-                        <outlet property="delegate" destination="BYZ-38-t0r" id="TvR-2g-DlY"/>
-                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="OVx-nG-gcy"/>
-                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="yb5-2O-2RN"/>
-                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="iit-it-E8t"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="mCd-13-VxY">
-                    <connections>
-                        <outlet property="delegate" destination="BYZ-38-t0r" id="hl6-h7-a8b"/>
-                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="N3p-ZV-p7E"/>
-                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="924-Tj-9Ah"/>
-                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="6fM-sA-dzi"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="Ukd-AI-4jc">
-                    <connections>
-                        <outlet property="delegate" destination="BYZ-38-t0r" id="TYg-jH-ozD"/>
-                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="Tnj-jK-Zzf"/>
-                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="fTw-iS-sUp"/>
-                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="Vse-V5-4hU"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="393" y="317"/>
+            <point key="canvasLocation" x="1429" y="305"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="BoJ-5B-3Ft">
@@ -472,7 +442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9P-Pk-4Y8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2175" y="517"/>
+            <point key="canvasLocation" x="2811" y="517"/>
         </scene>
         <!--Hotel Details Controller-->
         <scene sceneID="36I-vw-AAf">
@@ -831,7 +801,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIs-eq-F7t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1109" y="517"/>
+            <point key="canvasLocation" x="1921" y="517"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="e7K-oJ-8tc">
@@ -850,11 +820,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="68W-ZZ-dRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="517"/>
+            <point key="canvasLocation" x="2339" y="517"/>
         </scene>
     </scenes>
     <resources>
         <image name="Dates" width="25" height="25"/>
+        <image name="Filter" width="25" height="25"/>
         <image name="Nights" width="25" height="25"/>
         <image name="People" width="25" height="25"/>
         <image name="Pin" width="25" height="25"/>

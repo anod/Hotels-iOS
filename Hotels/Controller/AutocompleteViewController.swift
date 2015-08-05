@@ -4,93 +4,73 @@
 //
 
 import UIKit
-import GoogleMaps
 
-@objc
 protocol AutocompleteDelegate {
-    func onPlaceSelected(place:GMSPlace)
+    func onPlaceSelected(place:GooglePlaceDetails)
 }
 
 @objc
-class AutocompleteViewController: NSObject, UISearchResultsUpdating, UITableViewDataSource, UITableViewDelegate {
+class AutocompleteViewController: NSObject, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, GooglePlacesDelegate {
     weak var autocompleteResults: UITableView!
-    weak var autocompleteContainer: UIView!
 
-    var data = [GMSAutocompletePrediction]()
+    var data = [GoogleAutocompletePrediction]()
 
     var resultSearchController: UISearchController!
     var delegate: AutocompleteDelegate!
-    var placesClient: GMSPlacesClient!
-
-    init(autocompleteResults: UITableView, autocompleteContainer: UIView) {
+    var googlePlacesApi: GooglePlacesApi!
+    var searchBar: UISearchBar!
+    
+    init(autocompleteResults: UITableView, toolbar: UIToolbar) {
         super.init()
-        self.autocompleteResults=autocompleteResults;
-        self.autocompleteContainer=autocompleteContainer;
-
-        // Do any additional setup after loading the view, typically from a nib.
+        self.autocompleteResults=autocompleteResults
 
         autocompleteResults.hidden = true
         autocompleteResults.delegate = self
         autocompleteResults.dataSource = self
 
-        self.resultSearchController = ({
-            let controller = UISearchController(searchResultsController: nil)
+        self.searchBar = UISearchBar(frame: CGRectMake(0,0,240, 48))
+        searchBar.placeholder = "Find a destination...."
+        searchBar.searchBarStyle = .Minimal
+        searchBar.showsCancelButton = false
+        searchBar.delegate = self
 
-            controller.searchBar.placeholder = "Find a destination...."
-            controller.searchBar.searchBarStyle = .Minimal
-            controller.searchBar.showsCancelButton = false
+        let item = UIBarButtonItem(customView: searchBar)
+        toolbar.items?.insert(item, atIndex: 0)
 
-            controller.searchResultsUpdater = self
-            controller.dimsBackgroundDuringPresentation = false
-
-            
-            self.autocompleteContainer.backgroundColor = UIColor.clearColor()
-            self.autocompleteContainer.addSubview(controller.searchBar);
-            controller.searchBar.sizeToFit()
-
-            return controller
-        })()
-    }
-
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        let sydney = CLLocationCoordinate2DMake(-33.8650, 151.2094)
-        let northEast = CLLocationCoordinate2DMake(sydney.latitude + 1, sydney.longitude + 1)
-        let southWest = CLLocationCoordinate2DMake(sydney.latitude - 1, sydney.longitude - 1)
-        let bounds = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
-        let filter = GMSAutocompleteFilter()
-        filter.type = GMSPlacesAutocompleteTypeFilter.Geocode
-
-        let searchText = searchController.searchBar.text!
+        googlePlacesApi = GooglePlacesApi()
+        googlePlacesApi.delegate = self
         
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count > 0 {
-            if placesClient == nil {
-                placesClient = GMSPlacesClient()
-            }
             print("Searching for '\(searchText)'")
-            self.autocompleteResults.hidden = false
-            placesClient.autocompleteQuery(searchText, bounds: bounds, filter: filter, callback: {
-                (results, error) -> Void in
-                if error != nil {
-                    print("Autocomplete error \(error) for query '\(searchText)'")
-                    return
-                }
-
-                print("Populating results for query '\(searchText)'")
-                self.data = [GMSAutocompletePrediction]()
-                if let unwrappedResults = results {
-                    for result in unwrappedResults {
-                        if let result = result as? GMSAutocompletePrediction {
-                            self.data.append(result)
-                        }
-                    }
-                }
-                self.autocompleteResults.reloadData()
-            })
+            self.googlePlacesApi.autocomplete(searchText)
+            
+            
+            //            placesClient.autocompleteQuery(searchText, bounds: bounds, filter: filter, callback: {
+            //                (results, error) -> Void in
+            //                if error != nil {
+            //                    print("Autocomplete error \(error) for query '\(searchText)'")
+            //                    return
+            //                }
+            //
+            //                print("Populating results for query '\(searchText)'")
+            //                self.data = [GMSAutocompletePrediction]()
+            //                if let unwrappedResults = results {
+            //                    for result in unwrappedResults {
+            //                        if let result = result as? GMSAutocompletePrediction {
+            //                            self.data.append(result)
+            //                        }
+            //                    }
+            //                }
+            //                self.autocompleteResults.reloadData()
+            //            })
         } else {
-            self.data = [GMSAutocompletePrediction]()
+            self.data = [GoogleAutocompletePrediction]()
             self.autocompleteResults.reloadData()
             self.autocompleteResults.hidden = true
-
+            
         }
     }
 
@@ -103,7 +83,7 @@ class AutocompleteViewController: NSObject, UISearchResultsUpdating, UITableView
     {
         let cell = self.autocompleteResults.dequeueReusableCellWithIdentifier("AutocompleteTableViewCell") as! AutocompleteTableViewCell
 
-        cell.locationTitle?.attributedText = self.data[indexPath.row].attributedFullText
+        cell.locationTitle?.text = self.data[indexPath.row].desc
 
         return cell
     }
@@ -114,25 +94,24 @@ class AutocompleteViewController: NSObject, UISearchResultsUpdating, UITableView
         self.autocompleteResults.hidden = true
         let prediction = self.data[indexPath.row];
         
-        setSearchBoxText(prediction.attributedFullText.string)
+        self.googlePlacesApi.details(prediction);
         
-        placesClient?.lookUpPlaceID(prediction.placeID, callback: {
-            (place, error) -> Void in
-            if error != nil {
-                print("Placelookup error \(error) for prediction '\(prediction.attributedFullText)'")
-                return
-            }
-            
-            self.delegate.onPlaceSelected(place!)
-
-        })
     }
     
-    func setSearchBoxText(searchText: String) {
-        self.resultSearchController.searchResultsUpdater = nil;
-        self.resultSearchController.active = false
-        self.resultSearchController.searchBar.text = searchText;
-        self.resultSearchController.searchResultsUpdater = self; //or any delegate you like!
+    func googlePlacesErrorResult(searchText: String, error: NSError) {
+        print("Autocomplete error \(error) for query '\(searchText)'")
+        
     }
+    func googlePlacesPredictions(results: [GoogleAutocompletePrediction]) {
+        self.data = results
+        self.autocompleteResults.hidden = false
+        self.autocompleteResults.reloadData()
+    }
+    
+    func googlePlacesDetailsResult(result: GooglePlaceDetails) {
+        self.delegate.onPlaceSelected(result)
+    }
+    
+
     
 }

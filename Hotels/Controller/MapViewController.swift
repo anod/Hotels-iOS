@@ -8,14 +8,13 @@
 
 import UIKit
 import MapKit
-import GoogleMaps
 
 class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate,HotelDetailsCollectionViewControllerDataSource {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var autocompleteResults: UITableView!
-    @IBOutlet weak var autocompleteContainer: UIView!
     @IBOutlet weak var hotelDetailsCollection: HotelDetailsCollectionView!
+    @IBOutlet weak var toolbar: UIToolbar!
     
     var request: SearchRequest!
     var api: EtbApi!
@@ -41,19 +40,37 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         mapView.delegate = self
         
         updateMapLocation(false)
-
-        autocomplete = AutocompleteViewController(autocompleteResults: autocompleteResults, autocompleteContainer: autocompleteContainer)
-        autocomplete.delegate = self
+        
+        let titleView = UIView.loadViewFromNib("MapTitleView", theClass: self)
+        //toolbar.setBackgroundImage(UIImage(), forToolbarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
+        //toolbar.backgroundColor = UIColor.clearColor()
+        
+        toolbar.items?.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil))
+        toolbar.items?.append(UIBarButtonItem(customView: titleView))
+        toolbar.items?.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil))
+        toolbar.items?.append(UIBarButtonItem(image: UIImage(named: "Filter"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("filterAction")))
+            
 
         let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida")
         api = EtbApi(config: apiConfig)
         api.delegate = self
-        
+               
         self.hotelDetailsCollection.backView = mapView
         self.hotelDetailsCollection.dataSource = self
         self.hotelDetailsCollection.delegate = self
         self.hotelDetailsCollection.controllerDataSource = self
         self.hotelDetailsCollection.containerViewController = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        autocomplete = AutocompleteViewController(autocompleteResults: autocompleteResults, toolbar: toolbar)
+        autocomplete.delegate = self
+
+    }
+    
+    func filterAction() {
+        print("filter")
     }
     
     func updateMapLocation(animated: Bool) {
@@ -84,12 +101,11 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     }
 
     
-    func onPlaceSelected(place: GMSPlace)
+    func onPlaceSelected(place: GooglePlaceDetails)
     {
-        let coord = place.coordinate;
         
-        request.lat = coord.latitude
-        request.lon = coord.longitude
+        request.lat = place.latitude
+        request.lon = place.longitude
         
         updateMapLocation(true)
         
