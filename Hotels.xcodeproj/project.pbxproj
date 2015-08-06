@@ -652,6 +652,7 @@
 			baseConfigurationReference = 14FEA9A1AC8B12D0B1F49930 /* Pods-Hotels.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Hotels/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = info.anodsplace.Hotels;
@@ -665,6 +666,7 @@
 			baseConfigurationReference = 8C8EC5713852931E685C7D11 /* Pods-Hotels.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Hotels/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = info.anodsplace.Hotels;
