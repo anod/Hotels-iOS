@@ -64,6 +64,10 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         let bar = self.navigationController?.navigationBar
         bar!.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         bar!.shadowImage = UIImage()
+        
+        let header = self.tableView.tableHeaderView as! ParallaxHeaderView
+        header.layoutHeaderViewForScrollViewOffset(CGPointMake(0,-64))
+        self.tableView.tableHeaderView = header
     }
     
     func detailsSuccessResult(result:AccommodationDetails) {
@@ -123,9 +127,11 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
             tap.enabled = true;
             tap.cancelsTouchesInView = false;
             parallaxHeader.addGestureRecognizer(tap)
+            
         }
         
     }
+    
     
     func imageLoadSuccess(image: UIImage) -> () {
         let parallaxHeader = self.tableView.tableHeaderView as! ParallaxHeaderView
