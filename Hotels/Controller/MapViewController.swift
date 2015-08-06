@@ -69,6 +69,10 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
 
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     func filterAction() {
         print("filter")
     }

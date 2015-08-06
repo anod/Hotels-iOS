@@ -122,7 +122,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.0" green="0.28817683399999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="8"/>
@@ -132,36 +132,44 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYY-80-g6L">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYY-80-g6L">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.85882352941176465" green="0.42352941176470588" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="5ws-6c-l6k"/>
                                 </constraints>
                                 <items/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.95686274509803915" green="0.47843137254901957" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXp-Zz-VNF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="21"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="jRg-aH-LoA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="MXp-Zz-VNF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9s8-aQ-ZWY"/>
                             <constraint firstAttribute="trailing" secondItem="IYY-80-g6L" secondAttribute="trailing" id="EeO-m6-r7G"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bQa-ao-0ce" secondAttribute="bottom" constant="16" id="Fju-bv-YUy"/>
                             <constraint firstAttribute="trailing" secondItem="bQa-ao-0ce" secondAttribute="trailing" constant="16" id="QOl-BA-vro"/>
                             <constraint firstItem="IYY-80-g6L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QZb-f5-9FB"/>
+                            <constraint firstAttribute="trailing" secondItem="MXp-Zz-VNF" secondAttribute="trailing" id="Qfb-nX-KjZ"/>
                             <constraint firstAttribute="trailing" secondItem="5qU-Es-T3h" secondAttribute="trailing" id="ROU-hk-mgM"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5qU-Es-T3h" secondAttribute="bottom" id="Yy5-k5-IX9"/>
                             <constraint firstItem="IYY-80-g6L" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="eUN-9V-QUk"/>
                             <constraint firstItem="bQa-ao-0ce" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="fqh-dr-9Gd"/>
                             <constraint firstItem="5qU-Es-T3h" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gsX-zm-mTb"/>
                             <constraint firstItem="bQa-ao-0ce" firstAttribute="top" secondItem="IYY-80-g6L" secondAttribute="bottom" constant="8" id="nny-Ym-9I4"/>
+                            <constraint firstItem="MXp-Zz-VNF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rCz-tF-OZ0"/>
                             <constraint firstItem="5qU-Es-T3h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rpo-yK-slw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="UAq-4Y-TIy">
-                        <barButtonItem key="rightBarButtonItem" image="Filter" id="Sz2-vv-AhA">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="autocompleteResults" destination="oo9-aB-Ur7" id="osg-nv-3Lz"/>
                         <outlet property="hotelDetailsCollection" destination="bQa-ao-0ce" id="1qR-OV-RYQ"/>
@@ -825,7 +833,6 @@
     </scenes>
     <resources>
         <image name="Dates" width="25" height="25"/>
-        <image name="Filter" width="25" height="25"/>
         <image name="Nights" width="25" height="25"/>
         <image name="People" width="25" height="25"/>
         <image name="Pin" width="25" height="25"/>

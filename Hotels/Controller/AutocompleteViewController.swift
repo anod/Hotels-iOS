@@ -33,7 +33,16 @@ class AutocompleteViewController: NSObject, UISearchBarDelegate, UITableViewData
         searchBar.searchBarStyle = .Minimal
         searchBar.showsCancelButton = false
         searchBar.delegate = self
+        searchBar.tintColor = UIColor.whiteColor()
+        let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as! UITextField
+        textFieldInsideSearchBar.textColor = UIColor.whiteColor()
 
+        let textFieldInsideSearchBarLabel = textFieldInsideSearchBar.valueForKey("placeholderLabel") as! UILabel
+        textFieldInsideSearchBarLabel.textColor = UIColor.whiteColor()
+        
+        searchBar.setImage(UIImage(named: "Search"), forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
+        searchBar.setImage(UIImage(named: "Cancel"), forSearchBarIcon: UISearchBarIcon.Clear, state: UIControlState.Normal)
+        
         let item = UIBarButtonItem(customView: searchBar)
         toolbar.items?.insert(item, atIndex: 0)
 
