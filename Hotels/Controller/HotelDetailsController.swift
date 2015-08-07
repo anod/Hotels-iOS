@@ -12,7 +12,7 @@ import Haneke
 
 protocol HotelDetailsViewProtocol {
     
-    func attach(accomodation: Accommodation)
+    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest)
 }
 
 protocol HotelDetailsControllerDelegate {
@@ -45,6 +45,7 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         
         self.setupHeader()
 
+        
         let pinButton = UIBarButtonItem(image: UIImage(named: "Pin")!, style:UIBarButtonItemStyle.Plain, target: self, action: Selector("pinAction"))
         pinButton.tintColor = UIColor.whiteColor()
         
@@ -110,7 +111,7 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         let parallaxHeader = ParallaxHeaderView.parallaxHeaderViewWithImage(UIImage(named: "hotel_placeholder"), forSize: CGSizeMake(260, 139)) as! ParallaxHeaderView
         
         let headerView = HotelDetailsHeader.loadFromNib()
-        headerView.attach(self.accommodation)
+        headerView.attach(self.accommodation, availaibilityRequest: availaibilityRequest)
         
         parallaxHeader.addSubview(headerView)
 
@@ -184,16 +185,16 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         if let height = cachedHeight {
             return height
         }
-        print(identifier)
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
         let height = cell!.bounds.size.height
         heightCache[identifier] = height;
         return height;
     }
+
     func createTableCell(tableView: UITableView, identifier: String) -> UITableViewCell {
         let cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(identifier)
         let hdCell = cell as! HotelDetailsViewProtocol
-        hdCell.attach(self.accommodation)
+        hdCell.attach(self.accommodation, availaibilityRequest: availaibilityRequest)
         return cell
     }
     

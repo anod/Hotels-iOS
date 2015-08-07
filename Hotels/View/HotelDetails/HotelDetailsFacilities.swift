@@ -20,7 +20,7 @@ class HotelDetailsFacilities: UITableViewCell, UICollectionViewDataSource, Hotel
         collectionView.dataSource = self
     }
     
-    func attach(accomodation: Accommodation) {
+    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest) {
         let mainFacilities = accomodation.mainFacilities!
 
         if mainFacilities.contains(Facility.Internet.rawValue) {
@@ -54,7 +54,6 @@ class HotelDetailsFacilities: UITableViewCell, UICollectionViewDataSource, Hotel
         if mainFacilities.contains(Facility.ChildDiscount.rawValue) {
             images.append("BabyBottle.png")
         }
-        print(images)
         
         collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "FacilityView")
     }

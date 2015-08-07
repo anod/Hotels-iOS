@@ -22,7 +22,7 @@ class HotelDetailsHeader: UIView, HotelDetailsViewProtocol {
 
     }
     
-    func attach(accomodation: Accommodation) {
+    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest) {
         
         hotelName.text = accomodation.name
         hotelStars.value = CGFloat(accomodation.starRating)

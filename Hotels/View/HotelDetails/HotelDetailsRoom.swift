@@ -20,8 +20,28 @@ class HotelDetailsRoom: UITableViewCell, HotelDetailsViewProtocol  {
     }
 
 
-    func attach(accomodation: Accommodation) {
+    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest) {
         
+        let rate = accomodation.rates[0]
+        let priceRender = PriceRender(currencyCode: availaibilityRequest.currency, short: false)
+
+        roomPrice.text = priceRender.render(rate)
+        roomName.text = rate.name
+        
+        var tags = ""
+        if rate.tags.nonRefundable {
+            tags = "Non-Refundable"
+        } else if (rate.tags.freeCancellation) {
+            tags = "Free Cancelation"
+        }
+        if (rate.tags.breakfastIncluded) {
+            if !tags.isEmpty {
+                tags += " "
+            }
+            tags += "Breakfast Included"
+        }
+        
+        policy.text = tags
     }
 
 }

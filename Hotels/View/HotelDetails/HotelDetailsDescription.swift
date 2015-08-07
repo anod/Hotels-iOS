@@ -18,7 +18,7 @@ class HotelDetailsDescription: UITableViewCell, HotelDetailsViewProtocol  {
     }
 
 
-    func attach(accomodation: Accommodation) {
+    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest) {
         hotelDescription.text = accomodation.details.generalDescription
     }
 

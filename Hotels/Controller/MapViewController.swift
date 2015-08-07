@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate,HotelDetailsCollectionViewControllerDataSource {
+class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var autocompleteResults: UITableView!
@@ -21,9 +21,11 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     var autocomplete: AutocompleteViewController!
     var pinnedHotels: [Accommodation] = []
     var currentHotel: Accommodation! = nil
+    var selectedAnnotation: AccommodationMKPointAnnotation!
     
     var currency = "EUR"
     var popoverHotelDetailsController: HotelDetailsController!
+    var priceRender: PriceRender!
     
     let cSpan:CLLocationDegrees = 0.09 // zoom 5/111
 
@@ -36,6 +38,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         request.lon = 151.20
         request.type = "spr"
         request.currency = currency
+        
+        priceRender = PriceRender(currencyCode: currency, short: true)
         
         mapView.delegate = self
         
@@ -132,7 +136,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
 
             let priceLabel = pinView.subviews[0] as! ALabel
             
-            priceLabel.text=annotation.accommodation.rates[0].payment.prepaid[currency]
+            priceLabel.text=" " + priceRender.render(annotation.accommodation.rates[0]) + " "
             priceLabel.sizeToFit()
             pinView.frame = priceLabel.frame
 
@@ -154,7 +158,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         priceLabel.lineBreakMode = NSLineBreakMode.ByClipping
         
         
-        priceLabel.text=annotation.accommodation.rates[0].payment.prepaid[currency]
+        priceLabel.text=" " + priceRender.render(annotation.accommodation.rates[0]) + " "
         priceLabel.sizeToFit()
         
         pinView.frame = priceLabel.frame
@@ -169,6 +173,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let annotation = view.annotation as! AccommodationMKPointAnnotation
         let accommodation = annotation.accommodation
   
+        selectedAnnotation = annotation
+        
         popoverHotelDetailsController = instantiateHotelDetailsViewController();
         popoverHotelDetailsController.accommodation = accommodation
         popoverHotelDetailsController.availaibilityRequest = request
@@ -182,6 +188,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         hdPopoverController?.permittedArrowDirections = .Any
         hdPopoverController?.sourceView = view
         hdPopoverController?.sourceRect = view.bounds
+        hdPopoverController?.delegate = self
         presentViewController(navController,animated: true, completion: nil)
     }
     
@@ -213,6 +220,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         vc.isPinned = true
         vc.pinIndex = indexPath.item
         vc.delegate = self
+        
+        print(indexPath.item)
         return hotelDetailsCell
     }
     
@@ -236,9 +245,18 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     }
     
     func pinHotelDetailsController(controller : HotelDetailsController) {
+        
         self.popoverHotelDetailsController.dismissViewControllerAnimated(true, completion: nil)
         self.pinnedHotels.append(controller.accommodation)
         self.hotelDetailsCollection.reloadData()
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController)
+    {
+        if selectedAnnotation != nil {
+            self.mapView.deselectAnnotation(selectedAnnotation, animated: false)
+            selectedAnnotation = nil
+        }
     }
 }
 

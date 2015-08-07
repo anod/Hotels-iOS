@@ -15,6 +15,7 @@
 		524D4E201B71FFB9007BA82E /* MapTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D4E1F1B71FFB9007BA82E /* MapTitleView.xib */; };
 		524D4E231B71FFE2007BA82E /* AutocompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D4E211B71FFE2007BA82E /* AutocompleteTableViewCell.swift */; };
 		524D4E241B71FFE2007BA82E /* MapLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D4E221B71FFE2007BA82E /* MapLabel.xib */; };
+		529031B81B74DE0F006ED651 /* PriceRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529031B71B74DE0F006ED651 /* PriceRender.swift */; };
 		52944EF01B71E4E000849A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52944EEF1B71E4E000849A61 /* AppDelegate.swift */; };
 		52944EF51B71E4E000849A61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52944EF31B71E4E000849A61 /* Main.storyboard */; };
 		52944EF81B71E4E000849A61 /* Hotels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52944EF61B71E4E000849A61 /* Hotels.xcdatamodeld */; };
@@ -73,6 +74,7 @@
 		524D4E1F1B71FFB9007BA82E /* MapTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapTitleView.xib; sourceTree = "<group>"; };
 		524D4E211B71FFE2007BA82E /* AutocompleteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteTableViewCell.swift; sourceTree = "<group>"; };
 		524D4E221B71FFE2007BA82E /* MapLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapLabel.xib; sourceTree = "<group>"; };
+		529031B71B74DE0F006ED651 /* PriceRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceRender.swift; sourceTree = "<group>"; };
 		52944EEC1B71E4E000849A61 /* Hotels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hotels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52944EEF1B71E4E000849A61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52944EF41B71E4E000849A61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				52944F461B71E77200849A61 /* AccomodationMKPointAnnotation.swift */,
+				529031B71B74DE0F006ED651 /* PriceRender.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				524D4E151B71F8B3007BA82E /* GooglePlacesApi.swift in Sources */,
 				52944F621B71E77200849A61 /* FloatRatingView.swift in Sources */,
 				52944F2F1B71E64300849A61 /* Accommodation.swift in Sources */,
+				529031B81B74DE0F006ED651 /* PriceRender.swift in Sources */,
 				52944F631B71E77200849A61 /* HotelDetailsAddress.swift in Sources */,
 				52944F2B1B71E64300849A61 /* EtbApiConfig.swift in Sources */,
 				52944F601B71E77200849A61 /* ALabel.swift in Sources */,

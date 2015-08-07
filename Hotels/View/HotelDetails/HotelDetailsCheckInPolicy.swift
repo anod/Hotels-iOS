@@ -20,7 +20,7 @@ class HotelDetailsCheckInPolicy: UITableViewCell, HotelDetailsViewProtocol  {
     }
     
     
-    func attach(accomodation: Accommodation) {
+    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest) {
         var checkIn = ""
         if accomodation.details.checkInFrom!.isEmpty == false
         {
