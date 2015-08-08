@@ -181,10 +181,10 @@
             </objects>
             <point key="canvasLocation" x="1429" y="305"/>
         </scene>
-        <!--View Controller-->
+        <!--Order Details-->
         <scene sceneID="BoJ-5B-3Ft">
             <objects>
-                <viewController id="BaB-Zo-aZf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookingScreenController" id="BaB-Zo-aZf" customClass="BookingScreenController" customModule="Hotels" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wze-yp-OeQ"/>
                         <viewControllerLayoutGuide type="bottom" id="QZ7-uJ-DAJ"/>
@@ -441,12 +441,25 @@
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pSa-ap-jE0">
+                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                                <items>
+                                    <barButtonItem title="Back" id="Va9-Ce-8uI"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9xc-5h-Tel"/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="xcL-Tj-zLm"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Order Details" id="9xc-5h-Tel"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="backButton" destination="Va9-Ce-8uI" id="8KG-Rd-lWa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9P-Pk-4Y8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -462,7 +475,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="mx6-UF-du9">
-                            <rect key="frame" x="0.0" y="0.0" width="260" height="139"/>
+                            <rect key="frame" x="0.0" y="64" width="260" height="139"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hotel_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="bi3-3z-Y3b">
@@ -475,7 +488,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsFacilities" rowHeight="50" id="EMJ-Sx-wbu" customClass="HotelDetailsFacilities" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="161" width="260" height="50"/>
+                                <rect key="frame" x="0.0" y="225" width="260" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EMJ-Sx-wbu" id="S6r-LO-ckh">
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="50"/>
@@ -520,7 +533,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsReviews" rowHeight="30" id="9hd-ZY-hQJ" customClass="HotelDetailsReviews" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="211" width="260" height="30"/>
+                                <rect key="frame" x="0.0" y="275" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9hd-ZY-hQJ" id="acP-fD-0fJ">
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="30"/>
@@ -571,7 +584,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsRoom" rowHeight="124" id="L8G-gA-sEq" customClass="HotelDetailsRoom" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="241" width="260" height="124"/>
+                                <rect key="frame" x="0.0" y="305" width="260" height="124"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L8G-gA-sEq" id="kOi-Ik-sHP">
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="124"/>
@@ -591,7 +604,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <segue destination="aZ7-31-M7v" kind="show" id="4Tk-MQ-aGq"/>
+                                                <segue destination="BaB-Zo-aZf" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="ECU-1Y-vQ7"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Non refundable" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62U-KZ-k52">
@@ -634,7 +647,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsDescription" rowHeight="116" id="FRz-no-ivO" customClass="HotelDetailsDescription" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="365" width="260" height="116"/>
+                                <rect key="frame" x="0.0" y="429" width="260" height="116"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FRz-no-ivO" id="Mpe-Ky-90x">
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="116"/>
@@ -663,7 +676,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsCheckInPolicy" rowHeight="47" id="ceA-jR-3bo" customClass="HotelDetailsCheckInPolicy" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="481" width="260" height="47"/>
+                                <rect key="frame" x="0.0" y="545" width="260" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ceA-jR-3bo" id="mnB-g0-2v0">
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="47"/>
@@ -707,7 +720,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsImportantInformation" rowHeight="116" id="CCR-Zs-yma" customClass="HotelDetailsImportantInformation" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="528" width="260" height="116"/>
+                                <rect key="frame" x="0.0" y="592" width="260" height="116"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CCR-Zs-yma" id="xeW-it-3NA">
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="116"/>
@@ -736,7 +749,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HotelDetailsPetsPolicy" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsPetsPolicy" rowHeight="48" id="SDW-lP-way" customClass="HotelDetailsPetsPolicy" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="644" width="260" height="48"/>
+                                <rect key="frame" x="0.0" y="708" width="260" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SDW-lP-way" id="LBh-Tp-mb6">
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="48"/>
@@ -765,7 +778,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HotelDetailsAddress" selectionStyle="default" indentationWidth="10" reuseIdentifier="HotelDetailsAddress" rowHeight="68" id="FOI-eU-aYQ" customClass="HotelDetailsAddress" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="692" width="260" height="68"/>
+                                <rect key="frame" x="0.0" y="756" width="260" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FOI-eU-aYQ" id="1GA-u2-pj7">
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="68"/>
@@ -814,7 +827,7 @@
         <!--Navigation Controller-->
         <scene sceneID="e7K-oJ-8tc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aZ7-31-M7v" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HotelDetailsNavController" automaticallyAdjustsScrollViewInsets="NO" id="aZ7-31-M7v" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="b2j-hO-7ib">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -823,12 +836,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BaB-Zo-aZf" kind="relationship" relationship="rootViewController" id="1sH-C7-Za9"/>
+                        <segue destination="pgc-Fp-J02" kind="relationship" relationship="rootViewController" id="oLV-sg-x6s"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="68W-ZZ-dRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2339" y="517"/>
+            <point key="canvasLocation" x="1928" y="-479"/>
         </scene>
     </scenes>
     <resources>

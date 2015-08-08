@@ -175,13 +175,15 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
   
         selectedAnnotation = annotation
         
-        popoverHotelDetailsController = instantiateHotelDetailsViewController();
+        let navController = instantiateHotelDetailsViewController();
+        
+        popoverHotelDetailsController = navController.viewControllers[0] as! HotelDetailsController
         popoverHotelDetailsController.accommodation = accommodation
+        popoverHotelDetailsController.rateId = accommodation.rates[0].rateId
         popoverHotelDetailsController.availaibilityRequest = request
         popoverHotelDetailsController.delegate = self
         popoverHotelDetailsController.preferredContentSize = CGSizeMake(260,360)
         
-        let navController = UINavigationController(rootViewController: popoverHotelDetailsController)
         navController.modalPresentationStyle = .Popover
         
         let hdPopoverController = navController.popoverPresentationController
@@ -231,11 +233,11 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     func collectionView(view: UICollectionView, controllerForIdentifier identifier: String) -> UIViewController {
         let vc = instantiateHotelDetailsViewController()
         
-        return UINavigationController(rootViewController: vc)
+        return vc
     }
     
-    func instantiateHotelDetailsViewController() -> HotelDetailsController {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("HotelDetailsViewController") as! HotelDetailsController
+    func instantiateHotelDetailsViewController() -> UINavigationController {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("HotelDetailsNavController") as! UINavigationController
     }
     
     func unpinHotelDetailsController(controller : HotelDetailsController) {
