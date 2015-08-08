@@ -20,7 +20,7 @@ class HotelDetailsFacilities: UITableViewCell, UICollectionViewDataSource, Hotel
         collectionView.dataSource = self
     }
     
-    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest) {
+    func attach(accomodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest) {
         let mainFacilities = accomodation.mainFacilities!
 
         if mainFacilities.contains(Facility.Internet.rawValue) {

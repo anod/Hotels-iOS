@@ -18,8 +18,8 @@ class HotelDetailsImportantInformation: UITableViewCell, HotelDetailsViewProtoco
     }
     
     
-    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest) {
-        hotelImportantInformation.text = accomodation.details.importantInfo
+    func attach(accomodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest) {
+        hotelImportantInformation.setHtml(accomodation.details.importantInfo!)
     }
     
 }

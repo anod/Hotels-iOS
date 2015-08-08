@@ -10,12 +10,17 @@ import UIKit
 
 class BookingScreenController: UIViewController {
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var summary: SummaryView!
+    @IBOutlet weak var form: FormView!
 
     var accomodation: Accommodation!
     var rateId : String!
-    
+    var availabilityRequest: AvailabilityRequest!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        summary.attach(accomodation, rateId: rateId, availabilityRequest: availabilityRequest)
         
         backButton.target = self
         backButton.action = Selector("backButtonAction")

@@ -18,7 +18,7 @@ class HotelDetailsReviews: UITableViewCell, HotelDetailsViewProtocol  {
     }
 
 
-    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest) {
+    func attach(accomodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest) {
         
         if accomodation.summary.reviewCount > 0 {
             ratingView.hidden = false

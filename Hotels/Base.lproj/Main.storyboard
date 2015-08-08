@@ -193,7 +193,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-mx-sEc">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-mx-sEc" customClass="SummaryView" customModule="Hotels" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="260" height="960"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amadi Panorama Hotel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5EC-jV-WV7">
@@ -331,7 +331,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPZ-hv-5W1">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPZ-hv-5W1" customClass="FormView" customModule="Hotels" customModuleProvider="target">
                                 <rect key="frame" x="268" y="64" width="500" height="960"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sHW-1d-cHe">
@@ -459,6 +459,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="backButton" destination="Va9-Ce-8uI" id="8KG-Rd-lWa"/>
+                        <outlet property="form" destination="lPZ-hv-5W1" id="oVi-ID-gNa"/>
+                        <outlet property="summary" destination="rgd-mx-sEc" id="dXj-Y3-BWu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9P-Pk-4Y8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -604,7 +606,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <segue destination="BaB-Zo-aZf" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="ECU-1Y-vQ7"/>
+                                                <segue destination="BaB-Zo-aZf" kind="presentation" identifier="BookingScreenSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="ECU-1Y-vQ7"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Non refundable" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62U-KZ-k52">

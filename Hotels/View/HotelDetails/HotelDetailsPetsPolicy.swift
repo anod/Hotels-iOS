@@ -31,7 +31,7 @@ class HotelDetailsPetsPolicy: UITableViewCell, HotelDetailsViewProtocol  {
         2: deposit
         -1: unknown
     */
-    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest) {
+    func attach(accomodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest) {
         if (accomodation.details.petsPolicy.petsAllowed == 0) {
             policy.text = "Pets are not allowed."
             return

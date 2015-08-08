@@ -8,6 +8,9 @@
 
 import UIKit
 
-class SummaryView: UIView {
-    
+class SummaryView: UIView, HotelDetailsViewProtocol{
+ 
+    func attach(accomodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest) {
+        
+    }
 }

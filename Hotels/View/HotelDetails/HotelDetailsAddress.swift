@@ -18,7 +18,7 @@ class HotelDetailsAddress: UITableViewCell, HotelDetailsViewProtocol  {
     }
     
     
-    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest) {
+    func attach(accomodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest) {
         var text = accomodation.summary.address as String
         if (!accomodation.summary.city.isEmpty) {
             if (!text.isEmpty) {

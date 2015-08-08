@@ -12,7 +12,7 @@ import Haneke
 
 protocol HotelDetailsViewProtocol {
     
-    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest)
+    func attach(accomodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest)
 }
 
 protocol HotelDetailsControllerDelegate {
@@ -25,7 +25,8 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
     var delegate: HotelDetailsControllerDelegate!
     var pinned = false
     var accommodation: Accommodation!
-    var availaibilityRequest: AvailabilityRequest!
+    var rateId: String!
+    var availabilityRequest: AvailabilityRequest!
     var api: EtbApi!
     
     var heightCache = [String: CGFloat]()
@@ -56,7 +57,7 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida")
         api = EtbApi(config: apiConfig)
         api.delegate = self
-        api.details(self.accommodation.id, request: self.availaibilityRequest)
+        api.details(self.accommodation.id, request: self.availabilityRequest)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -70,6 +71,15 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         self.tableView.tableHeaderView = header
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "BookingScreenSegue" {
+            let bsController = segue.destinationViewController as! BookingScreenController
+            bsController.accomodation = accommodation
+            bsController.rateId = rateId
+            bsController.availabilityRequest = availabilityRequest
+        }
+    }
+    
     func detailsSuccessResult(result:AccommodationDetails) {
         
         if (result.accommodation == nil || result.accommodation.rates.isEmpty) {
@@ -77,9 +87,35 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
             return
         }
         
-        // TODO: Check for room available
-        let mainFacilities = self.accommodation.mainFacilities
+        let currencyCode = availabilityRequest.currency
         
+        var rate: Rate!
+        var cheapestRate: Rate!
+        for accRate in result.accommodation.rates {
+            if accRate.rateId == rateId {
+                rate = accRate
+                break;
+            }
+            if cheapestRate == nil {
+                cheapestRate = accRate
+            } else if fullPrice(cheapestRate, currencyCode: currencyCode) > fullPrice(accRate, currencyCode: currencyCode) {
+                cheapestRate = accRate
+            }
+            
+        }
+        
+        if rate == nil {
+            print("rate \(rateId) not found")
+            if cheapestRate == nil {
+                // TODO: Show no avialbility message
+            } else {
+                rateId = cheapestRate.rateId
+                print("Showing cheapest rate instead")
+                // TODO highlight changes
+            }
+        }
+        
+        let mainFacilities = self.accommodation.mainFacilities
         self.accommodation = result.accommodation
         // Missing info from details response
         self.accommodation.mainFacilities = mainFacilities
@@ -110,7 +146,7 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         let parallaxHeader = ParallaxHeaderView.parallaxHeaderViewWithImage(UIImage(named: "hotel_placeholder"), forSize: CGSizeMake(260, 139)) as! ParallaxHeaderView
         
         let headerView = HotelDetailsHeader.loadFromNib()
-        headerView.attach(self.accommodation, availaibilityRequest: availaibilityRequest)
+        headerView.attach(self.accommodation, rateId: rateId, availabilityRequest: availabilityRequest)
         
         parallaxHeader.addSubview(headerView)
 
@@ -193,7 +229,7 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
     func createTableCell(tableView: UITableView, identifier: String) -> UITableViewCell {
         let cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(identifier)
         let hdCell = cell as! HotelDetailsViewProtocol
-        hdCell.attach(self.accommodation, availaibilityRequest: availaibilityRequest)
+        hdCell.attach(self.accommodation, rateId: rateId, availabilityRequest: availabilityRequest)
         return cell
     }
     
@@ -212,6 +248,11 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         browser.displayActionButton = false
         self.presentViewController(browser, animated:true, completion: nil)
     }
-
+    
+    func fullPrice(rate: Rate, currencyCode: String) -> Double {
+        let prepaidPrice = NSString(string: rate.payment.prepaid[currencyCode]!).doubleValue
+        let postpaidPrice = NSString(string: rate.payment.postpaid[currencyCode]!).doubleValue
+        return prepaidPrice + postpaidPrice;
+    }
 
 }

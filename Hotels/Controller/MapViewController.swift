@@ -180,7 +180,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         popoverHotelDetailsController = navController.viewControllers[0] as! HotelDetailsController
         popoverHotelDetailsController.accommodation = accommodation
         popoverHotelDetailsController.rateId = accommodation.rates[0].rateId
-        popoverHotelDetailsController.availaibilityRequest = request
+        popoverHotelDetailsController.availabilityRequest = request
         popoverHotelDetailsController.delegate = self
         popoverHotelDetailsController.preferredContentSize = CGSizeMake(260,360)
         
@@ -218,7 +218,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let nav = hotelDetailsCell.contentViewController as! UINavigationController
         let vc = nav.viewControllers[0] as! HotelDetailsController
         vc.accommodation = accommodation
-        vc.availaibilityRequest = request
+        vc.availabilityRequest = request
         vc.isPinned = true
         vc.delegate = self
         

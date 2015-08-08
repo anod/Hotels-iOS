@@ -20,10 +20,24 @@ class HotelDetailsRoom: UITableViewCell, HotelDetailsViewProtocol  {
     }
 
 
-    func attach(accomodation: Accommodation, availaibilityRequest: AvailabilityRequest) {
+    func attach(accomodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest) {
         
-        let rate = accomodation.rates[0]
-        let priceRender = PriceRender(currencyCode: availaibilityRequest.currency, short: false)
+        let currencyCode = availabilityRequest.currency;
+        
+        var rate: Rate!
+        for accRate in accomodation.rates {
+            if accRate.rateId == rateId {
+                rate = accRate
+                break;
+            }
+        }
+        
+        if rate == nil {
+            print("rate \(rateId) not found")
+            return;
+        }
+        
+        let priceRender = PriceRender(currencyCode: currencyCode, short: false)
 
         roomPrice.text = priceRender.render(rate)
         roomName.text = rate.name
