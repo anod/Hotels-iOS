@@ -136,7 +136,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
 
             let priceLabel = pinView.subviews[0] as! ALabel
             
-            priceLabel.text=" " + priceRender.render(annotation.accommodation.rates[0]) + " "
+            priceLabel.text=" " + priceRender.render(annotation.accommodation.rates[0]) + "  "
             priceLabel.sizeToFit()
             pinView.frame = priceLabel.frame
 
@@ -158,7 +158,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         priceLabel.lineBreakMode = NSLineBreakMode.ByClipping
         
         
-        priceLabel.text=" " + priceRender.render(annotation.accommodation.rates[0]) + " "
+        priceLabel.text=" " + priceRender.render(annotation.accommodation.rates[0]) + "  "
         priceLabel.sizeToFit()
         
         pinView.frame = priceLabel.frame
