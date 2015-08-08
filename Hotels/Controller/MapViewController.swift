@@ -218,7 +218,6 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         vc.accommodation = accommodation
         vc.availaibilityRequest = request
         vc.isPinned = true
-        vc.pinIndex = indexPath.item
         vc.delegate = self
         
         print(indexPath.item)
@@ -240,7 +239,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     }
     
     func unpinHotelDetailsController(controller : HotelDetailsController) {
-        self.pinnedHotels.removeAtIndex(controller.pinIndex)
+        let idx = self.pinnedHotels.indexOf(controller.accommodation)
+        self.pinnedHotels.removeAtIndex(idx!)
         self.hotelDetailsCollection.reloadData()
     }
     

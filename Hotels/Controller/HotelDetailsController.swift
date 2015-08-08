@@ -30,7 +30,6 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
     
     var heightCache = [String: CGFloat]()
     var isPinned = false
-    var pinIndex = 0
     var cheapestRate: String!
     
     var cells = [
