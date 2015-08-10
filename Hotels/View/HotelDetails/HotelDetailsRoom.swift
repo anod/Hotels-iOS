@@ -42,20 +42,7 @@ class HotelDetailsRoom: UITableViewCell, HotelDetailsViewProtocol  {
         roomPrice.text = priceRender.render(rate)
         roomName.text = rate.name
         
-        var tags = ""
-        if rate.tags.nonRefundable {
-            tags = "Non-Refundable"
-        } else if (rate.tags.freeCancellation) {
-            tags = "Free Cancelation"
-        }
-        if (rate.tags.breakfastIncluded) {
-            if !tags.isEmpty {
-                tags += " "
-            }
-            tags += "Breakfast Included"
-        }
-        
-        policy.text = tags
+        policy.text = AccommodationRender.rateTags(rate)
     }
 
 }

@@ -32,6 +32,29 @@ class SummaryView: UIView, HotelDetailsViewProtocol{
     
 
     func attach(accomodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest) {
+        hotelName.text = accomodation.name
+        hotelAddress.text = AccommodationRender.address(accomodation)
+        hotelStars.value = CGFloat(accomodation.starRating)
+        
+        let formatter = NSDateIntervalFormatter()
+        formatter.dateStyle = NSDateIntervalFormatterStyle.MediumStyle
+        formatter.timeStyle = NSDateIntervalFormatterStyle.NoStyle
+        
+        dates.text = formatter.stringFromDate(availabilityRequest.checkInDate, toDate: availabilityRequest.checkOutDate)
+        
+        let cal = NSCalendar.currentCalendar()
+        let flags = NSCalendarUnit.Day
+        let components = cal.components(flags, fromDate: availabilityRequest.checkInDate, toDate: availabilityRequest.checkOutDate, options: [])
+        
+        nights.text = components.day == 1 ? "\(components.day) Night" : "\(components.day) Nights"
+        let persons  = availabilityRequest.persons()
+        guests.text = guests == 1 ? "\(persons) Guest" : "\(persons) Guests"
+        
+        let rate = AccommodationUtils.findRate(rateId, accommodation: accomodation)
+        roomName.text = rate!.name
+        roomTags.text = AccommodationRender.rateTags(rate!)
+        
+        
         
     }
 }

@@ -30,7 +30,7 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
     var api: EtbApi!
     
     var heightCache = [String: CGFloat]()
-    var isPinned = false
+var isPinned = false
     var cheapestRate: String!
     
     var cells = [
@@ -89,27 +89,15 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         
         let currencyCode = availabilityRequest.currency
         
-        var rate: Rate!
-        var cheapestRate: Rate!
-        for accRate in result.accommodation.rates {
-            if accRate.rateId == rateId {
-                rate = accRate
-                break;
-            }
-            if cheapestRate == nil {
-                cheapestRate = accRate
-            } else if fullPrice(cheapestRate, currencyCode: currencyCode) > fullPrice(accRate, currencyCode: currencyCode) {
-                cheapestRate = accRate
-            }
-            
-        }
+        let rate = AccommodationUtils.findRate(rateId, accommodation: accommodation)
         
         if rate == nil {
             print("rate \(rateId) not found")
+            let cheapestRate = AccommodationUtils.findCheapest(accommodation, currencyCode: currencyCode)
             if cheapestRate == nil {
                 // TODO: Show no avialbility message
             } else {
-                rateId = cheapestRate.rateId
+                rateId = cheapestRate!.rateId
                 print("Showing cheapest rate instead")
                 // TODO highlight changes
             }
@@ -211,7 +199,6 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
             self.delegate.pinHotelDetailsController(self)
         }
     }
-    
    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let identifier = self.cellIdentifierForIndexPath(indexPath)
@@ -249,10 +236,5 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         self.presentViewController(browser, animated:true, completion: nil)
     }
     
-    func fullPrice(rate: Rate, currencyCode: String) -> Double {
-        let prepaidPrice = NSString(string: rate.payment.prepaid[currencyCode]!).doubleValue
-        let postpaidPrice = NSString(string: rate.payment.postpaid[currencyCode]!).doubleValue
-        return prepaidPrice + postpaidPrice;
-    }
 
 }

@@ -45,7 +45,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         
         updateMapLocation(false)
         
-        let titleView = UIView.loadViewFromNib("MapTitleView", theClass: self)
+        let titleView = UIView.loadViewFromNib("MapTitleView", theClass: self) as! MapTitleView
         //toolbar.setBackgroundImage(UIImage(), forToolbarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
         //toolbar.backgroundColor = UIColor.clearColor()
         
@@ -105,6 +105,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     }
 
     func searchErrorResult(error:NSError) {
+        ErrorAlertView.show("Search failed. Please try again", controller: self)
         print(error)
     }
 
@@ -148,7 +149,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
        
         let priceLabel = ALabel(frame: CGRectMake(0,0,50,21))
         priceLabel.font=UIFont(name: "Avenir Next Regular", size: 14)
-        priceLabel.textAlignment=NSTextAlignment.Center;
+        priceLabel.textAlignment=NSTextAlignment.Left;
         priceLabel.textColor=UIColor.whiteColor()
         priceLabel.userInteractionEnabled = true
         priceLabel.backgroundColor=UIColor.orangeColor()
@@ -219,6 +220,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let vc = nav.viewControllers[0] as! HotelDetailsController
         vc.accommodation = accommodation
         vc.availabilityRequest = request
+        vc.rateId = accommodation.rates[0].rateId
         vc.isPinned = true
         vc.delegate = self
         

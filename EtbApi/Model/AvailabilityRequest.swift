@@ -14,21 +14,20 @@ class AvailabilityRequest {
     var checkOutDate = NSDate(timeIntervalSinceNow: 86400)
     var currency = "EUR"
     var language = "en"
-    var capacity = [String]()
+    var capacity = [2]
 
     
     func prepareCapacityForRequest() -> String{
         var newCapacity = ""
         
-        if !capacity.isEmpty {
-            for (var index = 0; index < capacity.count ; index++){
-                newCapacity = index == 0 ? newCapacity + capacity[index] : newCapacity + "," + capacity[index]
-            }
-        }
-        else{
-            newCapacity = "2"
+        for (var index = 0; index < capacity.count ; index++){
+            newCapacity = index == 0 ? newCapacity + String(capacity[index]) : newCapacity + "," + String(capacity[index])
         }
         
         return newCapacity
+    }
+    
+    func persons() -> Int {
+        return capacity.reduce(0, combine: +)
     }
 }
