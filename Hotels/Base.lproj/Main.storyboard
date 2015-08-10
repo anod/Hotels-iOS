@@ -7,6 +7,8 @@
         <mutableArray key="AvenirNext.ttc">
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
             <string>AvenirNext-UltraLight</string>
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
@@ -39,8 +41,38 @@
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
             <string>AvenirNext-Medium</string>
             <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-UltraLight</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-DemiBold</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Medium</string>
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-DemiBold</string>
             <string>AvenirNext-Regular</string>
@@ -58,8 +90,7 @@
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Medium</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -257,7 +288,7 @@
             </objects>
             <point key="canvasLocation" x="1429" y="305"/>
         </scene>
-        <!--Order Details-->
+        <!--Booking Screen Controller-->
         <scene sceneID="BoJ-5B-3Ft">
             <objects>
                 <viewController storyboardIdentifier="BookingScreenController" id="BaB-Zo-aZf" customClass="BookingScreenController" customModule="Hotels" customModuleProvider="target" sceneMemberID="viewController">
@@ -380,6 +411,12 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$ 14.30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wk-wV-JcB">
+                                        <rect key="frame" x="143" y="351" width="106" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pay at acommodation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eP5-7l-hcQ">
                                         <rect key="frame" x="8" y="351" width="178" height="21"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
@@ -421,12 +458,6 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$ 14.30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wk-wV-JcB">
-                                        <rect key="frame" x="143" y="351" width="106" height="21"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -447,137 +478,198 @@
                                     <outlet property="totalPrice" destination="DTc-mb-YDa" id="H6A-yY-hdu"/>
                                 </connections>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSa-ap-jE0">
+                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <barButtonItem title="Back" id="Va9-Ce-8uI"/>
+                                </items>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyG-Ui-ZTH">
+                                <rect key="frame" x="323" y="31" width="123" height="21"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OPi-pW-iWb">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="20"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPZ-hv-5W1" customClass="FormView" customModule="Hotels" customModuleProvider="target">
-                                <rect key="frame" x="268" y="64" width="500" height="960"/>
+                                <rect key="frame" x="276" y="64" width="492" height="960"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sHW-1d-cHe">
-                                        <rect key="frame" x="111" y="180" width="319" height="30"/>
+                                        <rect key="frame" x="86" y="180" width="319" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Postcode" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ff6-6b-zD5">
-                                        <rect key="frame" x="111" y="218" width="319" height="30"/>
+                                        <rect key="frame" x="249" y="256" width="157" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P58-nC-fZ5">
-                                        <rect key="frame" x="111" y="256" width="150" height="30"/>
+                                        <rect key="frame" x="86" y="256" width="154" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jCH-1j-xj5">
-                                        <rect key="frame" x="275" y="256" width="155" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jCH-1j-xj5">
+                                        <rect key="frame" x="87" y="218" width="318" height="30"/>
                                         <animations/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Specify your request here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eoU-WR-DXm">
+                                        <rect key="frame" x="86" y="468" width="318" height="30"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Billing Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ow-TC-G92">
-                                        <rect key="frame" x="111" y="151" width="319" height="21"/>
+                                        <rect key="frame" x="87" y="151" width="319" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0X-g1-hOM">
-                                        <rect key="frame" x="112" y="294" width="319" height="21"/>
+                                        <rect key="frame" x="87" y="294" width="319" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Personal Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnL-k7-sIq">
-                                        <rect key="frame" x="112" y="8" width="319" height="21"/>
+                                        <rect key="frame" x="87" y="8" width="319" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Special Requests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mea-KQ-Tmr">
-                                        <rect key="frame" x="112" y="400" width="319" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Special Requests (Optional)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mea-KQ-Tmr">
+                                        <rect key="frame" x="87" y="439" width="319" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fisrst Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wCw-IQ-pVe">
-                                        <rect key="frame" x="111" y="325" width="154" height="30"/>
+                                        <rect key="frame" x="86" y="325" width="154" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sBI-SG-MCk">
-                                        <rect key="frame" x="274" y="325" width="154" height="30"/>
+                                        <rect key="frame" x="249" y="325" width="156" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5S-Z2-prV">
-                                        <rect key="frame" x="111" y="362" width="224" height="30"/>
+                                        <rect key="frame" x="86" y="362" width="154" height="30"/>
                                         <animations/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Expiration" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Na-o7-ZcS">
+                                        <rect key="frame" x="249" y="362" width="90" height="30"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVV" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gwQ-j6-FTM">
+                                        <rect key="frame" x="347" y="363" width="59" height="30"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fisrst Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XWD-ng-riK">
-                                        <rect key="frame" x="111" y="37" width="154" height="30"/>
+                                        <rect key="frame" x="86" y="37" width="154" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qjr-zG-j8D">
-                                        <rect key="frame" x="274" y="37" width="154" height="30"/>
+                                        <rect key="frame" x="249" y="37" width="157" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UWv-VX-DMX">
-                                        <rect key="frame" x="111" y="113" width="319" height="30"/>
+                                        <rect key="frame" x="86" y="113" width="319" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PQo-KO-K5w">
-                                        <rect key="frame" x="111" y="75" width="319" height="30"/>
+                                        <rect key="frame" x="86" y="75" width="319" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbs-90-Myn">
-                                        <rect key="frame" x="111" y="446" width="314" height="30"/>
+                                        <rect key="frame" x="88" y="561" width="314" height="30"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                         <state key="normal" title="Book">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="pOx-sp-yLN" kind="show" id="VoW-l9-rb9"/>
+                                        </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR1-FD-w7v">
+                                        <rect key="frame" x="144" y="401" width="205" height="30"/>
+                                        <color key="backgroundColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Scan a card with [card.io]">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Special requests cannot be guaranteed but the property will do its best to meet your needs." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTZ-nL-NuW">
+                                        <rect key="frame" x="88" y="503" width="314" height="34"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="address" destination="jCH-1j-xj5" id="Vb0-1e-rFk"/>
+                                    <outlet property="ccCVV" destination="gwQ-j6-FTM" id="72a-7S-g14"/>
+                                    <outlet property="ccExpiration" destination="1Na-o7-ZcS" id="Clr-K9-0CN"/>
+                                    <outlet property="ccFirstName" destination="wCw-IQ-pVe" id="QcZ-0M-m9o"/>
+                                    <outlet property="ccLastName" destination="sBI-SG-MCk" id="yjq-3J-erx"/>
+                                    <outlet property="ccNumber" destination="s5S-Z2-prV" id="HNA-Zj-EWa"/>
+                                    <outlet property="city" destination="sHW-1d-cHe" id="HSa-RV-YBk"/>
+                                    <outlet property="country" destination="P58-nC-fZ5" id="R8d-9q-GQe"/>
+                                    <outlet property="emailAddress" destination="UWv-VX-DMX" id="4Mz-Fi-PDe"/>
+                                    <outlet property="firstName" destination="XWD-ng-riK" id="kxD-26-cKV"/>
+                                    <outlet property="lastName" destination="Qjr-zG-j8D" id="OqP-jL-eIN"/>
+                                    <outlet property="phoneNumber" destination="PQo-KO-K5w" id="0ge-hn-HlC"/>
+                                    <outlet property="postcode" destination="Ff6-6b-zD5" id="RWG-gf-li0"/>
+                                </connections>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pSa-ap-jE0">
-                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
-                                <items>
-                                    <barButtonItem title="Back" id="Va9-Ce-8uI"/>
-                                </items>
-                                <color key="tintColor" red="0.89411764709999997" green="0.4039215686" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
-                            </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyG-Ui-ZTH">
-                                <rect key="frame" x="323" y="31" width="123" height="21"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="xcL-Tj-zLm"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Order Details" id="9xc-5h-Tel"/>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
@@ -588,7 +680,269 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9P-Pk-4Y8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2811" y="517"/>
+            <point key="canvasLocation" x="2521" y="517"/>
+        </scene>
+        <!--Confirmation Controller-->
+        <scene sceneID="MJT-d6-cH4">
+            <objects>
+                <viewController id="pOx-sp-yLN" customClass="ConfirmationController" customModule="Hotels" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zew-b1-KN3"/>
+                        <viewControllerLayoutGuide type="bottom" id="NfF-nB-gJ4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DVF-4a-wv0">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rI6-Zj-AMC">
+                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <barButtonItem title="Close" id="UUj-Gn-ik9"/>
+                                </items>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order Confirmation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOQ-fc-Lbk">
+                                <rect key="frame" x="297" y="31" width="175" height="21"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lDi-mw-ljN">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="20"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ePg-mJ-nHX" customClass="SummaryView" customModule="Hotels" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="270" height="960"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amadi Panorama Hotel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Kg-xt-LEG">
+                                        <rect key="frame" x="8" y="8" width="241" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ijburglaan 539, Amsterdam, NL" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJR-Z9-tIe">
+                                        <rect key="frame" x="8" y="29" width="238" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3 AUG - 5 AUG " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wR-I9-JMF">
+                                        <rect key="frame" x="41" y="94" width="208" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 Nights" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jK-Qd-39g">
+                                        <rect key="frame" x="41" y="128" width="216" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Dates" translatesAutoresizingMaskIntoConstraints="NO" id="jT1-7T-npp">
+                                        <rect key="frame" x="8" y="92" width="25" height="25"/>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Nights" translatesAutoresizingMaskIntoConstraints="NO" id="fJI-VM-M7W">
+                                        <rect key="frame" x="8" y="125" width="25" height="25"/>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="People" translatesAutoresizingMaskIntoConstraints="NO" id="it0-iG-eMs">
+                                        <rect key="frame" x="8" y="158" width="25" height="25"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 Guests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3r-Ti-1Ol">
+                                        <rect key="frame" x="41" y="160" width="216" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Non refundable" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VL-5b-Dwg">
+                                        <rect key="frame" x="10" y="248" width="244" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Two Persons Standard + Breakfast" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIe-eC-QqR">
+                                        <rect key="frame" x="10" y="200" width="244" height="50"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Online room price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYg-sL-4Ed">
+                                        <rect key="frame" x="10" y="277" width="136" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$ 256.35" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umW-yg-lqp">
+                                        <rect key="frame" x="145" y="277" width="106" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$ 14.30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixb-EF-VNk">
+                                        <rect key="frame" x="145" y="299" width="106" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$ 270.36" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAz-8L-nfX">
+                                        <rect key="frame" x="145" y="322" width="106" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Taxes and Fees" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gk-dj-X6O">
+                                        <rect key="frame" x="10" y="299" width="136" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$ 14.30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1p8-R9-Ztt">
+                                        <rect key="frame" x="143" y="372" width="106" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Today you will pay" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u28-w3-MkH">
+                                        <rect key="frame" x="8" y="373" width="136" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$ 14.30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khs-cm-Tyf">
+                                        <rect key="frame" x="143" y="351" width="106" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pay at acommodation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmf-3g-xDv">
+                                        <rect key="frame" x="8" y="351" width="178" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAP-Y7-A47">
+                                        <rect key="frame" x="10" y="322" width="136" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="du2-uU-Ysu" customClass="HCSStarRatingView">
+                                        <rect key="frame" x="8" y="52" width="82" height="15"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You will pay in local currency (€)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncQ-LM-GEy">
+                                        <rect key="frame" x="8" y="393" width="244" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dates" destination="2wR-I9-JMF" id="afi-Xf-5LM"/>
+                                    <outlet property="guests" destination="g3r-Ti-1Ol" id="vLf-qA-acy"/>
+                                    <outlet property="hotelAddress" destination="bJR-Z9-tIe" id="OTe-bb-zk1"/>
+                                    <outlet property="hotelName" destination="7Kg-xt-LEG" id="gSB-xb-1J1"/>
+                                    <outlet property="hotelStars" destination="du2-uU-Ysu" id="ibt-45-9PP"/>
+                                    <outlet property="localCurrencyText" destination="ncQ-LM-GEy" id="FJP-9e-3NC"/>
+                                    <outlet property="nights" destination="1jK-Qd-39g" id="ThL-Xr-7lg"/>
+                                    <outlet property="payAccomodation" destination="khs-cm-Tyf" id="Zwf-HZ-ETB"/>
+                                    <outlet property="payToday" destination="1p8-R9-Ztt" id="oD0-HJ-lp8"/>
+                                    <outlet property="roomName" destination="uIe-eC-QqR" id="SPG-aZ-MXB"/>
+                                    <outlet property="roomPrice" destination="umW-yg-lqp" id="8V1-iJ-afR"/>
+                                    <outlet property="roomTags" destination="2VL-5b-Dwg" id="gVb-5x-can"/>
+                                    <outlet property="taxesAndFees" destination="ixb-EF-VNk" id="ThH-ot-n7p"/>
+                                    <outlet property="totalPrice" destination="BAz-8L-nfX" id="gNI-Oh-iIL"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WQk-TM-ag7">
+                                <rect key="frame" x="268" y="64" width="500" height="845"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8i1-3J-KUS">
+                                        <rect key="frame" x="115" y="231" width="283" height="94"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1234567890" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJJ-gJ-tWN">
+                                                <rect key="frame" x="8" y="42" width="267" height="37"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Booking reference" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iG-8t-bLo">
+                                                <rect key="frame" x="8" y="13" width="267" height="21"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Confirmed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKd-cz-3UQ">
+                                        <rect key="frame" x="26" y="39" width="449" height="79"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="44"/>
+                                        <color key="textColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ohs-lr-iDl">
+                                        <rect key="frame" x="109" y="134" width="283" height="70"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Booking name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PT-9I-i7g">
+                                                <rect key="frame" x="0.0" y="8" width="140" height="21"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John Smith" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6D9-iC-MDF">
+                                                <rect key="frame" x="107" y="9" width="176" height="21"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8D0-4M-1Mn">
+                                                <rect key="frame" x="0.0" y="30" width="140" height="21"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="john.smoth@gmail.com" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83i-xx-rAM">
+                                                <rect key="frame" x="107" y="29" width="176" height="21"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="UUj-Gn-ik9" id="cei-9I-ejN"/>
+                        <outlet property="summary" destination="ePg-mJ-nHX" id="85U-Ya-tiX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7K4-tK-Yca" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3371" y="517"/>
         </scene>
         <!--Hotel Details Controller-->
         <scene sceneID="36I-vw-AAf">

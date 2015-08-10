@@ -8,6 +8,7 @@
 
 import UIKit
 import HCSStarRatingView
+import Haneke
 
 class SummaryView: UIView, HotelDetailsViewProtocol{
     @IBOutlet weak var hotelName: UILabel!
@@ -29,12 +30,12 @@ class SummaryView: UIView, HotelDetailsViewProtocol{
     @IBOutlet weak var payAccomodation: UILabel!
     
     @IBOutlet weak var localCurrencyText: UILabel!
-    
 
-    func attach(accomodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest) {
-        hotelName.text = accomodation.name
-        hotelAddress.text = AccommodationRender.address(accomodation)
-        hotelStars.value = CGFloat(accomodation.starRating)
+
+    func attach(accommodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest) {
+        hotelName.text = accommodation.name
+        hotelAddress.text = AccommodationRender.address(accommodation)
+        hotelStars.value = CGFloat(accommodation.starRating)
         
         let formatter = NSDateIntervalFormatter()
         formatter.dateStyle = NSDateIntervalFormatterStyle.MediumStyle
@@ -50,7 +51,7 @@ class SummaryView: UIView, HotelDetailsViewProtocol{
         let persons  = availabilityRequest.persons()
         guests.text = guests == 1 ? "\(persons) Guest" : "\(persons) Guests"
         
-        let rate = AccommodationUtils.findRate(rateId, accommodation: accomodation)
+        let rate = AccommodationUtils.findRate(rateId, accommodation: accommodation)
         roomName.text = rate!.name
         roomTags.text = AccommodationRender.rateTags(rate!)
         
@@ -62,13 +63,17 @@ class SummaryView: UIView, HotelDetailsViewProtocol{
         totalPrice.text = priceRender.total(rate!)
         
         payToday.text=priceRender.prepaid(rate!)
-        payAccomodation.text=priceRender.postpaid(rate!, postpaidCurrencyCode: accomodation.postpaidCurrency)
+        payAccomodation.text=priceRender.postpaid(rate!, postpaidCurrencyCode: accommodation.postpaidCurrency)
 
         let prepaidPrice = NSString(string: rate!.payment.prepaid[availabilityRequest.currency]!).doubleValue
         if prepaidPrice < 0.01 {
-            localCurrencyText.text = "You will pay in local currency (\(accomodation.postpaidCurrency))"
+            localCurrencyText.text = "You will pay in local currency (\(accommodation.postpaidCurrency))"
         } else {
             localCurrencyText.hidden = true
         }
+
+        
     }
+    
+
 }
