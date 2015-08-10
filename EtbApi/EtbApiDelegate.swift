@@ -13,5 +13,8 @@ protocol EtbApiDelegate {
 
     optional func detailsSuccessResult(result:AccommodationDetails)
     optional func detailsErrorResult(error:NSError)
+    
+    optional func orderSuccessResult(result:OrderResult)
+    optional func orderErrorResult(error:NSError)
 
 }

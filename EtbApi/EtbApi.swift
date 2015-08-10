@@ -81,4 +81,94 @@ class EtbApi {
         }
 
     }
+    
+    func order(request: AvailabilityRequest, personal: Personal, payment: Payment, rateKey: String, rateCount: Int, remarks: String) {
+        let apiKey = self.config.apiKey
+        
+        let ips = getIFAddresses()
+        let query : [String : AnyObject] = [
+            "currency": request.currency,
+            "lang" : request.language,
+            "customerIP" : ips[0],
+            "personal" : [
+                "firstName": personal.firstName,
+                "lastName": personal.lastName,
+                "phone": personal.phone,
+                "country": personal.country,
+                "email": personal.email
+            ],
+            "payment" : [
+                "type" : payment.type,
+                "data" : [
+                    "ccNr" : payment.data.ccNr,
+                    "ccCvc" : payment.data.ccCvc,
+                    "ccFirstName" : payment.data.ccFirstName,
+                    "ccLastName" : payment.data.ccLastName,
+                    "ccExpiryMonth" : payment.data.ccExpiryMonth,
+                    "ccExpiryYear" : payment.data.ccExpiryYear
+                ],
+                "billingAddress" : [
+                    "country" : payment.billingAddress.country,
+                    "state" : payment.billingAddress.state,
+                    "city"  : payment.billingAddress.city,
+                    "address": payment.billingAddress.address,
+                    "postalCode": payment.billingAddress.postalCode
+                ]
+            ],
+            "rates" : [
+                [
+                    "rateKey" : rateKey,
+                    "rateCount": rateCount,
+                    "beds" : [],
+                    "remarks" : remarks
+                ]
+            ]
+        ]
+        
+        Alamofire.request(.POST, self.config.serverBaseSecure + "/orders?\(apiKey)", parameters: query, encoding: .JSON)
+            .responseObject { (request, response, results: Result<OrderResult>) in
+                if let delegate = self.delegate {
+                    if results.isFailure {
+                        delegate.orderErrorResult!(results.error!)
+                        return;
+                    }
+                    // TODO: handle errors in response
+                    delegate.orderSuccessResult!(results.value!)
+                }
+        }
+    }
+    
+    
+    func getIFAddresses() -> [String] {
+        var addresses = [String]()
+        
+        // Get list of all interfaces on the local machine:
+        var ifaddr : UnsafeMutablePointer<ifaddrs> = nil
+        if getifaddrs(&ifaddr) == 0 {
+            
+            // For each interface ...
+            for (var ptr = ifaddr; ptr != nil; ptr = ptr.memory.ifa_next) {
+                let flags = Int32(ptr.memory.ifa_flags)
+                var addr = ptr.memory.ifa_addr.memory
+                
+                // Check for running IPv4, IPv6 interfaces. Skip the loopback interface.
+                if (flags & (IFF_UP|IFF_RUNNING|IFF_LOOPBACK)) == (IFF_UP|IFF_RUNNING) {
+                    if addr.sa_family == UInt8(AF_INET) || addr.sa_family == UInt8(AF_INET6) {
+                        
+                        // Convert interface address to a human readable string:
+                        var hostname = [CChar](count: Int(NI_MAXHOST), repeatedValue: 0)
+                        if (getnameinfo(&addr, socklen_t(addr.sa_len), &hostname, socklen_t(hostname.count),
+                            nil, socklen_t(0), NI_NUMERICHOST) == 0) {
+                                if let address = String.fromCString(hostname) {
+                                    addresses.append(address)
+                                }
+                        }
+                    }
+                }
+            }
+            freeifaddrs(ifaddr)
+        }
+        
+        return addresses
+    }
 }

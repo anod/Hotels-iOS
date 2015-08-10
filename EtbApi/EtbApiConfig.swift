@@ -7,17 +7,22 @@ import Foundation
 
 struct EtbApiConfig {
     private let defaultApiServerBase = "http://api.easytobook.com/v1"
-    var apiKey = "";
-    var serverBase = "";
+    private let defaultApiServerBaseSecure = "https://api.easytobook.com/v1"
+
+    var apiKey = ""
+    var serverBase = ""
+    var serverBaseSecure = ""
 
     init(apiKey: String) {
-        self.apiKey = apiKey;
-        self.serverBase = defaultApiServerBase;
+        self.apiKey = apiKey
+        self.serverBase = defaultApiServerBase
+        self.serverBaseSecure = defaultApiServerBaseSecure
     }
 
-    init(apiKey: String, serverBase: String) {
-        self.apiKey = apiKey;
-        self.serverBase = serverBase;
+    init(apiKey: String, serverBase: String, serverBaseSecure: String) {
+        self.apiKey = apiKey
+        self.serverBase = serverBase
+        self.serverBaseSecure = serverBaseSecure
     }
 
 }

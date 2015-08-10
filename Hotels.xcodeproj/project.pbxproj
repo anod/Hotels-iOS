@@ -15,7 +15,11 @@
 		524D4E201B71FFB9007BA82E /* MapTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D4E1F1B71FFB9007BA82E /* MapTitleView.xib */; };
 		524D4E231B71FFE2007BA82E /* AutocompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D4E211B71FFE2007BA82E /* AutocompleteTableViewCell.swift */; };
 		524D4E241B71FFE2007BA82E /* MapLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D4E221B71FFE2007BA82E /* MapLabel.xib */; };
+		527724F01B79325C0049271B /* Personal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527724EF1B79325C0049271B /* Personal.swift */; };
+		527724F21B79328B0049271B /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527724F11B79328B0049271B /* Payment.swift */; };
+		527724F41B7936030049271B /* OrderResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527724F31B7936030049271B /* OrderResult.swift */; };
 		528407041B792D4D001E4FE9 /* ConfirmationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528407031B792D4D001E4FE9 /* ConfirmationController.swift */; };
+		528407061B792EDC001E4FE9 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528407051B792EDC001E4FE9 /* Order.swift */; };
 		529031B81B74DE0F006ED651 /* PriceRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529031B71B74DE0F006ED651 /* PriceRender.swift */; };
 		529031BA1B75E4F0006ED651 /* BookingScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529031B91B75E4F0006ED651 /* BookingScreenController.swift */; };
 		529031BD1B75E976006ED651 /* HotelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529031BB1B75E976006ED651 /* HotelDetailsCell.swift */; };
@@ -85,7 +89,11 @@
 		524D4E1F1B71FFB9007BA82E /* MapTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapTitleView.xib; sourceTree = "<group>"; };
 		524D4E211B71FFE2007BA82E /* AutocompleteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteTableViewCell.swift; sourceTree = "<group>"; };
 		524D4E221B71FFE2007BA82E /* MapLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapLabel.xib; sourceTree = "<group>"; };
+		527724EF1B79325C0049271B /* Personal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Personal.swift; sourceTree = "<group>"; };
+		527724F11B79328B0049271B /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		527724F31B7936030049271B /* OrderResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderResult.swift; sourceTree = "<group>"; };
 		528407031B792D4D001E4FE9 /* ConfirmationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationController.swift; sourceTree = "<group>"; };
+		528407051B792EDC001E4FE9 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		529031B71B74DE0F006ED651 /* PriceRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceRender.swift; sourceTree = "<group>"; };
 		529031B91B75E4F0006ED651 /* BookingScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingScreenController.swift; sourceTree = "<group>"; };
 		529031BB1B75E976006ED651 /* HotelDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsCell.swift; sourceTree = "<group>"; };
@@ -286,6 +294,10 @@
 				52944F181B71E64300849A61 /* Rate.swift */,
 				52944F191B71E64300849A61 /* SearchMeta.swift */,
 				52944F1A1B71E64300849A61 /* SearchRequest.swift */,
+				528407051B792EDC001E4FE9 /* Order.swift */,
+				527724EF1B79325C0049271B /* Personal.swift */,
+				527724F11B79328B0049271B /* Payment.swift */,
+				527724F31B7936030049271B /* OrderResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -556,6 +568,7 @@
 				52944F3A1B71E64300849A61 /* UIImage+ImageEffects.m in Sources */,
 				524D4E171B71F8F4007BA82E /* GooglePlacesDelegate.swift in Sources */,
 				528407041B792D4D001E4FE9 /* ConfirmationController.swift in Sources */,
+				528407061B792EDC001E4FE9 /* Order.swift in Sources */,
 				52944F251B71E64300849A61 /* AlamofireObjectExtension.swift in Sources */,
 				52944F291B71E64300849A61 /* Stars.swift in Sources */,
 				52944F321B71E64300849A61 /* AvailabilityRequest.swift in Sources */,
@@ -569,6 +582,7 @@
 				52944F691B71E77200849A61 /* HotelDetailsImportantInformation.swift in Sources */,
 				52944F671B71E77200849A61 /* HotelDetailsHeader.swift in Sources */,
 				52944F361B71E64300849A61 /* SearchRequest.swift in Sources */,
+				527724F01B79325C0049271B /* Personal.swift in Sources */,
 				52944F281B71E64300849A61 /* Sort.swift in Sources */,
 				52944F2A1B71E64300849A61 /* EtbApi.swift in Sources */,
 				52FB315C1B7797B500F234B5 /* AccommodationUtils.swift in Sources */,
@@ -576,6 +590,7 @@
 				52FB315A1B778FB200F234B5 /* AccommodationRender.swift in Sources */,
 				529031C51B75ECBB006ED651 /* UILabel.swift in Sources */,
 				529031BD1B75E976006ED651 /* HotelDetailsCell.swift in Sources */,
+				527724F21B79328B0049271B /* Payment.swift in Sources */,
 				52CD98781B78766200DDD7EE /* ErrorAlertView.swift in Sources */,
 				52CD987E1B78D4E800DDD7EE /* ColorUtils.swift in Sources */,
 				52944F5A1B71E77200849A61 /* HotelDetailsController.swift in Sources */,
@@ -593,6 +608,7 @@
 				52944F261B71E64300849A61 /* AccType.swift in Sources */,
 				52944F661B71E77200849A61 /* HotelDetailsFacilities.swift in Sources */,
 				529031C31B75E9C0006ED651 /* SummaryView.swift in Sources */,
+				527724F41B7936030049271B /* OrderResult.swift in Sources */,
 				52944F381B71E64300849A61 /* StoryCommentCell.m in Sources */,
 				524D4E231B71FFE2007BA82E /* AutocompleteTableViewCell.swift in Sources */,
 			);

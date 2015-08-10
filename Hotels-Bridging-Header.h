@@ -19,5 +19,6 @@
 @import CoreVideo;
 @import MobileCoreServices;
 
+#include <ifaddrs.h>
 
 #endif
