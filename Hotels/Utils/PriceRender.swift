@@ -37,5 +37,39 @@ class PriceRender {
         
     }
     
+    func taxes(rate: Rate) -> String {
+        let prepaidPrice = NSString(string: rate.payment.prepaid[currencyCode]!).doubleValue
+        let postpaidPrice = NSString(string: rate.payment.postpaid[currencyCode]!).doubleValue
+        
+        let totalPrice = prepaidPrice + postpaidPrice;
+        
+        let totalNetPrice = NSString(string: rate.totalNetRate[currencyCode]!).doubleValue
+        
+        return self.formatter.stringFromNumber(totalPrice - totalNetPrice)!
+    }
     
+ 
+    func total(rate: Rate) -> String {
+        let prepaidPrice = NSString(string: rate.payment.prepaid[currencyCode]!).doubleValue
+        let postpaidPrice = NSString(string: rate.payment.postpaid[currencyCode]!).doubleValue
+        
+        let totalPrice = prepaidPrice + postpaidPrice;
+        
+        return self.formatter.stringFromNumber(totalPrice)!
+    }
+    
+    func prepaid(rate: Rate) -> String {
+        let prepaidPrice = NSString(string: rate.payment.prepaid[currencyCode]!).doubleValue
+        return self.formatter.stringFromNumber(prepaidPrice)!
+    }
+    
+    func postpaid(rate: Rate, postpaidCurrencyCode: String) -> String {
+        let postpaidPrice = NSString(string: rate.payment.postpaid[postpaidCurrencyCode]!).doubleValue
+        
+        let postpaidFormatter = NSNumberFormatter()
+        postpaidFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        postpaidFormatter.currencyCode = postpaidCurrencyCode
+        
+        return postpaidFormatter.stringFromNumber(postpaidPrice)!
+    }
 }

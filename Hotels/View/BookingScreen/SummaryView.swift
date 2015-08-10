@@ -54,7 +54,21 @@ class SummaryView: UIView, HotelDetailsViewProtocol{
         roomName.text = rate!.name
         roomTags.text = AccommodationRender.rateTags(rate!)
         
+        let priceRender = PriceRender(currencyCode: availabilityRequest.currency, short: false)
         
+        roomPrice.text = priceRender.render(rate!)
+        taxesAndFees.text = priceRender.taxes(rate!)
         
+        totalPrice.text = priceRender.total(rate!)
+        
+        payToday.text=priceRender.prepaid(rate!)
+        payAccomodation.text=priceRender.postpaid(rate!, postpaidCurrencyCode: accomodation.postpaidCurrency)
+
+        let prepaidPrice = NSString(string: rate!.payment.prepaid[availabilityRequest.currency]!).doubleValue
+        if prepaidPrice < 0.01 {
+            localCurrencyText.text = "You will pay in local currency (\(accomodation.postpaidCurrency))"
+        } else {
+            localCurrencyText.hidden = true
+        }
     }
 }

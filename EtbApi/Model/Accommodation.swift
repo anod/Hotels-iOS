@@ -32,6 +32,8 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
         self.images = representation.valueForKey("images") as! [String]
         self.fromPrice = representation.valueForKey("fromPrice") as! [String: String]
         self.mainFacilities = representation.valueForKey("mainFacilities") as? [Int]
+        self.postpaidCurrency = representation.valueForKey("postpaidCurrency") as! String
+        
         
         self.summary.address = representation.valueForKeyPath("summary.address") as? String
         self.summary.zipcode = representation.valueForKeyPath("summary.zipcode") as? String

@@ -69,6 +69,8 @@
 		52944F6C1B71E77200849A61 /* HotelDetailsRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52944F551B71E77200849A61 /* HotelDetailsRoom.swift */; };
 		52CD98781B78766200DDD7EE /* ErrorAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD98771B78766200DDD7EE /* ErrorAlertView.swift */; };
 		52CD987A1B7878AA00DDD7EE /* MapTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD98791B7878AA00DDD7EE /* MapTitleView.swift */; };
+		52CD987C1B78D3E400DDD7EE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD987B1B78D3E400DDD7EE /* CalendarViewController.swift */; };
+		52CD987E1B78D4E800DDD7EE /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD987D1B78D4E800DDD7EE /* ColorUtils.swift */; };
 		52FB315A1B778FB200F234B5 /* AccommodationRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB31591B778FB200F234B5 /* AccommodationRender.swift */; };
 		52FB315C1B7797B500F234B5 /* AccommodationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB315B1B7797B500F234B5 /* AccommodationUtils.swift */; };
 /* End PBXBuildFile section */
@@ -144,6 +146,8 @@
 		52944F701B71E7B200849A61 /* Hotels-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hotels-Bridging-Header.h"; sourceTree = "<group>"; };
 		52CD98771B78766200DDD7EE /* ErrorAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlertView.swift; sourceTree = "<group>"; };
 		52CD98791B7878AA00DDD7EE /* MapTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTitleView.swift; sourceTree = "<group>"; };
+		52CD987B1B78D3E400DDD7EE /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		52CD987D1B78D4E800DDD7EE /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
 		52FB31591B778FB200F234B5 /* AccommodationRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationRender.swift; sourceTree = "<group>"; };
 		52FB315B1B7797B500F234B5 /* AccommodationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationUtils.swift; sourceTree = "<group>"; };
 		8C8EC5713852931E685C7D11 /* Pods-Hotels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hotels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hotels/Pods-Hotels.release.xcconfig"; sourceTree = "<group>"; };
@@ -314,6 +318,7 @@
 				52944F3D1B71E77200849A61 /* HotelDetailsController.swift */,
 				52944F3E1B71E77200849A61 /* MapViewController.swift */,
 				529031B91B75E4F0006ED651 /* BookingScreenController.swift */,
+				52CD987B1B78D3E400DDD7EE /* CalendarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -351,6 +356,7 @@
 				529031B71B74DE0F006ED651 /* PriceRender.swift */,
 				52FB31591B778FB200F234B5 /* AccommodationRender.swift */,
 				52FB315B1B7797B500F234B5 /* AccommodationUtils.swift */,
+				52CD987D1B78D4E800DDD7EE /* ColorUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -567,7 +573,9 @@
 				529031C51B75ECBB006ED651 /* UILabel.swift in Sources */,
 				529031BD1B75E976006ED651 /* HotelDetailsCell.swift in Sources */,
 				52CD98781B78766200DDD7EE /* ErrorAlertView.swift in Sources */,
+				52CD987E1B78D4E800DDD7EE /* ColorUtils.swift in Sources */,
 				52944F5A1B71E77200849A61 /* HotelDetailsController.swift in Sources */,
+				52CD987C1B78D3E400DDD7EE /* CalendarViewController.swift in Sources */,
 				52944F311B71E64300849A61 /* AccommodationsResults.swift in Sources */,
 				52CD987A1B7878AA00DDD7EE /* MapTitleView.swift in Sources */,
 				529031C21B75E9C0006ED651 /* FormView.swift in Sources */,

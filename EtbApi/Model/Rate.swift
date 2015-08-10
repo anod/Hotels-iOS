@@ -19,7 +19,7 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
     var rateKey: String?
     var tags: Tags!
     var baseRate = [String:String]()
-    var totalNetRate = [String:String]?()
+    var totalNetRate = [String:String]()
     var specialOffers = [SpecialOffers]()
     
     
@@ -31,6 +31,8 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
         self.payment = Payment()
         self.payment.prepaid = representation.valueForKeyPath("payment.prepaid") as! [String: String]
         self.payment.postpaid = representation.valueForKeyPath("payment.postpaid") as! [String: String]
+        
+        self.totalNetRate = representation.valueForKeyPath("totalNetRate") as! [String: String]
         
         self.tags = Tags()
         self.tags.breakfastIncluded = representation.valueForKeyPath("tags.breakfastIncluded") as! Bool

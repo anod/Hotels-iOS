@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate {
+class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate, MapTitleViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var autocompleteResults: UITableView!
@@ -46,8 +46,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         updateMapLocation(false)
         
         let titleView = UIView.loadViewFromNib("MapTitleView", theClass: self) as! MapTitleView
-        //toolbar.setBackgroundImage(UIImage(), forToolbarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
-        //toolbar.backgroundColor = UIColor.clearColor()
+        titleView.request = request
+        titleView.delegate = self
         
         toolbar.items?.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil))
         toolbar.items?.append(UIBarButtonItem(customView: titleView))
@@ -79,6 +79,22 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     
     func filterAction() {
         print("filter")
+    }
+    
+    func showCalendar(source: UIButton) {
+        let cc = mainStoryboard().instantiateViewControllerWithIdentifier("CalendarViewController") as! CalendarViewController
+        cc.request = request
+        
+        cc.preferredContentSize = CGSizeMake(256,300)
+        
+        cc.modalPresentationStyle = .Popover
+        
+        let hdPopoverController = cc.popoverPresentationController
+        hdPopoverController?.permittedArrowDirections = .Any
+        hdPopoverController?.sourceView = source
+        hdPopoverController?.sourceRect = source.bounds
+        presentViewController(cc,animated: true, completion: nil)
+        
     }
     
     func updateMapLocation(animated: Bool) {
@@ -157,7 +173,6 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         priceLabel.layer.cornerRadius = 8;
         priceLabel.clipsToBounds = true
         priceLabel.lineBreakMode = NSLineBreakMode.ByClipping
-        
         
         priceLabel.text=" " + priceRender.render(annotation.accommodation.rates[0]) + "  "
         priceLabel.sizeToFit()
