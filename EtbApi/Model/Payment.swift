@@ -10,8 +10,8 @@ import Foundation
 
 class Payment {
     var type: String!
-    var data: CreditCardData!
-    var billingAddress: Address!
+    var data = CreditCardData()
+    var billingAddress = Address()
     
     class CreditCardData {
         var ccNr: String!

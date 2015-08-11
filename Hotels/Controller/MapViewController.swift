@@ -9,12 +9,13 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate, MapTitleViewDelegate {
+class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var autocompleteResults: UITableView!
     @IBOutlet weak var hotelDetailsCollection: HotelDetailsCollectionView!
     @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var datesTitleView: UIButton!
     
     var request: SearchRequest!
     var api: EtbApi!
@@ -44,19 +45,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         mapView.delegate = self
         
         updateMapLocation(false)
-        
-        let titleView = UIView.loadViewFromNib("MapTitleView", theClass: self) as! MapTitleView
-        titleView.request = request
-        titleView.delegate = self
-        
-        toolbar.items?.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil))
-        toolbar.items?.append(UIBarButtonItem(customView: titleView))
-        toolbar.items?.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil))
-        toolbar.items?.append(UIBarButtonItem(image: UIImage(named: "Filter"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("filterAction")))
-            
-
-        let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida")
-        api = EtbApi(config: apiConfig)
+     
+        api = ApiUtils.create()
         api.delegate = self
                
         self.hotelDetailsCollection.backView = mapView
@@ -77,26 +67,6 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         return UIStatusBarStyle.LightContent
     }
     
-    func filterAction() {
-        print("filter")
-    }
-    
-    func showCalendar(source: UIButton) {
-        let cc = mainStoryboard().instantiateViewControllerWithIdentifier("CalendarViewController") as! CalendarViewController
-        cc.request = request
-        
-        cc.preferredContentSize = CGSizeMake(256,300)
-        
-        cc.modalPresentationStyle = .Popover
-        
-        let hdPopoverController = cc.popoverPresentationController
-        hdPopoverController?.permittedArrowDirections = .Any
-        hdPopoverController?.sourceView = source
-        hdPopoverController?.sourceRect = source.bounds
-        presentViewController(cc,animated: true, completion: nil)
-        
-    }
-    
     func updateMapLocation(animated: Bool) {
         let location = CLLocationCoordinate2D(latitude: request.lat, longitude: request.lon)
         let span = MKCoordinateSpanMake(cSpan, cSpan)
@@ -106,7 +76,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     
    
     override func viewDidAppear(animated: Bool) {
-        api.search(request,offset: 0,limit: 15)
+        api.search(request,offset: 0,limit: 50)
     }
 
     func searchSuccessResult(result:AccommodationsResults) {

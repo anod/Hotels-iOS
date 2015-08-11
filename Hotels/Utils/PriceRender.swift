@@ -47,7 +47,11 @@ class PriceRender {
         
         return self.formatter.stringFromNumber(totalPrice - totalNetPrice)!
     }
-    
+ 
+    func online(rate: Rate) -> String {
+        let prepaidPrice = NSString(string: rate.totalNetRate[currencyCode]!).doubleValue
+        return self.formatter.stringFromNumber(prepaidPrice)!
+    }
  
     func total(rate: Rate) -> String {
         let prepaidPrice = NSString(string: rate.payment.prepaid[currencyCode]!).doubleValue

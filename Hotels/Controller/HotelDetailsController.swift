@@ -54,8 +54,7 @@ var isPinned = false
         
         cheapestRate = self.accommodation.rates[0].rateId
         
-        let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida")
-        api = EtbApi(config: apiConfig)
+        api = ApiUtils.create()
         api.delegate = self
         api.details(self.accommodation.id, request: self.availabilityRequest)
     }

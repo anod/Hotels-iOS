@@ -8,10 +8,12 @@
 
 import UIKit
 
-class BookingScreenController: UIViewController {
+class BookingScreenController: UIViewController, EtbApiDelegate {
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var summary: SummaryView!
     @IBOutlet weak var form: FormView!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    @IBOutlet weak var bookButton: UIButton!
 
     var accomodation: Accommodation!
     var rateId : String!
@@ -20,10 +22,36 @@ class BookingScreenController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        form.parentController = self
         summary.attach(accomodation, rateId: rateId, availabilityRequest: availabilityRequest)
-        
+
         backButton.target = self
         backButton.action = Selector("backButtonAction")
+
+        //let rate = AccommodationUtils.findRate(rateId, accommodation: accomodation)
+        
+
+        
+    }
+    
+    @IBAction func bookAction(sender: UIButton) {
+        loadingView.hidden = false
+        bookButton.enabled = false
+
+        let api = ApiUtils.create()
+        api.delegate = self
+    }
+    
+    func orderSuccessResult(result:OrderResult) {
+        loadingView.hidden = true
+        bookButton.enabled = true
+        
+        
+    }
+    
+    func orderErrorResult(error:NSError) {
+        loadingView.hidden = true
+        bookButton.enabled = true
     }
     
     func backButtonAction() {

@@ -57,7 +57,7 @@ class SummaryView: UIView, HotelDetailsViewProtocol{
         
         let priceRender = PriceRender(currencyCode: availabilityRequest.currency, short: false)
         
-        roomPrice.text = priceRender.render(rate!)
+        roomPrice.text = priceRender.online(rate!)
         taxesAndFees.text = priceRender.taxes(rate!)
         
         totalPrice.text = priceRender.total(rate!)
