@@ -30,7 +30,7 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
     var api: EtbApi!
     
     var heightCache = [String: CGFloat]()
-var isPinned = false
+    var isPinned = false
     var cheapestRate: String!
     
     var cells = [
@@ -125,7 +125,8 @@ var isPinned = false
     }
 
     func detailsErrorResult(error:NSError) {
-        // TODO: Show error message
+        ErrorAlertView.show("Availability request failed. Please try again", controller: self)
+        print(error)
     }
     
     

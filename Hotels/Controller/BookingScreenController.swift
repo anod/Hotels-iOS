@@ -18,7 +18,9 @@ class BookingScreenController: UIViewController, EtbApiDelegate {
     var accomodation: Accommodation!
     var rateId : String!
     var availabilityRequest: AvailabilityRequest!
-
+    var api: EtbApi!
+    var rate: Rate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,8 +30,10 @@ class BookingScreenController: UIViewController, EtbApiDelegate {
         backButton.target = self
         backButton.action = Selector("backButtonAction")
 
-        //let rate = AccommodationUtils.findRate(rateId, accommodation: accomodation)
+        rate = AccommodationUtils.findRate(rateId, accommodation: accomodation)
         
+        api = ApiUtils.create()
+        api.delegate = self
 
         
     }
@@ -38,23 +42,44 @@ class BookingScreenController: UIViewController, EtbApiDelegate {
         loadingView.hidden = false
         bookButton.enabled = false
 
-        let api = ApiUtils.create()
-        api.delegate = self
+        let personal = form.getPersonal()
+        let payment = form.getPayment()
+        let remarks = form.getSpecialRequest()
+        let rateKey = rate.rateKey
+        
+        api.order(availabilityRequest, personal: personal, payment: payment, rateKey: rateKey!, rateCount: 1, remarks: remarks)
+        
     }
     
     func orderSuccessResult(result:OrderResult) {
         loadingView.hidden = true
         bookButton.enabled = true
         
+        let vc = mainStoryboard().instantiateViewControllerWithIdentifier("ConfirmationController") as! ConfirmationController
+        vc.accomodation = accomodation
+        vc.rateId = rateId
+        vc.availabilityRequest = availabilityRequest
+        vc.result = result
+        vc.orderId = result.order?.orderId
         
+        presentViewController(vc, animated: true, completion: nil)
     }
     
     func orderErrorResult(error:NSError) {
         loadingView.hidden = true
         bookButton.enabled = true
+        
+        ErrorAlertView.show("\(error.localizedDescription)", controller: self)
+        print(error)
     }
     
     func backButtonAction() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func mainStoryboard() -> UIStoryboard
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        return storyboard
     }
 }

@@ -11,9 +11,16 @@ class Meta : NSObject, ResponseObjectSerializable {
     var statusCode:Int = 0
     var clientCurrency:String?
 
+    var errorCode: Int?
+    var errorMessage:String?
+    
     required init(response: NSHTTPURLResponse, representation: AnyObject) {
         self.statusCode = representation.valueForKeyPath("statusCode") as! Int
         self.clientCurrency = representation.valueForKeyPath("clientCurrency") as? String
+        
+        self.errorCode = representation.valueForKeyPath("errorCode") as? Int
+        self.errorMessage = representation.valueForKeyPath("errorMessage") as? String
+        
     }
 
 }

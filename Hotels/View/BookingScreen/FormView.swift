@@ -81,6 +81,7 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
         payment.data.ccNr = ccNumber.text
         payment.data.ccExpiryMonth = 0 // TODO
         payment.data.ccExpiryYear = 0 // TODO
+        payment.data.ccCvc = ccCVV.text
         
         payment.billingAddress.country = country.text
         payment.billingAddress.postalCode = postcode.text

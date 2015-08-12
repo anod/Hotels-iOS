@@ -230,7 +230,6 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         vc.isPinned = true
         vc.delegate = self
         
-        print(indexPath.item)
         return hotelDetailsCell
     }
     

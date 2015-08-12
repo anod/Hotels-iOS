@@ -15,6 +15,8 @@ class ConfirmationController: UIViewController {
     var accomodation: Accommodation!
     var rateId : String!
     var availabilityRequest: AvailabilityRequest!
+    var orderId: Int!
+    var result: OrderResult?
     
     override func viewDidLoad() {
         super.viewDidLoad()

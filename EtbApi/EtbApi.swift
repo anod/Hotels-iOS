@@ -49,8 +49,14 @@ class EtbApi {
                             delegate.searchErrorResult!(results.error!)
                             return;
                         }
-                        // TODO: handle errors in response
-                        delegate.searchSuccessResult!(results.value!)
+                        
+                        if (results.value?.meta!.statusCode == 200) {
+                            delegate.searchSuccessResult!(results.value!)
+                        } else {
+                            let msg = NSString(string: (results.value?.meta!.errorMessage)!)
+                            let error = NSError(domain: "EtbApi", code: (results.value?.meta!.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
+                            delegate.searchErrorResult!(error)
+                        }
                     }
             }
     }
@@ -75,8 +81,14 @@ class EtbApi {
                         delegate.detailsErrorResult!(results.error!)
                         return;
                     }
-                    // TODO: handle errors in response
-                    delegate.detailsSuccessResult!(results.value!)
+                    
+                    if (results.value?.meta.statusCode == 200) {
+                        delegate.detailsSuccessResult!(results.value!)
+                    } else {
+                        let msg = NSString(string: (results.value?.meta.errorMessage)!)
+                        let error = NSError(domain: "EtbApi", code: (results.value?.meta.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
+                        delegate.detailsErrorResult!(error)
+                    }
                 }
         }
 
@@ -125,15 +137,20 @@ class EtbApi {
             ]
         ]
         
-        Alamofire.request(.POST, self.config.serverBaseSecure + "/orders?\(apiKey)", parameters: query, encoding: .JSON)
+        Alamofire.request(.POST, self.config.serverBaseSecure + "/orders/?apiKey=\(apiKey)", parameters: query, encoding: .JSON)
             .responseObject { (request, response, results: Result<OrderResult>) in
                 if let delegate = self.delegate {
                     if results.isFailure {
                         delegate.orderErrorResult!(results.error!)
                         return;
                     }
-                    // TODO: handle errors in response
-                    delegate.orderSuccessResult!(results.value!)
+                    if (results.value?.meta.statusCode == 200) {
+                        delegate.orderSuccessResult!(results.value!)
+                    } else {
+                        let msg = NSString(string: (results.value?.meta.errorMessage)!)
+                        let error = NSError(domain: "EtbApi", code: (results.value?.meta.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
+                        delegate.orderErrorResult!(error)
+                    }
                 }
         }
     }

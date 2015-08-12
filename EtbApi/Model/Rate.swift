@@ -26,6 +26,7 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
     required init(response: NSHTTPURLResponse, representation: AnyObject) {
         self.name = representation.valueForKeyPath("name") as! String
         self.rateId = String(representation.valueForKeyPath("rateId"))
+        self.rateKey = representation.valueForKeyPath("rateKey") as? String
         self.capacity = representation.valueForKeyPath("capacity") as! Int
         
         self.payment = Payment()
