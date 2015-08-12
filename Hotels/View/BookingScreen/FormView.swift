@@ -23,7 +23,7 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
     @IBOutlet weak var ccFirstName: UITextField!
     @IBOutlet weak var ccLastName: UITextField!
     @IBOutlet weak var ccNumber: UITextField!
-    @IBOutlet weak var ccExpiration: UITextField!
+    @IBOutlet weak var ccExpiration: UIButton!
     @IBOutlet weak var ccCVV: UITextField!
     
     @IBOutlet weak var specialRequest: UITextField!
@@ -35,11 +35,23 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        ccExpiration.backgroundColor = UIColor.clearColor()
+        ccExpiration.layer.cornerRadius = 5
+        ccExpiration.layer.borderWidth = 1
+        ccExpiration.layer.borderColor = UIColor.lightGrayColor().CGColor
+        
         // Do any additional setup after loading the view, typically from a nib.
         CardIOUtilities.preload()
     }
     
-
+    @IBAction func ccNumberChange(sender: AnyObject) {
+        if let number = ccNumber.text {
+            print(number)
+            let type = EtbApiUtils.detectCreditCard(number)
+            print(type)
+        }
+    }
+    
     @IBAction func scanCard(sender: AnyObject) {
         let cardIOVC = CardIOPaymentViewController(paymentDelegate: self)
         cardIOVC.modalPresentationStyle = .FormSheet
