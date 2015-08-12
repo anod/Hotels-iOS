@@ -9,13 +9,15 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate {
+class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate, PersonsPickerControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var autocompleteResults: UITableView!
     @IBOutlet weak var hotelDetailsCollection: HotelDetailsCollectionView!
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var datesTitleView: UIButton!
+    
+    @IBOutlet weak var personsTitleView: UIButton!
     
     var request: SearchRequest!
     var api: EtbApi!
@@ -67,6 +69,20 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         return UIStatusBarStyle.LightContent
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PersonsController" {
+            let vc = segue.destinationViewController as! PersonsPickerController
+            vc.delegate = self
+            vc.selectedValue = request.persons()
+        }
+    }
+    
+    func onSelectPersons(value: Int) {
+        request.capacity = [value]
+        personsTitleView.setTitle(String(value), forState: UIControlState.Normal)
+        requestAvailability()
+    }
+    
     func updateMapLocation(animated: Bool) {
         let location = CLLocationCoordinate2D(latitude: request.lat, longitude: request.lon)
         let span = MKCoordinateSpanMake(cSpan, cSpan)
@@ -76,9 +92,16 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     
    
     override func viewDidAppear(animated: Bool) {
-        api.search(request,offset: 0,limit: 50)
+        requestAvailability()
     }
 
+    func requestAvailability() {
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        
+
+        api.search(request,offset: 0,limit: 50)
+    }
+    
     func searchSuccessResult(result:AccommodationsResults) {
         
         for accomodation in result.accommodations {
@@ -104,9 +127,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         
         updateMapLocation(true)
         
-        self.mapView.removeAnnotations(self.mapView.annotations)
-        
-        api.search(request,offset: 0,limit: 15)
+        requestAvailability()
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {

@@ -8,40 +8,58 @@
 
 import Foundation
 
-protocol PersonsPickerControllerDelegate {
-    func personsChanged(persons: Int)
+public protocol PersonsPickerControllerDelegate : NSObjectProtocol {
+    func onSelectPersons(value: Int)
 }
 
-class PersonsPickerController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource {
+class PersonsPickerController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    @IBOutlet weak var pickerView: UIPickerView!
     
-    @IBOutlet weak var personsPicker: UIPickerView!
+    var components = 1
+    var titles = [[String]()]
+    var values: [[Int]]!
     
-    var persons = 2
-    
+    var selectedValue: Int!
+    weak var delegate: PersonsPickerControllerDelegate? // default is nil. weak reference
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        personsPicker.delegate = self
-        personsPicker.dataSource = self
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
-        personsPicker.selectRow(persons - 1, inComponent: 0, animated: false)
+
+        values = [
+            [ 1, 2, 3, 4, 5, 6]
+        ]
         
+        for idx in 0...5 {
+            let value = values[0][idx]
+            titles[0].append(value == 1 ? "1 Guest" : "\(value) Guests")
+        }
         
+        setPickerValue(selectedValue, inComponent: 0)
+    }
+
+    
+    func setPickerValue(value: Int, inComponent component: Int) {
+        let row = values[component].indexOf(value)
+        pickerView.selectRow(row!, inComponent: component, animated: false)
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
+        return components
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 6
+        return values[component].count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return row == 0 ? "1 Guest" : "\(row+1) Guests"
+        return titles[component][row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
+        delegate!.onSelectPersons(values[component][row])
     }
 }
