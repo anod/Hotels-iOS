@@ -26,7 +26,6 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     var currentHotel: Accommodation! = nil
     var selectedAnnotation: AccommodationMKPointAnnotation!
     
-    var currency = "EUR"
     var popoverHotelDetailsController: HotelDetailsController!
     var priceRender: PriceRender!
     
@@ -39,6 +38,9 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         formatter.dateStyle = NSDateIntervalFormatterStyle.MediumStyle
         formatter.timeStyle = NSDateIntervalFormatterStyle.NoStyle
         
+        let locale = NSLocale.currentLocale()
+        let currency = locale.objectForKey(NSLocaleCurrencyCode) as! String
+        
         request = SearchRequest()
         request.lat = -33.86
         request.lon = 151.20
@@ -47,7 +49,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         
         datesTitleView.setTitle(formatter.stringFromDate(request.checkInDate, toDate: request.checkOutDate), forState: UIControlState.Normal)
         
-        priceRender = PriceRender(currencyCode: currency, short: true)
+        priceRender = PriceRender(currencyCode: request.currency, short: true)
         
         mapView.delegate = self
         
