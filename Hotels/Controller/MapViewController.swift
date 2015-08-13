@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate, PersonsPickerControllerDelegate {
+class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate, PersonsPickerControllerDelegate, CalendarViewControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var autocompleteResults: UITableView!
@@ -30,17 +30,22 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     var popoverHotelDetailsController: HotelDetailsController!
     var priceRender: PriceRender!
     
+    let formatter = NSDateIntervalFormatter()
     let cSpan:CLLocationDegrees = 0.09 // zoom 5/111
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        formatter.dateStyle = NSDateIntervalFormatterStyle.MediumStyle
+        formatter.timeStyle = NSDateIntervalFormatterStyle.NoStyle
+        
         request = SearchRequest()
         request.lat = -33.86
         request.lon = 151.20
         request.type = "spr"
         request.currency = currency
+        
+        datesTitleView.setTitle(formatter.stringFromDate(request.checkInDate, toDate: request.checkOutDate), forState: UIControlState.Normal)
         
         priceRender = PriceRender(currencyCode: currency, short: true)
         
@@ -74,8 +79,23 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
             let vc = segue.destinationViewController as! PersonsPickerController
             vc.delegate = self
             vc.selectedValue = request.persons()
+        } else if segue.identifier == "CalendarController" {
+            let vc = segue.destinationViewController as! CalendarViewController
+            vc.delegate = self
+            vc.checkInDate = request.checkInDate
+            vc.checkOutDate = request.checkOutDate
         }
     }
+    
+    func onDateChangeCheckIn(checkIn: NSDate, checkOut: NSDate) {
+        request.checkInDate = checkIn
+        request.checkOutDate = checkOut
+     
+        datesTitleView.setTitle(formatter.stringFromDate(request.checkInDate, toDate: request.checkOutDate), forState: UIControlState.Normal)
+        requestAvailability()
+
+    }
+
     
     func onSelectPersons(value: Int) {
         request.capacity = [value]

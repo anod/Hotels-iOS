@@ -110,7 +110,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Vho-rF-eDa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8pN-pa-yqk">
-                        <rect key="frame" x="0.0" y="0.0" width="256" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="256" height="260"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KPo-Xk-hev">
@@ -120,6 +120,9 @@
                                     <segment title="Departure"/>
                                 </segments>
                                 <color key="tintColor" red="0.85882352939999995" green="0.42352941179999998" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="vf4-kT-2V3" eventType="valueChanged" id="skZ-pb-ys1"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Aug 10 -11, 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0w-jO-8Qk">
                                 <rect key="frame" x="31" y="44" width="195" height="21"/>
@@ -133,34 +136,24 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCi-tr-Isp">
-                                <rect key="frame" x="84" y="262" width="89" height="30"/>
-                                <color key="backgroundColor" red="0.89411764709999997" green="0.4039215686" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Apply">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-pY-Spt">
                                 <rect key="frame" x="0.0" y="96" width="256" height="152"/>
                                 <color key="tintColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                 <date key="date" timeIntervalSinceReferenceDate="460911143.27556199">
                                     <!--2015-08-10 14:52:23 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="dateDidChange:" destination="vf4-kT-2V3" eventType="valueChanged" id="pSZ-vL-V2j"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="256" height="300"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="256" height="260"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="256" height="300"/>
+                    <size key="freeformSize" width="256" height="260"/>
                     <connections>
-                        <outlet property="applyButton" destination="SCi-tr-Isp" id="RuP-WN-9Uy"/>
                         <outlet property="currentDate" destination="B0w-jO-8Qk" id="abO-Qt-siC"/>
                         <outlet property="currentNights" destination="syo-jf-UC8" id="gsw-Py-dxa"/>
                         <outlet property="datePicker" destination="ecH-pY-Spt" id="SvW-Dg-G7m"/>
@@ -410,13 +403,13 @@
                                     <constraint firstAttribute="height" constant="44" id="5ws-6c-l6k"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mfc-6J-4zv"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="oRX-UV-lAC"/>
                                     <barButtonItem style="plain" id="a8x-Gh-to1">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="o1O-wb-KVp">
-                                            <rect key="frame" x="276" y="7" width="160" height="30"/>
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="o1O-wb-KVp">
+                                            <rect key="frame" x="62" y="7" width="200" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
-                                            <state key="normal" title=" 11 - 12 Aug, 2015" image="Dates"/>
+                                            <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <state key="normal" title=" Oct 31 - Dec 31 , 2015" image="Dates"/>
                                             <connections>
                                                 <segue destination="vf4-kT-2V3" kind="popoverPresentation" identifier="CalendarController" popoverAnchorBarButtonItem="a8x-Gh-to1" id="oO7-oX-JbI">
                                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -426,7 +419,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="bHf-ZK-BJX">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="x2o-o3-fvK">
-                                            <rect key="frame" x="446" y="7" width="46" height="30"/>
+                                            <rect key="frame" x="272" y="7" width="46" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
                                             <state key="normal" title="2" image="People"/>
