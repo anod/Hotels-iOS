@@ -8,21 +8,26 @@
 
 import Foundation
 
+protocol ExpirationPickerControllerDelegate : NSObjectProtocol {
+    func expirationDidSelectMonth(month: Int, year: Int)
+}
+
 class ExpirationPickerController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var pickerView: UIPickerView!
     
     var titles = [[String](), [String]()]
     var values: [[Int]]!
     
-    var selectedValue: Int!
-    //weak var delegate: PersonsPickerControllerDelegate? // default is nil. weak reference
+    var selectedMonth = 0
+    var selectedYear = 0
+    
+    weak var delegate: ExpirationPickerControllerDelegate? // default is nil. weak reference
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         pickerView.delegate = self
         pickerView.dataSource = self
-        
         
         values = [
             [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ],
@@ -42,8 +47,8 @@ class ExpirationPickerController: UIViewController, UIPickerViewDelegate, UIPick
             values[1].append(year)
             titles[1].append(String(year))
         }
-        setPickerValue(components.month, inComponent: 0)
-        setPickerValue(components.year, inComponent: 1)
+        setPickerValue(selectedMonth > 0 ? selectedMonth : components.month, inComponent: 0)
+        setPickerValue(selectedYear > 0 ? selectedYear : components.year, inComponent: 1)
 
     }
     
@@ -66,6 +71,12 @@ class ExpirationPickerController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //delegate!.onSelectPersons(values[component][row])
+        let rowMonth = pickerView.selectedRowInComponent(0)
+        let rowYear = pickerView.selectedRowInComponent(1)
+
+        let month = values[0][rowMonth]
+        let year = values[1][rowYear]
+        
+        delegate!.expirationDidSelectMonth(month, year: year)
     }
 }

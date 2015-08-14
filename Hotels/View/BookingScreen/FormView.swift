@@ -29,12 +29,14 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
     @IBOutlet weak var specialRequest: UITextField!
 
     var ccType = ""
+    var expMonth = 0
+    var expYear = 0
 
     var parentController : UIViewController!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         ccExpiration.backgroundColor = UIColor.clearColor()
         ccExpiration.layer.cornerRadius = 5
         ccExpiration.layer.borderWidth = 1
@@ -56,6 +58,13 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
         let cardIOVC = CardIOPaymentViewController(paymentDelegate: self)
         cardIOVC.modalPresentationStyle = .FormSheet
         parentController.presentViewController(cardIOVC, animated: true, completion: nil)
+    }
+    
+    func setExpirationMonth(month: Int, year: Int) {
+        let title = month < 10 ? "0\(month)/\(year)" : "\(month)/\(year)"
+        expMonth = month
+        expYear = year
+        ccExpiration.setTitle(title, forState: UIControlState.Normal)
     }
     
     func userDidCancelPaymentViewController(paymentViewController: CardIOPaymentViewController!) {
@@ -91,8 +100,8 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
         payment.data.ccFirstName = ccFirstName.text
         payment.data.ccLastName = ccLastName.text
         payment.data.ccNr = ccNumber.text
-        payment.data.ccExpiryMonth = 0 // TODO
-        payment.data.ccExpiryYear = 0 // TODO
+        payment.data.ccExpiryMonth = expMonth
+        payment.data.ccExpiryYear = expYear
         payment.data.ccCvc = ccCVV.text
         
         payment.billingAddress.country = country.text

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookingScreenController: UIViewController, EtbApiDelegate {
+class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPickerControllerDelegate {
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var summary: SummaryView!
     @IBOutlet weak var form: FormView!
@@ -20,6 +20,8 @@ class BookingScreenController: UIViewController, EtbApiDelegate {
     var availabilityRequest: AvailabilityRequest!
     var api: EtbApi!
     var rate: Rate!
+    var expMonth = 0
+    var expYear = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,15 @@ class BookingScreenController: UIViewController, EtbApiDelegate {
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ExperationPickerController" {
+            let vc = segue.destinationViewController as! ExpirationPickerController
+            vc.delegate = self
+            vc.selectedMonth = expMonth
+            vc.selectedYear = expYear
+        }
+    }
+    
     @IBAction func bookAction(sender: UIButton) {
         loadingView.hidden = false
         bookButton.enabled = false
@@ -49,6 +60,12 @@ class BookingScreenController: UIViewController, EtbApiDelegate {
         
         api.order(availabilityRequest, personal: personal, payment: payment, rateKey: rateKey!, rateCount: 1, remarks: remarks)
         
+    }
+    
+    func expirationDidSelectMonth(month: Int, year: Int) {
+        expMonth = month
+        expYear = year
+        form.setExpirationMonth(month, year: year)
     }
     
     func orderSuccessResult(result:OrderResult) {
