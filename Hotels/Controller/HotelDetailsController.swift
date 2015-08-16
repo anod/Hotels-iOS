@@ -166,7 +166,6 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
             parallaxHeader.headerImage = image
          }, completion: nil)
     }
-    
    
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {

@@ -17,6 +17,7 @@ class HotelDetailsRoom: UITableViewCell, HotelDetailsViewProtocol  {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        bookButton.userInteractionEnabled = false
     }
 
 
@@ -37,6 +38,9 @@ class HotelDetailsRoom: UITableViewCell, HotelDetailsViewProtocol  {
             return;
         }
         
+        if rate.rateKey != nil {
+            bookButton.userInteractionEnabled = true
+        }
         let priceRender = PriceRender(currencyCode: currencyCode, short: false)
 
         roomPrice.text = priceRender.render(rate)

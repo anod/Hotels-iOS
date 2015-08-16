@@ -25,10 +25,14 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
     @IBOutlet weak var ccNumber: UITextField!
     @IBOutlet weak var ccExpiration: UIButton!
     @IBOutlet weak var ccCVV: UITextField!
+    @IBOutlet weak var ccTypeImage: UIImageView!
+    @IBOutlet weak var ccTypeImageMask: UIView!
+    
     
     @IBOutlet weak var specialRequest: UITextField!
 
-    var ccType = ""
+    
+    var ccType : CreditCard?
     var expMonth = 0
     var expYear = 0
 
@@ -42,15 +46,40 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
         ccExpiration.layer.borderWidth = 1
         ccExpiration.layer.borderColor = UIColor.lightGrayColor().CGColor
         
+
         // Do any additional setup after loading the view, typically from a nib.
         CardIOUtilities.preload()
     }
     
     @IBAction func ccNumberChange(sender: AnyObject) {
         if let number = ccNumber.text {
-            print(number)
             let type = EtbApiUtils.detectCreditCard(number)
-            print(type)
+            if type == nil {
+                ccTypeImageMask.hidden = false
+            } else if type == CreditCard.Visa {
+                ccTypeImageMask.hidden = true
+                ccTypeImage.image = UIImage(named: "credit_card_vise")
+            } else if type == CreditCard.MasterCard {
+                ccTypeImageMask.hidden = true
+                ccTypeImage.image = UIImage(named: "credit_card_mastercard")
+            } else if type == CreditCard.Amex {
+                ccTypeImageMask.hidden = true
+                ccTypeImage.image = UIImage(named: "credit_card_american_express")
+            } else if type == CreditCard.DinersClub {
+                ccTypeImageMask.hidden = true
+                ccTypeImage.image = UIImage(named: "credit_card_diners_club")
+            } else if type == CreditCard.Discover {
+                ccTypeImageMask.hidden = true
+                ccTypeImage.image = UIImage(named: "credit_card_discover")
+            } else if type == CreditCard.JCB {
+                ccTypeImageMask.hidden = true
+                ccTypeImage.image = UIImage(named: "credit_card_jcb")
+            }
+
+            ccType = type
+        } else {
+            ccType = nil
+            ccTypeImageMask.hidden = false
         }
     }
     
@@ -66,6 +95,7 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
         expYear = year
         ccExpiration.setTitle(title, forState: UIControlState.Normal)
     }
+    
     
     func userDidCancelPaymentViewController(paymentViewController: CardIOPaymentViewController!) {
         paymentViewController?.dismissViewControllerAnimated(true, completion: nil)
@@ -96,7 +126,7 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
     func getPayment() -> Payment {
         let payment = Payment()
         
-        payment.type = ccType
+        payment.type = ccType?.rawValue
         payment.data.ccFirstName = ccFirstName.text
         payment.data.ccLastName = ccLastName.text
         payment.data.ccNr = ccNumber.text

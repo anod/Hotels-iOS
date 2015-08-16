@@ -11,6 +11,8 @@
 		520F620A1B7BCC2300F5F5B2 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F62091B7BCC2300F5F5B2 /* CreditCard.swift */; };
 		520F62111B7BD0C500F5F5B2 /* CreditCardValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F620D1B7BD0C500F5F5B2 /* CreditCardValidationType.swift */; };
 		520F62121B7BD0C500F5F5B2 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F620E1B7BD0C500F5F5B2 /* CreditCardValidator.swift */; };
+		5215AC621B7E2060007A2AF7 /* OrderSummary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5215AC601B7E2060007A2AF7 /* OrderSummary+CoreDataProperties.swift */; };
+		5215AC631B7E2060007A2AF7 /* OrderSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5215AC611B7E2060007A2AF7 /* OrderSummary.swift */; };
 		5220ECD41B7CE1FF003EFBD0 /* ExpirationPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5220ECD31B7CE1FF003EFBD0 /* ExpirationPickerController.swift */; };
 		524D4E151B71F8B3007BA82E /* GooglePlacesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D4E141B71F8B3007BA82E /* GooglePlacesApi.swift */; };
 		524D4E171B71F8F4007BA82E /* GooglePlacesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D4E161B71F8F4007BA82E /* GooglePlacesDelegate.swift */; };
@@ -91,6 +93,8 @@
 		520F62091B7BCC2300F5F5B2 /* CreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 		520F620D1B7BD0C500F5F5B2 /* CreditCardValidationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardValidationType.swift; sourceTree = "<group>"; };
 		520F620E1B7BD0C500F5F5B2 /* CreditCardValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
+		5215AC601B7E2060007A2AF7 /* OrderSummary+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "OrderSummary+CoreDataProperties.swift"; path = "Model/OrderSummary+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5215AC611B7E2060007A2AF7 /* OrderSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderSummary.swift; path = Model/OrderSummary.swift; sourceTree = "<group>"; };
 		5220ECD31B7CE1FF003EFBD0 /* ExpirationPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationPickerController.swift; sourceTree = "<group>"; };
 		524D4E141B71F8B3007BA82E /* GooglePlacesApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesApi.swift; sourceTree = "<group>"; };
 		524D4E161B71F8F4007BA82E /* GooglePlacesDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +209,15 @@
 			path = CreditCardValidator;
 			sourceTree = "<group>";
 		};
+		5215AC571B7E1F87007A2AF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5215AC601B7E2060007A2AF7 /* OrderSummary+CoreDataProperties.swift */,
+				5215AC611B7E2060007A2AF7 /* OrderSummary.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		524D4E131B71F8B3007BA82E /* GooglePlaces */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +273,7 @@
 		52944EEE1B71E4E000849A61 /* Hotels */ = {
 			isa = PBXGroup;
 			children = (
+				5215AC571B7E1F87007A2AF7 /* Model */,
 				524D4E131B71F8B3007BA82E /* GooglePlaces */,
 				52944F3B1B71E77200849A61 /* Controller */,
 				52944F3F1B71E77200849A61 /* Extension */,
@@ -591,6 +605,7 @@
 				52944F351B71E64300849A61 /* SearchMeta.swift in Sources */,
 				524D4E1B1B71FAE4007BA82E /* GooglePlaceDetails.swift in Sources */,
 				529031BE1B75E976006ED651 /* HotelDetailsCollectionView.swift in Sources */,
+				5215AC631B7E2060007A2AF7 /* OrderSummary.swift in Sources */,
 				524D4E151B71F8B3007BA82E /* GooglePlacesApi.swift in Sources */,
 				52944F621B71E77200849A61 /* FloatRatingView.swift in Sources */,
 				52944F2F1B71E64300849A61 /* Accommodation.swift in Sources */,
@@ -624,6 +639,7 @@
 				52FB315C1B7797B500F234B5 /* AccommodationUtils.swift in Sources */,
 				52944F5F1B71E77200849A61 /* AccomodationMKPointAnnotation.swift in Sources */,
 				52FB315A1B778FB200F234B5 /* AccommodationRender.swift in Sources */,
+				5215AC621B7E2060007A2AF7 /* OrderSummary+CoreDataProperties.swift in Sources */,
 				529031C51B75ECBB006ED651 /* UILabel.swift in Sources */,
 				529031BD1B75E976006ED651 /* HotelDetailsCell.swift in Sources */,
 				527724F21B79328B0049271B /* Payment.swift in Sources */,

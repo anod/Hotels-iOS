@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPickerControllerDelegate {
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -15,6 +16,11 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var bookButton: UIButton!
 
+    let managedObjectContext =
+    (UIApplication.sharedApplication().delegate
+        as! AppDelegate).managedObjectContext
+
+    
     var accomodation: Accommodation!
     var rateId : String!
     var availabilityRequest: AvailabilityRequest!
@@ -80,6 +86,27 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         vc.orderId = result.order?.orderId
         
         presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    func saveOrder(order: Order) {
+        
+        let orderSummary = NSEntityDescription.insertNewObjectForEntityForName("OrderSummary", inManagedObjectContext: managedObjectContext)
+        
+        orderSummary.setValue(order.orderId, forKey: "orderId")
+        orderSummary.setValue(availabilityRequest.checkInDate, forKey: "checkIn")
+        orderSummary.setValue(availabilityRequest.checkOutDate, forKey: "checkOut")
+        orderSummary.setValue(availabilityRequest.persons(), forKey: "persons")
+        orderSummary.setValue(accomodation.name, forKey: "hotelName")
+        orderSummary.setValue(AccommodationRender.address(accomodation), forKey: "hotelName")
+        
+        
+        // save it
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print("Failure to save context: \(error)")
+        }
+        
     }
     
     func orderErrorResult(error:NSError) {

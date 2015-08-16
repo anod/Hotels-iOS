@@ -63,13 +63,14 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         self.hotelDetailsCollection.delegate = self
         self.hotelDetailsCollection.controllerDataSource = self
         self.hotelDetailsCollection.containerViewController = self
+        
+        autocomplete = AutocompleteViewController(autocompleteResults: autocompleteResults, toolbar: toolbar)
+        autocomplete.delegate = self
+
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        autocomplete = AutocompleteViewController(autocompleteResults: autocompleteResults, toolbar: toolbar)
-        autocomplete.delegate = self
-
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

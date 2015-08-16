@@ -199,62 +199,60 @@
             <objects>
                 <tableViewController title="Filters" id="73K-Wd-XKK" customClass="FiltersController" customModule="Hotels" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="9lr-bO-Ifq">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="nQS-3y-YVM">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="2dV-jA-i6l">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="74"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2dV-jA-i6l" id="rhE-ij-3S9">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vSd-D8-7NW">
+                                                    <rect key="frame" x="8" y="37" width="302" height="29"/>
+                                                    <segments>
+                                                        <segment title="" image="star_rating_filters_1" width="32"/>
+                                                        <segment title="" image="star_rating_filters_2" width="44"/>
+                                                        <segment title="" image="star_rating_filters_3" width="60"/>
+                                                        <segment title="" image="star_rating_filters_4"/>
+                                                        <segment title="" image="star_rating_filters_5"/>
+                                                    </segments>
+                                                    <color key="tintColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                </segmentedControl>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Star Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWz-CH-oxK">
-                                                    <rect key="frame" x="15" y="8" width="277" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="304" height="21"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vSd-D8-7NW">
-                                                    <rect key="frame" x="8" y="37" width="284" height="29"/>
-                                                    <segments>
-                                                        <segment title="" image="star-black-empty"/>
-                                                        <segment title="" image="star-black-empty"/>
-                                                        <segment title="" image="star-black-empty"/>
-                                                        <segment title="" image="star-black-empty"/>
-                                                        <segment title="" image="star-black-empty"/>
-                                                        <segment title="" image="star-black-empty"/>
-                                                    </segments>
-                                                    <color key="tintColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                                </segmentedControl>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="9bu-JJ-U1U">
-                                        <rect key="frame" x="0.0" y="74" width="300" height="74"/>
+                                        <rect key="frame" x="0.0" y="74" width="320" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9bu-JJ-U1U" id="LEc-JS-bPW">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Guest Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArH-hm-0Nz">
-                                                    <rect key="frame" x="11" y="8" width="277" height="21"/>
+                                                    <rect key="frame" x="11" y="8" width="301" height="21"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DYi-u0-AUn">
-                                                    <rect key="frame" x="8" y="37" width="284" height="29"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="DYi-u0-AUn">
+                                                    <rect key="frame" x="8" y="37" width="304" height="29"/>
                                                     <segments>
-                                                        <segment title="" image="star-black-empty"/>
-                                                        <segment title="" image="star-black-empty"/>
-                                                        <segment title="" image="star-black-empty"/>
-                                                        <segment title="" image="star-black-empty"/>
-                                                        <segment title="" image="star-black-empty"/>
-                                                        <segment title="" image="star-black-empty"/>
+                                                        <segment title="" image="guest_rating_filters_1" width="32"/>
+                                                        <segment title="" image="guest_rating_filters_2" width="44"/>
+                                                        <segment title="" image="guest_rating_filters_3" width="60"/>
+                                                        <segment title="" image="guest_rating_filters_4"/>
+                                                        <segment title="" image="guest_rating_filters_5"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 </segmentedControl>
@@ -262,10 +260,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="bWR-kb-jbV">
-                                        <rect key="frame" x="0.0" y="148" width="300" height="74"/>
+                                        <rect key="frame" x="0.0" y="148" width="320" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bWR-kb-jbV" id="mjZ-QV-RDA">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Accomodation Types" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYC-7l-ENs">
@@ -275,12 +273,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="cF4-eT-9FK">
-                                                    <rect key="frame" x="8" y="37" width="284" height="29"/>
+                                                    <rect key="frame" x="8" y="37" width="304" height="29"/>
                                                     <segments>
-                                                        <segment title="Hotel"/>
+                                                        <segment title="Hotel" width="68"/>
                                                         <segment title="Appartment"/>
-                                                        <segment title="Hostel"/>
-                                                        <segment title="B&amp;B"/>
+                                                        <segment title="Hostel" width="68"/>
+                                                        <segment title="B&amp;B" width="64"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 </segmentedControl>
@@ -295,10 +293,15 @@
                             <outlet property="delegate" destination="73K-Wd-XKK" id="PDA-HE-PqN"/>
                         </connections>
                     </tableView>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="400"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="400"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="400"/>
+                    <size key="freeformSize" width="320" height="400"/>
+                    <connections>
+                        <outlet property="ratingFilter" destination="DYi-u0-AUn" id="HTI-K0-IpI"/>
+                        <outlet property="starsFilter" destination="vSd-D8-7NW" id="74q-R9-OQ1"/>
+                        <outlet property="typeFilter" destination="cF4-eT-9FK" id="amI-f7-gvP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDp-Vw-6YR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -905,6 +908,10 @@
                                             </segue>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJT-e4-1HK">
+                                        <rect key="frame" x="364" y="364" width="39" height="25"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -915,6 +922,8 @@
                                     <outlet property="ccFirstName" destination="wCw-IQ-pVe" id="QcZ-0M-m9o"/>
                                     <outlet property="ccLastName" destination="sBI-SG-MCk" id="yjq-3J-erx"/>
                                     <outlet property="ccNumber" destination="s5S-Z2-prV" id="HNA-Zj-EWa"/>
+                                    <outlet property="ccTypeImage" destination="xGl-F3-aFs" id="yTk-ak-Dga"/>
+                                    <outlet property="ccTypeImageMask" destination="iJT-e4-1HK" id="7qw-01-4da"/>
                                     <outlet property="city" destination="sHW-1d-cHe" id="HSa-RV-YBk"/>
                                     <outlet property="country" destination="P58-nC-fZ5" id="R8d-9q-GQe"/>
                                     <outlet property="emailAddress" destination="UWv-VX-DMX" id="4Mz-Fi-PDe"/>
@@ -1638,8 +1647,17 @@
         <image name="User" width="25" height="25"/>
         <image name="WiFi" width="25" height="25"/>
         <image name="credit_card_visa" width="96" height="64"/>
+        <image name="guest_rating_filters_1" width="12" height="12"/>
+        <image name="guest_rating_filters_2" width="22" height="12"/>
+        <image name="guest_rating_filters_3" width="32" height="12"/>
+        <image name="guest_rating_filters_4" width="42" height="12"/>
+        <image name="guest_rating_filters_5" width="52" height="12"/>
         <image name="hotel_placeholder.png" width="520" height="245"/>
-        <image name="star-black-empty" width="9" height="9"/>
+        <image name="star_rating_filters_1" width="13" height="13"/>
+        <image name="star_rating_filters_2" width="29" height="13"/>
+        <image name="star_rating_filters_3" width="45" height="13"/>
+        <image name="star_rating_filters_4" width="61" height="13"/>
+        <image name="star_rating_filters_5" width="77" height="13"/>
         <image name="ta-dot-empty" width="12" height="12"/>
         <image name="ta-dot-full" width="12" height="12"/>
         <image name="tripadvisor-logo" width="23" height="13"/>
