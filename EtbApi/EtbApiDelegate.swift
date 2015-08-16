@@ -17,4 +17,6 @@ protocol EtbApiDelegate {
     optional func orderSuccessResult(result:OrderResult)
     optional func orderErrorResult(error:NSError)
 
+    optional func retrieveSuccessResult(result:OrderResult)
+    optional func retrieveErrorResult(error:NSError)
 }

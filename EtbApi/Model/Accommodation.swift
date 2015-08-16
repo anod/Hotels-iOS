@@ -21,8 +21,26 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
     var details = Details()
     var extraInformation :ExtraInformation?
     var facilities = [Facilities]()
-
-
+    var phone: String?
+    var email: String?
+    
+    init(id: Int, response: NSHTTPURLResponse, representation: AnyObject) {
+        self.id = id
+        
+        self.location.lat = representation.valueForKeyPath("location.lat") as! Double
+        self.location.lon = representation.valueForKeyPath("location.lon") as! Double
+        
+        self.images = representation.valueForKey("images") as! [String]
+        self.name = representation.valueForKeyPath("name") as? String
+        self.phone = representation.valueForKeyPath("phone") as? String
+        self.email = representation.valueForKeyPath("email") as? String
+        
+        self.summary.address = representation.valueForKeyPath("summary.address") as? String
+        self.summary.zipcode = representation.valueForKeyPath("summary.zipcode") as? String
+        self.summary.city = representation.valueForKeyPath("summary.city") as? String
+        self.summary.country = representation.valueForKeyPath("summary.country") as? String
+    }
+    
     required init(response: NSHTTPURLResponse, representation: AnyObject) {
         self.id = representation.valueForKeyPath("id") as! Int
         self.name = representation.valueForKeyPath("name") as? String
@@ -55,6 +73,9 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
         }
         
     }
+    
+    
+    
 
     static func collection(response: NSHTTPURLResponse, representation: AnyObject) -> [Accommodation] {
         var accomodations: [Accommodation] = []

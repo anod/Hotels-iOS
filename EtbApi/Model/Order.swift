@@ -16,19 +16,12 @@ class Order: NSObject, ResponseObjectSerializable {
     
     required init(response: NSHTTPURLResponse, representation: AnyObject) {
         self.orderId = Int(representation.valueForKeyPath("orderId") as! String)
-     // TODO
+        if let ratesJSON: AnyObject = representation.valueForKeyPath("rates") {
+            self.rates = OrderRate.collection(response, representation: ratesJSON)
+        }
     }
     
-    class OrderRate {
-        var accommodationId: Int!
-        var rateId: String!
-        var statusCode: String!
-        var confirmationId: String!
-        var name: String!
-        var rateCount: Int!
-        var checkIn: String!
-        var checkOut: String!
-    }
+
 
     
 }

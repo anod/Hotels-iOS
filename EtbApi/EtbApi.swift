@@ -171,8 +171,28 @@ class EtbApi {
         }
     }
     
+    func retrieve(orderId: Int) {
+        let apiKey = self.config.apiKey
+        
+        self.alamofire.request(.GET, self.config.serverBaseSecure + "/orders/\(orderId)?apiKey=\(apiKey)", parameters: nil, encoding: .JSON)
+            .responseObject { (request, response, results: Result<OrderResult>) in
+                if let delegate = self.delegate {
+                    if results.isFailure {
+                        delegate.retrieveErrorResult!(results.error!)
+                        return;
+                    }
+                    if (results.value?.meta.statusCode == 200) {
+                        delegate.retrieveSuccessResult!(results.value!)
+                    } else {
+                        let msg = NSString(string: (results.value?.meta.errorMessage)!)
+                        let error = NSError(domain: "EtbApi", code: (results.value?.meta.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
+                        delegate.retrieveErrorResult!(error)
+                    }
+                }
+        }
+    }
     
-    func getIFAddresses() -> [String] {
+    private func getIFAddresses() -> [String] {
         var addresses = [String]()
         
         // Get list of all interfaces on the local machine:

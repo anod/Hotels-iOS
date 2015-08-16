@@ -12,16 +12,14 @@ class ConfirmationController: UIViewController {
     @IBOutlet weak var closeButton: UIBarButtonItem!
     @IBOutlet weak var summary: SummaryView!
     
-    var accomodation: Accommodation!
-    var rateId : String!
-    var availabilityRequest: AvailabilityRequest!
-    var orderId: Int!
     var result: OrderResult?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      //  summary.attach(accomodation, rateId: rateId, availabilityRequest: availabilityRequest)
+        if let orderRate = result?.order!.rates[0] {
+            summary.attach(orderRate.accommodation, rateId: orderRate.rate.rateId, availabilityRequest: orderRate.request)
+        }
         
         closeButton.target = self
         closeButton.action = Selector("backButtonAction")

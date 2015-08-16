@@ -216,7 +216,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
   
         selectedAnnotation = annotation
         
-        let navController = instantiateHotelDetailsViewController();
+        let navController : UINavigationController = ControllerUtils.instantiate("HotelDetailsNavController")
         
         popoverHotelDetailsController = navController.viewControllers[0] as! HotelDetailsController
         popoverHotelDetailsController.accommodation = accommodation
@@ -234,12 +234,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         hdPopoverController?.delegate = self
         presentViewController(navController,animated: true, completion: nil)
     }
-    
-    func mainStoryboard() -> UIStoryboard
-    {
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        return storyboard
-    }
+
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -272,15 +267,10 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     }
     
     func collectionView(view: UICollectionView, controllerForIdentifier identifier: String) -> UIViewController {
-        let vc = instantiateHotelDetailsViewController()
-        
+        let vc : UINavigationController = ControllerUtils.instantiate("HotelDetailsNavController")
         return vc
     }
-    
-    func instantiateHotelDetailsViewController() -> UINavigationController {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("HotelDetailsNavController") as! UINavigationController
-    }
-    
+        
     func unpinHotelDetailsController(controller : HotelDetailsController) {
         let idx = self.pinnedHotels.indexOf(controller.accommodation)
         self.pinnedHotels.removeAtIndex(idx!)

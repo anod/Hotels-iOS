@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class OrdersController: UITableViewController {
+class OrdersController: UITableViewController, EtbApiDelegate {
     
     var orders: [AnyObject]!
     
@@ -17,11 +17,19 @@ class OrdersController: UITableViewController {
     
     let formatter = NSDateIntervalFormatter()
     
+    var activityIndicator: UIActivityIndicatorView!
+    
+    let api = ApiUtils.create()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        api.delegate = self
+        
         formatter.dateStyle = NSDateIntervalFormatterStyle.MediumStyle
         formatter.timeStyle = NSDateIntervalFormatterStyle.NoStyle
+        
+        self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         
         let request = NSFetchRequest(entityName: "OrderSummary")
         
@@ -46,10 +54,33 @@ class OrdersController: UITableViewController {
         let checkIn = data.valueForKey("checkIn") as! NSDate
         let checkOut = data.valueForKey("checkOut") as! NSDate
         
+        cell?.tag = orderId
         cell?.detailTextLabel!.text = formatter.stringFromDate(checkIn, toDate: checkOut)
 
         return cell!
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.addSubview(activityIndicator)
+        
+        let orderId = cell?.tag
+        api.retrieve(orderId!)
+    }
     
+    func retrieveSuccessResult(result:OrderResult) {
+        activityIndicator.removeFromSuperview()
+        
+        let vc : ConfirmationController = ControllerUtils.instantiate("ConfirmationController")
+        vc.result = result
+        
+        presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    func retrieveErrorResult(error:NSError) {
+        activityIndicator.removeFromSuperview()
+        
+        ErrorAlertView.show("\(error.localizedDescription)", controller: self)
+        print(error)
+    }
 }

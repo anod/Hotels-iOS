@@ -22,6 +22,17 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
     var totalNetRate = [String:String]()
     var specialOffers = [SpecialOffers]()
     
+    init(rateId: String, response: NSHTTPURLResponse, representation: AnyObject) {
+        self.name = representation.valueForKeyPath("name") as! String
+        self.rateId = rateId
+        self.capacity = Int(representation.valueForKeyPath("capacity") as! String)!
+        
+        self.payment = Payment()
+        self.payment.prepaid = representation.valueForKeyPath("payment.prepaid") as! [String: String]
+        self.payment.postpaid = representation.valueForKeyPath("payment.postpaid") as! [String: String]
+        
+        self.totalNetRate = representation.valueForKeyPath("totalNetRate") as! [String: String]
+    }
     
     required init(response: NSHTTPURLResponse, representation: AnyObject) {
         self.name = representation.valueForKeyPath("name") as! String

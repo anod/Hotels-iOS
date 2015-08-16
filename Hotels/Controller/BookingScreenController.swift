@@ -80,12 +80,8 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         
         saveOrder(result.order!)
         
-        let vc = mainStoryboard().instantiateViewControllerWithIdentifier("ConfirmationController") as! ConfirmationController
-        vc.accomodation = accomodation
-        vc.rateId = rateId
-        vc.availabilityRequest = availabilityRequest
+        let vc : ConfirmationController = ControllerUtils.instantiate("ConfirmationController")
         vc.result = result
-        vc.orderId = result.order?.orderId
         
         presentViewController(vc, animated: true, completion: nil)
     }
@@ -123,9 +119,5 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func mainStoryboard() -> UIStoryboard
-    {
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        return storyboard
-    }
+
 }
