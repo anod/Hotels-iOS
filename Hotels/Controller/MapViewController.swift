@@ -94,7 +94,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         }
     }
     
-    func onDateChangeCheckIn(checkIn: NSDate, checkOut: NSDate) {
+    func didDateUpdateWithCheckIn(checkIn: NSDate, checkOut: NSDate) {
         request.checkInDate = checkIn
         request.checkOutDate = checkOut
      
@@ -112,7 +112,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         requestAvailability()
     }
     
-    func onSelectPersons(value: Int) {
+    func didSelectPersons(value: Int) {
         request.capacity = [value]
         personsTitleView.setTitle(String(value), forState: UIControlState.Normal)
         requestAvailability()
@@ -154,9 +154,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     }
 
     
-    func onPlaceSelected(place: GooglePlaceDetails)
+    func didPlaceSelected(place: GooglePlaceDetails)
     {
-        
         request.lat = place.latitude
         request.lon = place.longitude
         

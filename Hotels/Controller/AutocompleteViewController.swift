@@ -6,7 +6,7 @@
 import UIKit
 
 protocol AutocompleteDelegate: NSObjectProtocol {
-    func onPlaceSelected(place:GooglePlaceDetails)
+    func didPlaceSelected(place:GooglePlaceDetails)
 }
 
 @objc
@@ -58,25 +58,6 @@ class AutocompleteViewController: NSObject, UISearchBarDelegate, UITableViewData
             print("Searching for '\(searchText)'")
             self.googlePlacesApi.autocomplete(searchText)
             
-            
-            //            placesClient.autocompleteQuery(searchText, bounds: bounds, filter: filter, callback: {
-            //                (results, error) -> Void in
-            //                if error != nil {
-            //                    print("Autocomplete error \(error) for query '\(searchText)'")
-            //                    return
-            //                }
-            //
-            //                print("Populating results for query '\(searchText)'")
-            //                self.data = [GMSAutocompletePrediction]()
-            //                if let unwrappedResults = results {
-            //                    for result in unwrappedResults {
-            //                        if let result = result as? GMSAutocompletePrediction {
-            //                            self.data.append(result)
-            //                        }
-            //                    }
-            //                }
-            //                self.autocompleteResults.reloadData()
-            //            })
         } else {
             self.data = [GoogleAutocompletePrediction]()
             self.autocompleteResults.reloadData()
@@ -120,7 +101,7 @@ class AutocompleteViewController: NSObject, UISearchBarDelegate, UITableViewData
     }
     
     func googlePlacesDetailsResult(result: GooglePlaceDetails) {
-        self.delegate!.onPlaceSelected(result)
+        self.delegate!.didPlaceSelected(result)
     }
     
 

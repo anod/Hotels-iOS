@@ -10,7 +10,7 @@ import Foundation
 import GLCalendarView
 
 protocol CalendarViewControllerDelegate : NSObjectProtocol {
-    func onDateChangeCheckIn(checkIn: NSDate, checkOut: NSDate)
+    func didDateUpdateWithCheckIn(checkIn: NSDate, checkOut: NSDate)
 }
 
 class CalendarViewController: UIViewController {
@@ -75,7 +75,7 @@ class CalendarViewController: UIViewController {
         let cmp = checkOutDate.compare(checkInDate)
         if  cmp == NSComparisonResult.OrderedDescending {
             renderText()
-            self.delegate?.onDateChangeCheckIn(checkInDate, checkOut: checkOutDate)
+            self.delegate?.didDateUpdateWithCheckIn(checkInDate, checkOut: checkOutDate)
         }
 
     }

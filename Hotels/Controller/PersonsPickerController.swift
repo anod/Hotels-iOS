@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol PersonsPickerControllerDelegate : NSObjectProtocol {
-    func onSelectPersons(value: Int)
+    func didSelectPersons(value: Int)
 }
 
 class PersonsPickerController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -60,6 +60,6 @@ class PersonsPickerController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        delegate!.onSelectPersons(values[component][row])
+        delegate!.didSelectPersons(values[component][row])
     }
 }
