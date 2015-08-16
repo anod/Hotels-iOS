@@ -98,6 +98,7 @@
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -240,7 +241,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Guest Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArH-hm-0Nz">
-                                                    <rect key="frame" x="11" y="8" width="301" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="304" height="21"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -267,7 +268,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Accomodation Types" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYC-7l-ENs">
-                                                    <rect key="frame" x="12" y="8" width="277" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="304" height="21"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -279,6 +280,33 @@
                                                         <segment title="Appartment"/>
                                                         <segment title="Hostel" width="68"/>
                                                         <segment title="B&amp;B" width="64"/>
+                                                    </segments>
+                                                    <color key="tintColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                </segmentedControl>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="x7k-2O-fyY">
+                                        <rect key="frame" x="0.0" y="222" width="320" height="74"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x7k-2O-fyY" id="9r9-Zx-aTJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Facilities" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qf-HO-6Bd">
+                                                    <rect key="frame" x="8" y="8" width="304" height="21"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="BGw-tZ-nwx" customClass="MultiSelectSegmentedControl">
+                                                    <rect key="frame" x="8" y="37" width="304" height="29"/>
+                                                    <segments>
+                                                        <segment title="" image="WiFi"/>
+                                                        <segment title="" image="Parking"/>
+                                                        <segment title="" image="CatFootprint" width="68"/>
+                                                        <segment title="" image="Winter"/>
+                                                        <segment title="" image="Wheelchair"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 </segmentedControl>
@@ -298,6 +326,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="400"/>
                     <connections>
+                        <outlet property="faciltiesFilter" destination="BGw-tZ-nwx" id="q9e-mC-pZG"/>
                         <outlet property="ratingFilter" destination="DYi-u0-AUn" id="HTI-K0-IpI"/>
                         <outlet property="starsFilter" destination="vSd-D8-7NW" id="74q-R9-OQ1"/>
                         <outlet property="typeFilter" destination="cF4-eT-9FK" id="amI-f7-gvP"/>
@@ -1639,13 +1668,17 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CatFootprint" width="25" height="25"/>
         <image name="Dates" width="25" height="25"/>
         <image name="Filter" width="25" height="25"/>
         <image name="Nights" width="25" height="25"/>
+        <image name="Parking" width="25" height="25"/>
         <image name="People" width="25" height="25"/>
         <image name="Pin" width="25" height="25"/>
         <image name="User" width="25" height="25"/>
+        <image name="Wheelchair" width="25" height="25"/>
         <image name="WiFi" width="25" height="25"/>
+        <image name="Winter" width="25" height="25"/>
         <image name="credit_card_visa" width="96" height="64"/>
         <image name="guest_rating_filters_1" width="12" height="12"/>
         <image name="guest_rating_filters_2" width="22" height="12"/>

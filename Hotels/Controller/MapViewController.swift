@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate, PersonsPickerControllerDelegate, CalendarViewControllerDelegate {
+class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate, PersonsPickerControllerDelegate, CalendarViewControllerDelegate, FiltersControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var autocompleteResults: UITableView!
@@ -87,6 +87,10 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
             vc.delegate = self
             vc.checkInDate = request.checkInDate
             vc.checkOutDate = request.checkOutDate
+        } else if segue.identifier == "FiltersController" {
+            let vc = segue.destinationViewController as! FiltersController
+            vc.setRequest(request)
+            vc.delegate = self
         }
     }
     
@@ -99,6 +103,14 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
 
     }
 
+    func filtersDidChange(stars: Set<Int>, ratings: Set<Int>, accTypes: Set<Int>, mainFacilities: Set<Int>) {
+        request.stars = stars
+        request.ratings = ratings
+        request.accTypes = accTypes
+        request.mainFacilities = mainFacilities
+        
+        requestAvailability()
+    }
     
     func onSelectPersons(value: Int) {
         request.capacity = [value]

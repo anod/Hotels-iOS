@@ -5,7 +5,7 @@
 
 import UIKit
 
-protocol AutocompleteDelegate {
+protocol AutocompleteDelegate: NSObjectProtocol {
     func onPlaceSelected(place:GooglePlaceDetails)
 }
 
@@ -16,9 +16,11 @@ class AutocompleteViewController: NSObject, UISearchBarDelegate, UITableViewData
     var data = [GoogleAutocompletePrediction]()
 
     var resultSearchController: UISearchController!
-    var delegate: AutocompleteDelegate!
     var googlePlacesApi: GooglePlacesApi!
     var searchBar: UISearchBar!
+
+    weak var delegate: AutocompleteDelegate?
+
     
     init(autocompleteResults: UITableView, toolbar: UIToolbar) {
         super.init()
@@ -118,7 +120,7 @@ class AutocompleteViewController: NSObject, UISearchBarDelegate, UITableViewData
     }
     
     func googlePlacesDetailsResult(result: GooglePlaceDetails) {
-        self.delegate.onPlaceSelected(result)
+        self.delegate!.onPlaceSelected(result)
     }
     
 

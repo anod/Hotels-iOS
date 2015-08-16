@@ -48,12 +48,12 @@ class EtbApi {
                 "capacity": request.prepareCapacityForRequest(),
                 "orderBy": request.searchingSort.orderByForRequest,
                 "order": request.searchingSort.orderForRequest,
-                "rating": request.rating,
-                "stars": request.stars,
+                "rating": request.prepareRating(),
+                "stars": request.prepareStars(),
                 "minRate": request.minRate,
                 "maxRate": request.maxRate,
-                "accTypes": request.accTypes,
-                "mainFacilities": request.mainFacilities,
+                "accTypes": request.prepareAccTypes(),
+                "mainFacilities": request.prepareMainFacilities(),
                 "currency": request.currency,
                 "language" : request.language
         ]

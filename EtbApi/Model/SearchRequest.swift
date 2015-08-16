@@ -21,15 +21,10 @@ class SearchRequest: AvailabilityRequest {
     var minRate = "0" //min price
     var maxRate = "" //max price
     
-    var stars = ""
-    var rating = ""
-    var accTypes = ""
-    var mainFacilities = ""
-    
-    private var tempstars = Set<Int>()
-    private var temprating = Set<Int>()
-    private var tempaccTypes = Set<Int>()
-    private var tempmainFacilities = Set<Int>()
+    var stars = Set<Int>()
+    var ratings = Set<Int>()
+    var accTypes = Set<Int>()
+    var mainFacilities = Set<Int>()
     
     override init(){
         self.searchingSort = SortBy(printableDescription:"", orderByForRequest:"", orderForRequest:"")
@@ -46,72 +41,46 @@ class SearchRequest: AvailabilityRequest {
         
     }
     
-    
-    func setStars(selectedNumber: Int){
-        if tempstars.contains(selectedNumber){
-            tempstars.remove(selectedNumber)
-        }
-        else{
-            tempstars.insert(selectedNumber)
-        }
-        stars = ""
-        stars = EtbApiUtils.splitIntWithComma(tempstars)
-        print("stars:\(stars)", appendNewline: false)
-        
+    func prepareStars() -> String {
+        return EtbApiUtils.splitIntWithComma(stars);
     }
     
-    func setRating(selectedNumber: Int){
-        if temprating.contains(selectedNumber){
-            temprating.remove(selectedNumber)
-        }
-        else{
-            temprating.insert(selectedNumber)
-        }
-        rating = ""
-        rating = EtbApiUtils.splitIntWithComma(temprating)
+    func prepareRating() -> String {
+        return EtbApiUtils.splitIntWithComma(ratings)
     }
     
-    
-    func setAccTypes(selectedNumbers: Set<Int>){
-        tempaccTypes = selectedNumbers
-        accTypes = ""
-        accTypes = EtbApiUtils.splitIntWithComma(selectedNumbers)
+    func prepareAccTypes() -> String {
+        return EtbApiUtils.splitIntWithComma(accTypes)
     }
     
-    func setFacilities(selectedNumbers: Set<Int>){
-        tempmainFacilities = selectedNumbers
-        mainFacilities = ""
-        mainFacilities = EtbApiUtils.splitIntWithComma(selectedNumbers)
+    func prepareMainFacilities() -> String {
+        return EtbApiUtils.splitIntWithComma(mainFacilities)
     }
     
-    func getStars() -> Set<Int>{
-        return tempstars
+    func setStars(stars: Set<Int>){
+        self.stars = stars
     }
     
-    func getRating() -> Set<Int>{
-        return temprating
+    func setRating(ratings: Set<Int>){
+        self.ratings = ratings
     }
     
-    func getAccTypes() -> Set<Int>{
-        return tempaccTypes
+    func setAccTypes(accTypes: Set<Int>){
+        self.accTypes = accTypes
     }
     
-    func getMainFacilities() -> Set<Int>{
-        return tempmainFacilities
+    func setMainFacilities(mainFacilities: Set<Int>){
+        self.mainFacilities = mainFacilities
     }
     
     func destroy() {
         self.searchingSort = SortBy(printableDescription:"", orderByForRequest:"", orderForRequest:"")
         self.minRate = "0"
         self.maxRate = ""
-        self.stars = ""
-        self.rating = ""
-        self.tempstars = []
-        self.temprating = []
-        self.accTypes = ""
-        self.mainFacilities = ""
-        self.tempaccTypes = []
-        self.tempmainFacilities = []
+        self.ratings = []
+        self.stars = []
+        self.accTypes = []
+        self.mainFacilities = []
     }
 
 }

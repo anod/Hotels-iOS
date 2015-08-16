@@ -10,14 +10,14 @@ import UIKit
 import IDMPhotoBrowser
 import Haneke
 
-protocol HotelDetailsControllerDelegate {
+protocol HotelDetailsControllerDelegate:NSObjectProtocol {
     func unpinHotelDetailsController(controller : HotelDetailsController)
     func pinHotelDetailsController(controller : HotelDetailsController)
 }
 
 class HotelDetailsController: UITableViewController, EtbApiDelegate{
 
-    var delegate: HotelDetailsControllerDelegate!
+    weak var delegate: HotelDetailsControllerDelegate?
     var pinned = false
     var accommodation: Accommodation!
     var rateId: String!
@@ -188,9 +188,9 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
     
     func pinAction() {
         if isPinned {
-            self.delegate.unpinHotelDetailsController(self)
+            self.delegate!.unpinHotelDetailsController(self)
         } else {
-            self.delegate.pinHotelDetailsController(self)
+            self.delegate!.pinHotelDetailsController(self)
         }
     }
    
