@@ -78,6 +78,8 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         loadingView.hidden = true
         bookButton.enabled = true
         
+        saveOrder(result.order!)
+        
         let vc = mainStoryboard().instantiateViewControllerWithIdentifier("ConfirmationController") as! ConfirmationController
         vc.accomodation = accomodation
         vc.rateId = rateId
@@ -97,7 +99,7 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         orderSummary.setValue(availabilityRequest.checkOutDate, forKey: "checkOut")
         orderSummary.setValue(availabilityRequest.persons(), forKey: "persons")
         orderSummary.setValue(accomodation.name, forKey: "hotelName")
-        orderSummary.setValue(AccommodationRender.address(accomodation), forKey: "hotelName")
+        orderSummary.setValue(AccommodationRender.address(accomodation), forKey: "hotelAddress")
         
         
         // save it

@@ -15,6 +15,7 @@ class Order: NSObject, ResponseObjectSerializable {
     var rates: [OrderRate]!
     
     required init(response: NSHTTPURLResponse, representation: AnyObject) {
+        self.orderId = Int(representation.valueForKeyPath("orderId") as! String)
      // TODO
     }
     
