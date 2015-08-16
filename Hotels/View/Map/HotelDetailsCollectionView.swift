@@ -22,13 +22,6 @@ class HotelDetailsCollectionView: UICollectionView, HotelDetailsCellDelegate {
         super.awakeFromNib()
     }
     
-//    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-//        var view = super.hitTest(point, withEvent: event)
-//        if (view == self) {
-//            view = backView
-//        }
-//        return view
-//    }
 
     override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
         let index = self.indexPathForItemAtPoint(point)

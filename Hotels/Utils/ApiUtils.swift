@@ -10,8 +10,8 @@ import Foundation
 
 class ApiUtils {
     static func create() -> EtbApi {
-        //let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida")
-        let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida", serverBase: "https://trunk.api.easytobook.us/v1", serverBaseSecure: "https://trunk.api.easytobook.us/v1")
+        let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida")
+        //let apiConfig = EtbApiConfig(apiKey: "SMXSJLLNOJida", serverBase: "https://trunk.api.easytobook.us/v1", serverBaseSecure: "https://trunk.api.easytobook.us/v1")
         return EtbApi(config: apiConfig)
     }
 }
