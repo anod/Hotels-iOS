@@ -11,9 +11,25 @@ class EtbApi {
     var delegate: EtbApiDelegate! = nil
     var config: EtbApiConfig
 
+    var alamofire: Alamofire.Manager
+    
     init(config: EtbApiConfig) {
         self.config = config
-    }
+        
+        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+            "api.easytobook.com": .PinCertificates(
+                certificates: ServerTrustPolicy.certificatesInBundle(),
+                validateCertificateChain: true,
+                validateHost: true
+            ),
+            "trunk.api.easytobook.us": .DisableEvaluation
+        ]
+        
+        self.alamofire = Manager(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+   }
 
     func search(request: SearchRequest, offset: Int, limit: Int) {
 
@@ -42,7 +58,8 @@ class EtbApi {
                 "language" : request.language
         ]
 
-        Alamofire.request(.GET, self.config.serverBase + "/accommodations/results", parameters: query)
+
+        self.alamofire.request(.GET, self.config.serverBase + "/accommodations/results", parameters: query)
             .responseObject { (request, response, results: Result<AccommodationsResults>) in
                     if let delegate = self.delegate {
                         if results.isFailure {
@@ -61,7 +78,6 @@ class EtbApi {
             }
     }
 
-
     func details(accomodationId: Int, request: AvailabilityRequest) {
         let apiKey = self.config.apiKey
 
@@ -74,7 +90,7 @@ class EtbApi {
             "language" : request.language
         ]
 
-        Alamofire.request(.GET, self.config.serverBase + "/accommodations/\(accomodationId)", parameters: query)
+        self.alamofire.request(.GET, self.config.serverBase + "/accommodations/\(accomodationId)", parameters: query)
             .responseObject { (request, response, results: Result<AccommodationDetails>) in
                 if let delegate = self.delegate {
                     if results.isFailure {
@@ -137,7 +153,7 @@ class EtbApi {
             ]
         ]
         
-        Alamofire.request(.POST, self.config.serverBaseSecure + "/orders/?apiKey=\(apiKey)", parameters: query, encoding: .JSON)
+        self.alamofire.request(.POST, self.config.serverBaseSecure + "/orders/?apiKey=\(apiKey)", parameters: query, encoding: .JSON)
             .responseObject { (request, response, results: Result<OrderResult>) in
                 if let delegate = self.delegate {
                     if results.isFailure {
