@@ -27,6 +27,8 @@
 		527724F81B7A12E20049271B /* PersonsPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527724F71B7A12E20049271B /* PersonsPickerController.swift */; };
 		527724FA1B7A13070049271B /* FiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527724F91B7A13070049271B /* FiltersController.swift */; };
 		527724FC1B7A13420049271B /* OrdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527724FB1B7A13420049271B /* OrdersController.swift */; };
+		528149541B80746000CE1D8B /* MultiSelectSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 528149531B80746000CE1D8B /* MultiSelectSegmentedControl.m */; };
+		528149581B80767200CE1D8B /* AccommodationViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528149571B80767200CE1D8B /* AccommodationViewProtocol.swift */; };
 		528407041B792D4D001E4FE9 /* ConfirmationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528407031B792D4D001E4FE9 /* ConfirmationController.swift */; };
 		528407061B792EDC001E4FE9 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528407051B792EDC001E4FE9 /* Order.swift */; };
 		529031B81B74DE0F006ED651 /* PriceRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529031B71B74DE0F006ED651 /* PriceRender.swift */; };
@@ -109,6 +111,9 @@
 		527724F71B7A12E20049271B /* PersonsPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonsPickerController.swift; sourceTree = "<group>"; };
 		527724F91B7A13070049271B /* FiltersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersController.swift; sourceTree = "<group>"; };
 		527724FB1B7A13420049271B /* OrdersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersController.swift; sourceTree = "<group>"; };
+		528149521B80746000CE1D8B /* MultiSelectSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiSelectSegmentedControl.h; sourceTree = "<group>"; };
+		528149531B80746000CE1D8B /* MultiSelectSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiSelectSegmentedControl.m; sourceTree = "<group>"; };
+		528149571B80767200CE1D8B /* AccommodationViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationViewProtocol.swift; sourceTree = "<group>"; };
 		528407031B792D4D001E4FE9 /* ConfirmationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationController.swift; sourceTree = "<group>"; };
 		528407051B792EDC001E4FE9 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		529031B71B74DE0F006ED651 /* PriceRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceRender.swift; sourceTree = "<group>"; };
@@ -240,6 +245,15 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		528149511B80746000CE1D8B /* MultiSelectSegmentControl */ = {
+			isa = PBXGroup;
+			children = (
+				528149521B80746000CE1D8B /* MultiSelectSegmentedControl.h */,
+				528149531B80746000CE1D8B /* MultiSelectSegmentedControl.m */,
+			);
+			path = MultiSelectSegmentControl;
+			sourceTree = "<group>";
+		};
 		529031BF1B75E9C0006ED651 /* BookingScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +361,7 @@
 		52944F1B1B71E64300849A61 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				528149511B80746000CE1D8B /* MultiSelectSegmentControl */,
 				520F620B1B7BD0C500F5F5B2 /* CreditCardValidator */,
 				52944F1C1B71E64300849A61 /* ParallaxTableViewHeader */,
 			);
@@ -427,6 +442,7 @@
 		52944F471B71E77200849A61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				528149571B80767200CE1D8B /* AccommodationViewProtocol.swift */,
 				529031BF1B75E9C0006ED651 /* BookingScreen */,
 				524D4E1E1B71FFB9007BA82E /* Map */,
 				52944F481B71E77200849A61 /* ALabel.swift */,
@@ -604,6 +620,7 @@
 				52944F271B71E64300849A61 /* Facility.swift in Sources */,
 				52944F351B71E64300849A61 /* SearchMeta.swift in Sources */,
 				524D4E1B1B71FAE4007BA82E /* GooglePlaceDetails.swift in Sources */,
+				528149541B80746000CE1D8B /* MultiSelectSegmentedControl.m in Sources */,
 				529031BE1B75E976006ED651 /* HotelDetailsCollectionView.swift in Sources */,
 				5215AC631B7E2060007A2AF7 /* OrderSummary.swift in Sources */,
 				524D4E151B71F8B3007BA82E /* GooglePlacesApi.swift in Sources */,
@@ -644,6 +661,7 @@
 				529031BD1B75E976006ED651 /* HotelDetailsCell.swift in Sources */,
 				527724F21B79328B0049271B /* Payment.swift in Sources */,
 				52CD98781B78766200DDD7EE /* ErrorAlertView.swift in Sources */,
+				528149581B80767200CE1D8B /* AccommodationViewProtocol.swift in Sources */,
 				52CD987E1B78D4E800DDD7EE /* ColorUtils.swift in Sources */,
 				52944F5A1B71E77200849A61 /* HotelDetailsController.swift in Sources */,
 				52CD987C1B78D3E400DDD7EE /* CalendarViewController.swift in Sources */,

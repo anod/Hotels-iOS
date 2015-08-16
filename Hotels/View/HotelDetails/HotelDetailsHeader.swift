@@ -9,7 +9,7 @@
 import UIKit
 import HCSStarRatingView
 
-class HotelDetailsHeader: UIView, HotelDetailsViewProtocol {
+class HotelDetailsHeader: UIView, AccommodationViewProtocol {
     @IBOutlet weak var hotelName: UILabel!
     @IBOutlet weak var hotelStars: HCSStarRatingView!
 

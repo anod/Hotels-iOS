@@ -7,15 +7,23 @@
 //
 
 import Foundation
+
+protocol FiltersControllerDelegate {
+	   func filtersDidChange(stars: [Int], ratings: [Int], accTypes: [Int])
+}
 class FiltersController: UITableViewController {
     
-    @IBOutlet weak var typeFilter: UISegmentedControl!
-    @IBOutlet weak var ratingFilter: UISegmentedControl!
-    @IBOutlet weak var starsFilter: UISegmentedControl!
+    @IBOutlet weak var typeFilter: MultiSelectSegmentedControl!
+    @IBOutlet weak var ratingFilter: MultiSelectSegmentedControl!
+    @IBOutlet weak var starsFilter: MultiSelectSegmentedControl!
+    
+    var stars: [Int]!
+    var ratings: [Int]!
+    var accTypes: [Int]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        starsFilter.setImage(starsImage, forSegmentAtIndex: 2)
     }
+
 }

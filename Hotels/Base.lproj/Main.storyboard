@@ -212,7 +212,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vSd-D8-7NW">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vSd-D8-7NW" customClass="MultiSelectSegmentedControl">
                                                     <rect key="frame" x="8" y="37" width="302" height="29"/>
                                                     <segments>
                                                         <segment title="" image="star_rating_filters_1" width="32"/>
@@ -245,7 +245,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="DYi-u0-AUn">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="DYi-u0-AUn" customClass="MultiSelectSegmentedControl">
                                                     <rect key="frame" x="8" y="37" width="304" height="29"/>
                                                     <segments>
                                                         <segment title="" image="guest_rating_filters_1" width="32"/>
@@ -272,7 +272,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="cF4-eT-9FK">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="cF4-eT-9FK" customClass="MultiSelectSegmentedControl">
                                                     <rect key="frame" x="8" y="37" width="304" height="29"/>
                                                     <segments>
                                                         <segment title="Hotel" width="68"/>

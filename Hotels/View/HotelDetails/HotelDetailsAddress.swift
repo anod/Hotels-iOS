@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HotelDetailsAddress: UITableViewCell, HotelDetailsViewProtocol  {
+class HotelDetailsAddress: UITableViewCell, AccommodationViewProtocol  {
     
     @IBOutlet weak var address: UILabel!
     

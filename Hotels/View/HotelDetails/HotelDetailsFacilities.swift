@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HotelDetailsFacilities: UITableViewCell, UICollectionViewDataSource, HotelDetailsViewProtocol {
+class HotelDetailsFacilities: UITableViewCell, UICollectionViewDataSource, AccommodationViewProtocol {
 
     @IBOutlet weak var collectionView: UICollectionView!
     

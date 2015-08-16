@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HotelDetailsCheckInPolicy: UITableViewCell, HotelDetailsViewProtocol  {
+class HotelDetailsCheckInPolicy: UITableViewCell, AccommodationViewProtocol  {
     
     @IBOutlet weak var checkInText: UILabel!
     @IBOutlet weak var checkOutText: UILabel!

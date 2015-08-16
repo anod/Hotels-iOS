@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HotelDetailsPetsPolicy: UITableViewCell, HotelDetailsViewProtocol  {
+class HotelDetailsPetsPolicy: UITableViewCell, AccommodationViewProtocol  {
     
     @IBOutlet weak var policy: UILabel!
     

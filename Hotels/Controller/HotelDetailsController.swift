@@ -10,11 +10,6 @@ import UIKit
 import IDMPhotoBrowser
 import Haneke
 
-protocol HotelDetailsViewProtocol {
-    
-    func attach(accomodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest)
-}
-
 protocol HotelDetailsControllerDelegate {
     func unpinHotelDetailsController(controller : HotelDetailsController)
     func pinHotelDetailsController(controller : HotelDetailsController)
@@ -214,7 +209,7 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
 
     func createTableCell(tableView: UITableView, identifier: String) -> UITableViewCell {
         let cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(identifier)
-        let hdCell = cell as! HotelDetailsViewProtocol
+        let hdCell = cell as! AccommodationViewProtocol
         hdCell.attach(self.accommodation, rateId: rateId, availabilityRequest: availabilityRequest)
         return cell
     }

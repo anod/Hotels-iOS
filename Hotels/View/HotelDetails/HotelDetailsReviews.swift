@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HotelDetailsReviews: UITableViewCell, HotelDetailsViewProtocol  {
+class HotelDetailsReviews: UITableViewCell, AccommodationViewProtocol  {
     @IBOutlet weak var ratingView: FloatRatingView!
     @IBOutlet weak var reviewsNumber: UILabel!
 

@@ -10,6 +10,7 @@
 #define Hotels_Hotels_Bridging_Header_h
 
 #import "ParallaxHeaderView.h"
+#import "MultiSelectSegmentedControl.h"
 
 #import "CardIO.h"
 
@@ -20,6 +21,5 @@
 @import MobileCoreServices;
 
 #include <ifaddrs.h>
-
 
 #endif
