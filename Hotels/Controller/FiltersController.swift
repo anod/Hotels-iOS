@@ -17,13 +17,30 @@ class FiltersController: UITableViewController {
     @IBOutlet weak var ratingFilter: MultiSelectSegmentedControl!
     @IBOutlet weak var starsFilter: MultiSelectSegmentedControl!
     
-    var stars: [Int]!
-    var ratings: [Int]!
-    var accTypes: [Int]!
+    var stars: Set<Int>!
+    var ratings: Set<Int>!
+    var accTypes: Set<Int>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        starsFilter.selectedSegmentIndexes = convertToIndexSet(stars)
+        ratingFilter.selectedSegmentIndexes = convertToIndexSet(ratings)
+        starsFilter.selectedSegmentIndexes = convertToIndexSet(accTypes)
+
     }
 
+    func convertToIndexSet(sourceSet: Set<Int>) -> NSIndexSet {
+        let indexSet = NSMutableIndexSet()
+        for value in sourceSet {
+            indexSet.addIndex(value - 1)
+        }
+        return indexSet
+    }
+    
+    func setRequest(request: SearchRequest) {
+        stars = request.getStars()
+        ratings = request.getRating()
+        accTypes = request.getAccTypes()
+    }
 }
