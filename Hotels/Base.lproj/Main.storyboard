@@ -571,7 +571,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-mx-sEc" customClass="SummaryView" customModule="Hotels" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-mx-sEc" customClass="SummaryView" customModule="Hotels" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="260" height="960"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amadi Panorama Hotel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5EC-jV-WV7">
@@ -752,26 +752,35 @@
                                     <outlet property="totalPrice" destination="DTc-mb-YDa" id="H6A-yY-hdu"/>
                                 </connections>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSa-ap-jE0">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSa-ap-jE0">
                                 <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="e52-np-BB7"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem title="Back" id="Va9-Ce-8uI"/>
                                 </items>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyG-Ui-ZTH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyG-Ui-ZTH">
                                 <rect key="frame" x="323" y="31" width="123" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="1GM-8o-9yo"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OPi-pW-iWb">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPi-pW-iWb">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="20"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="uZO-JM-hzk"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPZ-hv-5W1" customClass="FormView" customModule="Hotels" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPZ-hv-5W1" customClass="FormView" customModule="Hotels" customModuleProvider="target">
                                 <rect key="frame" x="276" y="64" width="492" height="960"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sHW-1d-cHe">
@@ -974,8 +983,28 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OPi-pW-iWb" secondAttribute="trailing" id="2AZ-cI-kai"/>
+                            <constraint firstItem="CyG-Ui-ZTH" firstAttribute="centerY" secondItem="pSa-ap-jE0" secondAttribute="centerY" id="2nd-hP-ZtP"/>
+                            <constraint firstItem="CyG-Ui-ZTH" firstAttribute="centerX" secondItem="pSa-ap-jE0" secondAttribute="centerX" id="9Uj-mc-zcd"/>
+                            <constraint firstAttribute="bottom" secondItem="lPZ-hv-5W1" secondAttribute="bottom" id="B3E-go-58P"/>
+                            <constraint firstItem="lPZ-hv-5W1" firstAttribute="leading" secondItem="rgd-mx-sEc" secondAttribute="trailing" constant="16" id="ExQ-Ab-k3P"/>
+                            <constraint firstItem="CyG-Ui-ZTH" firstAttribute="top" secondItem="Wze-yp-OeQ" secondAttribute="bottom" constant="11" id="IsH-gV-xhI"/>
+                            <constraint firstItem="pSa-ap-jE0" firstAttribute="leading" secondItem="Hih-rv-0gD" secondAttribute="leading" id="QEq-0A-VYz"/>
+                            <constraint firstItem="lPZ-hv-5W1" firstAttribute="top" secondItem="rgd-mx-sEc" secondAttribute="top" id="Sx0-7h-xJf"/>
+                            <constraint firstItem="lPZ-hv-5W1" firstAttribute="trailing" secondItem="pSa-ap-jE0" secondAttribute="trailing" id="cnL-Mo-pdA"/>
+                            <constraint firstItem="OPi-pW-iWb" firstAttribute="leading" secondItem="Hih-rv-0gD" secondAttribute="leading" id="cyw-PS-ClS"/>
+                            <constraint firstItem="lPZ-hv-5W1" firstAttribute="bottom" secondItem="rgd-mx-sEc" secondAttribute="bottom" id="dNU-g0-ogH"/>
+                            <constraint firstItem="OPi-pW-iWb" firstAttribute="top" secondItem="Hih-rv-0gD" secondAttribute="top" id="dl3-PW-5J6"/>
+                            <constraint firstItem="lPZ-hv-5W1" firstAttribute="leading" secondItem="Hih-rv-0gD" secondAttribute="leading" constant="276" id="s7n-5c-BWd"/>
+                            <constraint firstAttribute="trailing" secondItem="pSa-ap-jE0" secondAttribute="trailing" id="tuE-eF-xZ1"/>
+                            <constraint firstItem="rgd-mx-sEc" firstAttribute="leading" secondItem="pSa-ap-jE0" secondAttribute="leading" id="yqf-cG-84J"/>
+                            <constraint firstItem="pSa-ap-jE0" firstAttribute="top" secondItem="Wze-yp-OeQ" secondAttribute="bottom" id="zsu-PE-rBg"/>
+                            <constraint firstItem="lPZ-hv-5W1" firstAttribute="top" secondItem="CyG-Ui-ZTH" secondAttribute="bottom" constant="12" id="zw3-vN-kRI"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
@@ -1002,26 +1031,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rI6-Zj-AMC">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rI6-Zj-AMC">
                                 <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="AhN-Wl-09C"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem title="Close" id="UUj-Gn-ik9"/>
                                 </items>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order Confirmation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOQ-fc-Lbk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Confirmation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOQ-fc-Lbk">
                                 <rect key="frame" x="297" y="31" width="175" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="1GP-7F-qYo"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lDi-mw-ljN">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDi-mw-ljN">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="20"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.47843137250000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="DvQ-lz-kmN"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ePg-mJ-nHX" customClass="SummaryView" customModule="Hotels" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePg-mJ-nHX" customClass="SummaryView" customModule="Hotels" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="270" height="960"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amadi Panorama Hotel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Kg-xt-LEG">
@@ -1183,7 +1221,7 @@
                                     <outlet property="totalPrice" destination="BAz-8L-nfX" id="gNI-Oh-iIL"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WQk-TM-ag7">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQk-TM-ag7">
                                 <rect key="frame" x="268" y="64" width="500" height="845"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8i1-3J-KUS">
@@ -1252,7 +1290,27 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jOQ-fc-Lbk" firstAttribute="top" secondItem="zew-b1-KN3" secondAttribute="bottom" constant="11" id="5tI-sf-k3f"/>
+                            <constraint firstAttribute="trailing" secondItem="rI6-Zj-AMC" secondAttribute="trailing" id="705-TB-ka5"/>
+                            <constraint firstItem="ePg-mJ-nHX" firstAttribute="bottom" secondItem="NfF-nB-gJ4" secondAttribute="top" id="BRc-Tr-Sgo"/>
+                            <constraint firstItem="WQk-TM-ag7" firstAttribute="trailing" secondItem="rI6-Zj-AMC" secondAttribute="trailing" id="CvS-yF-Rs8"/>
+                            <constraint firstItem="rI6-Zj-AMC" firstAttribute="top" secondItem="zew-b1-KN3" secondAttribute="bottom" id="OFM-GV-uct"/>
+                            <constraint firstItem="rI6-Zj-AMC" firstAttribute="leading" secondItem="DVF-4a-wv0" secondAttribute="leading" id="OsZ-vl-npn"/>
+                            <constraint firstAttribute="trailing" secondItem="ePg-mJ-nHX" secondAttribute="trailing" constant="498" id="QgT-cP-rKq"/>
+                            <constraint firstItem="jOQ-fc-Lbk" firstAttribute="centerY" secondItem="rI6-Zj-AMC" secondAttribute="centerY" id="Rbb-DS-3Nt"/>
+                            <constraint firstAttribute="trailing" secondItem="lDi-mw-ljN" secondAttribute="trailing" id="bSh-vV-19l"/>
+                            <constraint firstItem="WQk-TM-ag7" firstAttribute="top" secondItem="jOQ-fc-Lbk" secondAttribute="bottom" constant="12" id="cJi-7l-xnj"/>
+                            <constraint firstItem="lDi-mw-ljN" firstAttribute="leading" secondItem="DVF-4a-wv0" secondAttribute="leading" id="d7X-OW-yMO"/>
+                            <constraint firstItem="WQk-TM-ag7" firstAttribute="leading" secondItem="DVF-4a-wv0" secondAttribute="leading" constant="268" id="fna-Ai-giR"/>
+                            <constraint firstItem="jOQ-fc-Lbk" firstAttribute="centerX" secondItem="rI6-Zj-AMC" secondAttribute="centerX" id="hgq-2U-pPC"/>
+                            <constraint firstItem="ePg-mJ-nHX" firstAttribute="leading" secondItem="rI6-Zj-AMC" secondAttribute="leading" id="jyr-XI-8ZT"/>
+                            <constraint firstItem="WQk-TM-ag7" firstAttribute="top" secondItem="ePg-mJ-nHX" secondAttribute="top" id="kRk-Yg-yLg"/>
+                            <constraint firstItem="NfF-nB-gJ4" firstAttribute="top" secondItem="WQk-TM-ag7" secondAttribute="bottom" constant="115" id="vDt-SJ-xYW"/>
+                            <constraint firstItem="lDi-mw-ljN" firstAttribute="top" secondItem="DVF-4a-wv0" secondAttribute="top" id="zei-sx-mjB"/>
+                        </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="closeButton" destination="UUj-Gn-ik9" id="cei-9I-ejN"/>
@@ -1389,10 +1447,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNe-Sx-BKq">
-                                            <rect key="frame" x="155" y="90" width="97" height="22"/>
+                                            <rect key="frame" x="132" y="90" width="120" height="22"/>
                                             <animations/>
                                             <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                             <state key="normal" title="Book Now">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>

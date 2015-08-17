@@ -30,7 +30,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     var priceRender: PriceRender!
     
     let formatter = NSDateIntervalFormatter()
-    let cSpan:CLLocationDegrees = 0.09 // zoom 5/111
+    let cSpan:CLLocationDegrees = 0.06 // zoom 5/111
 
     override func viewDidLoad() {
         super.viewDidLoad()
