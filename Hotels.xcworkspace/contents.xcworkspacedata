@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Hotels/Model/OrderSummary+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Hotels.xcodeproj">
    </FileRef>
    <FileRef

@@ -3,12 +3,14 @@
     <entity name="OrderSummary" representedClassName=".OrderSummary" syncable="YES">
         <attribute name="checkIn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="checkOut" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="confirmationId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hotelAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hotelName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="orderId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="persons" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="OrderSummary" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="OrderSummary" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>

@@ -247,10 +247,14 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-
         let hotelDetailsCell = collectionView.dequeueReusableCellWithReuseIdentifier("HotelDetailsCell", forIndexPath: indexPath) as! HotelDetailsCell
 
+
         let accommodation = self.pinnedHotels[indexPath.item];
+
+        print("cellForItemAtIndexPath, Item: \(indexPath.item), Name: \(accommodation.name)")
+
+        
         let nav = hotelDetailsCell.contentViewController as! UINavigationController
         let vc = nav.viewControllers[0] as! HotelDetailsController
         vc.accommodation = accommodation

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import GLCalendarView
+
 
 protocol CalendarViewControllerDelegate : NSObjectProtocol {
     func didDateUpdateWithCheckIn(checkIn: NSDate, checkOut: NSDate)

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IDMPhotoBrowser
 import Haneke
 
 protocol HotelDetailsControllerDelegate:NSObjectProtocol {
@@ -46,6 +45,7 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         
         self.navigationItem.rightBarButtonItem = pinButton
 
+        tableView.allowsSelection = false
         
         cheapestRate = self.accommodation.rates[0].rateId
         
@@ -219,14 +219,8 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
     }
     
     func openPhotoBrowser() {
-        var urlsArray = [NSURL]()
-        for imageStrUrl in self.accommodation.images {
-            urlsArray.append(NSURL(string: imageStrUrl)!)
-        }
-        let photosWithURL = IDMPhoto.photosWithURLs(urlsArray)
-        let browser = IDMPhotoBrowser(photos: photosWithURL, animatedFromView:self.tableView.tableHeaderView)
-        browser.displayCounterLabel = true
-        browser.displayActionButton = false
+
+        let browser = PhotoBrowser(photos: self.accommodation.images, caption: self.accommodation.name!, animatedFromView:self.tableView.tableHeaderView)
         self.presentViewController(browser, animated:true, completion: nil)
     }
     

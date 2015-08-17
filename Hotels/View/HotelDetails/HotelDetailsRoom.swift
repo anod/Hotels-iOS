@@ -18,6 +18,7 @@ class HotelDetailsRoom: UITableViewCell, AccommodationViewProtocol  {
         super.awakeFromNib()
         // Initialization code
         bookButton.userInteractionEnabled = false
+        bookButton.exclusiveTouch = true
     }
 
 

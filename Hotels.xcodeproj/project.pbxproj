@@ -20,6 +20,15 @@
 		524D4E1B1B71FAE4007BA82E /* GooglePlaceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D4E1A1B71FAE4007BA82E /* GooglePlaceDetails.swift */; };
 		524D4E231B71FFE2007BA82E /* AutocompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D4E211B71FFE2007BA82E /* AutocompleteTableViewCell.swift */; };
 		524D4E241B71FFE2007BA82E /* MapLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D4E221B71FFE2007BA82E /* MapLabel.xib */; };
+		526473C21B81AFF6001E026A /* PhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526473C11B81AFF6001E026A /* PhotoBrowser.swift */; };
+		526473D41B81B714001E026A /* IDMCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 526473C51B81B714001E026A /* IDMCaptionView.m */; };
+		526473D51B81B714001E026A /* IDMPBLocalizations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 526473C71B81B714001E026A /* IDMPBLocalizations.bundle */; };
+		526473D61B81B714001E026A /* IDMPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 526473C91B81B714001E026A /* IDMPhoto.m */; };
+		526473D71B81B714001E026A /* IDMPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 526473CA1B81B714001E026A /* IDMPhotoBrowser.bundle */; };
+		526473D81B81B714001E026A /* IDMPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 526473CC1B81B714001E026A /* IDMPhotoBrowser.m */; };
+		526473D91B81B714001E026A /* IDMTapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 526473CF1B81B714001E026A /* IDMTapDetectingImageView.m */; };
+		526473DA1B81B714001E026A /* IDMTapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 526473D11B81B714001E026A /* IDMTapDetectingView.m */; };
+		526473DB1B81B714001E026A /* IDMZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 526473D31B81B714001E026A /* IDMZoomingScrollView.m */; };
 		527724F01B79325C0049271B /* Personal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527724EF1B79325C0049271B /* Personal.swift */; };
 		527724F21B79328B0049271B /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527724F11B79328B0049271B /* Payment.swift */; };
 		527724F41B7936030049271B /* OrderResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527724F31B7936030049271B /* OrderResult.swift */; };
@@ -106,6 +115,23 @@
 		524D4E1A1B71FAE4007BA82E /* GooglePlaceDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaceDetails.swift; sourceTree = "<group>"; };
 		524D4E211B71FFE2007BA82E /* AutocompleteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteTableViewCell.swift; sourceTree = "<group>"; };
 		524D4E221B71FFE2007BA82E /* MapLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapLabel.xib; sourceTree = "<group>"; };
+		526473C11B81AFF6001E026A /* PhotoBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowser.swift; sourceTree = "<group>"; };
+		526473C41B81B714001E026A /* IDMCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMCaptionView.h; sourceTree = "<group>"; };
+		526473C51B81B714001E026A /* IDMCaptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDMCaptionView.m; sourceTree = "<group>"; };
+		526473C61B81B714001E026A /* IDMPBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMPBConstants.h; sourceTree = "<group>"; };
+		526473C71B81B714001E026A /* IDMPBLocalizations.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IDMPBLocalizations.bundle; sourceTree = "<group>"; };
+		526473C81B81B714001E026A /* IDMPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMPhoto.h; sourceTree = "<group>"; };
+		526473C91B81B714001E026A /* IDMPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDMPhoto.m; sourceTree = "<group>"; };
+		526473CA1B81B714001E026A /* IDMPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IDMPhotoBrowser.bundle; sourceTree = "<group>"; };
+		526473CB1B81B714001E026A /* IDMPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMPhotoBrowser.h; sourceTree = "<group>"; };
+		526473CC1B81B714001E026A /* IDMPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDMPhotoBrowser.m; sourceTree = "<group>"; };
+		526473CD1B81B714001E026A /* IDMPhotoProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMPhotoProtocol.h; sourceTree = "<group>"; };
+		526473CE1B81B714001E026A /* IDMTapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMTapDetectingImageView.h; sourceTree = "<group>"; };
+		526473CF1B81B714001E026A /* IDMTapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDMTapDetectingImageView.m; sourceTree = "<group>"; };
+		526473D01B81B714001E026A /* IDMTapDetectingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMTapDetectingView.h; sourceTree = "<group>"; };
+		526473D11B81B714001E026A /* IDMTapDetectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDMTapDetectingView.m; sourceTree = "<group>"; };
+		526473D21B81B714001E026A /* IDMZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMZoomingScrollView.h; sourceTree = "<group>"; };
+		526473D31B81B714001E026A /* IDMZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDMZoomingScrollView.m; sourceTree = "<group>"; };
 		527724EF1B79325C0049271B /* Personal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Personal.swift; sourceTree = "<group>"; };
 		527724F11B79328B0049271B /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		527724F31B7936030049271B /* OrderResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderResult.swift; sourceTree = "<group>"; };
@@ -249,6 +275,29 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		526473C31B81B714001E026A /* IDMPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				526473C41B81B714001E026A /* IDMCaptionView.h */,
+				526473C51B81B714001E026A /* IDMCaptionView.m */,
+				526473C61B81B714001E026A /* IDMPBConstants.h */,
+				526473C71B81B714001E026A /* IDMPBLocalizations.bundle */,
+				526473C81B81B714001E026A /* IDMPhoto.h */,
+				526473C91B81B714001E026A /* IDMPhoto.m */,
+				526473CA1B81B714001E026A /* IDMPhotoBrowser.bundle */,
+				526473CB1B81B714001E026A /* IDMPhotoBrowser.h */,
+				526473CC1B81B714001E026A /* IDMPhotoBrowser.m */,
+				526473CD1B81B714001E026A /* IDMPhotoProtocol.h */,
+				526473CE1B81B714001E026A /* IDMTapDetectingImageView.h */,
+				526473CF1B81B714001E026A /* IDMTapDetectingImageView.m */,
+				526473D01B81B714001E026A /* IDMTapDetectingView.h */,
+				526473D11B81B714001E026A /* IDMTapDetectingView.m */,
+				526473D21B81B714001E026A /* IDMZoomingScrollView.h */,
+				526473D31B81B714001E026A /* IDMZoomingScrollView.m */,
+			);
+			path = IDMPhotoBrowser;
+			sourceTree = "<group>";
+		};
 		528149511B80746000CE1D8B /* MultiSelectSegmentControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +415,7 @@
 		52944F1B1B71E64300849A61 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				526473C31B81B714001E026A /* IDMPhotoBrowser */,
 				528149511B80746000CE1D8B /* MultiSelectSegmentControl */,
 				520F620B1B7BD0C500F5F5B2 /* CreditCardValidator */,
 				52944F1C1B71E64300849A61 /* ParallaxTableViewHeader */,
@@ -455,6 +505,7 @@
 				52944F4A1B71E77200849A61 /* FloatRatingView.swift */,
 				52944F4B1B71E77200849A61 /* HotelDetails */,
 				52CD98771B78766200DDD7EE /* ErrorAlertView.swift */,
+				526473C11B81AFF6001E026A /* PhotoBrowser.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -554,12 +605,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				52944F2E1B71E64300849A61 /* Info.plist in Resources */,
+				526473D51B81B714001E026A /* IDMPBLocalizations.bundle in Resources */,
 				52944EFD1B71E4E000849A61 /* LaunchScreen.storyboard in Resources */,
 				52944F681B71E77200849A61 /* HotelDetailsHeader.xib in Resources */,
 				524D4E241B71FFE2007BA82E /* MapLabel.xib in Resources */,
 				52944F5E1B71E77200849A61 /* Images.xcassets in Resources */,
 				52944EF51B71E4E000849A61 /* Main.storyboard in Resources */,
 				52944F5D1B71E77200849A61 /* hotel_placeholder.png in Resources */,
+				526473D71B81B714001E026A /* IDMPhotoBrowser.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +677,7 @@
 				52944F2C1B71E64300849A61 /* EtbApiDelegate.swift in Sources */,
 				52944F301B71E64300849A61 /* AccommodationDetails.swift in Sources */,
 				52944F271B71E64300849A61 /* Facility.swift in Sources */,
+				526473DB1B81B714001E026A /* IDMZoomingScrollView.m in Sources */,
 				52944F351B71E64300849A61 /* SearchMeta.swift in Sources */,
 				524D4E1B1B71FAE4007BA82E /* GooglePlaceDetails.swift in Sources */,
 				5281495A1B80CF1D00CE1D8B /* OrderRate.swift in Sources */,
@@ -645,9 +699,11 @@
 				528407061B792EDC001E4FE9 /* Order.swift in Sources */,
 				52944F251B71E64300849A61 /* AlamofireObjectExtension.swift in Sources */,
 				52944F291B71E64300849A61 /* Stars.swift in Sources */,
+				526473D61B81B714001E026A /* IDMPhoto.m in Sources */,
 				52944F321B71E64300849A61 /* AvailabilityRequest.swift in Sources */,
 				529031BA1B75E4F0006ED651 /* BookingScreenController.swift in Sources */,
 				52944F331B71E64300849A61 /* Meta.swift in Sources */,
+				526473D41B81B714001E026A /* IDMCaptionView.m in Sources */,
 				520F62111B7BD0C500F5F5B2 /* CreditCardValidationType.swift in Sources */,
 				52944F6A1B71E77200849A61 /* HotelDetailsPetsPolicy.swift in Sources */,
 				52944F2D1B71E64300849A61 /* EtbApiUtils.swift in Sources */,
@@ -659,6 +715,7 @@
 				52944F361B71E64300849A61 /* SearchRequest.swift in Sources */,
 				527724F01B79325C0049271B /* Personal.swift in Sources */,
 				52944F281B71E64300849A61 /* Sort.swift in Sources */,
+				526473D81B81B714001E026A /* IDMPhotoBrowser.m in Sources */,
 				52944F2A1B71E64300849A61 /* EtbApi.swift in Sources */,
 				52FB315C1B7797B500F234B5 /* AccommodationUtils.swift in Sources */,
 				52944F5F1B71E77200849A61 /* AccomodationMKPointAnnotation.swift in Sources */,
@@ -672,15 +729,18 @@
 				52CD987E1B78D4E800DDD7EE /* ColorUtils.swift in Sources */,
 				5281495C1B80DE1A00CE1D8B /* ControllerUtils.swift in Sources */,
 				52944F5A1B71E77200849A61 /* HotelDetailsController.swift in Sources */,
+				526473D91B81B714001E026A /* IDMTapDetectingImageView.m in Sources */,
 				52CD987C1B78D3E400DDD7EE /* CalendarViewController.swift in Sources */,
 				527724FA1B7A13070049271B /* FiltersController.swift in Sources */,
 				52944F311B71E64300849A61 /* AccommodationsResults.swift in Sources */,
 				527724F61B79BD1B0049271B /* ApiUtils.swift in Sources */,
 				529031C21B75E9C0006ED651 /* FormView.swift in Sources */,
 				52944F341B71E64300849A61 /* Rate.swift in Sources */,
+				526473DA1B81B714001E026A /* IDMTapDetectingView.m in Sources */,
 				52944F5B1B71E77200849A61 /* MapViewController.swift in Sources */,
 				52944F371B71E64300849A61 /* ParallaxHeaderView.m in Sources */,
 				52944F5C1B71E77200849A61 /* UIView.swift in Sources */,
+				526473C21B81AFF6001E026A /* PhotoBrowser.swift in Sources */,
 				527724FC1B7A13420049271B /* OrdersController.swift in Sources */,
 				52944F6C1B71E77200849A61 /* HotelDetailsRoom.swift in Sources */,
 				52944F6B1B71E77200849A61 /* HotelDetailsReviews.swift in Sources */,

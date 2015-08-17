@@ -96,7 +96,8 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         orderSummary.setValue(availabilityRequest.persons(), forKey: "persons")
         orderSummary.setValue(accomodation.name, forKey: "hotelName")
         orderSummary.setValue(AccommodationRender.address(accomodation), forKey: "hotelAddress")
-        
+        orderSummary.setValue(order.rates[0].confirmationId, forKey: "confirmationId")
+        orderSummary.setValue(order.rates[0].password, forKey: "password")
         
         // save it
         do {
