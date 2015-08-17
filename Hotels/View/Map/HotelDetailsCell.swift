@@ -8,22 +8,25 @@
 
 import UIKit
 
-protocol HotelDetailsCellDelegate {
+protocol HotelDetailsCellDelegate : NSObjectProtocol {
     func collectionViewCell(cell: HotelDetailsCell, willMoveToWindow newWindow: UIWindow?)
     func collectionViewCellWillPrepareForReuse(cell: HotelDetailsCell)
 }
 
 class HotelDetailsCell : UICollectionViewCell {
-    var delegate: HotelDetailsCellDelegate!
-    var contentViewController: UIViewController!
+    weak var delegate: HotelDetailsCellDelegate?
+    weak var contentViewController: UIViewController?
     
     override func willMoveToWindow(newWindow: UIWindow?) {
+        print("willMoveToWindow")
         super.willMoveToWindow(newWindow)
-        self.delegate.collectionViewCell(self, willMoveToWindow: newWindow)
+        self.delegate!.collectionViewCell(self, willMoveToWindow: newWindow)
     }
     
     override func prepareForReuse() {
-        self.delegate.collectionViewCellWillPrepareForReuse(self)
+        print("prepareForReuse")
+        self.contentViewController = nil
+        self.delegate!.collectionViewCellWillPrepareForReuse(self)
         super.prepareForReuse()
     }
     

@@ -35,6 +35,7 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
     ]
     
     override func viewDidLoad() {
+        print("HotelDetailsController.viewDidLoad")
         super.viewDidLoad()
         
         self.setupHeader()
@@ -47,15 +48,19 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
 
         tableView.allowsSelection = false
         
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("HotelDetailsController.viewWillAppear")
+        super.viewWillAppear(animated)
+        
         cheapestRate = self.accommodation.rates[0].rateId
         
         api = ApiUtils.create()
         api.delegate = self
         api.details(self.accommodation.id, request: self.availabilityRequest)
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+        
         let bar = self.navigationController?.navigationBar
         bar!.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         bar!.shadowImage = UIImage()

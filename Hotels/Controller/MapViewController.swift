@@ -262,30 +262,37 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         vc.rateId = accommodation.rates[0].rateId
         vc.isPinned = true
         vc.delegate = self
-        
+
         return hotelDetailsCell
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        print("didEndDisplayingCell")
         self.hotelDetailsCollection.didEndDisplayingCell(cell)
     }
     
     func collectionView(view: UICollectionView, controllerForIdentifier identifier: String) -> UIViewController {
+        print("controllerForIdentifier")
+
         let vc : UINavigationController = ControllerUtils.instantiate("HotelDetailsNavController")
         return vc
     }
         
     func unpinHotelDetailsController(controller : HotelDetailsController) {
-        let idx = self.pinnedHotels.indexOf(controller.accommodation)
+        print("unpinHotelDetailsController")
+        let idx = self.pinnedHotels.indexOf({ element in
+            return controller.accommodation.id == element.id
+        })
         self.pinnedHotels.removeAtIndex(idx!)
-        self.hotelDetailsCollection.reloadData()
+        self.hotelDetailsCollection.deleteItemsAtIndexPaths([NSIndexPath(forItem: idx!, inSection: 0)])
     }
     
     func pinHotelDetailsController(controller : HotelDetailsController) {
         
+        print("pinHotelDetailsController")
         self.popoverHotelDetailsController.dismissViewControllerAnimated(true, completion: nil)
         self.pinnedHotels.append(controller.accommodation)
-        self.hotelDetailsCollection.reloadData()
+        self.hotelDetailsCollection.insertItemsAtIndexPaths([NSIndexPath(forItem: self.pinnedHotels.count - 1, inSection: 0)])
     }
     
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController)

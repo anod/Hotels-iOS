@@ -40,7 +40,7 @@ class HotelDetailsCollectionView: UICollectionView, HotelDetailsCellDelegate {
         cell.delegate = self
         if cell.contentViewController == nil {
             cell.contentViewController = self.controllerDataSource.collectionView(self, controllerForIdentifier: identifier)
-            
+            self.hostViewController(cell.contentViewController!, withHostView: cell.contentView)
         }
         
         return cell
@@ -49,7 +49,8 @@ class HotelDetailsCollectionView: UICollectionView, HotelDetailsCellDelegate {
     func didEndDisplayingCell(cell: UICollectionViewCell) {
         let cell = cell as! HotelDetailsCell
         let vc = cell.contentViewController
-        self.unhostViewController(vc)
+        self.unhostViewController(vc!)
+        cell.contentViewController = nil
     }
     
     
@@ -68,10 +69,10 @@ class HotelDetailsCollectionView: UICollectionView, HotelDetailsCellDelegate {
     }
     
     func collectionViewCell(cell: HotelDetailsCell, willMoveToWindow newWindow: UIWindow?) {
-        self.hostViewController(cell.contentViewController, withHostView: cell.contentView)
+        //self.hostViewController(cell.contentViewController!, withHostView: cell.contentView)
     }
     
     func collectionViewCellWillPrepareForReuse(cell: HotelDetailsCell) {
-        self.hostViewController(cell.contentViewController, withHostView: cell.contentView)
+        //self.hostViewController(cell.contentViewController, withHostView: cell.contentView)
     }
 }
