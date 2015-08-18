@@ -227,7 +227,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
        
         let priceLabel = ALabel(frame: CGRectMake(0,0,50,21))
-        priceLabel.font=UIFont(name: "Avenir Next Regular", size: 16)
+        priceLabel.font=FontUtils.regularWithSize(16)
         priceLabel.textAlignment=NSTextAlignment.Left;
         priceLabel.textColor=UIColor.whiteColor()
         priceLabel.userInteractionEnabled = true

@@ -94,6 +94,7 @@
 		52944F6A1B71E77200849A61 /* HotelDetailsPetsPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52944F531B71E77200849A61 /* HotelDetailsPetsPolicy.swift */; };
 		52944F6B1B71E77200849A61 /* HotelDetailsReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52944F541B71E77200849A61 /* HotelDetailsReviews.swift */; };
 		52944F6C1B71E77200849A61 /* HotelDetailsRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52944F551B71E77200849A61 /* HotelDetailsRoom.swift */; };
+		52AC611B1B831CDB0045424E /* FontUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC611A1B831CDB0045424E /* FontUtils.swift */; };
 		52CD98781B78766200DDD7EE /* ErrorAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD98771B78766200DDD7EE /* ErrorAlertView.swift */; };
 		52CD987C1B78D3E400DDD7EE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD987B1B78D3E400DDD7EE /* CalendarViewController.swift */; };
 		52CD987E1B78D4E800DDD7EE /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD987D1B78D4E800DDD7EE /* ColorUtils.swift */; };
@@ -206,6 +207,7 @@
 		52944F541B71E77200849A61 /* HotelDetailsReviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsReviews.swift; sourceTree = "<group>"; };
 		52944F551B71E77200849A61 /* HotelDetailsRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsRoom.swift; sourceTree = "<group>"; };
 		52944F701B71E7B200849A61 /* Hotels-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hotels-Bridging-Header.h"; sourceTree = "<group>"; };
+		52AC611A1B831CDB0045424E /* FontUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontUtils.swift; sourceTree = "<group>"; };
 		52CD98771B78766200DDD7EE /* ErrorAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlertView.swift; sourceTree = "<group>"; };
 		52CD987B1B78D3E400DDD7EE /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		52CD987D1B78D4E800DDD7EE /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 				52CD987D1B78D4E800DDD7EE /* ColorUtils.swift */,
 				527724F51B79BD1B0049271B /* ApiUtils.swift */,
 				5281495B1B80DE1A00CE1D8B /* ControllerUtils.swift */,
+				52AC611A1B831CDB0045424E /* FontUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				529031BA1B75E4F0006ED651 /* BookingScreenController.swift in Sources */,
 				52944F331B71E64300849A61 /* Meta.swift in Sources */,
 				526473D41B81B714001E026A /* IDMCaptionView.m in Sources */,
+				52AC611B1B831CDB0045424E /* FontUtils.swift in Sources */,
 				520F62111B7BD0C500F5F5B2 /* CreditCardValidationType.swift in Sources */,
 				52944F6A1B71E77200849A61 /* HotelDetailsPetsPolicy.swift in Sources */,
 				52944F2D1B71E64300849A61 /* EtbApiUtils.swift in Sources */,

@@ -206,7 +206,7 @@ class EtbApi {
                 
                 // Check for running IPv4, IPv6 interfaces. Skip the loopback interface.
                 if (flags & (IFF_UP|IFF_RUNNING|IFF_LOOPBACK)) == (IFF_UP|IFF_RUNNING) {
-                    if addr.sa_family == UInt8(AF_INET) || addr.sa_family == UInt8(AF_INET6) {
+                    if addr.sa_family == UInt8(AF_INET) /*|| addr.sa_family == UInt8(AF_INET6)*/ {
                         
                         // Convert interface address to a human readable string:
                         var hostname = [CChar](count: Int(NI_MAXHOST), repeatedValue: 0)
