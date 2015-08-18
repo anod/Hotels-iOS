@@ -958,7 +958,7 @@
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="1da-MY-3GX" kind="popoverPresentation" popoverAnchorView="P0B-II-EgY" id="sPW-yJ-L92">
+                                            <segue destination="1da-MY-3GX" kind="popoverPresentation" identifier="CountryPickerController" popoverAnchorView="P0B-II-EgY" id="sPW-yJ-L92">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
@@ -1716,53 +1716,60 @@
                         <viewControllerLayoutGuide type="bottom" id="ZnF-xn-DdN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zTI-sK-ChF">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GtT-DV-HDl">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="200" height="200"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="280" height="200"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="200" height="200"/>
+                    <size key="freeformSize" width="280" height="280"/>
                     <connections>
                         <outlet property="pickerView" destination="GtT-DV-HDl" id="IMh-BN-oNi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3w1-H7-dQd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2647" y="-168"/>
+            <point key="canvasLocation" x="2568" y="-189"/>
         </scene>
-        <!--View Controller-->
+        <!--Country Picker Controller-->
         <scene sceneID="zhv-Gv-jsV">
             <objects>
-                <viewController storyboardIdentifier="CountryPickerController" id="1da-MY-3GX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CountryPickerController" id="1da-MY-3GX" customClass="CountryPickerController" customModule="Hotels" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Db8-Mn-bmJ"/>
                         <viewControllerLayoutGuide type="bottom" id="KGG-no-o9k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="U5M-6s-dSj">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="veY-Z1-Go0" customClass="CountryPicker">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="200" height="200"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="280" height="280"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="200" height="200"/>
+                    <size key="freeformSize" width="280" height="280"/>
+                    <connections>
+                        <outlet property="pickerView" destination="veY-Z1-Go0" id="5xU-HR-1hJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zh1-rm-8L5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2882" y="-168"/>
+            <point key="canvasLocation" x="2932" y="-189"/>
         </scene>
     </scenes>
     <resources>

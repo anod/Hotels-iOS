@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPickerControllerDelegate {
+class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPickerControllerDelegate, CountryPickerDelegate {
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var summary: SummaryView!
     @IBOutlet weak var form: FormView!
@@ -28,6 +28,7 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
     var rate: Rate!
     var expMonth = 0
     var expYear = 0
+    var selectedCountryCode: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,10 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         backButton.target = self
         backButton.action = Selector("backButtonAction")
 
+        selectedCountryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as! String
+        let countryName =  NSLocale.currentLocale().displayNameForKey(NSLocaleCountryCode, value: selectedCountryCode)
+        form.setCountryName(countryName!, code: selectedCountryCode)
+        
         rate = AccommodationUtils.findRate(rateId, accommodation: accomodation)
         
         api = ApiUtils.create()
@@ -52,6 +57,10 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
             vc.delegate = self
             vc.selectedMonth = expMonth
             vc.selectedYear = expYear
+        } else if segue.identifier == "CountryPickerController" {
+            let vc = segue.destinationViewController as! CountryPickerController
+            vc.delegate = self
+            vc.selectedCountryCode = selectedCountryCode
         }
     }
     
@@ -66,6 +75,11 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         
         api.order(availabilityRequest, personal: personal, payment: payment, rateKey: rateKey!, rateCount: 1, remarks: remarks)
         
+    }
+    
+    func countryPicker(picker: CountryPicker!, didSelectCountryWithName name: String!, code: String!) {
+        selectedCountryCode = code
+        form.setCountryName(name, code: code)
     }
     
     func expirationDidSelectMonth(month: Int, year: Int) {

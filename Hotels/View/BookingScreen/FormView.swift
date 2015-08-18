@@ -35,7 +35,8 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
     var ccType : CreditCard?
     var expMonth = 0
     var expYear = 0
-
+    var countryCode: String!
+    
     var parentController : UIViewController!
     
     override func awakeFromNib() {
@@ -44,9 +45,13 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
         ccExpiration.backgroundColor = UIColor.clearColor()
         ccExpiration.layer.cornerRadius = 5
         ccExpiration.layer.borderWidth = 1
-        ccExpiration.layer.borderColor = UIColor.lightGrayColor().CGColor
+        ccExpiration.layer.borderColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.8).CGColor
         
-
+        country.backgroundColor = UIColor.clearColor()
+        country.layer.cornerRadius = 5
+        country.layer.borderWidth = 1
+        country.layer.borderColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.8).CGColor
+        
         // Do any additional setup after loading the view, typically from a nib.
         CardIOUtilities.preload()
     }
@@ -89,10 +94,17 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
         parentController.presentViewController(cardIOVC, animated: true, completion: nil)
     }
     
+    func setCountryName(name: String, code: String) {
+        countryCode = code
+        country.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        country.setTitle(name, forState: UIControlState.Normal)
+    }
+    
     func setExpirationMonth(month: Int, year: Int) {
         let title = month < 10 ? "0\(month)/\(year)" : "\(month)/\(year)"
         expMonth = month
         expYear = year
+        ccExpiration.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         ccExpiration.setTitle(title, forState: UIControlState.Normal)
     }
     
@@ -118,7 +130,7 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
         personal.phone = phoneNumber.text
         personal.email = emailAddress.text
         
-        //personal.country = country.
+        personal.country = countryCode
         
         return personal
     }
@@ -134,7 +146,7 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
         payment.data.ccExpiryYear = expYear
         payment.data.ccCvc = ccCVV.text
         
-        //payment.billingAddress.country = country.text
+        payment.billingAddress.country = countryCode
         payment.billingAddress.postalCode = postcode.text
         payment.billingAddress.city = city.text
         payment.billingAddress.address = address.text

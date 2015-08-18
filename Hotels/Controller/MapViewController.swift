@@ -40,8 +40,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         formatter.dateStyle = NSDateIntervalFormatterStyle.MediumStyle
         formatter.timeStyle = NSDateIntervalFormatterStyle.NoStyle
         
-        let locale = NSLocale.currentLocale()
-        let currency = locale.objectForKey(NSLocaleCurrencyCode) as! String
+        let currency = NSLocale.currentLocale().objectForKey(NSLocaleCurrencyCode) as! String
         
         request = SearchRequest()
         // Amsterdam
@@ -49,8 +48,6 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         request.lon = 4.8951679
         request.type = "spr"
         request.currency = currency
-        
-        detectLocation()
         
         datesTitleView.setTitle(formatter.stringFromDate(request.checkInDate, toDate: request.checkOutDate), forState: UIControlState.Normal)
         
@@ -74,9 +71,13 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
 
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if detectLocation() {
+            requestAvailability()
+        }
     }
+
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -99,29 +100,26 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         }
     }
     
-    func detectLocation() {
+    func detectLocation() -> Bool {
         let aStatus = CLLocationManager.authorizationStatus()
         if  aStatus == CLAuthorizationStatus.Denied ||
             aStatus == CLAuthorizationStatus.Restricted {
                 //app is not permitted to use location services and you should abort your attempt to use them
-                print("locationServices Restircted")
-                return;
+                return false;
         }
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
         
         if aStatus == CLAuthorizationStatus.NotDetermined {
-            print("locationServices requestWhenInUseAuthorization")
             self.locationManager.requestWhenInUseAuthorization()
         }
 
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
             self.locationManager.startUpdatingLocation()
-        } else {
-            print("locationServices Disabled")
+            return true
         }
-        
+        return false
     }
     
     func didDateUpdateWithCheckIn(checkIn: NSDate, checkOut: NSDate) {
@@ -164,19 +162,16 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         requestAvailability()
     }
    
-    override func viewDidAppear(animated: Bool) {
-        requestAvailability()
-    }
-
     func requestAvailability() {
         self.mapView.removeAnnotations(self.mapView.annotations)
-        
 
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         api.search(request,offset: 0,limit: 50)
     }
     
     func searchSuccessResult(result:AccommodationsResults) {
-        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+
         for accomodation in result.accommodations {
             let annotation = AccommodationMKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2DMake(accomodation.location.lat, accomodation.location.lon)
@@ -187,6 +182,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     }
 
     func searchErrorResult(error:NSError) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+
         ErrorAlertView.show("Search failed. Please try again", controller: self)
         print(error)
     }
@@ -214,7 +211,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         if  let pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) {
             pinView.annotation = annotation
 
-            let priceLabel = pinView.subviews[0] as! ALabel
+            let priceLabel = pinView.subviews[0] as! PriceLabel
             
             priceLabel.text=" " + priceRender.render(annotation.accommodation.rates[0]) + "  "
             priceLabel.sizeToFit()
@@ -226,20 +223,10 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         
         let pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
        
-        let priceLabel = ALabel(frame: CGRectMake(0,0,50,21))
-        priceLabel.font=FontUtils.regularWithSize(16)
-        priceLabel.textAlignment=NSTextAlignment.Left;
-        priceLabel.textColor=UIColor.whiteColor()
-        priceLabel.userInteractionEnabled = true
-        priceLabel.backgroundColor=UIColor.orangeColor()
-        
-        priceLabel.layer.cornerRadius = 8;
-        priceLabel.clipsToBounds = true
-        priceLabel.lineBreakMode = NSLineBreakMode.ByClipping
-        
+        let priceLabel = PriceLabel()
         priceLabel.text=" " + priceRender.render(annotation.accommodation.rates[0]) + "  "
         priceLabel.sizeToFit()
-        
+
         pinView.frame = priceLabel.frame
         
         pinView.addSubview(priceLabel)

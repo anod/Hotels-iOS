@@ -10,8 +10,8 @@ import Foundation
 
 class AvailabilityRequest {
     
-    var checkInDate = NSDate()
-    var checkOutDate = NSDate(timeIntervalSinceNow: 86400)
+    var checkInDate = NSDate(timeIntervalSinceNow: 86400)
+    var checkOutDate = NSDate(timeIntervalSinceNow: 2*86400)
     var currency = "EUR"
     var language = "en"
     var capacity = [2]

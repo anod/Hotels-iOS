@@ -99,6 +99,8 @@
 		52AC61211B833A2C0045424E /* CountryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AC611F1B833A2C0045424E /* CountryPicker.m */; };
 		52AC61251B833CC10045424E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52AC61231B833CC10045424E /* Fabric.framework */; };
 		52AC61261B833CC10045424E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52AC61241B833CC10045424E /* Crashlytics.framework */; };
+		52AC61281B8346440045424E /* PriceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC61271B8346440045424E /* PriceLabel.swift */; };
+		52AC612A1B83476B0045424E /* CountryPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC61291B83476B0045424E /* CountryPickerController.swift */; };
 		52CD98781B78766200DDD7EE /* ErrorAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD98771B78766200DDD7EE /* ErrorAlertView.swift */; };
 		52CD987C1B78D3E400DDD7EE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD987B1B78D3E400DDD7EE /* CalendarViewController.swift */; };
 		52CD987E1B78D4E800DDD7EE /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD987D1B78D4E800DDD7EE /* ColorUtils.swift */; };
@@ -217,6 +219,8 @@
 		52AC611F1B833A2C0045424E /* CountryPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryPicker.m; sourceTree = "<group>"; };
 		52AC61231B833CC10045424E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		52AC61241B833CC10045424E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		52AC61271B8346440045424E /* PriceLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceLabel.swift; sourceTree = "<group>"; };
+		52AC61291B83476B0045424E /* CountryPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerController.swift; sourceTree = "<group>"; };
 		52CD98771B78766200DDD7EE /* ErrorAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlertView.swift; sourceTree = "<group>"; };
 		52CD987B1B78D3E400DDD7EE /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		52CD987D1B78D4E800DDD7EE /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 				529031BC1B75E976006ED651 /* HotelDetailsCollectionView.swift */,
 				524D4E211B71FFE2007BA82E /* AutocompleteTableViewCell.swift */,
 				524D4E221B71FFE2007BA82E /* MapLabel.xib */,
+				52AC61271B8346440045424E /* PriceLabel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 				527724F91B7A13070049271B /* FiltersController.swift */,
 				527724FB1B7A13420049271B /* OrdersController.swift */,
 				5220ECD31B7CE1FF003EFBD0 /* ExpirationPickerController.swift */,
+				52AC61291B83476B0045424E /* CountryPickerController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -725,6 +731,7 @@
 				5281495A1B80CF1D00CE1D8B /* OrderRate.swift in Sources */,
 				528149541B80746000CE1D8B /* MultiSelectSegmentedControl.m in Sources */,
 				529031BE1B75E976006ED651 /* HotelDetailsCollectionView.swift in Sources */,
+				52AC61281B8346440045424E /* PriceLabel.swift in Sources */,
 				5215AC631B7E2060007A2AF7 /* OrderSummary.swift in Sources */,
 				524D4E151B71F8B3007BA82E /* GooglePlacesApi.swift in Sources */,
 				52944F621B71E77200849A61 /* FloatRatingView.swift in Sources */,
@@ -796,6 +803,7 @@
 				529031C31B75E9C0006ED651 /* SummaryView.swift in Sources */,
 				527724F41B7936030049271B /* OrderResult.swift in Sources */,
 				52944F381B71E64300849A61 /* StoryCommentCell.m in Sources */,
+				52AC612A1B83476B0045424E /* CountryPickerController.swift in Sources */,
 				524D4E231B71FFE2007BA82E /* AutocompleteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
