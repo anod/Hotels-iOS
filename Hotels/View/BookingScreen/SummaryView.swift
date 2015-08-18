@@ -10,7 +10,7 @@ import UIKit
 import HCSStarRatingView
 import Haneke
 
-class SummaryView: UIView, AccommodationViewProtocol{
+class SummaryView: UIScrollView, AccommodationViewProtocol{
     @IBOutlet weak var hotelName: UILabel!
     @IBOutlet weak var hotelAddress: UILabel!
     @IBOutlet weak var hotelStars: HCSStarRatingView!

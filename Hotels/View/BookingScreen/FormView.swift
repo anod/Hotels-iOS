@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FormView: UIView, CardIOPaymentViewControllerDelegate {
+class FormView: UIScrollView, CardIOPaymentViewControllerDelegate {
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
@@ -45,12 +45,12 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
         ccExpiration.backgroundColor = UIColor.clearColor()
         ccExpiration.layer.cornerRadius = 5
         ccExpiration.layer.borderWidth = 1
-        ccExpiration.layer.borderColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.8).CGColor
+        ccExpiration.layer.borderColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.6).CGColor
         
         country.backgroundColor = UIColor.clearColor()
         country.layer.cornerRadius = 5
         country.layer.borderWidth = 1
-        country.layer.borderColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.8).CGColor
+        country.layer.borderColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.6).CGColor
         
         // Do any additional setup after loading the view, typically from a nib.
         CardIOUtilities.preload()
