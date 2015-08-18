@@ -8,8 +8,7 @@
 
 import Foundation
 
-class ConfirmationController: UIViewController {
-    @IBOutlet weak var closeButton: UIBarButtonItem!
+class ConfirmationController: UIViewController, EtbApiDelegate {
     @IBOutlet weak var summary: SummaryView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -20,9 +19,12 @@ class ConfirmationController: UIViewController {
     var isBookingConfirmation = false
     var accommodation: Accommodation!
     var result: OrderResult?
-    
+    var api: EtbApi!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        api = ApiUtils.create()
+        api.delegate = self
         
         if let orderRate = result?.order!.rates[0] {
             summary.attach(accommodation, rateId: orderRate.rate.rateId, availabilityRequest: orderRate.request)
@@ -36,15 +38,37 @@ class ConfirmationController: UIViewController {
             confirmationLabel.text = orderRate.confirmationId
             if isBookingConfirmation {
                 cancelButton.hidden = true
+            } else if orderRate.statusCode != "Confirmed" {
+                cancelButton.hidden = true
             }
         }
         
         
-        closeButton.target = self
-        closeButton.action = Selector("backButtonAction")
     }
     
-    func backButtonAction() {
+    @IBAction func closeButtonAction(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func cancelReservationActions(sender: AnyObject) {
+        let orderId = result?.order!.orderId
+        if let orderRate = result?.order!.rates[0] {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            let rateId: String = orderRate.rate.rateId
+            api.cancel(orderId!, rateId: rateId, confirmationId: orderRate.confirmationId)
+        }
+    }
+    
+    func cancelSuccessResult() {
+        statusLabel.text = "Cancelled"
+        cancelButton.userInteractionEnabled = false
+    }
+    
+    func cancelErrorResult(error:NSError) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        
+        ErrorAlertView.show("Search failed. Please try again", controller: self)
+        print(error)
+    }
+    
 }

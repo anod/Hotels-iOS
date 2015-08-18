@@ -192,6 +192,33 @@ class EtbApi {
         }
     }
     
+    func cancel(orderId: Int, rateId: String, confirmationId: String) {
+        let apiKey = self.config.apiKey
+        
+        let query : [String : AnyObject] = [
+            "confirmationId": confirmationId,
+            "reason" : 11, // Other
+            "explanation" : "No explanation"
+        ]
+        
+        self.alamofire.request(.POST, self.config.serverBaseSecure + "/orders/\(orderId)/rates/\(rateId)/cancel?apiKey=\(apiKey)", parameters: query, encoding: .JSON)
+            .responseObject { (request, response, results: Result<CancelResult>) in
+                if let delegate = self.delegate {
+                    if results.isFailure {
+                        delegate.cancelErrorResult!(results.error!)
+                        return;
+                    }
+                    if (results.value?.meta.statusCode == 200) {
+                        delegate.cancelSuccessResult!()
+                    } else {
+                        let msg = NSString(string: (results.value?.meta.errorMessage)!)
+                        let error = NSError(domain: "EtbApi", code: (results.value?.meta.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
+                        delegate.cancelErrorResult!(error)
+                    }
+                }
+        }
+    }
+    
     private func getIFAddresses() -> [String] {
         var addresses = [String]()
         

@@ -105,6 +105,7 @@
 		52EFB3D91B83775500708107 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52EFB3D71B83775500708107 /* Fabric.framework */; };
 		52EFB3E01B83833D00708107 /* OrderSummary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EFB3DE1B83833D00708107 /* OrderSummary+CoreDataProperties.swift */; };
 		52EFB3E11B83833D00708107 /* OrderSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EFB3DF1B83833D00708107 /* OrderSummary.swift */; };
+		52EFB3E31B83B55300708107 /* CancelResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EFB3E21B83B55300708107 /* CancelResult.swift */; };
 		52FB315A1B778FB200F234B5 /* AccommodationRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB31591B778FB200F234B5 /* AccommodationRender.swift */; };
 		52FB315C1B7797B500F234B5 /* AccommodationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB315B1B7797B500F234B5 /* AccommodationUtils.swift */; };
 /* End PBXBuildFile section */
@@ -228,6 +229,7 @@
 		52EFB3D71B83775500708107 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Vendors/Fabric.framework; sourceTree = "<group>"; };
 		52EFB3DE1B83833D00708107 /* OrderSummary+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "OrderSummary+CoreDataProperties.swift"; path = "Model/OrderSummary+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		52EFB3DF1B83833D00708107 /* OrderSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderSummary.swift; path = Model/OrderSummary.swift; sourceTree = "<group>"; };
+		52EFB3E21B83B55300708107 /* CancelResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelResult.swift; sourceTree = "<group>"; };
 		52FB31591B778FB200F234B5 /* AccommodationRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationRender.swift; sourceTree = "<group>"; };
 		52FB315B1B7797B500F234B5 /* AccommodationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationUtils.swift; sourceTree = "<group>"; };
 		8C8EC5713852931E685C7D11 /* Pods-Hotels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hotels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hotels/Pods-Hotels.release.xcconfig"; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 				527724F11B79328B0049271B /* Payment.swift */,
 				527724F31B7936030049271B /* OrderResult.swift */,
 				528149591B80CF1D00CE1D8B /* OrderRate.swift */,
+				52EFB3E21B83B55300708107 /* CancelResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				52944F641B71E77200849A61 /* HotelDetailsCheckInPolicy.swift in Sources */,
 				52944F691B71E77200849A61 /* HotelDetailsImportantInformation.swift in Sources */,
 				52944F671B71E77200849A61 /* HotelDetailsHeader.swift in Sources */,
+				52EFB3E31B83B55300708107 /* CancelResult.swift in Sources */,
 				52944F361B71E64300849A61 /* SearchRequest.swift in Sources */,
 				527724F01B79325C0049271B /* Personal.swift in Sources */,
 				52944F281B71E64300849A61 /* Sort.swift in Sources */,

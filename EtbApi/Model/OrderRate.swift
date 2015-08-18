@@ -56,7 +56,7 @@ final class OrderRate: NSObject, ResponseObjectSerializable, ResponseCollectionS
         self.charge.totalChargeable = representation.valueForKeyPath("charge.totalChargeable") as! String
         
         // Fix type issues
-        let rateId = String(representation.valueForKeyPath("rateId"))
+        let rateId = String(representation.valueForKeyPath("rateId") as! String) 
         self.rate = Rate(rateId: rateId, response: response, representation: representation)
         if self.accommodation != nil {
             self.accommodation.postpaidCurrency = self.charge.currency
