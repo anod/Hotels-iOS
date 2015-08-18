@@ -22,6 +22,8 @@ class PersonsPickerController: UIViewController, UIPickerViewDelegate, UIPickerV
     var selectedValue: Int!
     weak var delegate: PersonsPickerControllerDelegate? // default is nil. weak reference
 
+    // MARK: Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,11 +43,14 @@ class PersonsPickerController: UIViewController, UIPickerViewDelegate, UIPickerV
         setPickerValue(selectedValue, inComponent: 0)
     }
 
+    // MARK: Methods
     
     func setPickerValue(value: Int, inComponent component: Int) {
         let row = values[component].indexOf(value)
         pickerView.selectRow(row!, inComponent: component, animated: false)
     }
+    
+    // MARK: UIPickerViewDelegate
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return components

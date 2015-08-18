@@ -23,6 +23,8 @@ class OrdersController: UITableViewController, EtbApiDelegate {
     
     var orderIndex = -1
     
+    // MARK: Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,6 +77,8 @@ class OrdersController: UITableViewController, EtbApiDelegate {
         let orderId = data.valueForKey("orderId") as! Int
         api.retrieve(orderId)
     }
+    
+    // MARK: EtbApiDelegate
     
     func retrieveSuccessResult(result:OrderResult) {
         activityIndicator.removeFromSuperview()

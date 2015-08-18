@@ -34,8 +34,9 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
             "HotelDetailsDescription"
     ]
     
+    // MARK: Override
+    
     override func viewDidLoad() {
-        print("HotelDetailsController.viewDidLoad")
         super.viewDidLoad()
         
         self.setupHeader()
@@ -52,7 +53,6 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("HotelDetailsController.viewWillAppear")
         super.viewWillAppear(animated)
         
         cheapestRate = self.accommodation.rates[0].rateId
@@ -78,6 +78,43 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
             bsController.availabilityRequest = availabilityRequest
         }
     }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if scrollView == self.tableView {
+            let header = self.tableView.tableHeaderView as! ParallaxHeaderView
+            header.layoutHeaderViewForScrollViewOffset(scrollView.contentOffset)
+            self.tableView.tableHeaderView = header
+            if scrollView.contentOffset.y < -100 {
+                openPhotoBrowser()
+            }
+        }
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cells.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let identifier = self.cellIdentifierForIndexPath(indexPath)
+        let cell = self.createTableCell(tableView, identifier: identifier)
+        return cell;
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let identifier = self.cellIdentifierForIndexPath(indexPath)
+        
+        let cachedHeight = heightCache[identifier];
+        if let height = cachedHeight {
+            return height
+        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
+        let height = cell!.bounds.size.height
+        heightCache[identifier] = height;
+        return height;
+    }
+    
+    // MARK: EtbApiDelegate
     
     func detailsSuccessResult(result:AccommodationDetails) {
         
@@ -129,6 +166,7 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         print(error)
     }
     
+    // MARK: Methods
     
     func setupHeader() {
         let parallaxHeader = ParallaxHeaderView.parallaxHeaderViewWithImage(UIImage(named: "hotel_placeholder"), forSize: CGSizeMake(260, 139)) as! ParallaxHeaderView
@@ -166,29 +204,6 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
             parallaxHeader.headerImage = image
          }, completion: nil)
     }
-   
-    
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        if scrollView == self.tableView {
-            let header = self.tableView.tableHeaderView as! ParallaxHeaderView
-            header.layoutHeaderViewForScrollViewOffset(scrollView.contentOffset)
-            self.tableView.tableHeaderView = header
-            if scrollView.contentOffset.y < -100 {
-                openPhotoBrowser()
-            }
-        }
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cells.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let identifier = self.cellIdentifierForIndexPath(indexPath)
-        let cell = self.createTableCell(tableView, identifier: identifier)
-        return cell;
-    }
 
     
     func pinAction() {
@@ -197,19 +212,6 @@ class HotelDetailsController: UITableViewController, EtbApiDelegate{
         } else {
             self.delegate!.pinHotelDetailsController(self)
         }
-    }
-   
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let identifier = self.cellIdentifierForIndexPath(indexPath)
-
-        let cachedHeight = heightCache[identifier];
-        if let height = cachedHeight {
-            return height
-        }
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
-        let height = cell!.bounds.size.height
-        heightCache[identifier] = height;
-        return height;
     }
 
     func createTableCell(tableView: UITableView, identifier: String) -> UITableViewCell {

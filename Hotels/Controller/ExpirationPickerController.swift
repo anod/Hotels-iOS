@@ -23,6 +23,8 @@ class ExpirationPickerController: UIViewController, UIPickerViewDelegate, UIPick
     
     weak var delegate: ExpirationPickerControllerDelegate? // default is nil. weak reference
     
+    // MARK: Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,11 +54,14 @@ class ExpirationPickerController: UIViewController, UIPickerViewDelegate, UIPick
 
     }
     
+    // MARK: Methods
     
     func setPickerValue(value: Int, inComponent component: Int) {
         let row = values[component].indexOf(value)
         pickerView.selectRow(row!, inComponent: component, animated: false)
     }
+    
+    // MARK: UIPickerViewDelegate
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 2

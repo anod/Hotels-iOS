@@ -20,6 +20,9 @@ class ConfirmationController: UIViewController, EtbApiDelegate {
     var accommodation: Accommodation!
     var result: OrderResult?
     var api: EtbApi!
+    
+    // MARK: Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,6 +49,8 @@ class ConfirmationController: UIViewController, EtbApiDelegate {
         
     }
     
+    // MARK: Actions
+    
     @IBAction func closeButtonAction(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -58,6 +63,8 @@ class ConfirmationController: UIViewController, EtbApiDelegate {
             api.cancel(orderId!, rateId: rateId, confirmationId: orderRate.confirmationId)
         }
     }
+    
+    // MARK: EtbApiDelegate
     
     func cancelSuccessResult() {
         statusLabel.text = "Cancelled"

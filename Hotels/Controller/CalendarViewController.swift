@@ -31,6 +31,8 @@ class CalendarViewController: UIViewController {
     let formatter = NSDateIntervalFormatter()
     let cal = NSCalendar.currentCalendar()
 
+    // MARK: Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +50,8 @@ class CalendarViewController: UIViewController {
         
         renderText()
     }
+    
+    // MARK: Actions
     
     @IBAction func segmentChanged(sender: UISegmentedControl) {
         selectedSegmentIndex = sender.selectedSegmentIndex
@@ -79,6 +83,8 @@ class CalendarViewController: UIViewController {
         }
 
     }
+    
+    // MARK: Methods
     
     func onlyDate(date: NSDate) -> NSDate{
         let components = cal.components([.Year , .Month , .Day], fromDate: date)

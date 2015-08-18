@@ -34,6 +34,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     let formatter = NSDateIntervalFormatter()
     let cSpan:CLLocationDegrees = 0.06 // zoom 5/111
 
+      // MARK: Override
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +45,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let currency = NSLocale.currentLocale().objectForKey(NSLocaleCurrencyCode) as! String
         
         request = SearchRequest()
-        // Amsterdam
+        // Amsterdam, default location
         request.lat = 52.3702157
         request.lon = 4.8951679
         request.type = "spr"
@@ -100,6 +102,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         }
     }
     
+    // MARK: Methods
+    
     func detectLocation() -> Bool {
         let aStatus = CLLocationManager.authorizationStatus()
         if  aStatus == CLAuthorizationStatus.Denied ||
@@ -113,7 +117,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         if aStatus == CLAuthorizationStatus.NotDetermined {
             self.locationManager.requestWhenInUseAuthorization()
         }
-
+        
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
             self.locationManager.startUpdatingLocation()
@@ -121,6 +125,22 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         }
         return false
     }
+    
+    func updateMapLocation(animated: Bool) {
+        let location = CLLocationCoordinate2D(latitude: request.lat, longitude: request.lon)
+        let span = MKCoordinateSpanMake(cSpan, cSpan)
+        let region = MKCoordinateRegion(center: location, span: span)
+        self.mapView.setRegion(region, animated: animated)
+    }
+    
+    func requestAvailability() {
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        api.search(request,offset: 0,limit: 50)
+    }
+    
+    // MARK: CalendarViewControllerDelegate
     
     func didDateUpdateWithCheckIn(checkIn: NSDate, checkOut: NSDate) {
         request.checkInDate = checkIn
@@ -130,6 +150,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         requestAvailability()
 
     }
+    
+    // MARK: FiltersControllerDelegate
 
     func filtersDidChange(stars: Set<Int>, ratings: Set<Int>, accTypes: Set<Int>, mainFacilities: Set<Int>) {
         request.stars = stars
@@ -140,18 +162,15 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         requestAvailability()
     }
     
+    // MARK: PersonsPickerControllerDelegate
+    
     func didSelectPersons(value: Int) {
         request.capacity = [value]
         personsTitleView.setTitle(String(value), forState: UIControlState.Normal)
         requestAvailability()
     }
     
-    func updateMapLocation(animated: Bool) {
-        let location = CLLocationCoordinate2D(latitude: request.lat, longitude: request.lon)
-        let span = MKCoordinateSpanMake(cSpan, cSpan)
-        let region = MKCoordinateRegion(center: location, span: span)
-        self.mapView.setRegion(region, animated: animated)
-    }
+    // MARK: CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation = locations[0]
@@ -161,14 +180,9 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         updateMapLocation(false)
         requestAvailability()
     }
-   
-    func requestAvailability() {
-        self.mapView.removeAnnotations(self.mapView.annotations)
 
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        api.search(request,offset: 0,limit: 50)
-    }
-    
+    // MARK: EtbApiDelegate
+   
     func searchSuccessResult(result:AccommodationsResults) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
 
@@ -187,7 +201,27 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         ErrorAlertView.show("Search failed. Please try again", controller: self)
         print(error)
     }
+    
+    // MARK: HotelDetailsControllerDelegate
+    
+    func unpinHotelDetailsController(controller : HotelDetailsController) {
+        print("unpinHotelDetailsController")
+        let idx = self.pinnedHotels.indexOf({ element in
+            return controller.accommodation.id == element.id
+        })
+        self.pinnedHotels.removeAtIndex(idx!)
+        self.hotelDetailsCollection.deleteItemsAtIndexPaths([NSIndexPath(forItem: idx!, inSection: 0)])
+    }
+    
+    func pinHotelDetailsController(controller : HotelDetailsController) {
+        
+        print("pinHotelDetailsController")
+        self.popoverHotelDetailsController.dismissViewControllerAnimated(true, completion: nil)
+        self.pinnedHotels.append(controller.accommodation)
+        self.hotelDetailsCollection.insertItemsAtIndexPaths([NSIndexPath(forItem: self.pinnedHotels.count - 1, inSection: 0)])
+    }
 
+    // MARK: AutocompleteDelegate
     
     func didPlaceSelected(place: GooglePlaceDetails)
     {
@@ -198,6 +232,8 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         
         requestAvailability()
     }
+    
+    // MARK: MKMapViewDelegate
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
@@ -260,6 +296,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         presentViewController(navController,animated: true, completion: nil)
     }
 
+    // MARK: UICollectionViewDelegate
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -302,24 +339,9 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let vc : UINavigationController = ControllerUtils.instantiate("HotelDetailsNavController")
         return vc
     }
-        
-    func unpinHotelDetailsController(controller : HotelDetailsController) {
-        print("unpinHotelDetailsController")
-        let idx = self.pinnedHotels.indexOf({ element in
-            return controller.accommodation.id == element.id
-        })
-        self.pinnedHotels.removeAtIndex(idx!)
-        self.hotelDetailsCollection.deleteItemsAtIndexPaths([NSIndexPath(forItem: idx!, inSection: 0)])
-    }
     
-    func pinHotelDetailsController(controller : HotelDetailsController) {
-        
-        print("pinHotelDetailsController")
-        self.popoverHotelDetailsController.dismissViewControllerAnimated(true, completion: nil)
-        self.pinnedHotels.append(controller.accommodation)
-        self.hotelDetailsCollection.insertItemsAtIndexPaths([NSIndexPath(forItem: self.pinnedHotels.count - 1, inSection: 0)])
-    }
-    
+    // MARK: UIPopoverPresentationControllerDelegate
+   
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController)
     {
         if selectedAnnotation != nil {

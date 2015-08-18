@@ -49,6 +49,8 @@ class FiltersController: UITableViewController, MultiSelectSegmentedControlDeleg
     
     weak var delegate: FiltersControllerDelegate?
     
+    // MARK: Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,26 +70,8 @@ class FiltersController: UITableViewController, MultiSelectSegmentedControlDeleg
         faciltiesFilter.delegate = self
 
     }
-
-    func convertValuesToIndexSet(values: Set<Int>, map: [Int]) -> NSIndexSet {
-        let indexSet = NSMutableIndexSet()
-        
-        for var index = 0; index < map.count; ++index {
-            if values.contains(map[index]) {
-                indexSet.addIndex(index)
-            }
-        }
-        
-        return indexSet
-    }
     
-    
-    func setRequest(request: SearchRequest) {
-        stars = request.stars
-        ratings = request.ratings
-        accTypes = request.accTypes
-        mainFacilities = request.mainFacilities
-    }
+    // MARK: MultiSelectSegmentedControlDelegate
     
     func multiSelect(multiSelecSegmendedControl: MultiSelectSegmentedControl!, didChangeValue value: Bool, atIndex index: UInt) {
         
@@ -103,6 +87,27 @@ class FiltersController: UITableViewController, MultiSelectSegmentedControlDeleg
         
         self.delegate?.filtersDidChange(stars, ratings: ratings, accTypes: accTypes, mainFacilities: mainFacilities)
         
+    }
+    
+    // MARK: Methods
+    
+    func convertValuesToIndexSet(values: Set<Int>, map: [Int]) -> NSIndexSet {
+        let indexSet = NSMutableIndexSet()
+        
+        for var index = 0; index < map.count; ++index {
+            if values.contains(map[index]) {
+                indexSet.addIndex(index)
+            }
+        }
+        
+        return indexSet
+    }
+    
+    func setRequest(request: SearchRequest) {
+        stars = request.stars
+        ratings = request.ratings
+        accTypes = request.accTypes
+        mainFacilities = request.mainFacilities
     }
     
     func convertIndexesToValues(indexSet: NSIndexSet, map: [Int]) -> Set<Int> {

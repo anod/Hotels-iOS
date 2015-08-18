@@ -30,6 +30,8 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
     var expYear = 0
     var selectedCountryCode: String!
     
+    // MARK: Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +66,8 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         }
     }
     
+    // MARK: Actions
+    
     @IBAction func bookAction(sender: UIButton) {
         loadingView.hidden = false
         bookButton.enabled = false
@@ -77,16 +81,22 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         
     }
     
+    // MARK: CountryPickerDelegate
+    
     func countryPicker(picker: CountryPicker!, didSelectCountryWithName name: String!, code: String!) {
         selectedCountryCode = code
         form.setCountryName(name, code: code)
     }
+    
+    // MARK: ExpirationPickerControllerDelegate
     
     func expirationDidSelectMonth(month: Int, year: Int) {
         expMonth = month
         expYear = year
         form.setExpirationMonth(month, year: year)
     }
+    
+    // MARK: EtbApiDelegate
     
     func orderSuccessResult(result:OrderResult) {
         loadingView.hidden = true
@@ -103,6 +113,16 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         
         presentViewController(vc, animated: true, completion: nil)
     }
+    
+    func orderErrorResult(error:NSError) {
+        loadingView.hidden = true
+        bookButton.enabled = true
+        
+        ErrorAlertView.show("\(error.localizedDescription)", controller: self)
+        print(error)
+    }
+    
+    // MARK: Methods
     
     func saveOrder(order: Order) {
         
@@ -135,14 +155,6 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
             print("Failure to save context: \(error)")
         }
         
-    }
-    
-    func orderErrorResult(error:NSError) {
-        loadingView.hidden = true
-        bookButton.enabled = true
-        
-        ErrorAlertView.show("\(error.localizedDescription)", controller: self)
-        print(error)
     }
     
     func backButtonAction() {

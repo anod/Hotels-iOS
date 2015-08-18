@@ -53,6 +53,8 @@ class AutocompleteViewController: NSObject, UISearchBarDelegate, UITableViewData
         
     }
     
+    // MARK: UISearchBarDelegate
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count > 0 {
             print("Searching for '\(searchText)'")
@@ -65,6 +67,8 @@ class AutocompleteViewController: NSObject, UISearchBarDelegate, UITableViewData
             
         }
     }
+    
+    // MARK: UITableViewDelegate
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -89,6 +93,8 @@ class AutocompleteViewController: NSObject, UISearchBarDelegate, UITableViewData
         self.googlePlacesApi.details(prediction);
         
     }
+    
+    // MARK: GooglePlacesDelegate
     
     func googlePlacesErrorResult(searchText: String, error: NSError) {
         print("Autocomplete error \(error) for query '\(searchText)'")
