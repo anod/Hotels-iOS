@@ -16,7 +16,7 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
 
     @IBOutlet weak var city: UITextField!
     @IBOutlet weak var postcode: UITextField!
-    @IBOutlet weak var country: UITextField!
+    @IBOutlet weak var country: UIButton!
     @IBOutlet weak var address: UITextField!
     @IBOutlet weak var state: UITextField!
 
@@ -118,7 +118,7 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
         personal.phone = phoneNumber.text
         personal.email = emailAddress.text
         
-        personal.country = country.text
+        //personal.country = country.
         
         return personal
     }
@@ -134,7 +134,7 @@ class FormView: UIView, CardIOPaymentViewControllerDelegate {
         payment.data.ccExpiryYear = expYear
         payment.data.ccCvc = ccCVV.text
         
-        payment.billingAddress.country = country.text
+        //payment.billingAddress.country = country.text
         payment.billingAddress.postalCode = postcode.text
         payment.billingAddress.city = city.text
         payment.billingAddress.address = address.text

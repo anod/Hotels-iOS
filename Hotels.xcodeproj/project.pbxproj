@@ -95,6 +95,10 @@
 		52944F6B1B71E77200849A61 /* HotelDetailsReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52944F541B71E77200849A61 /* HotelDetailsReviews.swift */; };
 		52944F6C1B71E77200849A61 /* HotelDetailsRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52944F551B71E77200849A61 /* HotelDetailsRoom.swift */; };
 		52AC611B1B831CDB0045424E /* FontUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC611A1B831CDB0045424E /* FontUtils.swift */; };
+		52AC61201B833A2C0045424E /* CountryPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52AC611D1B833A2C0045424E /* CountryPicker.bundle */; };
+		52AC61211B833A2C0045424E /* CountryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AC611F1B833A2C0045424E /* CountryPicker.m */; };
+		52AC61251B833CC10045424E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52AC61231B833CC10045424E /* Fabric.framework */; };
+		52AC61261B833CC10045424E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52AC61241B833CC10045424E /* Crashlytics.framework */; };
 		52CD98781B78766200DDD7EE /* ErrorAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD98771B78766200DDD7EE /* ErrorAlertView.swift */; };
 		52CD987C1B78D3E400DDD7EE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD987B1B78D3E400DDD7EE /* CalendarViewController.swift */; };
 		52CD987E1B78D4E800DDD7EE /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD987D1B78D4E800DDD7EE /* ColorUtils.swift */; };
@@ -208,6 +212,11 @@
 		52944F551B71E77200849A61 /* HotelDetailsRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsRoom.swift; sourceTree = "<group>"; };
 		52944F701B71E7B200849A61 /* Hotels-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hotels-Bridging-Header.h"; sourceTree = "<group>"; };
 		52AC611A1B831CDB0045424E /* FontUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontUtils.swift; sourceTree = "<group>"; };
+		52AC611D1B833A2C0045424E /* CountryPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CountryPicker.bundle; sourceTree = "<group>"; };
+		52AC611E1B833A2C0045424E /* CountryPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryPicker.h; sourceTree = "<group>"; };
+		52AC611F1B833A2C0045424E /* CountryPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryPicker.m; sourceTree = "<group>"; };
+		52AC61231B833CC10045424E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		52AC61241B833CC10045424E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		52CD98771B78766200DDD7EE /* ErrorAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlertView.swift; sourceTree = "<group>"; };
 		52CD987B1B78D3E400DDD7EE /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		52CD987D1B78D4E800DDD7EE /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
@@ -223,6 +232,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				304216CBA4DE842DDF713133 /* Pods_Hotels.framework in Frameworks */,
+				52AC61261B833CC10045424E /* Crashlytics.framework in Frameworks */,
+				52AC61251B833CC10045424E /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +428,9 @@
 		52944F1B1B71E64300849A61 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				52AC61231B833CC10045424E /* Fabric.framework */,
+				52AC61241B833CC10045424E /* Crashlytics.framework */,
+				52AC611C1B833A2C0045424E /* CountryPicker */,
 				526473C31B81B714001E026A /* IDMPhotoBrowser */,
 				528149511B80746000CE1D8B /* MultiSelectSegmentControl */,
 				520F620B1B7BD0C500F5F5B2 /* CreditCardValidator */,
@@ -530,6 +544,16 @@
 			path = HotelDetails;
 			sourceTree = "<group>";
 		};
+		52AC611C1B833A2C0045424E /* CountryPicker */ = {
+			isa = PBXGroup;
+			children = (
+				52AC611D1B833A2C0045424E /* CountryPicker.bundle */,
+				52AC611E1B833A2C0045424E /* CountryPicker.h */,
+				52AC611F1B833A2C0045424E /* CountryPicker.m */,
+			);
+			path = CountryPicker;
+			sourceTree = "<group>";
+		};
 		95866175D4F7D522C92F6156 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -560,6 +584,7 @@
 				52944EEA1B71E4E000849A61 /* Resources */,
 				A13261CFDB6F333FB5B9676C /* Embed Pods Frameworks */,
 				D96E28D6D87DF095F48120ED /* Copy Pods Resources */,
+				52AC61221B833B5D0045424E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -615,6 +640,7 @@
 				52944F5E1B71E77200849A61 /* Images.xcassets in Resources */,
 				52944EF51B71E4E000849A61 /* Main.storyboard in Resources */,
 				52944F5D1B71E77200849A61 /* hotel_placeholder.png in Resources */,
+				52AC61201B833A2C0045424E /* CountryPicker.bundle in Resources */,
 				526473D71B81B714001E026A /* IDMPhotoBrowser.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,6 +648,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		52AC61221B833B5D0045424E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 37454d25f5bb26cdb68b79a6ca77eef421fa17c1 a98e0708974a2cbe3112ca30a026471c13ed64bc7e75e35625a3d668628b1178";
+		};
 		696F42CE6A2BFB713C446931 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -738,6 +777,7 @@
 				527724FA1B7A13070049271B /* FiltersController.swift in Sources */,
 				52944F311B71E64300849A61 /* AccommodationsResults.swift in Sources */,
 				527724F61B79BD1B0049271B /* ApiUtils.swift in Sources */,
+				52AC61211B833A2C0045424E /* CountryPicker.m in Sources */,
 				529031C21B75E9C0006ED651 /* FormView.swift in Sources */,
 				52944F341B71E64300849A61 /* Rate.swift in Sources */,
 				526473DA1B81B714001E026A /* IDMTapDetectingView.m in Sources */,
@@ -870,7 +910,12 @@
 			baseConfigurationReference = 14FEA9A1AC8B12D0B1F49930 /* Pods-Hotels.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Hotels/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = info.anodsplace.Hotels;
@@ -885,6 +930,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Hotels/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = info.anodsplace.Hotels;
