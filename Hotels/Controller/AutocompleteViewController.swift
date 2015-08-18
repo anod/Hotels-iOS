@@ -57,7 +57,6 @@ class AutocompleteViewController: NSObject, UISearchBarDelegate, UITableViewData
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count > 0 {
-            print("Searching for '\(searchText)'")
             self.googlePlacesApi.autocomplete(searchText)
             
         } else {

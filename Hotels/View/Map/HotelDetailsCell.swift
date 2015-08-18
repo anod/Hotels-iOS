@@ -18,13 +18,11 @@ class HotelDetailsCell : UICollectionViewCell {
     weak var contentViewController: UIViewController?
     
     override func willMoveToWindow(newWindow: UIWindow?) {
-        print("willMoveToWindow")
         super.willMoveToWindow(newWindow)
         self.delegate!.collectionViewCell(self, willMoveToWindow: newWindow)
     }
     
     override func prepareForReuse() {
-        print("prepareForReuse")
         self.contentViewController = nil
         self.delegate!.collectionViewCellWillPrepareForReuse(self)
         super.prepareForReuse()

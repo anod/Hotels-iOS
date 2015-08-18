@@ -26,7 +26,6 @@ class GooglePlacesApi {
        Alamofire.request(.GET, self.placesUrl, parameters: query)
         .responseJSON(completionHandler: { (request, response, results: Result<AnyObject>) in
             if let delegate = self.delegate {
-                print(request)
                 if results.isFailure {
                     delegate.googlePlacesErrorResult(searchString, error: results.error!)
                     return;

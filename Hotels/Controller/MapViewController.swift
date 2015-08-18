@@ -205,7 +205,6 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     // MARK: HotelDetailsControllerDelegate
     
     func unpinHotelDetailsController(controller : HotelDetailsController) {
-        print("unpinHotelDetailsController")
         let idx = self.pinnedHotels.indexOf({ element in
             return controller.accommodation.id == element.id
         })
@@ -214,8 +213,6 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     }
     
     func pinHotelDetailsController(controller : HotelDetailsController) {
-        
-        print("pinHotelDetailsController")
         self.popoverHotelDetailsController.dismissViewControllerAnimated(true, completion: nil)
         self.pinnedHotels.append(controller.accommodation)
         self.hotelDetailsCollection.insertItemsAtIndexPaths([NSIndexPath(forItem: self.pinnedHotels.count - 1, inSection: 0)])
@@ -313,9 +310,6 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
 
 
         let accommodation = self.pinnedHotels[indexPath.item];
-
-        print("cellForItemAtIndexPath, Item: \(indexPath.item), Name: \(accommodation.name)")
-
         
         let nav = hotelDetailsCell.contentViewController as! UINavigationController
         let vc = nav.viewControllers[0] as! HotelDetailsController
@@ -329,12 +323,10 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        print("didEndDisplayingCell")
         self.hotelDetailsCollection.didEndDisplayingCell(cell)
     }
     
     func collectionView(view: UICollectionView, controllerForIdentifier identifier: String) -> UIViewController {
-        print("controllerForIdentifier")
 
         let vc : UINavigationController = ControllerUtils.instantiate("HotelDetailsNavController")
         return vc
