@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate, PersonsPickerControllerDelegate, CalendarViewControllerDelegate, FiltersControllerDelegate {
+class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate, PersonsPickerControllerDelegate, CalendarViewControllerDelegate, FiltersControllerDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var autocompleteResults: UITableView!
@@ -29,12 +29,14 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     var popoverHotelDetailsController: HotelDetailsController!
     var priceRender: PriceRender!
     
+    var locationManager: CLLocationManager!
+    
     let formatter = NSDateIntervalFormatter()
     let cSpan:CLLocationDegrees = 0.06 // zoom 5/111
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         formatter.dateStyle = NSDateIntervalFormatterStyle.MediumStyle
         formatter.timeStyle = NSDateIntervalFormatterStyle.NoStyle
         
@@ -42,10 +44,13 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let currency = locale.objectForKey(NSLocaleCurrencyCode) as! String
         
         request = SearchRequest()
-        request.lat = -33.86
-        request.lon = 151.20
+        // Amsterdam
+        request.lat = 52.3702157
+        request.lon = 4.8951679
         request.type = "spr"
         request.currency = currency
+        
+        detectLocation()
         
         datesTitleView.setTitle(formatter.stringFromDate(request.checkInDate, toDate: request.checkOutDate), forState: UIControlState.Normal)
         
@@ -94,6 +99,31 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         }
     }
     
+    func detectLocation() {
+        let aStatus = CLLocationManager.authorizationStatus()
+        if  aStatus == CLAuthorizationStatus.Denied ||
+            aStatus == CLAuthorizationStatus.Restricted {
+                //app is not permitted to use location services and you should abort your attempt to use them
+                print("locationServices Restircted")
+                return;
+        }
+        self.locationManager = CLLocationManager()
+        self.locationManager.delegate = self
+        
+        if aStatus == CLAuthorizationStatus.NotDetermined {
+            print("locationServices requestWhenInUseAuthorization")
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+            self.locationManager.startUpdatingLocation()
+        } else {
+            print("locationServices Disabled")
+        }
+        
+    }
+    
     func didDateUpdateWithCheckIn(checkIn: NSDate, checkOut: NSDate) {
         request.checkInDate = checkIn
         request.checkOutDate = checkOut
@@ -125,6 +155,14 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         self.mapView.setRegion(region, animated: animated)
     }
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation = locations[0]
+        request.lon = userLocation.coordinate.longitude;
+        request.lat = userLocation.coordinate.latitude;
+        
+        updateMapLocation(false)
+        requestAvailability()
+    }
    
     override func viewDidAppear(animated: Bool) {
         requestAvailability()
@@ -189,7 +227,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         let pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
        
         let priceLabel = ALabel(frame: CGRectMake(0,0,50,21))
-        priceLabel.font=UIFont(name: "Avenir Next Regular", size: 14)
+        priceLabel.font=UIFont(name: "Avenir Next Regular", size: 16)
         priceLabel.textAlignment=NSTextAlignment.Left;
         priceLabel.textColor=UIColor.whiteColor()
         priceLabel.userInteractionEnabled = true

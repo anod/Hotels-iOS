@@ -101,6 +101,10 @@ class AutocompleteViewController: NSObject, UISearchBarDelegate, UITableViewData
     }
     
     func googlePlacesDetailsResult(result: GooglePlaceDetails) {
+        self.searchBar.delegate = nil
+        self.searchBar.text = result.name
+        self.searchBar.delegate = self
+        
         self.delegate!.didPlaceSelected(result)
     }
     
