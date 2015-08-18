@@ -13,11 +13,11 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
     var rateId: String
     var name: String
     var taxesAndFees = [TaxesAndFees]()
-    var payment: Payment!
+    var payment = Payment()
     var capacity: Int
     //        var description: NSString?
     var rateKey: String?
-    var tags: Tags!
+    var tags = Tags()
     var baseRate = [String:String]()
     var totalNetRate = [String:String]()
     var specialOffers = [SpecialOffers]()
@@ -27,7 +27,6 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
         self.rateId = rateId
         self.capacity = Int(representation.valueForKeyPath("capacity") as! String)!
         
-        self.payment = Payment()
         self.payment.prepaid = representation.valueForKeyPath("payment.prepaid") as! [String: String]
         self.payment.postpaid = representation.valueForKeyPath("payment.postpaid") as! [String: String]
         
@@ -40,13 +39,11 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
         self.rateKey = representation.valueForKeyPath("rateKey") as? String
         self.capacity = representation.valueForKeyPath("capacity") as! Int
         
-        self.payment = Payment()
         self.payment.prepaid = representation.valueForKeyPath("payment.prepaid") as! [String: String]
         self.payment.postpaid = representation.valueForKeyPath("payment.postpaid") as! [String: String]
         
         self.totalNetRate = representation.valueForKeyPath("totalNetRate") as! [String: String]
         
-        self.tags = Tags()
         self.tags.breakfastIncluded = representation.valueForKeyPath("tags.breakfastIncluded") as! Bool
         self.tags.freeCancellation = representation.valueForKeyPath("tags.freeCancellation") as! Bool
         self.tags.nonRefundable = representation.valueForKeyPath("tags.nonRefundable") as! Bool
@@ -83,10 +80,10 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
     }
     
     class Tags {
-        var breakfastIncluded:Bool = false
-        var earlyBird :Bool = false
-        var freeCancellation :Bool = false
-        var lastMinute :Bool = false
-        var nonRefundable :Bool = false
+        var breakfastIncluded = false
+        var earlyBird = false
+        var freeCancellation = false
+        var lastMinute = false
+        var nonRefundable = false
     }
 }

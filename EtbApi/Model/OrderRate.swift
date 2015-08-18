@@ -21,6 +21,7 @@ final class OrderRate: NSObject, ResponseObjectSerializable, ResponseCollectionS
     var rate: Rate!
     var accommodation: Accommodation!
     var created: NSDate!
+    var charge = Charge()
     
     required init(response: NSHTTPURLResponse, representation: AnyObject) {
         let accommodationId = Int(representation.valueForKeyPath("accommodationId") as! String)
@@ -50,10 +51,17 @@ final class OrderRate: NSObject, ResponseObjectSerializable, ResponseCollectionS
         let created = representation.valueForKeyPath("created") as! String
         self.created = dateFormatter.dateFromString(created)!
         
+        self.charge.currency = representation.valueForKeyPath("charge.currency") as! String
+        self.charge.paymentType = representation.valueForKeyPath("charge.paymentType") as! String
+        self.charge.totalChargeable = representation.valueForKeyPath("charge.totalChargeable") as! String
+        
         // Fix type issues
         let rateId = String(representation.valueForKeyPath("rateId"))
         self.rate = Rate(rateId: rateId, response: response, representation: representation)
-        self.accommodation.rates.append(self.rate)
+        if self.accommodation != nil {
+            self.accommodation.postpaidCurrency = self.charge.currency
+            self.accommodation.rates.append(self.rate)
+        }
     }
     
     static func collection(response: NSHTTPURLResponse, representation: AnyObject) -> [OrderRate] {
@@ -67,5 +75,11 @@ final class OrderRate: NSObject, ResponseObjectSerializable, ResponseCollectionS
         }
         
         return rates
+    }
+    
+    class Charge {
+        var currency: String!
+        var paymentType: String!
+        var totalChargeable: String!
     }
 }

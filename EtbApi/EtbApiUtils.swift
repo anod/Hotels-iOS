@@ -48,38 +48,4 @@ class EtbApiUtils {
         return nil
     }
     
-    static func detectCreditCard(number: String) -> CreditCard? {
-        if number.isEmpty {
-            return nil
-        }
-        
-        
-        let v = CreditCardValidator()
-        if let type = v.typeFromString(number) {
-            if type.name == "Visa" {
-                return CreditCard.Visa
-            }
-            if type.name == "Amex" {
-                return CreditCard.Amex
-            }
-            if type.name == "MasterCard" {
-                return CreditCard.MasterCard
-            }
-            if type.name == "Discover" {
-                return CreditCard.Discover
-            }
-            if type.name == "JCB" {
-                return CreditCard.JCB
-            }
-            if type.name == "Diners Club" {
-                return CreditCard.DinersClub
-            }
-            
-            //            "name": "Maestro",
-            //            "name": "UnionPay",
-            
-            return nil
-        }
-        return nil
-    }
 }

@@ -95,7 +95,11 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         saveOrder(result.order!)
         
         let vc : ConfirmationController = ControllerUtils.instantiate("ConfirmationController")
+        // Fix currency
+        result.order?.rates[0].request.currency = availabilityRequest.currency
         vc.result = result
+        vc.accommodation = self.accomodation
+        vc.isBookingConfirmation = true
         
         presentViewController(vc, animated: true, completion: nil)
     }
@@ -105,14 +109,25 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         let orderSummary = NSEntityDescription.insertNewObjectForEntityForName("OrderSummary", inManagedObjectContext: managedObjectContext)
         
         orderSummary.setValue(order.orderId, forKey: "orderId")
+        
         orderSummary.setValue(availabilityRequest.checkInDate, forKey: "checkIn")
         orderSummary.setValue(availabilityRequest.checkOutDate, forKey: "checkOut")
         orderSummary.setValue(availabilityRequest.persons(), forKey: "persons")
+        orderSummary.setValue(availabilityRequest.currency, forKey: "currency")
+
         orderSummary.setValue(accomodation.name, forKey: "hotelName")
+        orderSummary.setValue(accomodation.postpaidCurrency, forKey: "postpaidCurrency")
         orderSummary.setValue(AccommodationRender.address(accomodation), forKey: "hotelAddress")
+
         orderSummary.setValue(order.rates[0].confirmationId, forKey: "confirmationId")
         orderSummary.setValue(order.rates[0].password, forKey: "password")
         
+        let prepaidPrice = NSString(string: rate.payment.prepaid[availabilityRequest.currency]!).doubleValue
+        if prepaidPrice < 0.01 {
+            orderSummary.setValue(true, forKey: "isPostpaid")
+        } else {
+            orderSummary.setValue(false, forKey: "isPostpaid")
+        }
         // save it
         do {
             try managedObjectContext.save()

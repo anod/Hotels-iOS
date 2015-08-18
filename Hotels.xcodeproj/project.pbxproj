@@ -11,8 +11,6 @@
 		520F620A1B7BCC2300F5F5B2 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F62091B7BCC2300F5F5B2 /* CreditCard.swift */; };
 		520F62111B7BD0C500F5F5B2 /* CreditCardValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F620D1B7BD0C500F5F5B2 /* CreditCardValidationType.swift */; };
 		520F62121B7BD0C500F5F5B2 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F620E1B7BD0C500F5F5B2 /* CreditCardValidator.swift */; };
-		5215AC621B7E2060007A2AF7 /* OrderSummary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5215AC601B7E2060007A2AF7 /* OrderSummary+CoreDataProperties.swift */; };
-		5215AC631B7E2060007A2AF7 /* OrderSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5215AC611B7E2060007A2AF7 /* OrderSummary.swift */; };
 		5220ECD41B7CE1FF003EFBD0 /* ExpirationPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5220ECD31B7CE1FF003EFBD0 /* ExpirationPickerController.swift */; };
 		524D4E151B71F8B3007BA82E /* GooglePlacesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D4E141B71F8B3007BA82E /* GooglePlacesApi.swift */; };
 		524D4E171B71F8F4007BA82E /* GooglePlacesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D4E161B71F8F4007BA82E /* GooglePlacesDelegate.swift */; };
@@ -40,6 +38,7 @@
 		528149581B80767200CE1D8B /* AccommodationViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528149571B80767200CE1D8B /* AccommodationViewProtocol.swift */; };
 		5281495A1B80CF1D00CE1D8B /* OrderRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528149591B80CF1D00CE1D8B /* OrderRate.swift */; };
 		5281495C1B80DE1A00CE1D8B /* ControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281495B1B80DE1A00CE1D8B /* ControllerUtils.swift */; };
+		5282C3DA1B836C5200DDF779 /* CreditCardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282C3D91B836C5200DDF779 /* CreditCardUtils.swift */; };
 		528407041B792D4D001E4FE9 /* ConfirmationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528407031B792D4D001E4FE9 /* ConfirmationController.swift */; };
 		528407061B792EDC001E4FE9 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528407051B792EDC001E4FE9 /* Order.swift */; };
 		529031B81B74DE0F006ED651 /* PriceRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529031B71B74DE0F006ED651 /* PriceRender.swift */; };
@@ -97,13 +96,15 @@
 		52AC611B1B831CDB0045424E /* FontUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC611A1B831CDB0045424E /* FontUtils.swift */; };
 		52AC61201B833A2C0045424E /* CountryPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52AC611D1B833A2C0045424E /* CountryPicker.bundle */; };
 		52AC61211B833A2C0045424E /* CountryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AC611F1B833A2C0045424E /* CountryPicker.m */; };
-		52AC61251B833CC10045424E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52AC61231B833CC10045424E /* Fabric.framework */; };
-		52AC61261B833CC10045424E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52AC61241B833CC10045424E /* Crashlytics.framework */; };
 		52AC61281B8346440045424E /* PriceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC61271B8346440045424E /* PriceLabel.swift */; };
 		52AC612A1B83476B0045424E /* CountryPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC61291B83476B0045424E /* CountryPickerController.swift */; };
 		52CD98781B78766200DDD7EE /* ErrorAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD98771B78766200DDD7EE /* ErrorAlertView.swift */; };
 		52CD987C1B78D3E400DDD7EE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD987B1B78D3E400DDD7EE /* CalendarViewController.swift */; };
 		52CD987E1B78D4E800DDD7EE /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD987D1B78D4E800DDD7EE /* ColorUtils.swift */; };
+		52EFB3D81B83775500708107 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52EFB3D61B83775500708107 /* Crashlytics.framework */; };
+		52EFB3D91B83775500708107 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52EFB3D71B83775500708107 /* Fabric.framework */; };
+		52EFB3E01B83833D00708107 /* OrderSummary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EFB3DE1B83833D00708107 /* OrderSummary+CoreDataProperties.swift */; };
+		52EFB3E11B83833D00708107 /* OrderSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EFB3DF1B83833D00708107 /* OrderSummary.swift */; };
 		52FB315A1B778FB200F234B5 /* AccommodationRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB31591B778FB200F234B5 /* AccommodationRender.swift */; };
 		52FB315C1B7797B500F234B5 /* AccommodationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB315B1B7797B500F234B5 /* AccommodationUtils.swift */; };
 /* End PBXBuildFile section */
@@ -113,8 +114,6 @@
 		520F62091B7BCC2300F5F5B2 /* CreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 		520F620D1B7BD0C500F5F5B2 /* CreditCardValidationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardValidationType.swift; sourceTree = "<group>"; };
 		520F620E1B7BD0C500F5F5B2 /* CreditCardValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
-		5215AC601B7E2060007A2AF7 /* OrderSummary+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "OrderSummary+CoreDataProperties.swift"; path = "Model/OrderSummary+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		5215AC611B7E2060007A2AF7 /* OrderSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderSummary.swift; path = Model/OrderSummary.swift; sourceTree = "<group>"; };
 		5220ECD31B7CE1FF003EFBD0 /* ExpirationPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpirationPickerController.swift; sourceTree = "<group>"; };
 		524D4E141B71F8B3007BA82E /* GooglePlacesApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesApi.swift; sourceTree = "<group>"; };
 		524D4E161B71F8F4007BA82E /* GooglePlacesDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +150,7 @@
 		528149571B80767200CE1D8B /* AccommodationViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationViewProtocol.swift; sourceTree = "<group>"; };
 		528149591B80CF1D00CE1D8B /* OrderRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderRate.swift; sourceTree = "<group>"; };
 		5281495B1B80DE1A00CE1D8B /* ControllerUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerUtils.swift; sourceTree = "<group>"; };
+		5282C3D91B836C5200DDF779 /* CreditCardUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardUtils.swift; sourceTree = "<group>"; };
 		528407031B792D4D001E4FE9 /* ConfirmationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationController.swift; sourceTree = "<group>"; };
 		528407051B792EDC001E4FE9 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		529031B71B74DE0F006ED651 /* PriceRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceRender.swift; sourceTree = "<group>"; };
@@ -224,6 +224,10 @@
 		52CD98771B78766200DDD7EE /* ErrorAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlertView.swift; sourceTree = "<group>"; };
 		52CD987B1B78D3E400DDD7EE /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		52CD987D1B78D4E800DDD7EE /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		52EFB3D61B83775500708107 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Vendors/Crashlytics.framework; sourceTree = "<group>"; };
+		52EFB3D71B83775500708107 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Vendors/Fabric.framework; sourceTree = "<group>"; };
+		52EFB3DE1B83833D00708107 /* OrderSummary+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "OrderSummary+CoreDataProperties.swift"; path = "Model/OrderSummary+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		52EFB3DF1B83833D00708107 /* OrderSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderSummary.swift; path = Model/OrderSummary.swift; sourceTree = "<group>"; };
 		52FB31591B778FB200F234B5 /* AccommodationRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationRender.swift; sourceTree = "<group>"; };
 		52FB315B1B7797B500F234B5 /* AccommodationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationUtils.swift; sourceTree = "<group>"; };
 		8C8EC5713852931E685C7D11 /* Pods-Hotels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hotels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hotels/Pods-Hotels.release.xcconfig"; sourceTree = "<group>"; };
@@ -236,8 +240,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				304216CBA4DE842DDF713133 /* Pods_Hotels.framework in Frameworks */,
-				52AC61261B833CC10045424E /* Crashlytics.framework in Frameworks */,
-				52AC61251B833CC10045424E /* Fabric.framework in Frameworks */,
+				52EFB3D81B83775500708107 /* Crashlytics.framework in Frameworks */,
+				52EFB3D91B83775500708107 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,8 +268,8 @@
 		5215AC571B7E1F87007A2AF7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5215AC601B7E2060007A2AF7 /* OrderSummary+CoreDataProperties.swift */,
-				5215AC611B7E2060007A2AF7 /* OrderSummary.swift */,
+				52EFB3DE1B83833D00708107 /* OrderSummary+CoreDataProperties.swift */,
+				52EFB3DF1B83833D00708107 /* OrderSummary.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -514,6 +518,7 @@
 				527724F51B79BD1B0049271B /* ApiUtils.swift */,
 				5281495B1B80DE1A00CE1D8B /* ControllerUtils.swift */,
 				52AC611A1B831CDB0045424E /* FontUtils.swift */,
+				5282C3D91B836C5200DDF779 /* CreditCardUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -572,6 +577,8 @@
 		DBC2577C1DC119F16DE79C38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				52EFB3D61B83775500708107 /* Crashlytics.framework */,
+				52EFB3D71B83775500708107 /* Fabric.framework */,
 				BD687423A1553F20C2885FCE /* Pods_Hotels.framework */,
 			);
 			name = Frameworks;
@@ -665,7 +672,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 37454d25f5bb26cdb68b79a6ca77eef421fa17c1 a98e0708974a2cbe3112ca30a026471c13ed64bc7e75e35625a3d668628b1178";
+			shellScript = "./Vendors/Fabric.framework/run 37454d25f5bb26cdb68b79a6ca77eef421fa17c1 a98e0708974a2cbe3112ca30a026471c13ed64bc7e75e35625a3d668628b1178";
 		};
 		696F42CE6A2BFB713C446931 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -732,7 +739,6 @@
 				528149541B80746000CE1D8B /* MultiSelectSegmentedControl.m in Sources */,
 				529031BE1B75E976006ED651 /* HotelDetailsCollectionView.swift in Sources */,
 				52AC61281B8346440045424E /* PriceLabel.swift in Sources */,
-				5215AC631B7E2060007A2AF7 /* OrderSummary.swift in Sources */,
 				524D4E151B71F8B3007BA82E /* GooglePlacesApi.swift in Sources */,
 				52944F621B71E77200849A61 /* FloatRatingView.swift in Sources */,
 				52944F2F1B71E64300849A61 /* Accommodation.swift in Sources */,
@@ -770,12 +776,12 @@
 				52FB315C1B7797B500F234B5 /* AccommodationUtils.swift in Sources */,
 				52944F5F1B71E77200849A61 /* AccomodationMKPointAnnotation.swift in Sources */,
 				52FB315A1B778FB200F234B5 /* AccommodationRender.swift in Sources */,
-				5215AC621B7E2060007A2AF7 /* OrderSummary+CoreDataProperties.swift in Sources */,
 				529031C51B75ECBB006ED651 /* UILabel.swift in Sources */,
 				529031BD1B75E976006ED651 /* HotelDetailsCell.swift in Sources */,
 				527724F21B79328B0049271B /* Payment.swift in Sources */,
 				52CD98781B78766200DDD7EE /* ErrorAlertView.swift in Sources */,
 				528149581B80767200CE1D8B /* AccommodationViewProtocol.swift in Sources */,
+				52EFB3E01B83833D00708107 /* OrderSummary+CoreDataProperties.swift in Sources */,
 				52CD987E1B78D4E800DDD7EE /* ColorUtils.swift in Sources */,
 				5281495C1B80DE1A00CE1D8B /* ControllerUtils.swift in Sources */,
 				52944F5A1B71E77200849A61 /* HotelDetailsController.swift in Sources */,
@@ -789,6 +795,7 @@
 				52944F341B71E64300849A61 /* Rate.swift in Sources */,
 				526473DA1B81B714001E026A /* IDMTapDetectingView.m in Sources */,
 				52944F5B1B71E77200849A61 /* MapViewController.swift in Sources */,
+				5282C3DA1B836C5200DDF779 /* CreditCardUtils.swift in Sources */,
 				52944F371B71E64300849A61 /* ParallaxHeaderView.m in Sources */,
 				52944F5C1B71E77200849A61 /* UIView.swift in Sources */,
 				526473C21B81AFF6001E026A /* PhotoBrowser.swift in Sources */,
@@ -796,6 +803,7 @@
 				52944F6C1B71E77200849A61 /* HotelDetailsRoom.swift in Sources */,
 				52944F6B1B71E77200849A61 /* HotelDetailsReviews.swift in Sources */,
 				52944EF01B71E4E000849A61 /* AppDelegate.swift in Sources */,
+				52EFB3E11B83833D00708107 /* OrderSummary.swift in Sources */,
 				52944F261B71E64300849A61 /* AccType.swift in Sources */,
 				520F620A1B7BCC2300F5F5B2 /* CreditCard.swift in Sources */,
 				52944F661B71E77200849A61 /* HotelDetailsFacilities.swift in Sources */,
@@ -923,6 +931,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Vendors",
 				);
 				INFOPLIST_FILE = Hotels/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -941,6 +950,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Vendors",
 				);
 				INFOPLIST_FILE = Hotels/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -38,6 +38,7 @@ class FormView: UIScrollView, CardIOPaymentViewControllerDelegate {
     var countryCode: String!
     
     var parentController : UIViewController!
+    let ccTypeUtils = CreditCardUtils()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,7 +59,7 @@ class FormView: UIScrollView, CardIOPaymentViewControllerDelegate {
     
     @IBAction func ccNumberChange(sender: AnyObject) {
         if let number = ccNumber.text {
-            let type = EtbApiUtils.detectCreditCard(number)
+            let type = ccTypeUtils.detectCreditCard(number)
             if type == nil {
                 ccTypeImageMask.hidden = false
             } else if type == CreditCard.Visa {
@@ -115,8 +116,9 @@ class FormView: UIScrollView, CardIOPaymentViewControllerDelegate {
     
     func userDidProvideCreditCardInfo(cardInfo: CardIOCreditCardInfo!, inPaymentViewController paymentViewController: CardIOPaymentViewController!) {
         if let info = cardInfo {
-            let str = NSString(format: "Received card info.\n Number: %@\n expiry: %02lu/%lu\n cvv: %@.", info.redactedCardNumber, info.expiryMonth, info.expiryYear, info.cvv)
-            print(str)
+            ccNumber.text = info.cardNumber
+            setExpirationMonth(Int(info.expiryMonth), year: Int(info.expiryYear))
+            ccCVV.text = info.cvv
         }
         paymentViewController?.dismissViewControllerAnimated(true, completion: nil)
     }  
@@ -141,7 +143,7 @@ class FormView: UIScrollView, CardIOPaymentViewControllerDelegate {
         payment.type = ccType?.rawValue
         payment.data.ccFirstName = ccFirstName.text
         payment.data.ccLastName = ccLastName.text
-        payment.data.ccNr = ccNumber.text
+        payment.data.ccNr = ccTypeUtils.onlyNumbersFromString(ccNumber.text!)
         payment.data.ccExpiryMonth = expMonth
         payment.data.ccExpiryYear = expYear
         payment.data.ccCvc = ccCVV.text

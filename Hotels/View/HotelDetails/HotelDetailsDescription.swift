@@ -19,7 +19,9 @@ class HotelDetailsDescription: UITableViewCell, AccommodationViewProtocol  {
 
 
     func attach(accomodation: Accommodation, rateId: String, availabilityRequest: AvailabilityRequest) {
-        hotelDescription.text = accomodation.details.generalDescription
+        hotelDescription.setHtml(accomodation.details.generalDescription!)
+        hotelDescription.sizeToFit()
+        self.sizeToFit()
     }
 
 }

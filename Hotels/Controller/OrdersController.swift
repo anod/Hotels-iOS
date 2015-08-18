@@ -21,6 +21,8 @@ class OrdersController: UITableViewController, EtbApiDelegate {
     
     let api = ApiUtils.create()
     
+    var orderIndex = -1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,14 +50,18 @@ class OrdersController: UITableViewController, EtbApiDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("OrderCell")
         
         let data = orders[indexPath.row] as! NSManagedObject
-        let orderId = data.valueForKey("orderId") as! Int
-        cell?.textLabel?.text = "Order #\(orderId)"
+        let confirmationId = data.valueForKey("confirmationId") as! String
+
+        cell?.textLabel?.text = "Order #\(confirmationId)"
 
         let checkIn = data.valueForKey("checkIn") as! NSDate
         let checkOut = data.valueForKey("checkOut") as! NSDate
+        let datesText = formatter.stringFromDate(checkIn, toDate: checkOut)
         
-        cell?.tag = orderId
-        cell?.detailTextLabel!.text = formatter.stringFromDate(checkIn, toDate: checkOut)
+        let hotelName = data.valueForKey("hotelName") as! String
+
+        cell?.tag = indexPath.row
+        cell?.detailTextLabel!.text = "\(datesText) - \(hotelName)"
 
         return cell!
     }
@@ -64,8 +70,10 @@ class OrdersController: UITableViewController, EtbApiDelegate {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.addSubview(activityIndicator)
         
-        let orderId = cell?.tag
-        api.retrieve(orderId!)
+        self.orderIndex = (cell?.tag)!
+        let data = orders[self.orderIndex] as! NSManagedObject
+        let orderId = data.valueForKey("orderId") as! Int
+        api.retrieve(orderId)
     }
     
     func retrieveSuccessResult(result:OrderResult) {
@@ -73,6 +81,23 @@ class OrdersController: UITableViewController, EtbApiDelegate {
         
         let vc : ConfirmationController = ControllerUtils.instantiate("ConfirmationController")
         vc.result = result
+        let orderRate = result.order!.rates[0]
+        
+        // Fix currency
+        let data = orders[self.orderIndex] as! NSManagedObject
+        let currency = data.valueForKey("currency") as! String
+        let postpaidCurrency = data.valueForKey("postpaidCurrency") as! String
+        
+        let isPostpaid = data.valueForKey("isPostpaid") as! Bool
+        if isPostpaid {
+            orderRate.request.currency = postpaidCurrency
+            orderRate.accommodation.postpaidCurrency = postpaidCurrency
+        } else {
+            orderRate.request.currency = currency
+            orderRate.accommodation.postpaidCurrency = postpaidCurrency
+        }
+        
+        vc.accommodation = orderRate.accommodation
         
         presentViewController(vc, animated: true, completion: nil)
     }

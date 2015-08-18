@@ -1,8 +1,8 @@
 //
-//  Order.swift
+//  OrderSummary.swift
 //  Hotels
 //
-//  Created by Alex Gavrishev on 8/14/15.
+//  Created by Alex Gavrishev on 8/18/15.
 //  Copyright © 2015 Alex Gavrishev. All rights reserved.
 //
 

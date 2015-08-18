@@ -43,7 +43,6 @@ class HotelDetailsCheckInPolicy: UITableViewCell, AccommodationViewProtocol  {
         {
             checkOut = accomodation.details.checkOutFrom!
         }
-        checkOut += " - "
         if accomodation.details.checkOutUntil!.isEmpty == false
         {
             if (!checkOut.isEmpty) {
