@@ -17,11 +17,11 @@ class EtbApi {
         self.config = config
         
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
-            "api.easytobook.com": .PinCertificates(
-                certificates: ServerTrustPolicy.certificatesInBundle(),
-                validateCertificateChain: true,
-                validateHost: true
-            ),
+//            "api.easytobook.com": .PinCertificates(
+//                certificates: ServerTrustPolicy.certificatesInBundle(),
+//                validateCertificateChain: true,
+//                validateHost: true
+//            ),
             "trunk.api.easytobook.us": .DisableEvaluation
         ]
         

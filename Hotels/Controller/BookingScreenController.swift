@@ -24,7 +24,7 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
     var accomodation: Accommodation!
     var rateId : String!
     var availabilityRequest: AvailabilityRequest!
-    var api: EtbApi!
+    var api = ApiUtils.create()
     var rate: Rate!
     var expMonth = 0
     var expYear = 0
@@ -47,10 +47,7 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         
         rate = AccommodationUtils.findRate(rateId, accommodation: accomodation)
         
-        api = ApiUtils.create()
         api.delegate = self
-
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

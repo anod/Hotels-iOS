@@ -32,7 +32,7 @@ class FormView: UIScrollView, CardIOPaymentViewControllerDelegate {
     @IBOutlet weak var specialRequest: UITextField!
 
     
-    var ccType : CreditCard?
+    var ccType = CreditCard.Visa
     var expMonth = 0
     var expYear = 0
     var countryCode: String!
@@ -82,9 +82,10 @@ class FormView: UIScrollView, CardIOPaymentViewControllerDelegate {
                 ccTypeImage.image = UIImage(named: "credit_card_jcb")
             }
 
-            ccType = type
+            if type != nil {
+                ccType = type!
+            }
         } else {
-            ccType = nil
             ccTypeImageMask.hidden = false
         }
     }
@@ -119,6 +120,7 @@ class FormView: UIScrollView, CardIOPaymentViewControllerDelegate {
             ccNumber.text = info.cardNumber
             setExpirationMonth(Int(info.expiryMonth), year: Int(info.expiryYear))
             ccCVV.text = info.cvv
+            ccNumberChange(ccNumber)
         }
         paymentViewController?.dismissViewControllerAnimated(true, completion: nil)
     }  
@@ -140,7 +142,7 @@ class FormView: UIScrollView, CardIOPaymentViewControllerDelegate {
     func getPayment() -> Payment {
         let payment = Payment()
         
-        payment.type = ccType?.rawValue
+        payment.type = ccType.rawValue
         payment.data.ccFirstName = ccFirstName.text
         payment.data.ccLastName = ccLastName.text
         payment.data.ccNr = ccTypeUtils.onlyNumbersFromString(ccNumber.text!)
