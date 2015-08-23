@@ -48,6 +48,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         // Amsterdam, default location
         request.lat = 52.3702157
         request.lon = 4.8951679
+        
         request.type = "spr"
         request.currency = currency
         
@@ -75,7 +76,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if detectLocation() {
+        if !detectLocation() {
             requestAvailability()
         }
     }
