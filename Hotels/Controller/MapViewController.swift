@@ -180,6 +180,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         
         updateMapLocation(false)
         requestAvailability()
+        manager.stopUpdatingLocation()
     }
 
     // MARK: EtbApiDelegate
