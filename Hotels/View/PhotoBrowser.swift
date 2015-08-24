@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import IDMPhotoBrowser
 
 class PhotoBrowser: IDMPhotoBrowser {
     
