@@ -622,6 +622,7 @@
 				TargetAttributes = {
 					52944EEB1B71E4E000849A61 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = T94R5ASHM8;
 					};
 				};
 			};
@@ -930,6 +931,7 @@
 			baseConfigurationReference = 14FEA9A1AC8B12D0B1F49930 /* Pods-Hotels.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -939,7 +941,7 @@
 				);
 				INFOPLIST_FILE = Hotels/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.anodsplace.Hotels;
+				PRODUCT_BUNDLE_IDENTIFIER = info.anodsplace.HotelsWizard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hotels-Bridging-Header.h";
 			};
@@ -950,6 +952,7 @@
 			baseConfigurationReference = 8C8EC5713852931E685C7D11 /* Pods-Hotels.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -958,7 +961,7 @@
 				);
 				INFOPLIST_FILE = Hotels/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.anodsplace.Hotels;
+				PRODUCT_BUNDLE_IDENTIFIER = info.anodsplace.HotelsWizard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hotels-Bridging-Header.h";
 			};
