@@ -90,7 +90,7 @@ public class CreditCardValidator {
     public func onlyNumbersFromString(string: String) -> String {
         let set = NSCharacterSet.decimalDigitCharacterSet().invertedSet
         let numbers = string.componentsSeparatedByCharactersInSet(set)
-        return "".join(numbers)
+        return numbers.joinWithSeparator("")
     }
     
     // MARK: - Loading data

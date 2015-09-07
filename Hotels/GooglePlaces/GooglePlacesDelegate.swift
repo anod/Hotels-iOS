@@ -9,7 +9,7 @@
 import Foundation
 
 protocol GooglePlacesDelegate {
-    func googlePlacesErrorResult(searchText: String, error: NSError)
+    func googlePlacesErrorResult(searchText: String, error: ErrorType)
     func googlePlacesPredictions(results: [GoogleAutocompletePrediction])
     func googlePlacesDetailsResult(result: GooglePlaceDetails)
 }

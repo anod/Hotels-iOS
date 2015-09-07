@@ -63,7 +63,8 @@ class EtbApi {
             .responseObject { (request, response, results: Result<AccommodationsResults>) in
                     if let delegate = self.delegate {
                         if results.isFailure {
-                            delegate.searchErrorResult!(results.error!)
+                            let error = NSError(domain: "EtbApi", code: -1, userInfo: [NSLocalizedDescriptionKey : "Request error"])
+                            delegate.searchErrorResult!(error)
                             return;
                         }
                         
@@ -94,7 +95,8 @@ class EtbApi {
             .responseObject { (request, response, results: Result<AccommodationDetails>) in
                 if let delegate = self.delegate {
                     if results.isFailure {
-                        delegate.detailsErrorResult!(results.error!)
+                        let error = NSError(domain: "EtbApi", code: -1, userInfo: [NSLocalizedDescriptionKey : "Request error"])
+                        delegate.detailsErrorResult!(error)
                         return;
                     }
                     
@@ -157,7 +159,8 @@ class EtbApi {
             .responseObject { (request, response, results: Result<OrderResult>) in
                 if let delegate = self.delegate {
                     if results.isFailure {
-                        delegate.orderErrorResult!(results.error!)
+                        let error = NSError(domain: "EtbApi", code: -1, userInfo: [NSLocalizedDescriptionKey : "Request error"])
+                        delegate.orderErrorResult!(error)
                         return;
                     }
                     if (results.value?.meta.statusCode == 200) {
@@ -178,7 +181,8 @@ class EtbApi {
             .responseObject { (request, response, results: Result<OrderResult>) in
                 if let delegate = self.delegate {
                     if results.isFailure {
-                        delegate.retrieveErrorResult!(results.error!)
+                       let error = NSError(domain: "EtbApi", code: -1, userInfo: [NSLocalizedDescriptionKey : "Request error"])
+                        delegate.retrieveErrorResult!(error)
                         return;
                     }
                     if (results.value?.meta.statusCode == 200) {
@@ -205,7 +209,8 @@ class EtbApi {
             .responseObject { (request, response, results: Result<CancelResult>) in
                 if let delegate = self.delegate {
                     if results.isFailure {
-                        delegate.cancelErrorResult!(results.error!)
+                        let error = NSError(domain: "EtbApi", code: -1, userInfo: [NSLocalizedDescriptionKey : "Request error"])
+                        delegate.cancelErrorResult!(error)
                         return;
                     }
                     if (results.value?.meta.statusCode == 200) {

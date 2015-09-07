@@ -95,7 +95,7 @@ class AutocompleteViewController: NSObject, UISearchBarDelegate, UITableViewData
     
     // MARK: GooglePlacesDelegate
     
-    func googlePlacesErrorResult(searchText: String, error: NSError) {
+    func googlePlacesErrorResult(searchText: String, error: ErrorType) {
         print("Autocomplete error \(error) for query '\(searchText)'")
         
     }

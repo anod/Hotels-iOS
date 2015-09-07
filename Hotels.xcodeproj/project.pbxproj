@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		304216CBA4DE842DDF713133 /* Pods_Hotels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD687423A1553F20C2885FCE /* Pods_Hotels.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		342C669A9608521EC76FFD8C /* Pods_Hotels_Wizard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F09B5DF242D3E87587D0C26 /* Pods_Hotels_Wizard.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		520F620A1B7BCC2300F5F5B2 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F62091B7BCC2300F5F5B2 /* CreditCard.swift */; };
 		520F62111B7BD0C500F5F5B2 /* CreditCardValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F620D1B7BD0C500F5F5B2 /* CreditCardValidationType.swift */; };
 		520F62121B7BD0C500F5F5B2 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F620E1B7BD0C500F5F5B2 /* CreditCardValidator.swift */; };
@@ -111,7 +112,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F09B5DF242D3E87587D0C26 /* Pods_Hotels_Wizard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hotels_Wizard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14FEA9A1AC8B12D0B1F49930 /* Pods-Hotels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hotels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hotels/Pods-Hotels.debug.xcconfig"; sourceTree = "<group>"; };
+		33EF15D58F41632869C81464 /* Pods-Hotels Wizard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hotels Wizard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hotels Wizard/Pods-Hotels Wizard.debug.xcconfig"; sourceTree = "<group>"; };
 		520F62091B7BCC2300F5F5B2 /* CreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 		520F620D1B7BD0C500F5F5B2 /* CreditCardValidationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardValidationType.swift; sourceTree = "<group>"; };
 		520F620E1B7BD0C500F5F5B2 /* CreditCardValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
@@ -244,6 +247,7 @@
 				304216CBA4DE842DDF713133 /* Pods_Hotels.framework in Frameworks */,
 				52EFB3D81B83775500708107 /* Crashlytics.framework in Frameworks */,
 				52EFB3D91B83775500708107 /* Fabric.framework in Frameworks */,
+				342C669A9608521EC76FFD8C /* Pods_Hotels_Wizard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +577,7 @@
 			children = (
 				14FEA9A1AC8B12D0B1F49930 /* Pods-Hotels.debug.xcconfig */,
 				8C8EC5713852931E685C7D11 /* Pods-Hotels.release.xcconfig */,
+				33EF15D58F41632869C81464 /* Pods-Hotels Wizard.debug.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -583,6 +588,7 @@
 				52EFB3D61B83775500708107 /* Crashlytics.framework */,
 				52EFB3D71B83775500708107 /* Fabric.framework */,
 				BD687423A1553F20C2885FCE /* Pods_Hotels.framework */,
+				0F09B5DF242D3E87587D0C26 /* Pods_Hotels_Wizard.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -705,7 +711,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hotels/Pods-Hotels-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hotels Wizard/Pods-Hotels Wizard-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D96E28D6D87DF095F48120ED /* Copy Pods Resources */ = {
@@ -720,7 +726,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hotels/Pods-Hotels-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hotels Wizard/Pods-Hotels Wizard-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -888,47 +894,9 @@
 			};
 			name = Debug;
 		};
-		52944F001B71E4E000849A61 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		52944F021B71E4E000849A61 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14FEA9A1AC8B12D0B1F49930 /* Pods-Hotels.debug.xcconfig */;
+			baseConfigurationReference = 33EF15D58F41632869C81464 /* Pods-Hotels Wizard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -947,26 +915,6 @@
 			};
 			name = Debug;
 		};
-		52944F031B71E4E000849A61 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C8EC5713852931E685C7D11 /* Pods-Hotels.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Vendors",
-				);
-				INFOPLIST_FILE = Hotels/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.anodsplace.HotelsWizard;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Hotels-Bridging-Header.h";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -974,19 +922,17 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52944EFF1B71E4E000849A61 /* Debug */,
-				52944F001B71E4E000849A61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		52944F011B71E4E000849A61 /* Build configuration list for PBXNativeTarget "Hotels Wizard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52944F021B71E4E000849A61 /* Debug */,
-				52944F031B71E4E000849A61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

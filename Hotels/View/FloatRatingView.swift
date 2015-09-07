@@ -266,7 +266,8 @@ public class FloatRatingView: UIView {
         }
 
         var newRating: Float = 0
-        for i in stride(from: (self.maxRating-1), through: 0, by: -1) {
+        let from = self.maxRating-1;
+        for i in from.stride(through: 0, by: -1) {
             let imageView = self.emptyImageViews[i]
             if touchLocation.x > imageView.frame.origin.x {
                 // Find touch point in image view

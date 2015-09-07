@@ -9,7 +9,7 @@ import Alamofire
     init(response: NSHTTPURLResponse, representation: AnyObject)
 }
 
-@objc public protocol ResponseCollectionSerializable {
+public protocol ResponseCollectionSerializable {
     static func collection(response: NSHTTPURLResponse, representation: AnyObject) -> [Self]
 }
 

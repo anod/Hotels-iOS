@@ -1,30 +1,30 @@
 PODS:
-  - AFNetworking (2.5.4):
-    - AFNetworking/NSURLConnection (= 2.5.4)
-    - AFNetworking/NSURLSession (= 2.5.4)
-    - AFNetworking/Reachability (= 2.5.4)
-    - AFNetworking/Security (= 2.5.4)
-    - AFNetworking/Serialization (= 2.5.4)
-    - AFNetworking/UIKit (= 2.5.4)
-  - AFNetworking/NSURLConnection (2.5.4):
+  - AFNetworking (2.6.0):
+    - AFNetworking/NSURLConnection (= 2.6.0)
+    - AFNetworking/NSURLSession (= 2.6.0)
+    - AFNetworking/Reachability (= 2.6.0)
+    - AFNetworking/Security (= 2.6.0)
+    - AFNetworking/Serialization (= 2.6.0)
+    - AFNetworking/UIKit (= 2.6.0)
+  - AFNetworking/NSURLConnection (2.6.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.4):
+  - AFNetworking/NSURLSession (2.6.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.4)
-  - AFNetworking/Security (2.5.4)
-  - AFNetworking/Serialization (2.5.4)
-  - AFNetworking/UIKit (2.5.4):
+  - AFNetworking/Reachability (2.6.0)
+  - AFNetworking/Security (2.6.0)
+  - AFNetworking/Serialization (2.6.0)
+  - AFNetworking/UIKit (2.6.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Alamofire (2.0.0-beta.1)
-  - CardIO (5.1.0)
+  - Alamofire (2.0.0-beta.4)
+  - CardIO (5.1.1)
   - DACircularProgress (2.3.1)
   - HanekeSwift (0.9.1)
-  - HCSStarRatingView (1.2)
+  - HCSStarRatingView (1.4.2)
   - pop (1.0.7)
 
 DEPENDENCIES:
@@ -48,22 +48,22 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Alamofire:
-    :commit: 10f94788f0dd163fa516fb6f2f34a45a609c356e
+    :commit: 1108ae4461baa99d9c4898c213ec3e2e2956fab3
     :git: https://github.com/Alamofire/Alamofire.git
   HanekeSwift:
-    :commit: 58d7e2e5590b8767a76c6b2131e1fa28b72ff894
+    :commit: dde8ca99d2be5a19e50fad83b86753f62c1fe6eb
     :git: https://github.com/meteochu/HanekeSwift.git
   HCSStarRatingView:
-    :commit: 441c4a0943c089f690e35e540262c56875a4c6b7
+    :commit: b3d0b267a5de5b5154c79fea5c699b1cd05cc382
     :git: https://github.com/hugocampossousa/HCSStarRatingView.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  Alamofire: 96feccc1e48a735edb92395cf023ba4ed52bdb45
-  CardIO: 5c8128e07f577824f132881171210b45721c517a
+  AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
+  Alamofire: 20df1a4740a69d7cf6caf7fd06b8a8fc782f1ebd
+  CardIO: 2c3a8ef9b9add4bd664c83bb653b83b2f32d9d7f
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   HanekeSwift: 50d37bfbc4432edc649167e538c259feccb4a2bb
-  HCSStarRatingView: 95246884db2a02c7e82f12f5d4562428c2cc05f9
+  HCSStarRatingView: 6157471eff9fe3ec7240e131a5b0aba39f097e57
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
 
 COCOAPODS: 0.38.2
