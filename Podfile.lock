@@ -20,7 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Alamofire (2.0.0-beta.4)
+  - Alamofire (2.0.1)
   - CardIO (5.1.1)
   - DACircularProgress (2.3.1)
   - HanekeSwift (0.9.1)
@@ -29,7 +29,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `swift-2.0`)
+  - Alamofire (~> 2.0)
   - CardIO
   - DACircularProgress
   - HanekeSwift (from `https://github.com/meteochu/HanekeSwift.git`, branch `swift-2.0`)
@@ -37,9 +37,6 @@ DEPENDENCIES:
   - pop
 
 EXTERNAL SOURCES:
-  Alamofire:
-    :branch: swift-2.0
-    :git: https://github.com/Alamofire/Alamofire.git
   HanekeSwift:
     :branch: swift-2.0
     :git: https://github.com/meteochu/HanekeSwift.git
@@ -47,9 +44,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/hugocampossousa/HCSStarRatingView.git
 
 CHECKOUT OPTIONS:
-  Alamofire:
-    :commit: 1108ae4461baa99d9c4898c213ec3e2e2956fab3
-    :git: https://github.com/Alamofire/Alamofire.git
   HanekeSwift:
     :commit: dde8ca99d2be5a19e50fad83b86753f62c1fe6eb
     :git: https://github.com/meteochu/HanekeSwift.git
@@ -59,7 +53,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
-  Alamofire: 20df1a4740a69d7cf6caf7fd06b8a8fc782f1ebd
+  Alamofire: 1d8e208d616fbbfd2391b15eae766d07c96cdc49
   CardIO: 2c3a8ef9b9add4bd664c83bb653b83b2f32d9d7f
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   HanekeSwift: 50d37bfbc4432edc649167e538c259feccb4a2bb
