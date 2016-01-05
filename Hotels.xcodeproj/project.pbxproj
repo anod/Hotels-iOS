@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		304216CBA4DE842DDF713133 /* Pods_Hotels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD687423A1553F20C2885FCE /* Pods_Hotels.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		342C669A9608521EC76FFD8C /* Pods_Hotels_Wizard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F09B5DF242D3E87587D0C26 /* Pods_Hotels_Wizard.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0F41A12A398D583FDBBE4227 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185BB27164B886996A64D94F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		520F620A1B7BCC2300F5F5B2 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F62091B7BCC2300F5F5B2 /* CreditCard.swift */; };
 		520F62111B7BD0C500F5F5B2 /* CreditCardValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F620D1B7BD0C500F5F5B2 /* CreditCardValidationType.swift */; };
 		520F62121B7BD0C500F5F5B2 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F620E1B7BD0C500F5F5B2 /* CreditCardValidator.swift */; };
@@ -19,6 +18,14 @@
 		524D4E1B1B71FAE4007BA82E /* GooglePlaceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D4E1A1B71FAE4007BA82E /* GooglePlaceDetails.swift */; };
 		524D4E231B71FFE2007BA82E /* AutocompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D4E211B71FFE2007BA82E /* AutocompleteTableViewCell.swift */; };
 		524D4E241B71FFE2007BA82E /* MapLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524D4E221B71FFE2007BA82E /* MapLabel.xib */; };
+		525B11D11C3C1FC70056C3AE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525B11D01C3C1FC70056C3AE /* Alamofire.framework */; };
+		525B11D31C3C1FCB0056C3AE /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525B11D21C3C1FCB0056C3AE /* AFNetworking.framework */; };
+		525B11D51C3C1FCE0056C3AE /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525B11D41C3C1FCE0056C3AE /* Haneke.framework */; };
+		525B11D71C3C1FD20056C3AE /* HCSStarRatingView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525B11D61C3C1FD20056C3AE /* HCSStarRatingView.framework */; };
+		525B11DE1C3C210B0056C3AE /* AFNetworking.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 525B11DA1C3C210B0056C3AE /* AFNetworking.framework.dSYM */; };
+		525B11DF1C3C210B0056C3AE /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 525B11DB1C3C210B0056C3AE /* Alamofire.framework.dSYM */; };
+		525B11E01C3C210B0056C3AE /* Haneke.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 525B11DC1C3C210B0056C3AE /* Haneke.framework.dSYM */; };
+		525B11E11C3C210B0056C3AE /* HCSStarRatingView.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 525B11DD1C3C210B0056C3AE /* HCSStarRatingView.framework.dSYM */; };
 		526473C21B81AFF6001E026A /* PhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526473C11B81AFF6001E026A /* PhotoBrowser.swift */; };
 		526473D41B81B714001E026A /* IDMCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 526473C51B81B714001E026A /* IDMCaptionView.m */; };
 		526473D51B81B714001E026A /* IDMPBLocalizations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 526473C71B81B714001E026A /* IDMPBLocalizations.bundle */; };
@@ -94,6 +101,7 @@
 		52944F6A1B71E77200849A61 /* HotelDetailsPetsPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52944F531B71E77200849A61 /* HotelDetailsPetsPolicy.swift */; };
 		52944F6B1B71E77200849A61 /* HotelDetailsReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52944F541B71E77200849A61 /* HotelDetailsReviews.swift */; };
 		52944F6C1B71E77200849A61 /* HotelDetailsRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52944F551B71E77200849A61 /* HotelDetailsRoom.swift */; };
+		529DC9A41C3C088E008BBA96 /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529DC9A31C3C088E008BBA96 /* WindowsAzureMobileServices.framework */; };
 		52AC611B1B831CDB0045424E /* FontUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC611A1B831CDB0045424E /* FontUtils.swift */; };
 		52AC61201B833A2C0045424E /* CountryPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52AC611D1B833A2C0045424E /* CountryPicker.bundle */; };
 		52AC61211B833A2C0045424E /* CountryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AC611F1B833A2C0045424E /* CountryPicker.m */; };
@@ -111,9 +119,25 @@
 		52FB315C1B7797B500F234B5 /* AccommodationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB315B1B7797B500F234B5 /* AccommodationUtils.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		525B11D91C3C20CA0056C3AE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				525B11DE1C3C210B0056C3AE /* AFNetworking.framework.dSYM in CopyFiles */,
+				525B11DF1C3C210B0056C3AE /* Alamofire.framework.dSYM in CopyFiles */,
+				525B11E01C3C210B0056C3AE /* Haneke.framework.dSYM in CopyFiles */,
+				525B11E11C3C210B0056C3AE /* HCSStarRatingView.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		0F09B5DF242D3E87587D0C26 /* Pods_Hotels_Wizard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hotels_Wizard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14FEA9A1AC8B12D0B1F49930 /* Pods-Hotels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hotels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hotels/Pods-Hotels.debug.xcconfig"; sourceTree = "<group>"; };
+		185BB27164B886996A64D94F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33EF15D58F41632869C81464 /* Pods-Hotels Wizard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hotels Wizard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hotels Wizard/Pods-Hotels Wizard.debug.xcconfig"; sourceTree = "<group>"; };
 		520F62091B7BCC2300F5F5B2 /* CreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 		520F620D1B7BD0C500F5F5B2 /* CreditCardValidationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardValidationType.swift; sourceTree = "<group>"; };
@@ -125,6 +149,14 @@
 		524D4E1A1B71FAE4007BA82E /* GooglePlaceDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaceDetails.swift; sourceTree = "<group>"; };
 		524D4E211B71FFE2007BA82E /* AutocompleteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteTableViewCell.swift; sourceTree = "<group>"; };
 		524D4E221B71FFE2007BA82E /* MapLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapLabel.xib; sourceTree = "<group>"; };
+		525B11D01C3C1FC70056C3AE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		525B11D21C3C1FCB0056C3AE /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		525B11D41C3C1FCE0056C3AE /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
+		525B11D61C3C1FD20056C3AE /* HCSStarRatingView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HCSStarRatingView.framework; path = Carthage/Build/iOS/HCSStarRatingView.framework; sourceTree = "<group>"; };
+		525B11DA1C3C210B0056C3AE /* AFNetworking.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = AFNetworking.framework.dSYM; path = Carthage/Build/iOS/AFNetworking.framework.dSYM; sourceTree = "<group>"; };
+		525B11DB1C3C210B0056C3AE /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		525B11DC1C3C210B0056C3AE /* Haneke.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Haneke.framework.dSYM; path = Carthage/Build/iOS/Haneke.framework.dSYM; sourceTree = "<group>"; };
+		525B11DD1C3C210B0056C3AE /* HCSStarRatingView.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = HCSStarRatingView.framework.dSYM; path = Carthage/Build/iOS/HCSStarRatingView.framework.dSYM; sourceTree = "<group>"; };
 		526473C11B81AFF6001E026A /* PhotoBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowser.swift; sourceTree = "<group>"; };
 		526473C41B81B714001E026A /* IDMCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMCaptionView.h; sourceTree = "<group>"; };
 		526473C51B81B714001E026A /* IDMCaptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDMCaptionView.m; sourceTree = "<group>"; };
@@ -217,6 +249,7 @@
 		52944F541B71E77200849A61 /* HotelDetailsReviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsReviews.swift; sourceTree = "<group>"; };
 		52944F551B71E77200849A61 /* HotelDetailsRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsRoom.swift; sourceTree = "<group>"; };
 		52944F701B71E7B200849A61 /* Hotels-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hotels-Bridging-Header.h"; sourceTree = "<group>"; };
+		529DC9A31C3C088E008BBA96 /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WindowsAzureMobileServices.framework; path = Vendors/WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
 		52AC611A1B831CDB0045424E /* FontUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontUtils.swift; sourceTree = "<group>"; };
 		52AC611D1B833A2C0045424E /* CountryPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CountryPicker.bundle; sourceTree = "<group>"; };
 		52AC611E1B833A2C0045424E /* CountryPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryPicker.h; sourceTree = "<group>"; };
@@ -235,8 +268,8 @@
 		52EFB3E21B83B55300708107 /* CancelResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelResult.swift; sourceTree = "<group>"; };
 		52FB31591B778FB200F234B5 /* AccommodationRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationRender.swift; sourceTree = "<group>"; };
 		52FB315B1B7797B500F234B5 /* AccommodationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationUtils.swift; sourceTree = "<group>"; };
+		6A66996CD61816927CB92927 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8C8EC5713852931E685C7D11 /* Pods-Hotels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hotels.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hotels/Pods-Hotels.release.xcconfig"; sourceTree = "<group>"; };
-		BD687423A1553F20C2885FCE /* Pods_Hotels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hotels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,10 +277,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				304216CBA4DE842DDF713133 /* Pods_Hotels.framework in Frameworks */,
+				525B11D11C3C1FC70056C3AE /* Alamofire.framework in Frameworks */,
+				525B11D71C3C1FD20056C3AE /* HCSStarRatingView.framework in Frameworks */,
+				525B11D51C3C1FCE0056C3AE /* Haneke.framework in Frameworks */,
+				525B11D31C3C1FCB0056C3AE /* AFNetworking.framework in Frameworks */,
 				52EFB3D81B83775500708107 /* Crashlytics.framework in Frameworks */,
 				52EFB3D91B83775500708107 /* Fabric.framework in Frameworks */,
-				342C669A9608521EC76FFD8C /* Pods_Hotels_Wizard.framework in Frameworks */,
+				529DC9A41C3C088E008BBA96 /* WindowsAzureMobileServices.framework in Frameworks */,
+				0F41A12A398D583FDBBE4227 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,9 +612,14 @@
 		95866175D4F7D522C92F6156 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				525B11DA1C3C210B0056C3AE /* AFNetworking.framework.dSYM */,
+				525B11DB1C3C210B0056C3AE /* Alamofire.framework.dSYM */,
+				525B11DC1C3C210B0056C3AE /* Haneke.framework.dSYM */,
+				525B11DD1C3C210B0056C3AE /* HCSStarRatingView.framework.dSYM */,
 				14FEA9A1AC8B12D0B1F49930 /* Pods-Hotels.debug.xcconfig */,
 				8C8EC5713852931E685C7D11 /* Pods-Hotels.release.xcconfig */,
 				33EF15D58F41632869C81464 /* Pods-Hotels Wizard.debug.xcconfig */,
+				6A66996CD61816927CB92927 /* Pods.debug.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -585,10 +627,14 @@
 		DBC2577C1DC119F16DE79C38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				525B11D61C3C1FD20056C3AE /* HCSStarRatingView.framework */,
+				525B11D41C3C1FCE0056C3AE /* Haneke.framework */,
+				525B11D21C3C1FCB0056C3AE /* AFNetworking.framework */,
+				525B11D01C3C1FC70056C3AE /* Alamofire.framework */,
+				529DC9A31C3C088E008BBA96 /* WindowsAzureMobileServices.framework */,
 				52EFB3D61B83775500708107 /* Crashlytics.framework */,
 				52EFB3D71B83775500708107 /* Fabric.framework */,
-				BD687423A1553F20C2885FCE /* Pods_Hotels.framework */,
-				0F09B5DF242D3E87587D0C26 /* Pods_Hotels_Wizard.framework */,
+				185BB27164B886996A64D94F /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -607,6 +653,8 @@
 				A13261CFDB6F333FB5B9676C /* Embed Pods Frameworks */,
 				D96E28D6D87DF095F48120ED /* Copy Pods Resources */,
 				52AC61221B833B5D0045424E /* ShellScript */,
+				525B11D81C3C1FF40056C3AE /* ShellScript */,
+				525B11D91C3C20CA0056C3AE /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -671,6 +719,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		525B11D81C3C1FF40056C3AE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Haneke.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/HCSStarRatingView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		52AC61221B833B5D0045424E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -711,7 +776,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hotels Wizard/Pods-Hotels Wizard-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D96E28D6D87DF095F48120ED /* Copy Pods Resources */ = {
@@ -726,7 +791,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hotels Wizard/Pods-Hotels Wizard-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -896,7 +961,7 @@
 		};
 		52944F021B71E4E000849A61 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 33EF15D58F41632869C81464 /* Pods-Hotels Wizard.debug.xcconfig */;
+			baseConfigurationReference = 6A66996CD61816927CB92927 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -906,6 +971,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Vendors",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Hotels/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

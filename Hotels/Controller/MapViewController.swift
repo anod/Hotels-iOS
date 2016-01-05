@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Crashlytics
 
 class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, HotelDetailsControllerDelegate, HotelDetailsCollectionViewControllerDataSource, UIPopoverPresentationControllerDelegate, PersonsPickerControllerDelegate, CalendarViewControllerDelegate, FiltersControllerDelegate, CLLocationManagerDelegate {
 
@@ -71,9 +72,20 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         
         autocomplete = AutocompleteViewController(autocompleteResults: autocompleteResults, toolbar: toolbar)
         autocomplete.delegate = self
+        
+//        let button = UIButton(type: UIButtonType.RoundedRect)
+//        button.frame = CGRectMake(20, 50, 100, 30)
+//        button.setTitle("Crash", forState: UIControlState.Normal)
+//        button.addTarget(self, action: "crashButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+//        view.addSubview(button)
+//
 
     }
     
+    @IBAction func crashButtonTapped(sender: AnyObject) {
+        Crashlytics.sharedInstance().crash()
+    }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if !detectLocation() {

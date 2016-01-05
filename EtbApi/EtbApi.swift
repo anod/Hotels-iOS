@@ -17,12 +17,12 @@ class EtbApi {
         self.config = config
         
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
-//            "api.easytobook.com": .PinCertificates(
-//                certificates: ServerTrustPolicy.certificatesInBundle(),
-//                validateCertificateChain: true,
-//                validateHost: true
-//            ),
-            "trunk.api.easytobook.us": .DisableEvaluation
+            "api.easytobook.com": .PinCertificates(
+                certificates: ServerTrustPolicy.certificatesInBundle(),
+                validateCertificateChain: true,
+                validateHost: true
+            ),
+//            "trunk.api.easytobook.us": .DisableEvaluation
         ]
         
         self.alamofire = Manager(
@@ -38,7 +38,6 @@ class EtbApi {
         let query = [
                 "apiKey": apiKey,
                 "metaFields": "all",
-                "showExtraInformation": "1",
                 "type": request.type,
                 "context": request.prepareLocationForRequest(),
                 "offset": String(offset),

@@ -19,7 +19,6 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
     var summary = Summary()
     var fromPrice = [String: String]()
     var details = Details()
-    var extraInformation :ExtraInformation?
     var facilities = [Facilities]()
     var phone: String?
     var email: String?
@@ -159,11 +158,6 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
             return false
         }
     }
-    
-    class ExtraInformation {
-        var extraField1: String?
-        var extraField2: String?
-    }
-    
+        
 
 }
