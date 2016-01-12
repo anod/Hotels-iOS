@@ -14,7 +14,7 @@ extension UILabel {
         do {
             // Changing the font in your HTML response string before it gets parsed.
             let text = try NSMutableAttributedString(
-                    data: html.dataUsingEncoding(NSUTF8StringEncoding)!,
+                    data: html.dataUsingEncoding(NSUnicodeStringEncoding)!,
                     options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                     documentAttributes: nil)
             
