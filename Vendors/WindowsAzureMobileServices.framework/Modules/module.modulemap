@@ -1,6 +1,0 @@
-framework module WindowsAzureMobileServices {
-  umbrella header "WindowsAzureMobileServices.h"
-
-  export *
-  module * { export * }
-}
