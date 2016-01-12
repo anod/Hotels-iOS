@@ -17,7 +17,7 @@ class Order: NSObject, ResponseObjectSerializable {
     required init(response: NSHTTPURLResponse, representation: AnyObject) {
         self.orderId = Int(representation.valueForKeyPath("orderId") as! String)
         if let ratesJSON: AnyObject = representation.valueForKeyPath("rates") {
-            self.rates = OrderRate.collection(response, representation: ratesJSON)
+            self.rates = OrderRate.collection(response: response, representation: ratesJSON)
         }
         
         self.personal.firstName = representation.valueForKeyPath("personal.firstName") as! String

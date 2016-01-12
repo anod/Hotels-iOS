@@ -64,7 +64,7 @@ final class OrderRate: NSObject, ResponseObjectSerializable, ResponseCollectionS
         }
     }
     
-    static func collection(response: NSHTTPURLResponse, representation: AnyObject) -> [OrderRate] {
+    static func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [OrderRate] {
         var rates: [OrderRate] = []
         
         if let representation = representation as? [[String: AnyObject]] {

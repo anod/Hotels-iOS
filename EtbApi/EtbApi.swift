@@ -59,20 +59,20 @@ class EtbApi {
 
 
         self.alamofire.request(.GET, self.config.serverBase + "/accommodations/results", parameters: query)
-            .responseObject { (request, response, results: Result<AccommodationsResults>) in
+            .responseObject { (response: Response<AccommodationsResults, NSError>) in
                     if let delegate = self.delegate {
-                        if results.isFailure {
-                            let error = NSError(domain: "EtbApi", code: -1, userInfo: [NSLocalizedDescriptionKey : "Request error"])
-                            delegate.searchErrorResult!(error)
-                            return;
-                        }
-                        
-                        if (results.value?.meta!.statusCode == 200) {
-                            delegate.searchSuccessResult!(results.value!)
-                        } else {
-                            let msg = NSString(string: (results.value?.meta!.errorMessage)!)
-                            let error = NSError(domain: "EtbApi", code: (results.value?.meta!.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
-                            delegate.searchErrorResult!(error)
+                        switch response.result {
+                            case .Success(let value):
+                                if (value.meta!.statusCode == 200) {
+                                    delegate.searchSuccessResult!(value)
+                                } else {
+                                    let msg = NSString(string: (value.meta!.errorMessage)!)
+                                    let error = NSError(domain: "EtbApi", code: (value.meta!.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
+                                    delegate.searchErrorResult!(error)
+                            }
+                            case .Failure(let error):
+                                delegate.searchErrorResult!(error)
+                                return;
                         }
                     }
             }
@@ -91,23 +91,23 @@ class EtbApi {
         ]
 
         self.alamofire.request(.GET, self.config.serverBase + "/accommodations/\(accomodationId)", parameters: query)
-            .responseObject { (request, response, results: Result<AccommodationDetails>) in
+            .responseObject { (response: Response<AccommodationDetails, NSError>) in
                 if let delegate = self.delegate {
-                    if results.isFailure {
-                        let error = NSError(domain: "EtbApi", code: -1, userInfo: [NSLocalizedDescriptionKey : "Request error"])
+                    switch response.result {
+                    case .Success(let value):
+                        if (value.meta!.statusCode == 200) {
+                            delegate.detailsSuccessResult!(value)
+                        } else {
+                            let msg = NSString(string: (value.meta!.errorMessage)!)
+                            let error = NSError(domain: "EtbApi", code: (value.meta!.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
+                            delegate.detailsErrorResult!(error)
+                        }
+                    case .Failure(let error):
                         delegate.detailsErrorResult!(error)
                         return;
                     }
-                    
-                    if (results.value?.meta.statusCode == 200) {
-                        delegate.detailsSuccessResult!(results.value!)
-                    } else {
-                        let msg = NSString(string: (results.value?.meta.errorMessage)!)
-                        let error = NSError(domain: "EtbApi", code: (results.value?.meta.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
-                        delegate.detailsErrorResult!(error)
-                    }
                 }
-        }
+            }
 
     }
     
@@ -155,44 +155,47 @@ class EtbApi {
         ]
         
         self.alamofire.request(.POST, self.config.serverBaseSecure + "/orders/?apiKey=\(apiKey)", parameters: query, encoding: .JSON)
-            .responseObject { (request, response, results: Result<OrderResult>) in
+            .responseObject { (response: Response<OrderResult, NSError>) in
                 if let delegate = self.delegate {
-                    if results.isFailure {
-                        let error = NSError(domain: "EtbApi", code: -1, userInfo: [NSLocalizedDescriptionKey : "Request error"])
+                    switch response.result {
+                    case .Success(let value):
+                        if (value.meta!.statusCode == 200) {
+                            delegate.orderSuccessResult!(value)
+                        } else {
+                            let msg = NSString(string: (value.meta!.errorMessage)!)
+                            let error = NSError(domain: "EtbApi", code: (value.meta!.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
+                            delegate.orderErrorResult!(error)
+                        }
+                    case .Failure(let error):
                         delegate.orderErrorResult!(error)
                         return;
                     }
-                    if (results.value?.meta.statusCode == 200) {
-                        delegate.orderSuccessResult!(results.value!)
-                    } else {
-                        let msg = NSString(string: (results.value?.meta.errorMessage)!)
-                        let error = NSError(domain: "EtbApi", code: (results.value?.meta.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
-                        delegate.orderErrorResult!(error)
-                    }
                 }
-        }
+            }
+        
     }
     
     func retrieve(orderId: Int) {
         let apiKey = self.config.apiKey
         
         self.alamofire.request(.GET, self.config.serverBaseSecure + "/orders/\(orderId)?apiKey=\(apiKey)", parameters: nil, encoding: .JSON)
-            .responseObject { (request, response, results: Result<OrderResult>) in
+            .responseObject { (response: Response<OrderResult, NSError>) in
                 if let delegate = self.delegate {
-                    if results.isFailure {
-                       let error = NSError(domain: "EtbApi", code: -1, userInfo: [NSLocalizedDescriptionKey : "Request error"])
+                    switch response.result {
+                    case .Success(let value):
+                        if (value.meta!.statusCode == 200) {
+                            delegate.retrieveSuccessResult!(value)
+                        } else {
+                            let msg = NSString(string: (value.meta!.errorMessage)!)
+                            let error = NSError(domain: "EtbApi", code: (value.meta!.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
+                            delegate.retrieveErrorResult!(error)
+                        }
+                    case .Failure(let error):
                         delegate.retrieveErrorResult!(error)
                         return;
                     }
-                    if (results.value?.meta.statusCode == 200) {
-                        delegate.retrieveSuccessResult!(results.value!)
-                    } else {
-                        let msg = NSString(string: (results.value?.meta.errorMessage)!)
-                        let error = NSError(domain: "EtbApi", code: (results.value?.meta.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
-                        delegate.retrieveErrorResult!(error)
-                    }
                 }
-        }
+            }
     }
     
     func cancel(orderId: Int, rateId: String, confirmationId: String) {
@@ -205,22 +208,23 @@ class EtbApi {
         ]
         
         self.alamofire.request(.POST, self.config.serverBaseSecure + "/orders/\(orderId)/rates/\(rateId)/cancel?apiKey=\(apiKey)", parameters: query, encoding: .JSON)
-            .responseObject { (request, response, results: Result<CancelResult>) in
+            .responseObject { (response: Response<CancelResult, NSError>) in
                 if let delegate = self.delegate {
-                    if results.isFailure {
-                        let error = NSError(domain: "EtbApi", code: -1, userInfo: [NSLocalizedDescriptionKey : "Request error"])
+                    switch response.result {
+                    case .Success(let value):
+                        if (value.meta!.statusCode == 200) {
+                            delegate.cancelSuccessResult!()
+                        } else {
+                            let msg = NSString(string: (value.meta!.errorMessage)!)
+                            let error = NSError(domain: "EtbApi", code: (value.meta!.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
+                            delegate.cancelErrorResult!(error)
+                        }
+                    case .Failure(let error):
                         delegate.cancelErrorResult!(error)
                         return;
                     }
-                    if (results.value?.meta.statusCode == 200) {
-                        delegate.cancelSuccessResult!()
-                    } else {
-                        let msg = NSString(string: (results.value?.meta.errorMessage)!)
-                        let error = NSError(domain: "EtbApi", code: (results.value?.meta.errorCode)!, userInfo: [NSLocalizedDescriptionKey : msg])
-                        delegate.cancelErrorResult!(error)
-                    }
                 }
-        }
+            }
     }
     
     private func getIFAddresses() -> [String] {

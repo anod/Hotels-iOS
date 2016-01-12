@@ -49,7 +49,7 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
         self.tags.nonRefundable = representation.valueForKeyPath("tags.nonRefundable") as! Bool
     }
     
-    static func collection(response: NSHTTPURLResponse, representation: AnyObject) -> [Rate] {
+    static func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Rate] {
         var rates: [Rate] = []
         
         if let representation = representation as? [[String: AnyObject]] {

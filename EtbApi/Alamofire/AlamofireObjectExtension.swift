@@ -10,39 +10,55 @@ import Alamofire
 }
 
 public protocol ResponseCollectionSerializable {
-    static func collection(response: NSHTTPURLResponse, representation: AnyObject) -> [Self]
+    static func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Self]
 }
 
 extension Alamofire.Request {
     
-    public func responseObject<T: ResponseObjectSerializable>(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<T>) -> Void) -> Self {
-            let responseSerializer = GenericResponseSerializer<T> { request, response, data in
-
-                print(response)
-
-                let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-                let JSONResult = JSONResponseSerializer.serializeResponse(request, response, data)
-
-            if JSONResult.isSuccess {
-                return Result.Success(T(response: response!, representation: JSONResult.value!))
-            } else {
-                return Result.Failure(JSONResult.data, JSONResult.error!)
+    public func responseObject<T: ResponseObjectSerializable>(completionHandler: Response<T, NSError> -> Void) -> Self {
+        let responseSerializer = ResponseSerializer<T, NSError> { request, response, data, error in
+            guard error == nil else { return .Failure(error!) }
+            
+            debugPrint(response)
+            
+            let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+            let result = JSONResponseSerializer.serializeResponse(request, response, data, error)
+            
+            switch result {
+            case .Success(let value):
+                if let response = response {
+                    return .Success(T(response: response, representation: value))
+                } else {
+                    let failureReason = "JSON could not be serialized into response object: \(value)"
+                    let error = Error.errorWithCode(.JSONSerializationFailed, failureReason: failureReason)
+                    return .Failure(error)
+                }
+            case .Failure(let error):
+                return .Failure(error)
             }
         }
         
         return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
     }
     
-    public func responseCollection<T: ResponseCollectionSerializable>(completionHandler: (NSURLRequest?, NSHTTPURLResponse?, Result<[T]>) -> Void) -> Self {
-        let responseSerializer = GenericResponseSerializer<[T]> { request, response, data in
-            print(response)
-            let JSONSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-            let JSONResult = JSONSerializer.serializeResponse(request, response, data)
+    public func responseCollection<T: ResponseCollectionSerializable>(completionHandler: Response<[T], NSError> -> Void) -> Self {
+        let responseSerializer = ResponseSerializer<[T], NSError> { request, response, data, error in
+            guard error == nil else { return .Failure(error!) }
             
-            if JSONResult.isSuccess {
-                return Result.Success(T.collection(response!, representation: JSONResult.value!))
-            } else {
-                return Result.Failure(JSONResult.data, JSONResult.error!)
+            let JSONSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+            let result = JSONSerializer.serializeResponse(request, response, data, error)
+            
+            switch result {
+            case .Success(let value):
+                if let response = response {
+                    return .Success(T.collection(response: response, representation: value))
+                } else {
+                    let failureReason = "Response collection could not be serialized due to nil response"
+                    let error = Error.errorWithCode(.JSONSerializationFailed, failureReason: failureReason)
+                    return .Failure(error)
+                }
+            case .Failure(let error):
+                return .Failure(error)
             }
         }
         

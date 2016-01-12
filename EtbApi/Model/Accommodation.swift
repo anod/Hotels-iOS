@@ -68,15 +68,13 @@ final class Accommodation: NSObject, ResponseObjectSerializable, ResponseCollect
 
 
         if let ratesJSON: AnyObject = representation.valueForKeyPath("rates") {
-            self.rates = Rate.collection(response, representation: ratesJSON)
+            self.rates = Rate.collection(response: response, representation: ratesJSON)
         }
         
     }
     
-    
-    
 
-    static func collection(response: NSHTTPURLResponse, representation: AnyObject) -> [Accommodation] {
+    static func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Accommodation] {
         var accomodations: [Accommodation] = []
 
         if let representation = representation as? [[String: AnyObject]] {
