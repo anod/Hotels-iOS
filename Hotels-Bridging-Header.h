@@ -13,6 +13,8 @@
 #import "MultiSelectSegmentedControl.h"
 #import "CountryPicker.h"
 
+#import "WindowsAzureMessaging/WindowsAzureMessaging.h"
+
 #import "CardIO.h"
 
 @import AudioToolbox;

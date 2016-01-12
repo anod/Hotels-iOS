@@ -40,6 +40,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+               
         formatter.dateStyle = NSDateIntervalFormatterStyle.MediumStyle
         formatter.timeStyle = NSDateIntervalFormatterStyle.NoStyle
         
@@ -82,6 +83,19 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
 
     }
     
+    func initializeNotificationServices() -> Void {
+        let settings = UIUserNotificationSettings(forTypes: [.Sound,.Alert,.Badge], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        
+        // This is an asynchronous method to retrieve a Device Token
+        // Callbacks are in AppDelegate.swift
+        // Success = didRegisterForRemoteNotificationsWithDeviceToken
+        // Fail = didFailToRegisterForRemoteNotificationsWithError
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+    }
+    
+
+    
     @IBAction func crashButtonTapped(sender: AnyObject) {
         Crashlytics.sharedInstance().crash()
     }
@@ -91,6 +105,7 @@ class MapViewController: UIViewController, EtbApiDelegate, AutocompleteDelegate,
         if !detectLocation() {
             requestAvailability()
         }
+        initializeNotificationServices();
     }
 
     

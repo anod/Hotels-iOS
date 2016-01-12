@@ -110,6 +110,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let deviceTokenStr = convertDeviceTokenToString(deviceToken)
+        // ...register device token with our Time Entry API server via REST
+        print("Device token: " + deviceTokenStr)
+        
+        let hub = SBNotificationHub(connectionString: HubInfo.hubListenAccess, notificationHubPath: HubInfo.hubName)
+        
+        hub.registerNativeWithDeviceToken(deviceToken, tags: nil, completion: { error in
+            if error != nil {
+                print("Error registering for notifications: \(error)")
+            } else {
+                print("Device registred")
+            }
+        })
+
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("Device token for push notifications: FAIL -- ")
+        print(error.description)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
+        print("didReceiveRemoteNotification \(userInfo)")
+        // display the userInfo
+        if let notification = userInfo["aps"] as? NSDictionary,
+            let alert = notification["alert"] as? String {
+                let alertCtrl = UIAlertController(title: "Time Entry", message: alert as String, preferredStyle: UIAlertControllerStyle.Alert)
+                alertCtrl.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                // Find the presented VC...
+                var presentedVC = self.window?.rootViewController
+                while (presentedVC!.presentedViewController != nil)  {
+                    presentedVC = presentedVC!.presentedViewController
+                }
+                presentedVC!.presentViewController(alertCtrl, animated: true, completion: nil)
+                
+                // call the completion handler
+                // -- pass in NoData, since no new data was fetched from the server.
+                completionHandler(UIBackgroundFetchResult.NoData)
+        }
+    }
+    
+    
+    private func convertDeviceTokenToString(deviceToken:NSData) -> String {
+        //  Convert binary Device Token to a String (and remove the <,> and white space charaters).
+        var deviceTokenStr = deviceToken.description.stringByReplacingOccurrencesOfString(">", withString: "")
+        deviceTokenStr = deviceTokenStr.stringByReplacingOccurrencesOfString("<", withString: "")
+        deviceTokenStr = deviceTokenStr.stringByReplacingOccurrencesOfString(" ", withString: "")
+        
+        // Our API returns token in all uppercase, regardless how it was originally sent.
+        // To make the two consistent, I am uppercasing the token string here.
+        deviceTokenStr = deviceTokenStr.uppercaseString
+        return deviceTokenStr
+    }
 
 }
 
