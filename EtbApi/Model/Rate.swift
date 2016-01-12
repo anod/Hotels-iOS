@@ -18,8 +18,8 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
     //        var description: NSString?
     var rateKey: String?
     var tags = Tags()
-    var baseRate = [String:String]()
-    var totalNetRate = [String:String]()
+    var baseRate = [String:Double]()
+    var totalNetRate = [String:Double]()
     var specialOffers = [SpecialOffers]()
     
     init(rateId: String, response: NSHTTPURLResponse, representation: AnyObject) {
@@ -27,10 +27,10 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
         self.rateId = rateId
         self.capacity = Int(representation.valueForKeyPath("capacity") as! String)!
         
-        self.payment.prepaid = representation.valueForKeyPath("payment.prepaid") as! [String: String]
-        self.payment.postpaid = representation.valueForKeyPath("payment.postpaid") as! [String: String]
+        self.payment.prepaid = representation.valueForKeyPath("payment.prepaid") as! [String: Double]
+        self.payment.postpaid = representation.valueForKeyPath("payment.postpaid") as! [String: Double]
         
-        self.totalNetRate = representation.valueForKeyPath("totalNetRate") as! [String: String]
+        self.totalNetRate = representation.valueForKeyPath("totalNetRate") as! [String: Double]
     }
     
     required init(response: NSHTTPURLResponse, representation: AnyObject) {
@@ -39,10 +39,10 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
         self.rateKey = representation.valueForKeyPath("rateKey") as? String
         self.capacity = representation.valueForKeyPath("capacity") as! Int
         
-        self.payment.prepaid = representation.valueForKeyPath("payment.prepaid") as! [String: String]
-        self.payment.postpaid = representation.valueForKeyPath("payment.postpaid") as! [String: String]
+        self.payment.prepaid = representation.valueForKeyPath("payment.prepaid") as! [String: Double]
+        self.payment.postpaid = representation.valueForKeyPath("payment.postpaid") as! [String: Double]
         
-        self.totalNetRate = representation.valueForKeyPath("totalNetRate") as! [String: String]
+        self.totalNetRate = representation.valueForKeyPath("totalNetRate") as! [String: Double]
         
         self.tags.breakfastIncluded = representation.valueForKeyPath("tags.breakfastIncluded") as! Bool
         self.tags.freeCancellation = representation.valueForKeyPath("tags.freeCancellation") as! Bool
@@ -75,8 +75,8 @@ final class Rate : NSObject, ResponseObjectSerializable, ResponseCollectionSeria
     }
     
     class Payment {
-        var prepaid : [String: String]!
-        var postpaid : [String :String]!
+        var prepaid : [String: Double]!
+        var postpaid : [String :Double]!
     }
     
     class Tags {

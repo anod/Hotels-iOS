@@ -35,8 +35,8 @@ class AccommodationUtils {
     }
     
     static func fullPrice(rate: Rate, currencyCode: String) -> Double {
-        let prepaidPrice = NSString(string: rate.payment.prepaid[currencyCode]!).doubleValue
-        let postpaidPrice = NSString(string: rate.payment.postpaid[currencyCode]!).doubleValue
+        let prepaidPrice = rate.payment.prepaid[currencyCode]!
+        let postpaidPrice = rate.payment.postpaid[currencyCode]!
         return prepaidPrice + postpaidPrice;
     }
 }

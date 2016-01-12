@@ -58,7 +58,7 @@ class EtbApi {
         ]
 
 
-        self.alamofire.request(.GET, self.config.serverBase + "/accommodations/results", parameters: query)
+        self.alamofire.request(.GET, self.config.serverBase + "/accommodations", parameters: query)
             .responseObject { (response: Response<AccommodationsResults, NSError>) in
                     if let delegate = self.delegate {
                         switch response.result {

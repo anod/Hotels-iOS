@@ -139,7 +139,7 @@ class BookingScreenController: UIViewController, EtbApiDelegate, ExpirationPicke
         orderSummary.setValue(order.rates[0].confirmationId, forKey: "confirmationId")
         orderSummary.setValue(order.rates[0].password, forKey: "password")
         
-        let prepaidPrice = NSString(string: rate.payment.prepaid[availabilityRequest.currency]!).doubleValue
+        let prepaidPrice = rate.payment.prepaid[availabilityRequest.currency]!
         if prepaidPrice < 0.01 {
             orderSummary.setValue(true, forKey: "isPostpaid")
         } else {

@@ -65,7 +65,7 @@ class SummaryView: UIScrollView, AccommodationViewProtocol{
         payToday.text=priceRender.prepaid(rate!)
         payAccomodation.text=priceRender.postpaid(rate!, postpaidCurrencyCode: accommodation.postpaidCurrency)
 
-        let prepaidPrice = NSString(string: rate!.payment.prepaid[availabilityRequest.currency]!).doubleValue
+        let prepaidPrice = rate!.payment.prepaid[availabilityRequest.currency]!
         if prepaidPrice < 0.01 {
             localCurrencyText.text = "You will pay in local currency (\(accommodation.postpaidCurrency))"
         } else {

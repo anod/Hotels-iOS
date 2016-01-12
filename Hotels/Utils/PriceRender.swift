@@ -27,35 +27,35 @@ class PriceRender {
     }
     
     func render(rate: Rate) -> String {
-        let prepaidPrice = NSString(string: rate.payment.prepaid[currencyCode]!).doubleValue
+        let prepaidPrice = rate.payment.prepaid[currencyCode]!
         if  prepaidPrice > 0 {
             return self.formatter.stringFromNumber(prepaidPrice)!
         }
         
-        let postpaidPrice = NSString(string: rate.payment.postpaid[currencyCode]!).doubleValue
+        let postpaidPrice = rate.payment.postpaid[currencyCode]!
         return self.formatter.stringFromNumber(postpaidPrice)!
         
     }
     
     func taxes(rate: Rate) -> String {
-        let prepaidPrice = NSString(string: rate.payment.prepaid[currencyCode]!).doubleValue
-        let postpaidPrice = NSString(string: rate.payment.postpaid[currencyCode]!).doubleValue
+        let prepaidPrice = rate.payment.prepaid[currencyCode]!
+        let postpaidPrice = rate.payment.postpaid[currencyCode]!
         
         let totalPrice = prepaidPrice + postpaidPrice;
         
-        let totalNetPrice = NSString(string: rate.totalNetRate[currencyCode]!).doubleValue
+        let totalNetPrice = rate.totalNetRate[currencyCode]!
         
         return self.formatter.stringFromNumber(totalPrice - totalNetPrice)!
     }
  
     func online(rate: Rate) -> String {
-        let prepaidPrice = NSString(string: rate.totalNetRate[currencyCode]!).doubleValue
+        let prepaidPrice = rate.totalNetRate[currencyCode]!
         return self.formatter.stringFromNumber(prepaidPrice)!
     }
  
     func total(rate: Rate) -> String {
-        let prepaidPrice = NSString(string: rate.payment.prepaid[currencyCode]!).doubleValue
-        let postpaidPrice = NSString(string: rate.payment.postpaid[currencyCode]!).doubleValue
+        let prepaidPrice = rate.payment.prepaid[currencyCode]!
+        let postpaidPrice = rate.payment.postpaid[currencyCode]!
         
         let totalPrice = prepaidPrice + postpaidPrice;
         
@@ -63,12 +63,12 @@ class PriceRender {
     }
     
     func prepaid(rate: Rate) -> String {
-        let prepaidPrice = NSString(string: rate.payment.prepaid[currencyCode]!).doubleValue
+        let prepaidPrice = rate.payment.prepaid[currencyCode]!
         return self.formatter.stringFromNumber(prepaidPrice)!
     }
     
     func postpaid(rate: Rate, postpaidCurrencyCode: String) -> String {
-        let postpaidPrice = NSString(string: rate.payment.postpaid[postpaidCurrencyCode]!).doubleValue
+        let postpaidPrice = rate.payment.postpaid[postpaidCurrencyCode]!
         
         let postpaidFormatter = NSNumberFormatter()
         postpaidFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
