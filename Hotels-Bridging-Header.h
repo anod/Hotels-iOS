@@ -12,7 +12,6 @@
 #import "ParallaxHeaderView.h"
 #import "MultiSelectSegmentedControl.h"
 #import "CountryPicker.h"
-#import "IDMPhotoBrowser.h"
 
 #import "CardIO.h"
 

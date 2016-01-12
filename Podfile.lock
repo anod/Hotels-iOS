@@ -1,16 +1,24 @@
 PODS:
   - CardIO (5.3.0)
   - DACircularProgress (2.3.1)
+  - IDMPhotoBrowser (1.8.1):
+    - DACircularProgress
+    - pop
+    - SDWebImage
   - pop (1.0.8)
+  - SDWebImage (3.7.4):
+    - SDWebImage/Core (= 3.7.4)
+  - SDWebImage/Core (3.7.4)
 
 DEPENDENCIES:
   - CardIO
-  - DACircularProgress
-  - pop
+  - IDMPhotoBrowser
 
 SPEC CHECKSUMS:
   CardIO: 516de64cb5a30b885b8b9782b082273f265f5750
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  IDMPhotoBrowser: 99eccfe6431e182f64e2fe57ac654316fbf81576
   pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
+  SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
 
 COCOAPODS: 0.38.2
